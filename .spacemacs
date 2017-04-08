@@ -309,6 +309,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq org-babel-sh-command "/bin/bash")
   )
 
 (defun dotspacemacs/user-config ()
@@ -323,6 +324,7 @@ you should place your code here."
   'org-babel-load-languages
   '((shell . t)
     (sql . t)
+    (sh . t)
     (ruby . t)
     (clojure . t)
     (org . t)
