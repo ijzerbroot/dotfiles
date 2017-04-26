@@ -7,6 +7,8 @@ call plug#begin('~/.vim/plugged')
 " Plug 'morhetz/gruvbox'
 Plug 'flazz/vim-colorschemes'
 Plug 'kshenoy/vim-signature'
+Plug 'benmills/vimux'
+Plug 'kana/vim-arpeggio'
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 
@@ -53,17 +55,90 @@ call plug#end()
 colorscheme molokai
 " set background=dark    " Setting dark mode
 let g:airline_theme='powerlineish'
-set gfn=Consolas:h14:cANSI
+set gfn=Hack\ Regular:h14:cANSI
+
 let mapleader = ","
 nmap <leader>ne :NERDTree<cr>
 " Set colors in console
-if !has("gui_running")
-    set term=xterm
-    set t_Co=256
+"if !has("gui_running")
+"    set term=xterm
+"    set t_Co=256
 "    let &t_AB="\e[48;5;%dm"
 "    let &t_AF="\e[38;5;%dm"
-    colorscheme molokai
-endif
+"    colorscheme molokai
+"endif
 set laststatus=2
 set clipboard=unnamed
 set history=100
+" Ignore case when searching
+set ignorecase
+"
+" " When searching try to be smart about cases
+set smartcase
+"
+" " Highlight search results
+set hlsearch
+" Show matching brackets when text indicator is over them
+set showmatch
+" Enable syntax highlighting
+syntax enable
+" Set extra options when running in GUI mode
+if has("gui_running")
+    set guioptions-=T
+    set guioptions-=e
+    set t_Co=256
+    set guitablabel=%M\ %t
+    set gfn=Hack\ Regular:h14:cANSI
+endif
+if has("gui_macvim")
+    set guioptions-=T
+    set guioptions-=e
+    set t_Co=256
+    set guitablabel=%M\ %t
+    set gfn=Hack\ Regular:h14:cANSI
+endif
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Files, backups and undo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use spaces instead of tabs
+set expandtab
+
+" Be smart when using tabs ;)
+set smarttab
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+
+" Linebreak on 500 characters
+set lbr
+set tw=500
+
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
+
+
+" vv to generate new vertical split
+nnoremap <silent> vv <C-w>v
+" Prompt for a command to run
+map <Leader>vp :VimuxPromptCommand<CR>
+" Run last command executed by VimuxRunCommand
+map <Leader>vl :VimuxRunLastCommand<CR>
+" Inspect runner pane
+map <Leader>vi :VimuxInspectRunner<CR>
+" Zoom the tmux runner pane
+map <Leader>vz :VimuxZoomRunner<CR>
