@@ -55,7 +55,7 @@ call plug#end()
 colorscheme molokai
 " set background=dark    " Setting dark mode
 let g:airline_theme='powerlineish'
-set gfn=Hack\ Regular:h14:cANSI
+"set gfn=Hack:h14:cANSI
 
 let mapleader = ","
 nmap <leader>ne :NERDTree<cr>
@@ -88,7 +88,7 @@ if has("gui_running")
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set gfn=Hack\ Regular:h14:cANSI
+    set gfn=Hack\ 14
 endif
 if has("gui_macvim")
     set guioptions-=T
