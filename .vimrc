@@ -1,5 +1,4 @@
 
-
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
@@ -11,6 +10,8 @@ Plug 'benmills/vimux'
 Plug 'kana/vim-arpeggio'
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
+Plug 'edkolev/promptline.vim'
+Plug 'edkolev/tmuxline.vim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -142,3 +143,21 @@ map <Leader>vl :VimuxRunLastCommand<CR>
 map <Leader>vi :VimuxInspectRunner<CR>
 " Zoom the tmux runner pane
 map <Leader>vz :VimuxZoomRunner<CR>
+
+"Tmuxline - :TmuxlineSnapshot! ~/.dotfiles/.tmuxline.tmux.conf
+"Far bottom right shows DHCP WiFi IP, with an H appended at home
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'c'    : ['#(whoami)', '#(uptime | cut -d " " -f 1,2,3)'],
+      \'win'  : ['#I', '#W'],
+      \'cwin' : ['#I', '#W', '#F'],
+      \'x'    : '#(date)',
+      \'y'    : ['%R', '%a', '%Y'],
+      \'z'    : '#H'}
+
+let g:promptline_theme = 'airline'
+
+let g:airline#extensions#tmuxline#enabled = 1
+let g:airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
+let g:airline#extensions#promtline#enabled = 1
+let g:airline#extensions#promptline#snapshot_file = "~/.shell_prompt.sh"
