@@ -155,12 +155,25 @@ let g:tmuxline_preset = {
       \'y'    : ['%R', '%a', '%Y'],
       \'z'    : '#H'}
 " sections (a, b, c, x, y, z, warn) are optional
-let g:promptline_preset = {
-        \'a' : [ promptline#slices#host() ],
-        \'b' : [ promptline#slices#user() ],
-        \'c' : [ promptline#slices#cwd() ],
-        \'y' : [ promptline#slices#vcs_branch() ],
-        \'warn' : [ promptline#slices#last_exit_code() ]}
+
+"let g:promptline_preset = {
+"      \'a'    : [ '$(hostname)' ],
+"      \'b'    : [ '$(whoami)' ],
+"      \'c'    : [ '$(pwd)' ],
+"      \'options': {
+"          \'left_sections' : [ 'b', 'a' ],
+"          \'right_sections' : [ 'c' ],
+"          \'left_only_sections' : [ 'b', 'a', 'c' ]}}
+
+let g:promptline_preset = 'clear'
+let g:promptline_powerline_symbols = 1
+let g:promptline_symbols = {
+    \ 'left'       : '',
+    \ 'left_alt'   : '>',
+    \ 'dir_sep'    : ' / ',
+    \ 'truncation' : '...',
+    \ 'vcs_branch' : '',
+    \ 'space'      : ' '}
 
 " available slices:
 "
