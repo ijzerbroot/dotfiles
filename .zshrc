@@ -5,6 +5,7 @@ function pl9k() {
 git clone https://github.com/bhilburn/powerlevel9k ~/powerlevel9k
 cd $HOME
 cd powerlevel9k && git pull https://github.com/bhilburn/powerlevel9k
+cd -
 }
 
 function spectrum_ls() {
