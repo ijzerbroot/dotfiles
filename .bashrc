@@ -12,4 +12,4 @@ export PATH=$HOME/Library/Python/2.7/bin:$PATH
 #  source /Users/frank/Library/Python/2.7/lib/python/site-packages/powerline/bindings/bash/powerline.sh
 #fi
 
-source ~/.shell_settings.sh
+source ~/.shell_prompt.sh
