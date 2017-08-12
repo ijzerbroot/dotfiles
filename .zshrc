@@ -8,6 +8,13 @@ cd powerlevel9k && git pull https://github.com/bhilburn/powerlevel9k
 cd -
 }
 
+function base16() {
+    git clone https://github.com/chriskempson/base16-shell ~/base16-shell
+    cd $HOME
+    cd base16-shell && git pull https://github.com/chriskempson/base16-shell
+    cd -
+}
+
 function custom_uptime() {
     echo -n "`uptime | sed 's/.* up /up /' | sed 's/,.*//'`"
 }
@@ -21,6 +28,9 @@ function spectrum_ls() {
     print -P -- "$code: %F{$code}This text is colorized%f"
   done
 }
+
+BASE16_SHELL=$HOME/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 source  ~/powerlevel9k/powerlevel9k.zsh-theme
 
