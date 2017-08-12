@@ -1,0 +1,115 @@
+
+! Rofi configuration
+! ------------------
+rofi.font: Sansation 18
+rofi.width: 100
+rofi.bw: 0
+rofi.lines: 7
+rofi.padding: 500
+
+! Xft
+Xft.dpi:                    81
+Xft.antialias:           true
+Xft.hinting:              full
+Xft.hintstyle:           hintslight
+Xft.rgba:                  rgb
+
+rofi.separator-style: solid
+rofi.color-enabled: true
+rofi.color-window: argb:cc000000, #3ea290, #3ea290
+rofi.color-normal: argb:00000000, #888888, argb:00000000, argb:00000000, #3ea290
+rofi.color-active: argb:00000000, #3ea290, argb:00000000, #3ea290, #000000
+rofi.color-urgent: argb:00000000, #52ad91, argb:00000000, #52ad91, #000000
+
+!XTerm*faceName: Hack Regular
+XTerm*faceName: Inconsolata for Powerline
+XTerm*faceSize: 15
+XTerm*saveLines: 1000
+
+! -------------------
+!URxvt.font: xft:Inconsolata for Powerline:size=15
+URxvt.geometry: 80x20
+URxvt.scrollBar: false
+URxvt.urgentOnBell: true
+URxvt.lineSpace: 2
+URxvt.internalBorder: 15
+URxvt.mouseWheelScrollPage: true
+URxvt.font:         xft:Hack-Regular:pixelsize=14,xft:Symbola
+URxvt.boldFont:     xft:Hack-Bold:pixelsize=14:weight=bold,xft:Symbola
+URxvt.italicFont: xft:Hack-RegularOblique:pixelsize=14:slant=italic,xft:Symbola
+
+! Transparency
+URxvt.depth: 32
+URxvt.transparent: true
+URxvt.shading: 10
+
+URxvt.foreground:   #ffffff
+URxvt.background:   rgba:0000/0000/0000/dd00
+URxvt.cursorColor:  #ffffff
+! --- ~/.Xresources ------------------------------------------------------------
+! ------------------------------------------------------------------------------
+! --- generated with 4bit Terminal Color Scheme Designer -----------------------
+! ------------------------------------------------------------------------------
+! --- http://ciembor.github.com/4bit -------------------------------------------
+! ------------------------------------------------------------------------------
+
+! --- special colors ---
+
+*background: #0d1926
+*foreground: #d9e6f2
+
+! --- standard colors ---
+
+! black
+*color0: #000000
+
+! bright_black
+*color8: #262626
+
+! red
+*color1: #b87a7a
+
+! bright_red
+*color9: #dbbdbd
+
+! green
+*color2: #7ab87a
+
+! bright_green
+*color10: #bddbbd
+
+! yellow
+*color3: #b8b87a
+
+! bright_yellow
+*color11: #dbdbbd
+
+! blue
+*color4: #7a7ab8
+
+! bright_blue
+*color12: #bdbddb
+
+! magenta
+*color5: #b87ab8
+
+! bright_magenta
+*color13: #dbbddb
+
+! cyan
+*color6: #7ab8b8
+
+! bright_cyan
+*color14: #bddbdb
+
+! white
+*color7: #d9d9d9
+
+! bright_white
+*color15: #ffffff
+
+
+! ------------------------------------------------------------------------------
+! --- end of terminal colors section -------------------------------------------
+! ------------------------------------------------------------------------------
+
