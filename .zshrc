@@ -1,6 +1,12 @@
 
 export TERM=xterm-256color
 
+function pl9k() {
+git clone https://github.com/bhilburn/powerlevel9k ~/powerlevel9k
+cd $HOME
+cd powerlevel9k && git pull https://github.com/bhilburn/powerlevel9k
+}
+
 function spectrum_ls() {
   for code in {000..255}; do
     print -P -- "$code: %F{$code}This text is colorized%f"
