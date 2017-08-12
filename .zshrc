@@ -1,7 +1,8 @@
 
 source  ~/powerlevel9k/powerlevel9k.zsh-theme
 
-
+# Voor kleuren zie: https://github.com/chriskempson/base16
+POWERLEVEL9K_COLOR_SCHEME='light'
 POWERLEVEL9K_MODE='awesome-patched'
 POWERLEVEL9K_NODE_VERSION_BACKGROUND='28'
 POWERLEVEL9K_NODE_VERSION_FOREGROUND='15'
