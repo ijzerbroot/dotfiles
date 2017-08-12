@@ -4,7 +4,8 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
 " Plug 'morhetz/gruvbox'
-Plug 'flazz/vim-colorschemes'
+" Plug 'flazz/vim-colorschemes'
+Plug 'chriskempson/base16-vim'
 Plug 'kshenoy/vim-signature'
 Plug 'benmills/vimux'
 Plug 'kana/vim-arpeggio'
@@ -52,8 +53,10 @@ Plug '~/my-prototype-plugin'
 " Add plugins to &runtimepath
 call plug#end()
 
+let base16colorspace=256  " Access colors present in 256 colorspace
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-colorscheme molokai
+" colorscheme molokai
+colorscheme base16-monokai
 " set background=dark    " Setting dark mode
 let g:airline_theme='powerlineish'
 "set gfn=Hack:h14:cANSI
