@@ -15,6 +15,21 @@ function base16() {
     cd -
 }
 
+function nerdfonts() {
+    git clone https://github.com/ryanoasis/nerd-fonts ~/nerd-fonts
+    cd $HOME
+    cd nerd-fonts && git pull https://github.com/ryanoasis/nerd-fonts
+    cd -
+}
+
+function nerdfonts_install() {
+    git clone https://github.com/ryanoasis/nerd-fonts ~/nerd-fonts
+    cd $HOME
+    cd nerd-fonts && git pull https://github.com/ryanoasis/nerd-fonts
+    ./install.sh
+    cd -
+}
+
 function custom_uptime() {
     echo -n "`uptime | sed 's/.* up /up /' | sed 's/,.*//'`"
 }
