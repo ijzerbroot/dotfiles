@@ -1,5 +1,7 @@
 
 export TERM=xterm-256color
+export LS_COLORS=''
+alias ls='ls --color=auto'
 
 function pl9k() {
 git clone https://github.com/bhilburn/powerlevel9k ~/powerlevel9k
