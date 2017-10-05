@@ -149,14 +149,14 @@ map <Leader>vz :VimuxZoomRunner<CR>
 
 "Tmuxline - :TmuxlineSnapshot! ~/.dotfiles/.tmuxline.tmux.conf
 "Far bottom right shows DHCP WiFi IP, with an H appended at home
-let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'c'    : ['#(whoami)', '#(uptime | cut -d " " -f 1,2,3)'],
-      \'win'  : ['#I', '#W'],
-      \'cwin' : ['#I', '#W', '#F'],
-      \'x'    : '#(date)',
-      \'y'    : ['%R', '%a', '%Y'],
-      \'z'    : '#H'}
+"let g:tmuxline_preset = {
+"     \'a'    : '#S',
+"      \'c'    : ['#(whoami)', '#(uptime | cut -d " " -f 1,2,3)'],
+"      \'win'  : ['#I', '#W'],
+"      \'cwin' : ['#I', '#W', '#F'],
+"      \'x'    : '#(date)',
+"      \'y'    : ['%R', '%a', '%Y'],
+"      \'z'    : '#H'}
 " sections (a, b, c, x, y, z, warn) are optional
 
 "let g:promptline_preset = {
@@ -168,15 +168,15 @@ let g:tmuxline_preset = {
 "          \'right_sections' : [ 'c' ],
 "          \'left_only_sections' : [ 'b', 'a', 'c' ]}}
 
-let g:promptline_preset = 'clear'
-let g:promptline_powerline_symbols = 1
-let g:promptline_symbols = {
-    \ 'left'       : '',
-    \ 'left_alt'   : '>',
-    \ 'dir_sep'    : ' / ',
-    \ 'truncation' : '...',
-    \ 'vcs_branch' : '',
-    \ 'space'      : ' '}
+"let g:promptline_preset = 'clear'
+"let g:promptline_powerline_symbols = 1
+"let g:promptline_symbols = {
+"    \ 'left'       : '',
+"    \ 'left_alt'   : '>',
+"    \ 'dir_sep'    : ' / ',
+"    \ 'truncation' : '...',
+"    \ 'vcs_branch' : '',
+"    \ 'space'      : ' '}
 
 " available slices:
 "
@@ -201,9 +201,9 @@ let g:promptline_symbols = {
 " `let g:promptline_powerline_symbols = 0`
 
 
-let g:promptline_theme = 'airline'
+"let g:promptline_theme = 'airline'
 
-let g:airline#extensions#tmuxline#enabled = 1
-let g:airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
-let g:airline#extensions#promtline#enabled = 1
-let g:airline#extensions#promptline#snapshot_file = "~/.shell_prompt.sh"
+"let g:airline#extensions#tmuxline#enabled = 1
+"let g:airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
+"let g:airline#extensions#promtline#enabled = 1
+"let g:airline#extensions#promptline#snapshot_file = "~/.shell_prompt.sh"
