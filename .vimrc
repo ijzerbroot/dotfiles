@@ -11,8 +11,8 @@ Plug 'benmills/vimux'
 Plug 'kana/vim-arpeggio'
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
-Plug 'edkolev/promptline.vim'
-Plug 'edkolev/tmuxline.vim'
+" Plug 'edkolev/promptline.vim'
+" Plug 'edkolev/tmuxline.vim'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
