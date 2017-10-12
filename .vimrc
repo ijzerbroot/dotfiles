@@ -5,8 +5,10 @@ call plug#begin('~/.vim/plugged')
                                                                                                                                   " Plug 'morhetz/gruvbox'                                                                                                          " Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 Plug 'kshenoy/vim-signature'
-Plug 'benmills/vimux'                                                                                                             Plug 'kana/vim-arpeggio'
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align                                                          Plug 'junegunn/vim-easy-align'
+Plug 'benmills/vimux'
+Plug 'kana/vim-arpeggio' 
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
 Plug 'edkolev/promptline.vim'
 Plug 'edkolev/tmuxline.vim'
                                                                                                                                   Plug 'vim-airline/vim-airline'
