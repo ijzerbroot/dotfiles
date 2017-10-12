@@ -2,19 +2,14 @@
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
-
-" Plug 'morhetz/gruvbox'
-" Plug 'flazz/vim-colorschemes'
+                                                                                                                                  " Plug 'morhetz/gruvbox'                                                                                                          " Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 Plug 'kshenoy/vim-signature'
-Plug 'benmills/vimux'
-Plug 'kana/vim-arpeggio'
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-Plug 'junegunn/vim-easy-align'
-" Plug 'edkolev/promptline.vim'
-" Plug 'edkolev/tmuxline.vim'
-
-Plug 'vim-airline/vim-airline'
+Plug 'benmills/vimux'                                                                                                             Plug 'kana/vim-arpeggio'
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align                                                          Plug 'junegunn/vim-easy-align'
+Plug 'edkolev/promptline.vim'
+Plug 'edkolev/tmuxline.vim'
+                                                                                                                                  Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'vim-scripts/sqlplus.vim'
@@ -159,37 +154,43 @@ map <Leader>vz :VimuxZoomRunner<CR>
 "      \'z'    : '#H'}
 " sections (a, b, c, x, y, z, warn) are optional
 
-"let g:promptline_preset = {
-"      \'a'    : [ '$(hostname)' ],
-"      \'b'    : [ '$(whoami)' ],
-"      \'c'    : [ '$(pwd)' ],
-"      \'options': {
-"          \'left_sections' : [ 'b', 'a' ],
-"          \'right_sections' : [ 'c' ],
-"          \'left_only_sections' : [ 'b', 'a', 'c' ]}}
+let g:tmuxline_preset = {
+     \'a'    : '#S',
+      \'c'    : ['#(whoami)', '#(uptime | cut -d " " -f 3,4,5 |sed "s/,$//")'],
+      \'win'  : ['#I', '#W'],
+      \'cwin' : ['#I', '#W', '#F'],
+      \'y'    : ['%R', '%a'],
+      \'z'    : '#H'}
 
-"let g:promptline_preset = 'clear'
-"let g:promptline_powerline_symbols = 1
-"let g:promptline_symbols = {
-"    \ 'left'       : '',
-"    \ 'left_alt'   : '>',
-"    \ 'dir_sep'    : ' / ',
-"    \ 'truncation' : '...',
-"    \ 'vcs_branch' : '',
-"    \ 'space'      : ' '}
+let g:promptline_preset = {
+      \'a'    : [ '$(hostname)' ],
+      \'b'    : [ '$(whoami)' ],
+      \'c'    : [ '$(pwd)' ],
+      \'options': {
+          \'left_sections' : [ 'b', 'a' ],
+          \'right_sections' : [ 'c' ],
+          \'left_only_sections' : [ 'b', 'a', 'c' ]}}
+
+let g:promptline_preset = 'clear'
+let g:promptline_powerline_symbols = 1
+let g:promptline_symbols = {
+    \ 'left'       : '',
+    \ 'left_alt'   : '>',
+    \ 'dir_sep'    : ' / ',
+    \ 'truncation' : '...',
+    \ 'vcs_branch' : '',
+    \ 'space'      : ' '}
 
 " available slices:
 "
-" promptline#slices#cwd() - current dir, truncated to 3 dirs. To configure: promptline#slices#cwd({ 'dir_limit': 4 })
-" promptline#slices#vcs_branch() - branch name only. By default, only git branch is enabled. Use promptline#slices#vcs_branch({ 'hg': 1, 'svn': 1, 'fossil': 1}) to enable check for svn, mercurial and fossil branches. Note that always checking if inside a branch slows down the prompt
+"promptline#slices#cwd() - current dir, truncated to 3 dirs. To configure: promptline#slices#cwd({ 'dir_limit': 4 })
+"promptline#slices#vcs_branch() - branch name only. By default, only git branch is enabled. Use promptline#slices#vcs_branch({    'hg': 1, 'svn': 1, 'fossil': 1}) to enable check for svn, mercurial and fossil branches. Note that always checking if inside a    branch slows down the prompt
 " promptline#slices#last_exit_code() - display exit code of last command if not zero
 " promptline#slices#jobs() - display number of shell jobs if more than zero
-" promptline#slices#battery() - display battery percentage (on OSX and linux) only if below 10%. Configure the threshold with promptline#slices#battery({ 'threshold': 25 })
-" promptline#slices#host() - current hostname.  To hide the hostname unless connected via SSH, use promptline#slices#host({ 'only_if_ssh': 1 })
+" promptline#slices#battery() - display battery percentage (on OSX and linux) only if below 10%. Configure the threshold with     promptline#slices#battery({ 'threshold': 25 })
+" promptline#slices#host() - current hostname.  To hide the hostname unless connected via SSH, use promptline#slices#host({       'only_if_ssh': 1 })
 " promptline#slices#user()
 " promptline#slices#python_virtualenv() - display which virtual env is active (empty is none)
-" promptline#slices#git_status() - count of commits ahead/behind upstream, count of modified/added/unmerged files, symbol for clean branch and symbol for existing untraced files
-" promptline#slices#conda_env() - display which conda env is active (empty is none)
 "
 " any command can be used in a slice, for example to print the output of whoami in section 'b':
 "       \'b' : [ '$(whoami)'],
@@ -201,9 +202,9 @@ map <Leader>vz :VimuxZoomRunner<CR>
 " `let g:promptline_powerline_symbols = 0`
 
 
-"let g:promptline_theme = 'airline'
+let g:promptline_theme = 'airline'
 
-"let g:airline#extensions#tmuxline#enabled = 1
-"let g:airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
-"let g:airline#extensions#promtline#enabled = 1
-"let g:airline#extensions#promptline#snapshot_file = "~/.shell_prompt.sh"
+let g:airline#extensions#tmuxline#enabled = 1
+let g:airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
+let g:airline#extensions#promtline#enabled = 1
+let g:airline#extensions#promptline#snapshot_file = "~/.shell_prompt.sh"
