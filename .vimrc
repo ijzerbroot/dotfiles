@@ -54,6 +54,7 @@ Plug '~/my-prototype-plugin'
 call plug#end()
 
 let base16colorspace=256  " Access colors present in 256 colorspace
+let g:airline_powerline_fonts = 1
 " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " colorscheme molokai
 colorscheme base16-monokai
