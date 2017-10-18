@@ -11,7 +11,8 @@ Plug 'kana/vim-arpeggio'
 Plug 'junegunn/vim-easy-align'
 Plug 'edkolev/promptline.vim'
 Plug 'edkolev/tmuxline.vim'
-                                                                                                                                  Plug 'vim-airline/vim-airline'
+                                                                                                                                  
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 Plug 'vim-scripts/sqlplus.vim'
