@@ -2,16 +2,18 @@
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
-                                                                                                                                  " Plug 'morhetz/gruvbox'                                                                                                          " Plug 'flazz/vim-colorschemes'
+
+" Plug 'morhetz/gruvbox'
+" Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 Plug 'kshenoy/vim-signature'
 Plug 'benmills/vimux'
-Plug 'kana/vim-arpeggio' 
+Plug 'kana/vim-arpeggio'
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 Plug 'edkolev/promptline.vim'
-Plug 'edkolev/tmuxline.vim'
-                                                                                                                                  
+" Plug 'edkolev/tmuxline.vim'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -52,10 +54,11 @@ Plug '~/my-prototype-plugin'
 call plug#end()
 
 let base16colorspace=256  " Access colors present in 256 colorspace
-let g:airline_powerline_fonts = 1
-" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let g:airline_powerline_fonts=1
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors
 " colorscheme molokai
-colorscheme base16-monokai
+colorscheme base16-dracula
 " set background=dark    " Setting dark mode
 let g:airline_theme='powerlineish'
 "set gfn=Hack:h14:cANSI
@@ -85,20 +88,22 @@ set hlsearch
 set showmatch
 " Enable syntax highlighting
 syntax enable
+
+set t_Co=256
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set gfn=Hack\ 14
+    set gfn=Knack\ Nerd\ Font\ 14
 endif
 if has("gui_macvim")
     set guioptions-=T
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set gfn=Hack\ Regular:h14:cANSI
+    set gfn=Knack\ Regular:h14:cANSI
 endif
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -188,13 +193,15 @@ let g:promptline_symbols = {
 " available slices:
 "
 "promptline#slices#cwd() - current dir, truncated to 3 dirs. To configure: promptline#slices#cwd({ 'dir_limit': 4 })
-"promptline#slices#vcs_branch() - branch name only. By default, only git branch is enabled. Use promptline#slices#vcs_branch({    'hg': 1, 'svn': 1, 'fossil': 1}) to enable check for svn, mercurial and fossil branches. Note that always checking if inside a    branch slows down the prompt
+"promptline#slices#vcs_branch() - branch name only. By default, only git branch is enabled. Use promptline#slices#vcs_branch({ 'hg': 1, 'svn': 1, 'fossil': 1}) to enable check for svn, mercurial and fossil branches. Note that always checking if inside a branch slows down the prompt
 " promptline#slices#last_exit_code() - display exit code of last command if not zero
 " promptline#slices#jobs() - display number of shell jobs if more than zero
-" promptline#slices#battery() - display battery percentage (on OSX and linux) only if below 10%. Configure the threshold with     promptline#slices#battery({ 'threshold': 25 })
-" promptline#slices#host() - current hostname.  To hide the hostname unless connected via SSH, use promptline#slices#host({       'only_if_ssh': 1 })
+" promptline#slices#battery() - display battery percentage (on OSX and linux) only if below 10%. Configure the threshold with promptline#slices#battery({ 'threshold': 25 })
+" promptline#slices#host() - current hostname.  To hide the hostname unless connected via SSH, use promptline#slices#host({ 'only_if_ssh': 1 })
 " promptline#slices#user()
 " promptline#slices#python_virtualenv() - display which virtual env is active (empty is none)
+" promptline#slices#git_status() - count of commits ahead/behind upstream, count of modified/added/unmerged files, symbol for clean branch and symbol for existing untraced files
+" promptline#slices#conda_env() - display which conda env is active (empty is none)
 "
 " any command can be used in a slice, for example to print the output of whoami in section 'b':
 "       \'b' : [ '$(whoami)'],
