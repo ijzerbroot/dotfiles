@@ -37,6 +37,10 @@ Plug 'fatih/vim-go'
 " On-demand loading:
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'kien/ctrlp.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'shougo/denite.nvim'
+Plug 'mhinz/vim-startify'
 
 " Using a non-master branch
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
