@@ -19,6 +19,7 @@ Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'wincent/command-t'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'mhinz/vim-janah'
 
 Plug 'vim-scripts/sqlplus.vim'
 
