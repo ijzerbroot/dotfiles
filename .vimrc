@@ -12,8 +12,11 @@ Plug 'kana/vim-arpeggio'
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 Plug 'edkolev/promptline.vim'
+Plug 'tpope/vim-fugitive'
 " Plug 'edkolev/tmuxline.vim'
-
+Plug 'tpope/vim-commentary'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'wincent/command-t'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -58,12 +61,13 @@ let g:airline_powerline_fonts=1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 " colorscheme molokai
-colorscheme base16-dracula
+colorscheme base16-atelier-savanna
 " set background=dark    " Setting dark mode
 let g:airline_theme='powerlineish'
 "set gfn=Hack:h14:cANSI
 
 let mapleader = ","
+let g:airline#extensions#tabline#enabled = 1
 nmap <leader>ne :NERDTree<cr>
 " Set colors in console
 "if !has("gui_running")
