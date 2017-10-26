@@ -60,7 +60,7 @@ client.placeholder      $bg     $bg     $fg  $bg       $bg
 #exec --no-startup-id feh --bg-scale $HOME/Pictures/FWG_2560x1440.jpg
 #exec --no-startup-id feh --bg-scale $HOME/Pictures/Cold.jpg
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id compton --menu-opacity=0.9 -c -f --blur-background --config /home/frank/.config/compton.conf
+#exec --no-startup-id compton --menu-opacity=0.9 -c -f --blur-background --config /home/frank/.config/compton.conf
 #exec --no-startup-id mopidy
 #exec --no-startup-id $HOME/.config/polybar/launch.sh
 #exec --no-startup-id $HOME/.config/lemonbar/launch.sh
