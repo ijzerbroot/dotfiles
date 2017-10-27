@@ -13,7 +13,7 @@ Plug 'kana/vim-arpeggio'
 Plug 'junegunn/vim-easy-align'
 Plug 'edkolev/promptline.vim'
 Plug 'tpope/vim-fugitive'
-" Plug 'edkolev/tmuxline.vim'
+ Plug 'edkolev/tmuxline.vim'
 Plug 'tpope/vim-commentary'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'wincent/command-t'
@@ -68,6 +68,7 @@ set termguicolors
 " colorscheme molokai
 colorscheme base16-atelier-savanna
 " set background=dark    " Setting dark mode
+"let g:airline_theme='powerlineish'
 let g:airline_theme='powerlineish'
 "set gfn=Hack:h14:cANSI
 
@@ -161,24 +162,20 @@ map <Leader>vi :VimuxInspectRunner<CR>
 map <Leader>vz :VimuxZoomRunner<CR>
 
 "Tmuxline - :TmuxlineSnapshot! ~/.dotfiles/.tmuxline.tmux.conf
+
+"let g:tmuxline_preset = 'powerline'
+"call Tmuxline('airline')
+
 "Far bottom right shows DHCP WiFi IP, with an H appended at home
-"let g:tmuxline_preset = {
-"     \'a'    : '#S',
-"      \'c'    : ['#(whoami)', '#(uptime | cut -d " " -f 1,2,3)'],
-"      \'win'  : ['#I', '#W'],
-"      \'cwin' : ['#I', '#W', '#F'],
-"      \'x'    : '#(date)',
-"      \'y'    : ['%R', '%a', '%Y'],
-"      \'z'    : '#H'}
+let g:tmuxline_preset = {
+     \'a'    : '#W',
+     \'b'    : '#I',
+     \'win'  : '#W',
+     \'cwin' : ['#W','#S'],
+     \'y'    : '%R',
+     \'z'    : '#h'}
 " sections (a, b, c, x, y, z, warn) are optional
 
-let g:tmuxline_preset = {
-     \'a'    : '#S',
-      \'c'    : ['#(whoami)', '#(uptime | cut -d " " -f 3,4,5 |sed "s/,$//")'],
-      \'win'  : ['#I', '#W'],
-      \'cwin' : ['#I', '#W', '#F'],
-      \'y'    : ['%R', '%a'],
-      \'z'    : '#H'}
 
 let g:promptline_preset = {
       \'a'    : [ '$(hostname)' ],
@@ -245,11 +242,11 @@ function! DefaultWorkspace()
         vnew
     endif
 
-    sp term://bash
-    file Shell\ One
-    wincmd j
-    resize 8
-    wincmd h
+   vsp term://bash
+   file Shell\ One
+"    wincmd j
+"    resize 8
+   wincmd h
 endfunction
 command! -register DefaultWorkspace call DefaultWorkspace()
 
