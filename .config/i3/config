@@ -68,8 +68,8 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id xset s off -dpms
 #exec --no-startup-id dunst -config "/home/zedjones/.dunstrc"
 #exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/google-chrome-stable'
-exec --no-startup-id i3-msg 'workspace 1; exec /usr/local/bin/st -e nvim -c DefaultWorkspace'
-exec --no-startup-id i3-msg 'workspace 2; exec  /usr/local/bin/st -e tmux'
+exec --no-startup-id i3-msg 'workspace 1; exec /usr/local/bin/st -e tmux new -n Neovim nvim'
+#exec --no-startup-id i3-msg 'workspace 2; exec  /usr/local/bin/st -e Oni'
 #exec --no-startup-id i3-msg 'workspace 2; exec urxvt -e sh -c ncmpcpp'
 #exec --no-startup-id i3-msg 'workspace 2; exec urxvt -e sh -c cava'
 #exec --no-startup-id i3-msg 'workspace 2; exec urxvt -e sh -c htop'
