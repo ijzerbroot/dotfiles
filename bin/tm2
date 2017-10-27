@@ -1,0 +1,5 @@
+tmux new-session \; \
+  send-keys 'sudo nvim' C-m \; \
+  rename-window 'Neovim' \; \
+  split-window -h -p 50 \; 
+  
