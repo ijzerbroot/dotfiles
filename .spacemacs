@@ -61,7 +61,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(magit doom doom-themes hcl-mode all-the-icons eyebrowse)
+   dotspacemacs-additional-packages '(magit beacon doom doom-themes hcl-mode all-the-icons eyebrowse)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -334,6 +334,7 @@ you should place your code here."
   (when (fboundp 'windmove-default-keybindings)
     (windmove-default-keybindings))
   (setq powerline-default-separator 'arrow)
+  (beacon-mode 1)
  (require 'ob-sh)
  (require 'helm-bookmark)
  (org-babel-do-load-languages
