@@ -61,7 +61,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(magit beacon cask kubernetes doom doom-themes hcl-mode all-the-icons eyebrowse)
+   dotspacemacs-additional-packages '(magit beacon cask kubernetes sourcerer-theme doom doom-themes hcl-mode all-the-icons eyebrowse)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -134,6 +134,7 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(doom-one
+						 sourcerer
                          rebecca
                          gotham
                          jazz
