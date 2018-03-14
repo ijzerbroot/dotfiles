@@ -7,6 +7,7 @@ module.exports = {
     "editor.completions.enabled": true,
     "editor.backgroundImageUrl": "/Users/FHoeben/Pictures/monkey_by_nicobou.jpg",
     "editor.backgroundOpacity": 0.9,
+    "editor.fullScreenOnStart": true,
     "sidebar.enabled": false,
     "ui.colorscheme": "PaperColor",
     "statusbar.enabled": false

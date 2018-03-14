@@ -294,5 +294,3 @@ let g:netrw_cygwin = 0
 let g:netrw_ssh_cmd  = "ssh -o ServerAliveInterval=60"
 let g:netrw_scp_cmd  = "scp"
 :imap <S-CR> <Esc>
-:AirlineToggle
-:AirlineToggle
