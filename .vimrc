@@ -23,6 +23,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-janah'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'vim-scripts/sqlplus.vim'
+Plug 'NLKNguyen/papercolor-theme'
 
 " Any valid git URL is allowed
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
