@@ -1,10 +1,11 @@
 
-call plug#begin('~/.vim/plugged')
+" call plug#begin('../../Users/FHoeben/vimfiles/plugged')
+call plug#begin('C:/Users/FHoeben/vimfiles/plugged')
 
 " Make sure you use single quotes
 
 " Plug 'morhetz/gruvbox'
-" Plug 'flazz/vim-colorschemes'
+Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 Plug 'kshenoy/vim-signature'
 Plug 'benmills/vimux'
@@ -13,14 +14,14 @@ Plug 'kana/vim-arpeggio'
 Plug 'junegunn/vim-easy-align'
 Plug 'edkolev/promptline.vim'
 Plug 'tpope/vim-fugitive'
- Plug 'edkolev/tmuxline.vim'
+" Plug 'edkolev/tmuxline.vim'
 Plug 'tpope/vim-commentary'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'wincent/command-t'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-janah'
-
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'vim-scripts/sqlplus.vim'
 
 " Any valid git URL is allowed
@@ -68,7 +69,6 @@ set termguicolors
 " colorscheme molokai
 colorscheme base16-atelier-savanna
 " set background=dark    " Setting dark mode
-"let g:airline_theme='powerlineish'
 let g:airline_theme='powerlineish'
 "set gfn=Hack:h14:cANSI
 
@@ -100,13 +100,17 @@ set showmatch
 syntax enable
 
 set t_Co=256
+
+" NeoVim
+"GuiFont! Knack NF:h14
+
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set gfn=Knack\ Nerd\ Font\ 14
+    set gfn=Knack\ NF:h14
 endif
 if has("gui_macvim")
     set guioptions-=T
@@ -162,20 +166,24 @@ map <Leader>vi :VimuxInspectRunner<CR>
 map <Leader>vz :VimuxZoomRunner<CR>
 
 "Tmuxline - :TmuxlineSnapshot! ~/.dotfiles/.tmuxline.tmux.conf
-
-"let g:tmuxline_preset = 'powerline'
-"call Tmuxline('airline')
-
 "Far bottom right shows DHCP WiFi IP, with an H appended at home
-let g:tmuxline_preset = {
-     \'a'    : '#W',
-     \'b'    : '#I',
-     \'win'  : '#W',
-     \'cwin' : ['#W','#S'],
-     \'y'    : '%R',
-     \'z'    : '#h'}
+"let g:tmuxline_preset = {
+"     \'a'    : '#S',
+"      \'c'    : ['#(whoami)', '#(uptime | cut -d " " -f 1,2,3)'],
+"      \'win'  : ['#I', '#W'],
+"      \'cwin' : ['#I', '#W', '#F'],
+"      \'x'    : '#(date)',
+"      \'y'    : ['%R', '%a', '%Y'],
+"      \'z'    : '#H'}
 " sections (a, b, c, x, y, z, warn) are optional
 
+let g:tmuxline_preset = {
+     \'a'    : '#S',
+      \'c'    : ['#(whoami)', '#(uptime | cut -d " " -f 3,4,5 |sed "s/,$//")'],
+      \'win'  : ['#I', '#W'],
+      \'cwin' : ['#I', '#W', '#F'],
+      \'y'    : ['%R', '%a'],
+      \'z'    : '#H'}
 
 let g:promptline_preset = {
       \'a'    : [ '$(hostname)' ],
@@ -237,16 +245,16 @@ function! DefaultWorkspace()
     endif
 
     if numcol == 3
-        e term://bash
+        e term://powershell.exe
         file Shell\ Two
         vnew
     endif
 
-   vsp term://bash
-   file Shell\ One
+    vsp term://powershell.exe
+    file Shell\ One
 "    wincmd j
-"    resize 8
-   wincmd h
+"    resize 11
+    wincmd h
 endfunction
 command! -register DefaultWorkspace call DefaultWorkspace()
 
@@ -280,3 +288,11 @@ for dir in ["h", "j", "k", "l"]
         call s:mapMoveToWindowInDirection(dir)
     endfor
 
+let g:netrw_cygwin = 0
+" let g:netrw_ssh_cmd  = "plink -T -ssh"
+" let g:netrw_scp_cmd  = "pscp"
+let g:netrw_ssh_cmd  = "ssh -o ServerAliveInterval=60"
+let g:netrw_scp_cmd  = "scp"
+:imap <S-CR> <Esc>
+map <Leader>gs :Gstatus<CR>
+map <Leader>cd :colorscheme challenger_deep<CR>
