@@ -67,7 +67,8 @@ let g:airline_powerline_fonts=1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 " colorscheme molokai
-colorscheme base16-atelier-savanna
+"colorscheme base16-atelier-savanna
+colorscheme PaperColor
 " set background=dark    " Setting dark mode
 let g:airline_theme='powerlineish'
 "set gfn=Hack:h14:cANSI
