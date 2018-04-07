@@ -4,13 +4,13 @@ volumes:
     loki_home:
         external:
             name: loki_home
-    loki_var: {}
+    loki_var: 
         external:
             name: loki_var
 
 services:
     loki:
-        image: localhost/loki:prod
+        image: local/loki:prod
         container_name: loki
         hostname: loki
         privileged: true
