@@ -1,0 +1,24 @@
+version: '3.4' 
+
+volumes:
+    loki_home:
+        external:
+            name: loki_home
+    loki_var: {}
+        external:
+            name: loki_var
+
+services:
+    loki:
+        image: localhost/loki:prod
+        container_name: loki
+        hostname: loki
+        privileged: true
+        volumes:
+            - loki_home:/home
+            - loki_var:/var
+            - /sys/fs/cgroup:/sys/fs/cgroup:ro
+        ports:
+            - 5901:5901
+            - 2222:22
+
