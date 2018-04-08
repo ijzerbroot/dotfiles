@@ -19,6 +19,6 @@ services:
             - loki_var:/var
             - /sys/fs/cgroup:/sys/fs/cgroup:ro
         ports:
-            - 5901:5901
-            - 2222:22
+            - "5901:5901"
+            - "2222:22"
 
