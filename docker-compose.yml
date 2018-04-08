@@ -21,4 +21,5 @@ services:
         ports:
             - "5901:5901"
             - "2222:22"
+        entrypoint: ["/usr/sbin/sshd","-D"]
 
