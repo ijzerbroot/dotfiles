@@ -17,7 +17,8 @@ services:
         volumes:
             - loki_home:/home
             - loki_var:/var
-            - /sys/fs/cgroup:/sys/fs/cgroup:ro
+            - /var/run/docker.sock:/var/run/docker.sock
+              #            - /sys/fs/cgroup:/sys/fs/cgroup:ro
         ports:
             - "5901:5901"
             - "2222:22"
