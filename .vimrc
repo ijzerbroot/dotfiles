@@ -25,6 +25,7 @@ Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'vim-scripts/sqlplus.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'puppetlabs/puppet-syntax-vim'
+Plug 'rafi/awesome-vim-colorschemes' 
 
 " Any valid git URL is allowed
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
