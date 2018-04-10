@@ -1,6 +1,6 @@
 
 " call plug#begin('../../Users/FHoeben/vimfiles/plugged')
-call plug#begin('C:/Users/FHoeben/vimfiles/plugged')
+call plug#begin('/home/frank/.vim/plugged')
 
 " Make sure you use single quotes
 
@@ -24,6 +24,7 @@ Plug 'mhinz/vim-janah'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'vim-scripts/sqlplus.vim'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'puppetlabs/puppet-syntax-vim'
 
 " Any valid git URL is allowed
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
@@ -69,7 +70,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 " colorscheme molokai
 "colorscheme base16-atelier-savanna
-colorscheme PaperColor
+colorscheme challenger_deep
 " set background=dark    " Setting dark mode
 let g:airline_theme='powerlineish'
 "set gfn=Hack:h14:cANSI
