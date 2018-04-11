@@ -71,7 +71,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 " colorscheme molokai
 "colorscheme base16-atelier-savanna
-colorscheme challenger_deep
+" colorscheme challenger_deep
 " set background=dark    " Setting dark mode
 let g:airline_theme='powerlineish'
 "set gfn=Hack:h14:cANSI
@@ -106,7 +106,9 @@ syntax enable
 set t_Co=256
 
 " NeoVim
-"GuiFont! Knack NF:h14
+if exists('g:GtkGuiLoaded')
+call rpcnotify(1, 'Gui', 'Font','Hack NF 14')
+endif
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -300,3 +302,6 @@ let g:netrw_scp_cmd  = "scp"
 :imap <S-CR> <Esc>
 map <Leader>gs :Gstatus<CR>
 map <Leader>cd :colorscheme challenger_deep<CR>
+set background=dark
+let g:two_firewatch_italics=1
+colorscheme two-firewatch
