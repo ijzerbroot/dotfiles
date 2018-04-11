@@ -13,26 +13,112 @@ Plug 'kana/vim-arpeggio'
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 Plug 'edkolev/promptline.vim'
-Plug 'tpope/vim-fugitive'
 " Plug 'edkolev/tmuxline.vim'
 Plug 'tpope/vim-commentary'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'Shougo/vimfiler.vim'
 Plug 'wincent/command-t'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-janah'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'vim-scripts/sqlplus.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'puppetlabs/puppet-syntax-vim'
 Plug 'rafi/awesome-vim-colorschemes' 
+" Utility
+Plug 'scrooloose/nerdtree'
+Plug 'majutsushi/tagbar'
+Plug 'ervandew/supertab'
+Plug 'BufOnly.vim'
+Plug 'wesQ3/vim-windowswap'
+" Plug 'SirVer/ultisnips'
+Plug 'junegunn/fzf.vim'
+Plug 'godlygeek/tabular'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'benmills/vimux'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'gilsondev/searchtasks.vim'
+Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/unite.vim'
+Plug 'sbdchd/neoformat'
+Plug 'tpope/vim-dispatch'
+
+" Generic Programming Support 
+" Plug 'jakedouglas/exuberant-ctags'
+Plug 'honza/vim-snippets'
+Plug 'Townk/vim-autoclose'
+Plug 'tomtom/tcomment_vim'
+Plug 'tobyS/vmustache'
+Plug 'janko-m/vim-test'
+Plug 'maksimr/vim-jsbeautify'
+Plug 'vim-syntastic/syntastic'
+Plug 'neomake/neomake'
+
+" Markdown / Writting
+Plug 'reedes/vim-pencil'
+Plug 'tpope/vim-markdown'
+Plug 'jtratner/vim-flavored-markdown'
+Plug 'LanguageTool'
+
+" Git Support
+Plug 'kablamo/vim-git-log'
+Plug 'gregsexton/gitv'
+Plug 'tpope/vim-fugitive'
+"Plug 'jaxbot/github-issues.vim'
+
+" Theme / Interface
+Plug 'AnsiEsc.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'sjl/badwolf'
+Plug 'tomasr/molokai'
+Plug 'morhetz/gruvbox'
+Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+Plug 'junegunn/limelight.vim'
+Plug 'mkarmona/colorsbox'
+Plug 'romainl/Apprentice'
+Plug 'Lokaltog/vim-distinguished'
+Plug 'chriskempson/base16-vim'
+Plug 'w0ng/vim-hybrid'
+Plug 'AlessandroYorba/Sierra'
+Plug 'daylerees/colour-schemes'
+Plug 'effkay/argonaut.vim'
+Plug 'ajh17/Spacegray.vim'
+Plug 'atelierbram/Base2Tone-vim'
+Plug 'colepeters/spacemacs-theme.vim'
+
+" PHP Support
+Plug 'phpvim/phpcd.vim'
+Plug 'tobyS/pdv'
+
+" Erlang Support
+Plug 'vim-erlang/vim-erlang-tags'
+Plug 'vim-erlang/vim-erlang-runtime'
+Plug 'vim-erlang/vim-erlang-omnicomplete'
+Plug 'vim-erlang/vim-erlang-compiler'
+
+" Elixir Support 
+Plug 'elixir-lang/vim-elixir'
+Plug 'avdgaag/vim-phoenix'
+Plug 'mmorearty/elixir-ctags'
+Plug 'mattreduce/vim-mix'
+Plug 'BjRo/vim-extest'
+Plug 'frost/vim-eh-docs'
+Plug 'slashmili/alchemist.vim'
+Plug 'tpope/vim-endwise'
+Plug 'jadercorrea/elixir_generator.vim'
+
+"Java support
+Plug 'artur-shaik/vim-javacomplete2'
+
+" Elm Support
+Plug 'lambdatoast/elm.vim'
 
 " Any valid git URL is allowed
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " Group dependencies, vim-snippets depends on ultisnips
 "Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'scrooloose/syntastic'
 
 Plug 'tpope/vim-surround'
 " Plug 'valloric/youcompleteme'
@@ -42,7 +128,6 @@ Plug 'fatih/vim-go'
 " On-demand loading:
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'kien/ctrlp.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'shougo/denite.nvim'
 Plug 'mhinz/vim-startify'
@@ -75,7 +160,32 @@ set termguicolors
 " set background=dark    " Setting dark mode
 let g:airline_theme='powerlineish'
 "set gfn=Hack:h14:cANSI
+let g:vimfiler_as_default_explorer = 1
+call vimfiler#custom#profile('default', 'context', {
+            \ 'explorer' : 1,
+            \ 'winwidth' : 30,
+            \ 'winminwidth' : 30,
+            \ 'toggle' : 1,
+            \ 'columns' : 'type',
+            \ 'auto_expand': 1,
+            \ 'direction' : 'rightbelow',
+            \ 'parent': 0,
+            \ 'explorer_columns' : 'type',
+            \ 'status' : 1,
+            \ 'safe' : 0,
+            \ 'split' : 1,
+            \ 'hidden': 1,
+            \ 'no_quit' : 1,
+            \ 'force_hide' : 0,
+            \ })
 
+let g:neoformat_java_google = {
+            \ 'exe': 'java',
+            \ 'args': ['-jar /home/frank/.local/bin/google-java-format-1.5-all-deps.jar -'],
+            \ 'stdin': 1, 
+            \ }
+
+let g:neoformat_enabled_java = ['google']
 let mapleader = ","
 let g:airline#extensions#tabline#enabled = 1
 nmap <leader>ne :NERDTree<cr>
