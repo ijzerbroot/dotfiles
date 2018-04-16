@@ -1,6 +1,6 @@
 
 " call plug#begin('../../Users/FHoeben/vimfiles/plugged')
-call plug#begin('/home/frank/.vim/plugged')
+call plug#begin('/Users/frank/.vim/plugged')
 
 " Make sure you use single quotes
 
@@ -415,3 +415,4 @@ map <Leader>cd :colorscheme challenger_deep<CR>
 set background=dark
 let g:two_firewatch_italics=1
 colorscheme two-firewatch
+set autochdir
