@@ -415,4 +415,5 @@ map <Leader>cd :colorscheme challenger_deep<CR>
 set background=dark
 let g:two_firewatch_italics=1
 colorscheme two-firewatch
-set autochdir
+"set autochdir
+autocmd BufEnter * silent! lcd %:p:h
