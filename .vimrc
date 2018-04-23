@@ -1,6 +1,6 @@
 
 " call plug#begin('../../Users/FHoeben/vimfiles/plugged')
-call plug#begin('/home/frank/.vim/plugged')
+call plug#begin('/Users/frank/.vim/plugged')
 
 " Make sure you use single quotes
 
@@ -64,6 +64,7 @@ Plug 'kablamo/vim-git-log'
 Plug 'gregsexton/gitv'
 Plug 'tpope/vim-fugitive'
 "Plug 'jaxbot/github-issues.vim'
+Plug 'junegunn/gv.vim'
 
 " Theme / Interface
 Plug 'AnsiEsc.vim'
@@ -81,7 +82,8 @@ Plug 'Lokaltog/vim-distinguished'
 Plug 'chriskempson/base16-vim'
 Plug 'w0ng/vim-hybrid'
 Plug 'AlessandroYorba/Sierra'
-Plug 'daylerees/colour-schemes'
+"Plug 'daylerees/colour-schemes'
+Plug 'rainglow/vim', { 'as': 'rainglow' } 
 Plug 'effkay/argonaut.vim'
 Plug 'ajh17/Spacegray.vim'
 Plug 'atelierbram/Base2Tone-vim'
@@ -415,3 +417,5 @@ map <Leader>cd :colorscheme challenger_deep<CR>
 set background=dark
 let g:two_firewatch_italics=1
 colorscheme two-firewatch
+"set autochdir
+autocmd BufEnter * silent! lcd %:p:h
