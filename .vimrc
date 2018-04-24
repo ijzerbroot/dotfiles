@@ -127,7 +127,6 @@ Plug 'lambdatoast/elm.vim'
 Plug 'tpope/vim-surround'
 " Plug 'valloric/youcompleteme'
 Plug 'godlygeek/tabular'
-Plug 'fatih/vim-go'
 
 " On-demand loading:
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -431,3 +430,4 @@ let g:go_list_type = "quickfix"
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
+set diffopt=vertical
