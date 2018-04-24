@@ -1,6 +1,6 @@
 
 " call plug#begin('../../Users/FHoeben/vimfiles/plugged')
-call plug#begin('/Users/frank/.vim/plugged')
+call plug#begin('/home/frank/.vim/plugged')
 
 " Make sure you use single quotes
 
@@ -39,6 +39,8 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'gilsondev/searchtasks.vim'
 Plug 'Shougo/neocomplete.vim'
 Plug 'Shougo/unite.vim'
+Plug 'Shougo/deoplete.nvim'
+Plug 'zchee/deoplete-go'
 Plug 'sbdchd/neoformat'
 Plug 'tpope/vim-dispatch'
 
@@ -419,3 +421,13 @@ let g:two_firewatch_italics=1
 colorscheme two-firewatch
 "set autochdir
 autocmd BufEnter * silent! lcd %:p:h
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_fmt_command = "goimports"
+let g:go_list_type = "quickfix"
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
