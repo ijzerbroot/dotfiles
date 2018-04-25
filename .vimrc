@@ -145,9 +145,6 @@ Plug 'mhinz/vim-startify'
 " Using a non-master branch
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-Plug 'fatih/vim-go'
-
 " Plugin options
 Plug 'nsf/gocode'
 
@@ -155,7 +152,7 @@ Plug 'nsf/gocode'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Unmanaged plugin (manually installed and updated)
-Plug '~/my-prototype-plugin'
+"Plug '~/my-prototype-plugin'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -413,7 +410,12 @@ endfunc
 for dir in ["h", "j", "k", "l"]
         call s:mapMoveToWindowInDirection(dir)
     endfor
-
+if has("win32")
+    set shell=cmd.exe
+    set shellcmdflag=/c\ powershell.exe\ -NoLogo\ -NoProfile\ -NonInteractive\ -ExecutionPolicy\ RemoteSigned
+    set shellpipe=|
+    set shellredir=>
+endif
 let g:netrw_cygwin = 0
 " let g:netrw_ssh_cmd  = "plink -T -ssh"
 " let g:netrw_scp_cmd  = "pscp"
@@ -442,4 +444,4 @@ set omnifunc=syntaxcomplete#Complete
 set diffopt=vertical
 map <Leader>vf :VimFiler<CR>
 " buffers open in new tab
-:au BufAdd,BufNewFile * nested tab sball
+":au BufAdd,BufNewFile * nested tab sball
