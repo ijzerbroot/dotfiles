@@ -25,6 +25,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'puppetlabs/puppet-syntax-vim'
 Plug 'rafi/awesome-vim-colorschemes' 
 " Utility
+Plug 'tpope/vim-unimpaired'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'ervandew/supertab'
@@ -43,6 +44,10 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-go'
 Plug 'sbdchd/neoformat'
 Plug 'tpope/vim-dispatch'
+Plug 'autozimu/LanguageClient-neovim'
+
+" (Optional) Multi-entry selection UI.
+Plug 'junegunn/fzf'
 
 " Generic Programming Support 
 " Plug 'jakedouglas/exuberant-ctags'
@@ -67,6 +72,7 @@ Plug 'gregsexton/gitv'
 Plug 'tpope/vim-fugitive'
 "Plug 'jaxbot/github-issues.vim'
 Plug 'junegunn/gv.vim'
+Plug 'airblade/vim-gitgutter'
 
 " Theme / Interface
 Plug 'AnsiEsc.vim'
@@ -127,6 +133,7 @@ Plug 'lambdatoast/elm.vim'
 Plug 'tpope/vim-surround'
 " Plug 'valloric/youcompleteme'
 Plug 'godlygeek/tabular'
+Plug 'fatih/vim-go'
 
 " On-demand loading:
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -430,4 +437,9 @@ let g:go_list_type = "quickfix"
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 set diffopt=vertical
+map <Leader>vf :VimFiler<CR>
+" buffers open in new tab
+:au BufAdd,BufNewFile * nested tab sball
