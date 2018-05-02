@@ -31,7 +31,7 @@ Plug 'sebdah/vim-delve'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'vimwiki/vimwiki'
+"Plug 'vimwiki/vimwiki'
 
 " Vim only plugins
 if !has('nvim')
@@ -511,7 +511,7 @@ set background=dark
 "
 " Reference:
 " - http://vim.wikia.com/wiki/Xterm256_color_names_for_console_Vim
-highlight Search guibg=DeepPink4 guifg=White ctermbg=53 ctermfg=White
+"highlight Search guibg=DeepPink4 guifg=White ctermbg=53 ctermfg=White
 
 " Toggle background with <leader>bg
 map <leader>bg :let &background = (&background == "dark"? "light" : "dark")<cr>
@@ -817,15 +817,15 @@ let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 " Plugin: vimwiki/vimwiki
 "----------------------------------------------
 " Path to wiki
-let g:vimwiki_list = [{
-        \ 'path': '~/Dropbox/vimwiki',
-        \ 'syntax': 'markdown',
-        \ 'ext': '.vimwiki.markdown'}]
+"let g:vimwiki_list = [{
+"        \ 'path': '~/Dropbox/vimwiki',
+"        \ 'syntax': 'markdown',
+"        \ 'ext': '.vimwiki.markdown'}]
 
-au FileType vimwiki set expandtab
-au FileType vimwiki set shiftwidth=2
-au FileType vimwiki set softtabstop=2
-au FileType vimwiki set tabstop=2
+"au FileType vimwiki set expandtab
+"au FileType vimwiki set shiftwidth=2
+"au FileType vimwiki set softtabstop=2
+"au FileType vimwiki set tabstop=2
 
 "----------------------------------------------
 " Plugin: 'terryma/vim-multiple-cursors'
