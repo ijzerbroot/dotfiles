@@ -9,7 +9,7 @@ Plug 'godlygeek/tabular'           " This must come before plasticboy/vim-markdo
 Plug 'tpope/vim-rhubarb'           " Depenency for tpope/fugitive
 
 " General plugins
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'  " Default snippets for many languages
 Plug 'bling/vim-airline'
@@ -60,9 +60,10 @@ Plug 'pangloss/vim-javascript'                 " JavaScript syntax highlighting
 Plug 'plasticboy/vim-markdown'                 " Markdown syntax highlighting
 Plug 'rodjek/vim-puppet'                       " Puppet syntax highlighting
 Plug 'tclh123/vim-thrift'                      " Thrift syntax highlighting
-"Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
+Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
 "Plug 'zchee/deoplete-jedi'                     " Go auto completion
 "Plug 'zimbatm/haproxy.vim'                     " HAProxy syntax highlighting
+"Plug 'dansomething/vim-eclim'
 
 
 " Plug 'morhetz/gruvbox'
@@ -98,10 +99,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'benmills/vimux'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'gilsondev/searchtasks.vim'
-Plug 'Shougo/neocomplete.vim'
+" Plug 'Shougo/neocomplete.vim'
 Plug 'Shougo/unite.vim'
-"Plug 'Shougo/deoplete.nvim'
-"Plug 'zchee/deoplete-go'
 Plug 'sbdchd/neoformat'
 Plug 'tpope/vim-dispatch'
 Plug 'autozimu/LanguageClient-neovim'
@@ -156,6 +155,7 @@ Plug 'effkay/argonaut.vim'
 Plug 'ajh17/Spacegray.vim'
 Plug 'atelierbram/Base2Tone-vim'
 Plug 'colepeters/spacemacs-theme.vim'
+Plug 'equalsraf/neovim-gui-shim'
 
 " PHP Support
 Plug 'phpvim/phpcd.vim'
@@ -179,7 +179,7 @@ Plug 'tpope/vim-endwise'
 Plug 'jadercorrea/elixir_generator.vim'
 
 "Java support
-"Plug 'artur-shaik/vim-javacomplete2'
+" Plug 'artur-shaik/vim-javacomplete2'
 
 " Elm Support
 Plug 'lambdatoast/elm.vim'
@@ -191,7 +191,7 @@ Plug 'lambdatoast/elm.vim'
 "Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 Plug 'tpope/vim-surround'
-" Plug 'valloric/youcompleteme'
+"Plug 'valloric/youcompleteme'
 Plug 'godlygeek/tabular'
 Plug 'fatih/vim-go'
 
@@ -617,19 +617,19 @@ autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 "----------------------------------------------
 " Plugin: Shougo/deoplete.nvim
 "----------------------------------------------
-"if has('nvim')
+if has('nvim')
     " Enable deoplete on startup
-"    let g:deoplete#enable_at_startup = 1
-"endif
+    let g:deoplete#enable_at_startup = 1
+endif
 
 " Disable deoplete when in multi cursor mode
-"function! Multiple_cursors_before()
-"    let b:deoplete_disable_auto_complete = 1
-"endfunction
+function! Multiple_cursors_before()
+    let b:deoplete_disable_auto_complete = 1
+endfunction
 
-"function! Multiple_cursors_after()
-"    let b:deoplete_disable_auto_complete = 0
-"endfunction
+function! Multiple_cursors_after()
+    let b:deoplete_disable_auto_complete = 0
+endfunction
 
 "----------------------------------------------
 " Plugin: bling/vim-airline
@@ -1126,3 +1126,6 @@ au FileType yaml set softtabstop=2
 au FileType yaml set tabstop=2
 
 let g:initial_go_path = "/home/frank/go"
+"let g:EclimCompletionMethod = 'omnifunc'
+let g:deoplete#enable_at_startup = 1
+
