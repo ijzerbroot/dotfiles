@@ -181,6 +181,8 @@ Plug 'jadercorrea/elixir_generator.vim'
 "Java support
 " Plug 'artur-shaik/vim-javacomplete2'
 
+" Swift support
+Plug 'keith/swift.vim'
 " Elm Support
 Plug 'lambdatoast/elm.vim'
 
@@ -1128,4 +1130,5 @@ au FileType yaml set tabstop=2
 let g:initial_go_path = "/home/frank/go"
 "let g:EclimCompletionMethod = 'omnifunc'
 let g:deoplete#enable_at_startup = 1
-
+"let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
+let g:syntastic_swift_checkers = ['swiftpm']
