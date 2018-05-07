@@ -31,6 +31,7 @@ Plug 'sebdah/vim-delve'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'lambdalisue/gina.vim'
 "Plug 'vimwiki/vimwiki'
 
 " Vim only plugins
