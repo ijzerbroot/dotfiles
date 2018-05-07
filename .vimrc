@@ -1132,3 +1132,6 @@ let g:initial_go_path = "/home/frank/go"
 let g:deoplete#enable_at_startup = 1
 "let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
 let g:syntastic_swift_checkers = ['swiftpm']
+" remap ; to : and vv
+nmap ; :
+nnoremap ;; ;
