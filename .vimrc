@@ -1,9 +1,9 @@
 
 " Platform dependent stuff
-let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
-call plug#begin('../../Users/FHoeben/vimfiles/plugged')
-let g:initial_go_path = "c:/Users/fhoeben/go"
-"call plug#begin('/home/frank/.vim/plugged')
+" let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
+"call plug#begin('../../Users/FHoeben/vimfiles/plugged')
+let g:initial_go_path = "/home/frank/go"
+call plug#begin('/home/frank/.vim/plugged')
 " Make sure you use single quotes
 " Dependencies
 Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
@@ -196,13 +196,13 @@ Plug 'lambdatoast/elm.vim'
 
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
-Plug 'fatih/vim-go'
 
 " On-demand loading:
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'ryanoasis/vim-devicons'
 "Plug 'shougo/denite.nvim'
+Plug 'shougo/unite.vim'
 Plug 'mhinz/vim-startify'
 
 " Using a non-master branch
