@@ -1,9 +1,9 @@
 
 " Platform dependent stuff
-let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
-call plug#begin('../../Users/FHoeben/vimfiles/plugged')
-let g:initial_go_path = "c:/Users/fhoeben/go"
-"call plug#begin('/home/frank/.vim/plugged')
+" let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
+"call plug#begin('../../Users/FHoeben/vimfiles/plugged')
+let g:initial_go_path = "/Users/frank/go"
+call plug#begin('/Users/frank/.vim/plugged')
 " Make sure you use single quotes
 " Dependencies
 Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
