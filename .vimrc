@@ -81,7 +81,8 @@ Plug 'edkolev/promptline.vim'
 " Plug 'edkolev/tmuxline.vim'
 Plug 'tpope/vim-commentary'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'Shougo/vimfiler.vim'
+"Plug 'Shougo/vimfiler.vim'
+Plug 'tpope/vim-vinegar'
 Plug 'wincent/command-t'
 Plug 'mhinz/vim-janah'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
@@ -196,13 +197,13 @@ Plug 'lambdatoast/elm.vim'
 
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
-Plug 'fatih/vim-go'
 
 " On-demand loading:
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'ryanoasis/vim-devicons'
 "Plug 'shougo/denite.nvim'
+"Plug 'shougo/unite.vim'
 Plug 'mhinz/vim-startify'
 
 " Using a non-master branch
@@ -230,24 +231,24 @@ set termguicolors
 " set background=dark    " Setting dark mode
 let g:airline_theme='powerlineish'
 "set gfn=Hack:h14:cANSI
-let g:vimfiler_as_default_explorer = 1
-call vimfiler#custom#profile('default', 'context', {
-            \ 'explorer' : 1,
-            \ 'winwidth' : 30,
-            \ 'winminwidth' : 30,
-            \ 'toggle' : 1,
-            \ 'columns' : 'type',
-            \ 'auto_expand': 1,
-            \ 'direction' : 'rightbelow',
-            \ 'parent': 0,
-            \ 'explorer_columns' : 'type',
-            \ 'status' : 1,
-            \ 'safe' : 0,
-            \ 'split' : 1,
-            \ 'hidden': 1,
-            \ 'no_quit' : 1,
-            \ 'force_hide' : 0,
-            \ })
+"let g:vimfiler_as_default_explorer = 1
+"call vimfiler#custom#profile('default', 'context', {
+"            \ 'explorer' : 1,
+"            \ 'winwidth' : 30,
+"            \ 'winminwidth' : 30,
+"            \ 'toggle' : 1,
+"            \ 'columns' : 'type',
+"            \ 'auto_expand': 1,
+"            \ 'direction' : 'rightbelow',
+"            \ 'parent': 0,
+"            \ 'explorer_columns' : 'type',
+"            \ 'status' : 1,
+"            \ 'safe' : 0,
+"            \ 'split' : 1,
+"            \ 'hidden': 1,
+"            \ 'no_quit' : 1,
+"            \ 'force_hide' : 0,
+"            \ })
 
 let g:neoformat_java_google = {
             \ 'exe': 'java',
@@ -460,7 +461,7 @@ nnoremap <leader>a :cclose<CR>
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 set diffopt=vertical
-map <Leader>vf :VimFiler<CR>
+"map <Leader>vf :VimFiler<CR>
 " buffers open in new tab
 ":au BufAdd,BufNewFile * nested tab sball
 "
