@@ -1,7 +1,9 @@
 
-"call plug#begin('../../Users/FHoeben/vimfiles/plugged')
-call plug#begin('/home/frank/.vim/plugged')
-
+" Platform dependent stuff
+let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
+call plug#begin('../../Users/FHoeben/vimfiles/plugged')
+let g:initial_go_path = "c:/Users/fhoeben/go"
+"call plug#begin('/home/frank/.vim/plugged')
 " Make sure you use single quotes
 " Dependencies
 Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
@@ -101,7 +103,6 @@ Plug 'benmills/vimux'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'gilsondev/searchtasks.vim'
 " Plug 'Shougo/neocomplete.vim'
-Plug 'Shougo/unite.vim'
 Plug 'sbdchd/neoformat'
 Plug 'tpope/vim-dispatch'
 Plug 'autozimu/LanguageClient-neovim'
@@ -159,31 +160,31 @@ Plug 'colepeters/spacemacs-theme.vim'
 Plug 'equalsraf/neovim-gui-shim'
 
 " PHP Support
-Plug 'phpvim/phpcd.vim'
-Plug 'tobyS/pdv'
+"Plug 'phpvim/phpcd.vim'
+"Plug 'tobyS/pdv'
 
 " Erlang Support
-Plug 'vim-erlang/vim-erlang-tags'
-Plug 'vim-erlang/vim-erlang-runtime'
-Plug 'vim-erlang/vim-erlang-omnicomplete'
-Plug 'vim-erlang/vim-erlang-compiler'
+"Plug 'vim-erlang/vim-erlang-tags'
+"Plug 'vim-erlang/vim-erlang-runtime'
+"Plug 'vim-erlang/vim-erlang-omnicomplete'
+"Plug 'vim-erlang/vim-erlang-compiler'
 
 " Elixir Support 
-Plug 'elixir-lang/vim-elixir'
-Plug 'avdgaag/vim-phoenix'
-Plug 'mmorearty/elixir-ctags'
-Plug 'mattreduce/vim-mix'
-Plug 'BjRo/vim-extest'
-Plug 'frost/vim-eh-docs'
-Plug 'slashmili/alchemist.vim'
-Plug 'tpope/vim-endwise'
-Plug 'jadercorrea/elixir_generator.vim'
+"Plug 'elixir-lang/vim-elixir'
+"Plug 'avdgaag/vim-phoenix'
+"Plug 'mmorearty/elixir-ctags'
+"Plug 'mattreduce/vim-mix'
+"Plug 'BjRo/vim-extest'
+"Plug 'frost/vim-eh-docs'
+"Plug 'slashmili/alchemist.vim'
+"Plug 'tpope/vim-endwise'
+"Plug 'jadercorrea/elixir_generator.vim'
 
 "Java support
 " Plug 'artur-shaik/vim-javacomplete2'
 
 " Swift support
-Plug 'keith/swift.vim'
+"Plug 'keith/swift.vim'
 " Elm Support
 Plug 'lambdatoast/elm.vim'
 
@@ -194,7 +195,6 @@ Plug 'lambdatoast/elm.vim'
 "Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 Plug 'tpope/vim-surround'
-"Plug 'valloric/youcompleteme'
 Plug 'godlygeek/tabular'
 Plug 'fatih/vim-go'
 
@@ -202,7 +202,7 @@ Plug 'fatih/vim-go'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'ryanoasis/vim-devicons'
-Plug 'shougo/denite.nvim'
+"Plug 'shougo/denite.nvim'
 Plug 'mhinz/vim-startify'
 
 " Using a non-master branch
@@ -428,12 +428,12 @@ set splitright
 " Terminal settings
 tnoremap <Leader><ESC> <C-\><C-n>
 
-"if has("win32")
-"    set shell=cmd.exe
-"    set shellcmdflag=/c\ powershell.exe\ -NoLogo\ -NoProfile\ -NonInteractive\ -ExecutionPolicy\ Bypass
-"    set shellpipe=|
-"    set shellredir=>
-"endif
+if has("win32")
+    set shell=cmd.exe
+    set shellcmdflag=/c\ powershell.exe\ -NoLogo\ -NonInteractive\ -ExecutionPolicy\ Bypass
+    set shellpipe=|
+    set shellredir=>
+endif
 let g:netrw_cygwin = 0
 " let g:netrw_ssh_cmd  = "plink -T -ssh"
 " let g:netrw_scp_cmd  = "pscp"
@@ -772,7 +772,7 @@ let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
 "----------------------------------------------
 nnoremap <leader>d :NERDTreeToggle<cr>
 nnoremap <F2> :NERDTreeToggle<cr>
-
+nnoremap <leader>ta :AirlineToggle<cr>
 " Files to ignore
 let NERDTreeIgnore = [
     \ '\~$',
@@ -1128,7 +1128,6 @@ au FileType yaml set shiftwidth=2
 au FileType yaml set softtabstop=2
 au FileType yaml set tabstop=2
 
-let g:initial_go_path = "/home/frank/go"
 "let g:EclimCompletionMethod = 'omnifunc'
 let g:deoplete#enable_at_startup = 1
 "let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
@@ -1136,3 +1135,4 @@ let g:syntastic_swift_checkers = ['swiftpm']
 " remap ; to : and vv
 nmap ; :
 nnoremap ;; ;
+
