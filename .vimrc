@@ -202,8 +202,8 @@ Plug 'godlygeek/tabular'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'ryanoasis/vim-devicons'
-"Plug 'shougo/denite.nvim'
-"Plug 'shougo/unite.vim'
+"Plug 'Shougo/denite.nvim'
+"Plug 'Shougo/unite.vim'
 Plug 'mhinz/vim-startify'
 
 " Using a non-master branch
