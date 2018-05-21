@@ -24,7 +24,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
 Plug 'mileszs/ack.vim'
-Plug 'neomake/neomake'
+"Plug 'neomake/neomake'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdcommenter'
@@ -67,6 +67,8 @@ Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
 "Plug 'zchee/deoplete-jedi'                     " Go auto completion
 "Plug 'zimbatm/haproxy.vim'                     " HAProxy syntax highlighting
 "Plug 'dansomething/vim-eclim'
+"
+Plug 'w0rp/ale'
 
 
 " Plug 'morhetz/gruvbox'
@@ -119,8 +121,7 @@ Plug 'tomtom/tcomment_vim'
 Plug 'tobyS/vmustache'
 Plug 'janko-m/vim-test'
 Plug 'maksimr/vim-jsbeautify'
-Plug 'vim-syntastic/syntastic'
-Plug 'neomake/neomake'
+"Plug 'vim-syntastic/syntastic'
 
 " Markdown / Writting
 Plug 'reedes/vim-pencil'
@@ -429,12 +430,12 @@ set splitright
 " Terminal settings
 tnoremap <Leader><ESC> <C-\><C-n>
 
-if has("win32")
-    set shell=cmd.exe
-    set shellcmdflag=/c\ powershell.exe\ -NoLogo\ -NonInteractive\ -ExecutionPolicy\ Bypass
-    set shellpipe=|
-    set shellredir=>
-endif
+"if has("win32")
+"    set shell=cmd.exe
+"    set shellcmdflag=/c\ powershell.exe\ -NoLogo\ -NonInteractive\ -ExecutionPolicy\ Bypass
+"    set shellpipe=|
+"    set shellredir=>
+"endif
 let g:netrw_cygwin = 0
 " let g:netrw_ssh_cmd  = "plink -T -ssh"
 " let g:netrw_scp_cmd  = "pscp"
@@ -1162,3 +1163,5 @@ function! s:get_diff_files(rev)
 endfunction
 
 command! -nargs=1 DiffRev call s:get_diff_files(<q-args>)
+autocmd FileType javascript set formatprg=prettier\ --stdin
+autocmd BufWritePre *.js :normal gggqG
