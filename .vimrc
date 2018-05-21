@@ -1166,10 +1166,10 @@ command! -nargs=1 DiffRev call s:get_diff_files(<q-args>)
 let g:neoformat_try_formatprg = 1
 augroup NeoformatAutoFormat
     autocmd!
-    autocmd FileType javascript setlocal formatprg=prettier\
-                                             \--stdin\
-                                             \--print-width\ 100\
-                                             \--single-quote\
-                                             \--trailing-comma\ es5
-    autocmd BufWritePre *.js Neoformat
+    autocmd FileType javascript,javascript.jsx setlocal formatprg=prettier\
+                                                            \--stdin\
+                                                            \--print-width\ 100\
+                                                            \--single-quote\
+                                                            \--trailing-comma\ es5
+    autocmd BufWritePre *.js,*.jsx Neoformat
 augroup END
