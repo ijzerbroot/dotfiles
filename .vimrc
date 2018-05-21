@@ -1163,5 +1163,13 @@ function! s:get_diff_files(rev)
 endfunction
 
 command! -nargs=1 DiffRev call s:get_diff_files(<q-args>)
-autocmd FileType javascript set formatprg=prettier\ --stdin
-autocmd BufWritePre *.js :normal gggqG
+let g:neoformat_try_formatprg = 1
+augroup NeoformatAutoFormat
+    autocmd!
+    autocmd FileType javascript setlocal formatprg=prettier\
+                                             \--stdin\
+                                             \--print-width\ 100\
+                                             \--single-quote\
+                                             \--trailing-comma\ es5
+    autocmd BufWritePre *.js Neoformat
+augroup END
