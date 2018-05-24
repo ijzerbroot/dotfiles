@@ -1,9 +1,9 @@
 
 " Platform dependent stuff
 let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
-call plug#begin('../../Users/FHoeben/vimfiles/plugged')
-let g:initial_go_path = "c:/Users/fhoeben/go"
-"call plug#begin('/home/frank/.vim/plugged')
+" call plug#begin('../../Users/FHoeben/vimfiles/plugged')
+" let g:initial_go_path = "c:/Users/fhoeben/go"
+call plug#begin('/home/frank/.vim/plugged')
 " Make sure you use single quotes
 " Dependencies
 Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
@@ -1173,3 +1173,8 @@ augroup NeoformatAutoFormat
                                                             \--trailing-comma\ es5
     autocmd BufWritePre *.js,*.jsx Neoformat
 augroup END
+set wrap
+set linebreak
+set nolist " list disables linebreak 
+set textwidth=0
+set wrapmargin=0
