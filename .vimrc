@@ -1,9 +1,9 @@
 
 " Platform dependent stuff
-let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
-" call plug#begin('../../Users/FHoeben/vimfiles/plugged')
-" let g:initial_go_path = "c:/Users/fhoeben/go"
-call plug#begin('/home/frank/.vim/plugged')
+"let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
+"call plug#begin('../../Users/FHoeben/vimfiles/plugged')
+let g:initial_go_path = "/Users/frank/go"
+call plug#begin('/Users/frank/.vim/plugged')
 " Make sure you use single quotes
 " Dependencies
 Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
@@ -230,7 +230,7 @@ set termguicolors
 "colorscheme base16-atelier-savanna
 " colorscheme challenger_deep
 " set background=dark    " Setting dark mode
-let g:airline_theme='powerlineish'
+" let g:airline_theme='powerlineish'
 "set gfn=Hack:h14:cANSI
 "let g:vimfiler_as_default_explorer = 1
 "call vimfiler#custom#profile('default', 'context', {
@@ -446,7 +446,8 @@ map <Leader>gs :Gstatus<CR>
 map <Leader>cd :colorscheme challenger_deep<CR>
 set background=dark
 let g:two_firewatch_italics=1
-colorscheme challenger_deep
+colo challenger_deep
+let g:airline_theme='challenger_deep'
 "set autochdir
 autocmd BufEnter * silent! lcd %:p:h
 let g:go_highlight_types = 1
@@ -1175,6 +1176,6 @@ augroup NeoformatAutoFormat
 augroup END
 set wrap
 set linebreak
-set nolist " list disables linebreak 
+set nolist " list disables linebreak
 set textwidth=0
 set wrapmargin=0
