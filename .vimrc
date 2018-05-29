@@ -2,8 +2,8 @@
 " Platform dependent stuff
 "let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
 "call plug#begin('../../Users/FHoeben/vimfiles/plugged')
-let g:initial_go_path = "/Users/frank/go"
-call plug#begin('/Users/frank/.vim/plugged')
+"let g:initial_go_path = "c:/Users/fhoeben/go"
+call plug#begin('/home/frank/.vim/plugged')
 " Make sure you use single quotes
 " Dependencies
 Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
@@ -24,14 +24,16 @@ Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
 Plug 'mileszs/ack.vim'
+Plug 'prettier/vim-prettier'
 "Plug 'neomake/neomake'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'sebdah/vim-delve'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
+Plug 'jreybert/vimagit'
 Plug 'tpope/vim-surround'
 Plug 'lambdalisue/gina.vim'
 "Plug 'vimwiki/vimwiki'
@@ -132,7 +134,6 @@ Plug 'LanguageTool'
 " Git Support
 Plug 'kablamo/vim-git-log'
 Plug 'gregsexton/gitv'
-Plug 'tpope/vim-fugitive'
 "Plug 'jaxbot/github-issues.vim'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
@@ -230,7 +231,7 @@ set termguicolors
 "colorscheme base16-atelier-savanna
 " colorscheme challenger_deep
 " set background=dark    " Setting dark mode
-" let g:airline_theme='powerlineish'
+let g:airline_theme='powerlineish'
 "set gfn=Hack:h14:cANSI
 "let g:vimfiler_as_default_explorer = 1
 "call vimfiler#custom#profile('default', 'context', {
@@ -1164,18 +1165,28 @@ function! s:get_diff_files(rev)
 endfunction
 
 command! -nargs=1 DiffRev call s:get_diff_files(<q-args>)
-let g:neoformat_try_formatprg = 1
-augroup NeoformatAutoFormat
-    autocmd!
-    autocmd FileType javascript,javascript.jsx setlocal formatprg=prettier\
-                                                            \--stdin\
-                                                            \--print-width\ 100\
-                                                            \--single-quote\
-                                                            \--trailing-comma\ es5
-    autocmd BufWritePre *.js,*.jsx Neoformat
-augroup END
-set wrap
-set linebreak
-set nolist " list disables linebreak
-set textwidth=0
-set wrapmargin=0
+"let g:neoformat_try_formatprg = 1
+"augroup NeoformatAutoFormat
+"    autocmd!
+"    autocmd FileType javascript,javascript.jsx setlocal formatprg=prettier\
+"                                                            \--stdin\
+"                                                            \--single-quote\
+"                                                            \--no-semi\
+"                                                            \--print-width\ 100\
+"    autocmd BufWritePre *.js,*.jsx Neoformat
+"augroup END
+let g:prettier#config#print_width = 100
+let g:prettier#config#semi = 'false'
+let g:prettier#config#single_quote = 'true'
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
