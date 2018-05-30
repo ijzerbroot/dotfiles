@@ -1,9 +1,9 @@
 
 " Platform dependent stuff
-let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
-call plug#begin('../../Users/FHoeben/vimfiles/plugged')
-let g:initial_go_path = "c:/Users/fhoeben/go"
-"call plug#begin('/home/frank/.vim/plugged')
+" let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
+" call plug#begin('../../Users/FHoeben/vimfiles/plugged')
+" let g:initial_go_path = "c:/Users/fhoeben/go"
+call plug#begin('/home/frank/.vim/plugged')
 " Make sure you use single quotes
 " Dependencies
 Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
@@ -100,7 +100,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'ervandew/supertab'
-"Plug 'BufOnly.vim'
+Plug 'schickling/vim-bufonly'
 Plug 'wesQ3/vim-windowswap'
 " Plug 'SirVer/ultisnips'
 "Plug 'junegunn/fzf.vim'
@@ -111,7 +111,7 @@ Plug 'gilsondev/searchtasks.vim'
 " Plug 'Shougo/neocomplete.vim'
 Plug 'sbdchd/neoformat'
 Plug 'tpope/vim-dispatch'
-Plug 'autozimu/LanguageClient-neovim'
+" Plug 'autozimu/LanguageClient-neovim'
 
 " (Optional) Multi-entry selection UI.
 "Plug 'junegunn/fzf'
