@@ -1,9 +1,9 @@
 
 " Platform dependent stuff
-"let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
-"call plug#begin('../../Users/FHoeben/vimfiles/plugged')
-"let g:initial_go_path = "c:/Users/fhoeben/go"
-call plug#begin('/home/frank/.vim/plugged')
+let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
+call plug#begin('../../Users/FHoeben/vimfiles/plugged')
+let g:initial_go_path = "c:/Users/fhoeben/go"
+"call plug#begin('/home/frank/.vim/plugged')
 " Make sure you use single quotes
 " Dependencies
 Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
@@ -29,6 +29,7 @@ Plug 'prettier/vim-prettier'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'sebdah/vim-delve'
 Plug 'terryma/vim-multiple-cursors'
@@ -99,7 +100,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'ervandew/supertab'
-Plug 'BufOnly.vim'
+"Plug 'BufOnly.vim'
 Plug 'wesQ3/vim-windowswap'
 " Plug 'SirVer/ultisnips'
 "Plug 'junegunn/fzf.vim'
@@ -129,17 +130,18 @@ Plug 'maksimr/vim-jsbeautify'
 Plug 'reedes/vim-pencil'
 Plug 'tpope/vim-markdown'
 Plug 'jtratner/vim-flavored-markdown'
-Plug 'LanguageTool'
+"Plug 'LanguageTool'
 
 " Git Support
 Plug 'kablamo/vim-git-log'
 Plug 'gregsexton/gitv'
+Plug 'tpope/vim-fugitive'
 "Plug 'jaxbot/github-issues.vim'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
 
 " Theme / Interface
-Plug 'AnsiEsc.vim'
+"Plug 'AnsiEsc.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
