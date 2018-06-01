@@ -9,11 +9,11 @@ C-space   marker (startpoint select)
 C-w       cut (kill region)
 M-w       copy (kill-ring save)
 C-y       paste
-C-s       search forward
+C-s       search forward (during search M-i is hand over to helm-swoop)
 C-M-s     regexp search forward
 C-r       search backward
 C-M-r     regexp search backward
-C-x C-x   back to where we started before search
+M-m s s   helm swoop (highlight and jump to search string) C-c C-e in this mode to edit
 C-v       Page Down
 M-v       Page up
 C-a       beginning of line
