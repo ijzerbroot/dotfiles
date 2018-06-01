@@ -41,6 +41,10 @@ C-x 1     delete other windows
 C-x 0     delete this window
 C-x 2     split window horizontally
 C-x 3     split window vertically
+C-c C-w 1 first window layout (eyebrowse)
+C-c C-w 2 second window layout, etc
+M-1       switch to window 1
+M-2       switch to window 2, etc
 M-x imenu menu to jump to function definitions and such
 M-x evil-close-fold    close fold
 M-x evil-open-fold     open fold
