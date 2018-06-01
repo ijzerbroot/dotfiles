@@ -53,6 +53,10 @@ M-x       ediff-files
 M-x       ediff-buffers
 M-x       magit-ediff-compare
 
+Mijn mappings
+F8        origami toggle node
+F9        origami toggle all nodes
+F12       format document
 Magit
 g         refresh
 s         stage
