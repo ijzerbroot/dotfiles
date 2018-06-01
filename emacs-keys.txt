@@ -1,0 +1,59 @@
+shortcuts en handige commando's
+
+C-x RET f set file encoding
+C-x C-f   new file
+M-m p t   neotree in project root (git)
+M-m f t   neotree
+C-x g     magit status
+C-space   marker (startpoint select)
+C-w       cut (kill region)
+M-w       copy (kill-ring save)
+C-y       paste
+C-s       search forward
+C-M-s     regexp search forward
+C-r       search backward
+C-M-r     regexp search backward
+C-x C-x   back to where we started before search
+C-v       Page Down
+M-v       Page up
+C-a       beginning of line
+C-e       end of line
+C-k       delete until end of line
+C-s-backspace    delete entire line
+M-d       delete word
+M-%       search and replace (space to replace, ! to replace all, DEL or n to go to next one without replacing this one, enter to exit)
+M-u       change word to uppercase
+M-l       change word to lowercase
+C-;       comment line
+C-_       undo
+C-x b     select another buffer
+C-x C-b   list all buffers
+C-x k     kill a buffer
+C-x C-s   save file
+C-X s     save all files
+M-f       jump to next word
+M-g g     goto line
+M-<       go to beginning of buffer
+C-x h     select whole buffer
+C-M-\     indent-region (format buffer). heb ik gemapped naar F12
+M->       go to end of buffer
+C-x 1     delete other windows
+C-x 0     delete this window
+C-x 2     split window horizontally
+C-x 3     split window vertically
+M-x imenu menu to jump to function definitions and such
+M-x evil-close-fold    close fold
+M-x evil-open-fold     open fold
+M-!       shell command
+M-x       ediff-files
+M-x       ediff-buffers
+M-x       magit-ediff-compare
+
+Magit
+g         refresh
+s         stage
+c c       commit start
+C-c C-c   perform actual commit
+b b       switch to other branch
+P u       push
+F u       git pull

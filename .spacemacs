@@ -389,6 +389,11 @@ you should place your code here."
   ;;(add-to-list 'exec-path "c:/cygwin64/bin")
   (global-set-key (kbd "C-x g") 'magit-status)
   (setq-default buffer-file-coding-system 'utf-8-unix)
+  (defun indent-buffer ()
+    (interactive)
+    (save-excursion
+      (indent-region (point-min) (point-max) nil)))
+  (global-set-key [f12] 'indent-buffer)
  ;;(require 'ob-sh)
  (require 'helm-bookmark)
  (org-babel-do-load-languages
