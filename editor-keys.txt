@@ -1,0 +1,162 @@
+git-status in margin
+emacs: yes
+vim: yes
+code: yes
+
+find file in project
+emacs: M-m p f (fuzzy)
+vim: :Files (fuzzy)
+code: shift-esc (fuzzy plus history) or C-p for quick open
+
+open recent file
+emacs: M-m f r
+vim: :bro ol! (select number)
+code: shift-esc
+
+show open files/buffers
+emacs: C-x b of M-m p b (buffers van dit project). C-x b met C-space (select buffer) en M-shift-D deletes selected buffers
+vim: :buffers of :BufferGatorToggle
+code: shift-esc edt (C-k C-p)
+
+split window h
+emacs: C-x 2
+vim: :split 
+code: M-shift-0 (toggle hor or vert split)
+
+split window v
+emacs: C-x 3
+vim: vsplit
+code: C-\
+
+git status
+emacs: C-x g (complete with git commands)
+vim: Gstatus (with git commands)
+code: C-shift-G s
+
+show unstaged/staged
+emacs:  C-x g
+vim: Gstatus
+code: C-shift-G s
+
+show diff compared to head
+emacs: magit-ediff-compare
+vim: Gsdiff (split diff, links is HEAD). 
+code: gitlens compare file with branch or tag (gives split diff). F7 to jump to next diff (patch view)
+
+git log (graph)
+emacs: magit-log. with colorized graph
+vim: Glog (werkt niet op windows)
+vscode: gitlens show branch history. select a change, select file, open changes
+
+open git log changes
+emacs: magit-log (diff per file in patch-format)
+vim: ?
+code: see above
+
+find/replace
+emacs: C-s (find) M-% (replace) C-M-s regexp search. M-m s s helm swoop (powerful overview)
+vim: / (find), :s :%s (replace) not visual
+code: C-f (opens find/replace window)
+
+auto-resize windows:
+emacs: golden-ratio
+vim: ?
+code: no auto. manual with mouse
+
+change line endings
+emacs: M-% C-q enter enter
+vim: :%s/C-v enter//
+code: difficult. alwyas opens file with existing encoding.
+
+tree view
+emacs: neotree, sr-speedbar
+vim: nerdtree
+code: explorer (C-shift-E)
+
+jump to function
+emacs: imenu (with history)
+vim: using ctags
+code: C-shift-o (go to symbol; good listing provided). 
+
+open/close folds
+emacs: F8 (this fold), F9 (all folds)
+vim: define folds, foldopen, foldclose
+
+switch branch
+emacs: magit b b 
+vim: Git checkout
+
+switch between windows/buffers
+emacs: ctrl-arrows for windows, C-x b for buffers or via M-m b (buffer menu)
+vim: ctrl-w arrows (windows) shift-arrows (buffers)
+
+select paragraph
+emacs: C-shift arrows
+vim: ?
+
+delete line
+emacs: C-k (without newline), C-shift-backspace (including newline)
+vim: d$ (rest of line) dd (including newline)
+
+jump to definition
+emacs: M-return g g (recursive including source). of via go M-return f j. M-return f i (go to implementation)
+vim: with ctags
+code: F12 (recursive but no source). C-F12 go to implementation (slow but very nice)
+
+open file in this window
+emacs: C-x C-f
+vim: :e or :r
+code:no. always new tab but at least in same split if one exists
+
+close file/buffer
+emacs: C-x k
+vim: :close :q
+code: C-F4
+
+select all
+emacs: C-x h. paragraph: M-h
+vim: :%y
+code: C-a
+
+file diff
+emacs: ediff-files
+vim: lastig
+code: compare active file (lees:buffer) with (other file, saved version, previous commit, other buffer). very good
+
+buffer diff
+emacs: ediff-buffers
+code: compare active file
+
+git merge
+
+git commit/push
+emacs: magit (c c, C-C C-c, P u)
+code: commit, push via shift-esc
+
+next buffer/window/tab
+emacs: 
+code: C-tab (buffers)
+
+command line
+emacs: shell, eshell, !. locatie is dir van de open project file
+code: shift-esc focus terminal  locatie is dir van actief project
+
+comment line/region
+emacs: C-x C-;  or M-; (comment at end of line)
+code: C-/ (toggle line comment) M-Shift-A comment selection
+
+code completion/explanation
+emacs: yes
+code: yes
+
+format buffer (while typing ?)
+emacs: F12. yes, formatting while typing
+code: M-shift-F. yes, formatting while typing
+
+start / end of line
+emacs: C-a, C-e
+code: Home, End
+
+go to line number
+emacs: M-g g
+code: C-g
