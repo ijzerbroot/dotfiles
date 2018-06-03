@@ -1,3 +1,6 @@
+
+Note: for emacs Meta key can usually be emulated by ESC
+
 git-status in margin
 emacs: yes
 vim: yes
@@ -36,7 +39,7 @@ code: C-shift-G s
 show unstaged/staged
 emacs:  C-x g
 vim: Gstatus
-code: C-shift-G s
+code: C-shift-G s NOTE: no support for multiple selection. one-by-one or all
 
 show diff compared to head
 emacs: magit-ediff-compare
@@ -66,7 +69,7 @@ code: no auto. manual with mouse
 change line endings
 emacs: M-% C-q enter enter
 vim: :%s/C-v enter//
-code: difficult. alwyas opens file with existing encoding.
+code: difficult. always opens file with existing encoding.
 
 tree view
 emacs: neotree, sr-speedbar
@@ -97,11 +100,16 @@ vim: ?
 delete line
 emacs: C-k (without newline), C-shift-backspace (including newline)
 vim: d$ (rest of line) dd (including newline)
+code: C-shift-K (including newline)
 
 jump to definition
 emacs: M-return g g (recursive including source). of via go M-return f j. M-return f i (go to implementation)
 vim: with ctags
 code: F12 (recursive but no source). C-F12 go to implementation (slow but very nice)
+
+undo
+emacs: C-_
+code: C-z
 
 open file in this window
 emacs: C-x C-f
@@ -134,8 +142,15 @@ emacs: magit (c c, C-C C-c, P u)
 code: commit, push via shift-esc
 
 next buffer/window/tab
-emacs: 
+emacs: ?
 code: C-tab (buffers)
+
+begin/end of buffer
+emacs: M-< and M->. NOTE: C-space C-space remembers position. C-u C-space jumps back to that point
+
+maximize/unmaximize window
+emacs: C-x 1
+code: C-k z (toggle zen mode)
 
 command line
 emacs: shell, eshell, !. locatie is dir van de open project file
