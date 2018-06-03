@@ -92,7 +92,7 @@ vim: Git checkout
 switch between windows/buffers
 emacs: ctrl-arrows for windows, C-x b for buffers or via M-m b (buffer menu)
 vim: ctrl-w arrows (windows) shift-arrows (buffers)
-
+code: ctrl-w (windows)
 select paragraph
 emacs: C-shift arrows
 vim: ?
