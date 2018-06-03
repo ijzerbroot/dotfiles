@@ -135,7 +135,13 @@ buffer diff
 emacs: ediff-buffers
 code: compare active file
 
+buffer refresh
+emacs: revert-buffer
+code: automatic if unchanged. otherwise "revert file"
+
 git merge
+emacs: first fetch from origin. Then merge preview. pick strategy and execute merge
+code: via git status; open changes and compare. limited control. Git merger extension probably helps
 
 git commit/push
 emacs: magit (c c, C-C C-c, P u)
