@@ -9,6 +9,7 @@ let g:initial_go_path = "c:/Users/fhoeben/go"
 Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
 Plug 'godlygeek/tabular'           " This must come before plasticboy/vim-markdown
 Plug 'tpope/vim-rhubarb'           " Depenency for tpope/fugitive
+Plug 'pelodelfuego/vim-swoop'
 Plug 'roman/golden-ratio'
 " General plugins
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -91,7 +92,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'wincent/command-t'
 Plug 'mhinz/vim-janah'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-Plug 'vim-scripts/sqlplus.vim'
+"Plug 'vim-scripts/sqlplus.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'puppetlabs/puppet-syntax-vim'
 Plug 'rafi/awesome-vim-colorschemes' 
@@ -446,7 +447,7 @@ let g:netrw_scp_cmd  = "scp"
 :imap <S-CR> <Esc>
 set background=dark
 let g:two_firewatch_italics=1
-colo challenger_deep
+colo PaperColor
 let g:airline_theme='challenger_deep'
 "set autochdir
 autocmd BufEnter * silent! lcd %:p:h
@@ -459,7 +460,7 @@ let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
-set diffopt=vertical
+set diffopt=horizontal
 "map <Leader>vf :VimFiler<CR>
 " buffers open in new tab
 ":au BufAdd,BufNewFile * nested tab sball
@@ -826,7 +827,7 @@ au FileType go set tabstop=4
 
 " Mappings
 au FileType go nmap <F8> :GoMetaLinter<cr>
-au FileType go nmap <F9> :GoCoverageToggle -short<cr>
+"au FileType go nmap <F9> :GoCoverageToggle -short<cr>
 au FileType go nmap <F10> :GoTest -short<cr>
 au FileType go nmap <F12> <Plug>(go-def)
 au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
@@ -1158,6 +1159,11 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
+
+"Folding
+set foldmethod=syntax
+set foldlevelstart=20
+
 " Shortcuts!
 nmap <leader>ne :NERDTree<cr>
 map <Leader>gs :Gstatus<CR>
@@ -1198,4 +1204,8 @@ nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zfo
 noremap <leader>a :Ack!<space>
