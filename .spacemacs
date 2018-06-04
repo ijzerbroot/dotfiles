@@ -31,7 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     ruby
+     ;;ruby
      ;;ruby
      markdown
      yaml
@@ -171,7 +171,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Hack Nerd Font"
+   dotspacemacs-default-font '("Hack"
                                :size 18
                                :weight medium
                                :width normal
@@ -408,6 +408,9 @@ you should place your code here."
     (save-excursion
       (indent-region (point-min) (point-max) nil)))
   (global-set-key [f12] 'indent-buffer)
+  (global-set-key [f6] 'delete-window)
+  (global-set-key [f7] 'maximize-buffer)
+  (global-set-key [f5] 'kill-this-buffer)
  ;;(require 'ob-sh)
  (require 'helm-bookmark)
  (org-babel-do-load-languages
