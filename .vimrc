@@ -6,10 +6,13 @@
 call plug#begin('/home/frank/.vim/plugged')
 " Make sure you use single quotes
 " Dependencies
+"Plug 'Valloric/YouCompleteMe'
+Plug 'starcraftman/vim-eclim' 
 Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
 Plug 'godlygeek/tabular'           " This must come before plasticboy/vim-markdown
 Plug 'tpope/vim-rhubarb'           " Depenency for tpope/fugitive
-
+Plug 'pelodelfuego/vim-swoop'
+Plug 'roman/golden-ratio'
 " General plugins
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet'
@@ -91,7 +94,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'wincent/command-t'
 Plug 'mhinz/vim-janah'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-Plug 'vim-scripts/sqlplus.vim'
+"Plug 'vim-scripts/sqlplus.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'puppetlabs/puppet-syntax-vim'
 Plug 'rafi/awesome-vim-colorschemes' 
@@ -111,7 +114,7 @@ Plug 'gilsondev/searchtasks.vim'
 " Plug 'Shougo/neocomplete.vim'
 Plug 'sbdchd/neoformat'
 Plug 'tpope/vim-dispatch'
-" Plug 'autozimu/LanguageClient-neovim'
+"Plug 'autozimu/LanguageClient-neovim'
 
 " (Optional) Multi-entry selection UI.
 "Plug 'junegunn/fzf'
@@ -263,7 +266,6 @@ let g:neoformat_java_google = {
 let g:neoformat_enabled_java = ['google']
 let mapleader = ","
 let g:airline#extensions#tabline#enabled = 1
-nmap <leader>ne :NERDTree<cr>
 " Set colors in console
 "if !has("gui_running")
 "    set term=xterm
@@ -433,23 +435,21 @@ set splitright
 " Terminal settings
 tnoremap <Leader><ESC> <C-\><C-n>
 
-"if has("win32")
-"    set shell=cmd.exe
-"    set shellcmdflag=/c\ powershell.exe\ -NoLogo\ -NonInteractive\ -ExecutionPolicy\ Bypass
-"    set shellpipe=|
-"    set shellredir=>
-"endif
+if has("win32")
+    set shell=cmd.exe
+    set shellcmdflag=/c\ powershell.exe\ -NoLogo\ -NonInteractive\ -ExecutionPolicy\ Bypass
+    set shellpipe=|
+    set shellredir=>
+endif
 let g:netrw_cygwin = 0
 " let g:netrw_ssh_cmd  = "plink -T -ssh"
 " let g:netrw_scp_cmd  = "pscp"
 let g:netrw_ssh_cmd  = "ssh -o ServerAliveInterval=60"
 let g:netrw_scp_cmd  = "scp"
 :imap <S-CR> <Esc>
-map <Leader>gs :Gstatus<CR>
-map <Leader>cd :colorscheme challenger_deep<CR>
 set background=dark
 let g:two_firewatch_italics=1
-colo challenger_deep
+colo PaperColor
 let g:airline_theme='challenger_deep'
 "set autochdir
 autocmd BufEnter * silent! lcd %:p:h
@@ -460,12 +460,9 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
-set diffopt=vertical
+set diffopt=horizontal
 "map <Leader>vf :VimFiler<CR>
 " buffers open in new tab
 ":au BufAdd,BufNewFile * nested tab sball
@@ -537,8 +534,6 @@ if has('nvim')
     set inccommand=split          " enables interactive search and replace
 endif
 
-" Clear search highlights
-map <leader>c :nohlsearch<cr>
 
 " These mappings will make it so that going to the next one in a search will
 " center on the line it's found in.
@@ -546,15 +541,6 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 
-" Move between buffers with Shift + arrow key...
-nnoremap <S-Left> :bprevious<cr>
-nnoremap <S-Right> :bnext<cr>
-
-" ... but skip the quickfix when navigating
-augroup qf
-    autocmd!
-    autocmd FileType qf set nobuflisted
-augroup END
 
 
 " Fix some common typos
@@ -752,17 +738,6 @@ let g:vim_markdown_folding_disabled = 1
 " Auto shrink the TOC, so that it won't take up 50% of the screen
 let g:vim_markdown_toc_autofit = 1
 
-"----------------------------------------------
-" Plugin: rbgrouleff/bclose.vim
-"----------------------------------------------
-" Close buffers
-nnoremap <leader>w :Bclose<cr>
-
-"----------------------------------------------
-" Plugin: mileszs/ack.vim
-"----------------------------------------------
-" Open ack
-nnoremap <leader>a :Ack!<space>
 
 "----------------------------------------------
 " Plugin: neomake/neomake
@@ -773,12 +748,6 @@ let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
 let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
 let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
 
-"----------------------------------------------
-" Plugin: scrooloose/nerdtree
-"----------------------------------------------
-nnoremap <leader>d :NERDTreeToggle<cr>
-nnoremap <F2> :NERDTreeToggle<cr>
-nnoremap <leader>ta :AirlineToggle<cr>
 " Files to ignore
 let NERDTreeIgnore = [
     \ '\~$',
@@ -860,7 +829,7 @@ au FileType go set tabstop=4
 
 " Mappings
 au FileType go nmap <F8> :GoMetaLinter<cr>
-au FileType go nmap <F9> :GoCoverageToggle -short<cr>
+"au FileType go nmap <F9> :GoCoverageToggle -short<cr>
 au FileType go nmap <F10> :GoTest -short<cr>
 au FileType go nmap <F12> <Plug>(go-def)
 au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
@@ -1192,3 +1161,55 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
+
+"Folding
+set foldmethod=syntax
+set foldlevelstart=20
+
+" Java
+"let g:EclimCompletionMethod = 'omnifunc'
+" Shortcuts!
+nmap <leader>ne :NERDTree<cr>
+map <Leader>gs :Gstatus<CR>
+map <Leader>cd :colorscheme challenger_deep<CR>
+nnoremap <leader>d :NERDTreeToggle<cr>
+nnoremap <F2> :NERDTreeToggle<cr>
+nnoremap <leader>ta :AirlineToggle<cr>
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+map <leader>c :nohlsearch<cr>
+" Move between buffers with Shift + arrow key...
+nnoremap <S-Left> :bprevious<cr>
+nnoremap <S-Right> :bnext<cr>
+
+" ... but skip the quickfix when navigating
+augroup qf
+    autocmd!
+    autocmd FileType qf set nobuflisted
+augroup END
+"nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+"nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+"nnoremap <silent> <Leader>] :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+"nnoremap <silent> <Leader>[ :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+"----------------------------------------------
+" Plugin: rbgrouleff/bclose.vim
+"----------------------------------------------
+" Close buffers
+nnoremap <leader>k :Bclose<cr>
+
+" Close window
+nnoremap <leader>w :close<cr>
+"----------------------------------------------
+" Plugin: mileszs/ack.vim
+"----------------------------------------------
+" Open ack
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
+inoremap <F9> <C-O>za
+nnoremap <F9> za
+onoremap <F9> <C-C>za
+vnoremap <F9> zfo
+noremap <leader>a :Ack!<space>
