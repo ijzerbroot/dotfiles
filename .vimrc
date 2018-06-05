@@ -433,7 +433,7 @@ set splitbelow
 set splitright
 
 " Terminal settings
-tnoremap <Leader><ESC> <C-\><C-n>
+"tnoremap <Leader><ESC> <C-\><C-n>
 
 if has("win32")
     set shell=cmd.exe
@@ -1196,7 +1196,7 @@ augroup END
 " Plugin: rbgrouleff/bclose.vim
 "----------------------------------------------
 " Close buffers
-nnoremap <leader>k :Bclose<cr>
+nnoremap <leader>k :bd<cr>
 
 " Close window
 nnoremap <leader>w :close<cr>
