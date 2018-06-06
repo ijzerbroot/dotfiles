@@ -264,7 +264,7 @@ let g:neoformat_java_google = {
             \ }
 
 let g:neoformat_enabled_java = ['google']
-let mapleader = ","
+"let mapleader = ","
 let g:airline#extensions#tabline#enabled = 1
 " Set colors in console
 "if !has("gui_running")
@@ -1203,6 +1203,10 @@ nnoremap <leader>k :bd<cr>
 
 " Close window
 nnoremap <leader>w :close<cr>
+
+" Buffergator toggle
+nnoremap <F7> :BuffergatorToggle<cr>
+"
 "----------------------------------------------
 " Plugin: mileszs/ack.vim
 "----------------------------------------------
