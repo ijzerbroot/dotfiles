@@ -1164,7 +1164,7 @@ let g:NERDTreeIndicatorMapCustom = {
 
 " tagbar
 " use universal-ctags project
-let g:tagbar_ctags_bin = '~/apps/u-ctags/ctags'
+let g:tagbar_ctags_bin = '~/apps/u-ctags/bin/ctags'
 "Folding
 set foldmethod=syntax
 set foldlevelstart=20
