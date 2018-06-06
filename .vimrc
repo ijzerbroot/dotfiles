@@ -1162,6 +1162,8 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
+" tagbar
+let g:tagbar_ctags_bin = 'c:/Users/Fhoeben/Apps/ctags58/ctags.exe'
 "Folding
 set foldmethod=syntax
 set foldlevelstart=20
