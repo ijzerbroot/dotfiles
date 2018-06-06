@@ -433,7 +433,7 @@ set splitbelow
 set splitright
 
 " Terminal settings
-"tnoremap <Leader><ESC> <C-\><C-n>
+tnoremap <Leader><ESC> <C-\><C-n>
 
 if has("win32")
     set shell=cmd.exe
