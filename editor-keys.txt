@@ -11,6 +11,21 @@ emacs: M-m p f (fuzzy)
 vim: :Files (fuzzy)
 code: shift-esc (fuzzy plus history) or C-p for quick open
 
+select paragraph
+vim: vap / vip
+
+delete paragraph
+vim: dap
+
+format buffer
+vim: gg=G (generic), GoFmt (go), JavaFmt (eclim)
+
+code completion
+vim: C-x C-o (omnicompletion), C-x C-u (user defined completion)
+
+open selected buffer
+vim (buffergator): enter, C-t (tab), C-s (hor split), C-v (vert split)
+
 open recent file
 emacs: M-m f r
 vim: :bro ol! (select number)
@@ -23,7 +38,7 @@ code: shift-esc edt (C-k C-p)
 
 split window h
 emacs: C-x 2
-vim: :split 
+vim: :split
 code: M-shift-0 (toggle hor or vert split)
 
 split window v
@@ -43,7 +58,7 @@ code: C-shift-G s NOTE: no support for multiple selection. one-by-one or all
 
 show diff compared to head
 emacs: magit-ediff-compare
-vim: Gsdiff (split diff, links is HEAD). 
+vim: Gsdiff (split diff, links is HEAD).
 code: gitlens compare file with branch or tag (gives split diff). F7 to jump to next diff (patch view)
 
 git log (graph)
@@ -78,16 +93,19 @@ code: explorer (C-shift-E)
 
 jump to function
 emacs: imenu (with history)
-vim: using ctags
-code: C-shift-o (go to symbol; good listing provided). 
+vim: using ctags and tagbar plugin. ctrl-] and ctrl-t jumps to definitions/implementation
+code: C-shift-o (go to symbol; good listing provided).
 
 open/close folds
 emacs: F8 (this fold), F9 (all folds)
 vim: define folds, foldopen, foldclose
 
 switch branch
-emacs: magit b b 
+emacs: magit b b
 vim: Git checkout
+
+git log
+vim: Gitv
 
 switch between windows/buffers
 emacs: ctrl-arrows for windows, C-x b for buffers or via M-m b (buffer menu)
