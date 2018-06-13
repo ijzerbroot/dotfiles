@@ -342,10 +342,6 @@ set tabstop=4
 set lbr
 set tw=500
 
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
-
 
 " vv to generate new vertical split
 nnoremap <silent> vv <C-w>v
@@ -462,7 +458,7 @@ let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
-set diffopt=horizontal
+"set diffopt=horizontal
 "map <Leader>vf :VimFiler<CR>
 " buffers open in new tab
 ":au BufAdd,BufNewFile * nested tab sball
@@ -486,7 +482,7 @@ set list                          " show trailing whitespace
 set listchars=tab:\|\ ,trail:▫
 set nospell                       " disable spelling
 set noswapfile                    " disable swapfile usage
-set nowrap
+set wrap
 set noerrorbells                  " No bells!
 set novisualbell                  " I said, no bells!
 set number                        " show number ruler
