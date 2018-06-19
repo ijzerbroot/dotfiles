@@ -951,6 +951,12 @@ au FileType fish set softtabstop=2
 au FileType fish set tabstop=2
 
 "----------------------------------------------
+" Language: elixir
+"----------------------------------------------
+au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
+au BufRead,BufNewFile *.eex set filetype=eelixir
+
+"----------------------------------------------
 " Language: gitconfig
 "----------------------------------------------
 au FileType gitconfig set noexpandtab
