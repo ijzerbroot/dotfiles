@@ -6,6 +6,7 @@
 call plug#begin('/home/frank/.vim/plugged')
 " Make sure you use single quotes
 " Dependencies
+Plug 'hecal3/vim-leader-guide'
 "Plug 'Valloric/YouCompleteMe'
 Plug 'starcraftman/vim-eclim' 
 Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
@@ -18,7 +19,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'  " Default snippets for many languages
 Plug 'bling/vim-airline'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'          " CtrlP is installed to support tag finding in vim-go
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/calendar.vim'
@@ -81,17 +81,15 @@ Plug 'w0rp/ale'
 Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 Plug 'kshenoy/vim-signature'
-Plug 'benmills/vimux'
+"Plug 'benmills/vimux'
 Plug 'kana/vim-arpeggio'
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
-Plug 'edkolev/promptline.vim'
-" Plug 'edkolev/tmuxline.vim'
 Plug 'tpope/vim-commentary'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 "Plug 'Shougo/vimfiler.vim'
 Plug 'tpope/vim-vinegar'
-Plug 'wincent/command-t'
+"Plug 'wincent/command-t'
 Plug 'mhinz/vim-janah'
 Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 "Plug 'vim-scripts/sqlplus.vim'
@@ -264,7 +262,10 @@ let g:neoformat_java_google = {
             \ }
 
 let g:neoformat_enabled_java = ['google']
-"let mapleader = ","
+let mapleader = " "
+call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
+nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
 let g:airline#extensions#tabline#enabled = 1
 " Set colors in console
 "if !has("gui_running")
@@ -294,7 +295,7 @@ set t_Co=256
 
 " NeoVim
 if exists('g:GtkGuiLoaded')
-call rpcnotify(1, 'Gui', 'Font','Hack NF 14')
+    call rpcnotify(1, 'Gui', 'Font','Hack NF 14')
 endif
 
 " Set extra options when running in GUI mode
@@ -341,87 +342,6 @@ set tabstop=4
 " Linebreak on 500 characters
 set lbr
 set tw=500
-
-
-" vv to generate new vertical split
-nnoremap <silent> vv <C-w>v
-" Prompt for a command to run
-map <Leader>vp :VimuxPromptCommand<CR>
-" Run last command executed by VimuxRunCommand
-map <Leader>vl :VimuxRunLastCommand<CR>
-" Inspect runner pane
-map <Leader>vi :VimuxInspectRunner<CR>
-" Zoom the tmux runner pane
-map <Leader>vz :VimuxZoomRunner<CR>
-
-"Tmuxline - :TmuxlineSnapshot! ~/.dotfiles/.tmuxline.tmux.conf
-"Far bottom right shows DHCP WiFi IP, with an H appended at home
-"let g:tmuxline_preset = {
-"     \'a'    : '#S',
-"      \'c'    : ['#(whoami)', '#(uptime | cut -d " " -f 1,2,3)'],
-"      \'win'  : ['#I', '#W'],
-"      \'cwin' : ['#I', '#W', '#F'],
-"      \'x'    : '#(date)',
-"      \'y'    : ['%R', '%a', '%Y'],
-"      \'z'    : '#H'}
-" sections (a, b, c, x, y, z, warn) are optional
-
-let g:tmuxline_preset = {
-     \'a'    : '#S',
-      \'c'    : ['#(whoami)', '#(uptime | cut -d " " -f 3,4,5 |sed "s/,$//")'],
-      \'win'  : ['#I', '#W'],
-      \'cwin' : ['#I', '#W', '#F'],
-      \'y'    : ['%R', '%a'],
-      \'z'    : '#H'}
-
-let g:promptline_preset = {
-      \'a'    : [ '$(hostname)' ],
-      \'b'    : [ '$(whoami)' ],
-      \'c'    : [ '$(pwd)' ],
-      \'options': {
-          \'left_sections' : [ 'b', 'a' ],
-          \'right_sections' : [ 'c' ],
-          \'left_only_sections' : [ 'b', 'a', 'c' ]}}
-
-let g:promptline_preset = 'clear'
-let g:promptline_powerline_symbols = 1
-let g:promptline_symbols = {
-    \ 'left'       : '',
-    \ 'left_alt'   : '>',
-    \ 'dir_sep'    : ' / ',
-    \ 'truncation' : '...',
-    \ 'vcs_branch' : '',
-    \ 'space'      : ' '}
-
-" available slices:
-"
-"promptline#slices#cwd() - current dir, truncated to 3 dirs. To configure: promptline#slices#cwd({ 'dir_limit': 4 })
-"promptline#slices#vcs_branch() - branch name only. By default, only git branch is enabled. Use promptline#slices#vcs_branch({ 'hg': 1, 'svn': 1, 'fossil': 1}) to enable check for svn, mercurial and fossil branches. Note that always checking if inside a branch slows down the prompt
-" promptline#slices#last_exit_code() - display exit code of last command if not zero
-" promptline#slices#jobs() - display number of shell jobs if more than zero
-" promptline#slices#battery() - display battery percentage (on OSX and linux) only if below 10%. Configure the threshold with promptline#slices#battery({ 'threshold': 25 })
-" promptline#slices#host() - current hostname.  To hide the hostname unless connected via SSH, use promptline#slices#host({ 'only_if_ssh': 1 })
-" promptline#slices#user()
-" promptline#slices#python_virtualenv() - display which virtual env is active (empty is none)
-" promptline#slices#git_status() - count of commits ahead/behind upstream, count of modified/added/unmerged files, symbol for clean branch and symbol for existing untraced files
-" promptline#slices#conda_env() - display which conda env is active (empty is none)
-"
-" any command can be used in a slice, for example to print the output of whoami in section 'b':
-"       \'b' : [ '$(whoami)'],
-"
-" more than one slice can be placed in a section, e.g. print both host and user in section 'a':
-"       \'a': [ promptline#slices#host(), promptline#slices#user() ],
-"
-" to disable powerline symbols
-" `let g:promptline_powerline_symbols = 0`
-
-
-let g:promptline_theme = 'airline'
-
-let g:airline#extensions#tmuxline#enabled = 1
-let g:airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
-let g:airline#extensions#promtline#enabled = 1
-let g:airline#extensions#promptline#snapshot_file = "~/.shell_prompt.sh"
 
 " Window split settings
 highlight TermCursor ctermfg=red guifg=red
@@ -496,10 +416,10 @@ set updatetime=100                " redraw the status bar often
 
 " neovim specific settings
 "if has('nvim')
-    " Set the Python binaries neovim is using. Please note that you will need to
-    " install the neovim package for these binaries separately like this for
-    " example:
-    " pip3.6 install -U neovim
+" Set the Python binaries neovim is using. Please note that you will need to
+" install the neovim package for these binaries separately like this for
+" example:
+" pip3.6 install -U neovim
 "    let g:python_host_prog = '/usr/bin/python2'
 "    let g:python3_host_prog = '/usr/bin/python3'
 "endif
@@ -557,14 +477,6 @@ cnoreabbrev Qall qall
 " Create horizontal splits below the current window
 set splitbelow
 set splitright
-
-" Creating splits
-nnoremap <leader>v :vsplit<cr>
-nnoremap <leader>h :split<cr>
-
-" Closing splits
-nnoremap <leader>q :close<cr>
-
 
 "----------------------------------------------
 " Plugin: MattesGroeger/vim-bookmarks
@@ -646,28 +558,6 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.maxlinenr = ''
 
 "----------------------------------------------
-" Plugin: christoomey/vim-tmux-navigator
-"----------------------------------------------
-" tmux will send xterm-style keys when its xterm-keys option is on.
-if &term =~ '^screen'
-    execute "set <xUp>=\e[1;*A"
-    execute "set <xDown>=\e[1;*B"
-    execute "set <xRight>=\e[1;*C"
-    execute "set <xLeft>=\e[1;*D"
-endif
-
-" Tmux vim integration
-let g:tmux_navigator_no_mappings = 1
-let g:tmux_navigator_save_on_switch = 1
-
-" Move between splits with ctrl+h,j,k,l
-nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
-nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
-
-"----------------------------------------------
 " Plugin: 'ctrlpvim/ctrlp.vim'
 "----------------------------------------------
 " Note: We are not using CtrlP much in this configuration. But vim-go depend on
@@ -698,32 +588,32 @@ nnoremap <F3> :TagbarToggle<cr>
 " Language: Go
 " Tagbar configuration for Golang
 let g:tagbar_type_go = {
-    \ 'ctagstype' : 'go',
-    \ 'kinds'     : [
-        \ 'p:package',
-        \ 'i:imports:1',
-        \ 'c:constants',
-        \ 'v:variables',
-        \ 't:types',
-        \ 'n:interfaces',
-        \ 'w:fields',
-        \ 'e:embedded',
-        \ 'm:methods',
-        \ 'r:constructor',
-        \ 'f:functions'
-    \ ],
-    \ 'sro' : '.',
-    \ 'kind2scope' : {
-        \ 't' : 'ctype',
-        \ 'n' : 'ntype'
-    \ },
-    \ 'scope2kind' : {
-        \ 'ctype' : 't',
-        \ 'ntype' : 'n'
-    \ },
-    \ 'ctagsbin'  : 'gotags',
-    \ 'ctagsargs' : '-sort -silent'
-\ }
+            \ 'ctagstype' : 'go',
+            \ 'kinds'     : [
+            \ 'p:package',
+            \ 'i:imports:1',
+            \ 'c:constants',
+            \ 'v:variables',
+            \ 't:types',
+            \ 'n:interfaces',
+            \ 'w:fields',
+            \ 'e:embedded',
+            \ 'm:methods',
+            \ 'r:constructor',
+            \ 'f:functions'
+            \ ],
+            \ 'sro' : '.',
+            \ 'kind2scope' : {
+            \ 't' : 'ctype',
+            \ 'n' : 'ntype'
+            \ },
+            \ 'scope2kind' : {
+            \ 'ctype' : 't',
+            \ 'ntype' : 'n'
+            \ },
+            \ 'ctagsbin'  : 'gotags',
+            \ 'ctagsargs' : '-sort -silent'
+            \ }
 
 "----------------------------------------------
 " Plugin: plasticboy/vim-markdown
@@ -746,13 +636,13 @@ let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
 
 " Files to ignore
 let NERDTreeIgnore = [
-    \ '\~$',
-    \ '\.pyc$',
-    \ '^\.DS_Store$',
-    \ '^node_modules$',
-    \ '^.ropeproject$',
-    \ '^__pycache__$'
-\]
+            \ '\~$',
+            \ '\.pyc$',
+            \ '^\.DS_Store$',
+            \ '^node_modules$',
+            \ '^.ropeproject$',
+            \ '^__pycache__$'
+            \]
 
 " Close vim if NERDTree is the only opened window.
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -778,8 +668,8 @@ let g:delve_backend = "native"
 " Below you can disable default snippets for specific languages. If you set the
 " language to _ it sets the default for all languages.
 let g:neosnippet#disable_runtime_snippets = {
-    \ 'go': 1
-\}
+            \ 'go': 1
+            \}
 
 " Keybindings
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -827,17 +717,17 @@ au FileType go set tabstop=4
 au FileType go nmap <F8> :GoMetaLinter<cr>
 "au FileType go nmap <F9> :GoCoverageToggle -short<cr>
 au FileType go nmap <F10> :GoTest -short<cr>
-au FileType go nmap <F12> <Plug>(go-def)
-au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
-au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
-au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
+"au FileType go nmap <F12> <Plug>(go-def)
+"au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
+"au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
+"au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
 au FileType go nmap <leader>gt :GoDeclsDir<cr>
 au FileType go nmap <leader>gc <Plug>(go-coverage-toggle)
 au FileType go nmap <leader>gd <Plug>(go-def)
-au FileType go nmap <leader>gdv <Plug>(go-def-vertical)
-au FileType go nmap <leader>gdh <Plug>(go-def-split)
+"au FileType go nmap <leader>gdv <Plug>(go-def-vertical)
+"au FileType go nmap <leader>gdh <Plug>(go-def-split)
 au FileType go nmap <leader>gD <Plug>(go-doc)
-au FileType go nmap <leader>gDv <Plug>(go-doc-vertical)
+"au FileType go nmap <leader>gDv <Plug>(go-doc-vertical)
 
 " Run goimports when running gofmt
 let g:go_fmt_command = "goimports"
@@ -874,16 +764,16 @@ let g:go_test_show_name = 1
 let g:go_metalinter_command = ""
 let g:go_metalinter_deadline = "5s"
 let g:go_metalinter_enabled = [
-    \ 'deadcode',
-    \ 'gas',
-    \ 'goconst',
-    \ 'gocyclo',
-    \ 'golint',
-    \ 'gosimple',
-    \ 'ineffassign',
-    \ 'vet',
-    \ 'vetshadow'
-\]
+            \ 'deadcode',
+            \ 'gas',
+            \ 'goconst',
+            \ 'gocyclo',
+            \ 'golint',
+            \ 'gosimple',
+            \ 'ineffassign',
+            \ 'vet',
+            \ 'vetshadow'
+            \]
 
 " Set whether the JSON tags should be snakecase or camelcase.
 let g:go_addtags_transform = "snakecase"
@@ -891,26 +781,26 @@ let g:go_addtags_transform = "snakecase"
 " neomake configuration for Go.
 let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
 let g:neomake_go_gometalinter_maker = {
-  \ 'args': [
-  \   '--tests',
-  \   '--enable-gc',
-  \   '--concurrency=3',
-  \   '--fast',
-  \   '-D', 'aligncheck',
-  \   '-D', 'dupl',
-  \   '-D', 'gocyclo',
-  \   '-D', 'gotype',
-  \   '-E', 'misspell',
-  \   '-E', 'unused',
-  \   '%:p:h',
-  \ ],
-  \ 'append_file': 0,
-  \ 'errorformat':
-  \   '%E%f:%l:%c:%trror: %m,' .
-  \   '%W%f:%l:%c:%tarning: %m,' .
-  \   '%E%f:%l::%trror: %m,' .
-  \   '%W%f:%l::%tarning: %m'
-  \ }
+            \ 'args': [
+            \   '--tests',
+            \   '--enable-gc',
+            \   '--concurrency=3',
+            \   '--fast',
+            \   '-D', 'aligncheck',
+            \   '-D', 'dupl',
+            \   '-D', 'gocyclo',
+            \   '-D', 'gotype',
+            \   '-E', 'misspell',
+            \   '-E', 'unused',
+            \   '%:p:h',
+            \ ],
+            \ 'append_file': 0,
+            \ 'errorformat':
+            \   '%E%f:%l:%c:%trror: %m,' .
+            \   '%W%f:%l:%c:%tarning: %m,' .
+            \   '%E%f:%l::%trror: %m,' .
+            \   '%W%f:%l::%tarning: %m'
+            \ }
 
 "----------------------------------------------
 " Language: apiblueprint
@@ -1129,12 +1019,12 @@ let s:git_status_dictionary = {
             \ "X": "Unknown"
             \ }
 function! s:get_diff_files(rev)
-  let list = map(split(system(
-              \ 'git diff --name-status '.a:rev), '\n'),
-              \ '{"filename":matchstr(v:val, "\\S\\+$"),"text":s:git_status_dictionary[matchstr(v:val, "^\\w")]}'
-              \ )
-  call setqflist(list)
-  copen
+    let list = map(split(system(
+                \ 'git diff --name-status '.a:rev), '\n'),
+                \ '{"filename":matchstr(v:val, "\\S\\+$"),"text":s:git_status_dictionary[matchstr(v:val, "^\\w")]}'
+                \ )
+    call setqflist(list)
+    copen
 endfunction
 
 command! -nargs=1 DiffRev call s:get_diff_files(<q-args>)
@@ -1152,17 +1042,17 @@ let g:prettier#config#print_width = 100
 let g:prettier#config#semi = 'false'
 let g:prettier#config#single_quote = 'true'
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
+            \ "Modified"  : "✹",
+            \ "Staged"    : "✚",
+            \ "Untracked" : "✭",
+            \ "Renamed"   : "➜",
+            \ "Unmerged"  : "═",
+            \ "Deleted"   : "✖",
+            \ "Dirty"     : "✗",
+            \ "Clean"     : "✔︎",
+            \ 'Ignored'   : '☒',
+            \ "Unknown"   : "?"
+            \ }
 
 " tagbar
 " use universal-ctags project
@@ -1174,16 +1064,8 @@ set foldlevelstart=20
 " Java
 "let g:EclimCompletionMethod = 'omnifunc'
 " Shortcuts!
-nmap <leader>ne :NERDTree<cr>
-map <Leader>gs :Gstatus<CR>
-map <Leader>cd :colorscheme challenger_deep<CR>
-nnoremap <leader>d :NERDTreeToggle<cr>
-nnoremap <F2> :NERDTreeToggle<cr>
-nnoremap <leader>ta :AirlineToggle<cr>
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
-map <leader>c :nohlsearch<cr>
 " Move between buffers with Shift + arrow key...
 nnoremap <S-Left> :bprevious<cr>
 nnoremap <S-Right> :bnext<cr>
@@ -1200,15 +1082,7 @@ augroup END
 "----------------------------------------------
 " Plugin: rbgrouleff/bclose.vim
 "----------------------------------------------
-" Close buffers
-nnoremap <leader>k :bd<cr>
 
-" Close window
-nnoremap <leader>w :close<cr>
-
-" Buffergator toggle
-nnoremap <F7> :BuffergatorToggle<cr>
-"
 "----------------------------------------------
 " Plugin: mileszs/ack.vim
 "----------------------------------------------
@@ -1221,4 +1095,110 @@ inoremap <F9> <C-O>za
 nnoremap <F9> za
 onoremap <F9> <C-C>za
 vnoremap <F9> zfo
-noremap <leader>a :Ack!<space>
+
+" leader-guide config
+" Define prefix dictionary
+let g:lmap =  {}
+
+
+" Second level dictionaries:
+let g:lmap.b = {
+            \'name' : 'Buffer Menu',
+            \'d' : ['bd', 'Close this buffer'],
+            \'g' : ['BuffergatorToggle',   'Buffergator toggle'],
+            \'n' : ['bnext',   'Next Buffer'],
+            \'p' : ['bprevious', 'Previous Buffer'],
+            \}
+let g:lmap.c = {
+            \'name' : 'Commenter Menu',
+            \}
+let g:lmap.f = { 
+            \'name' : 'File Menu', 
+            \'f' : ['Files', 'fzf files'],
+            \'n' : ['NERDTreeToggle', 'NERDTree toggle'],
+            \}
+let g:lmap.o = { 'name' : 'Open Stuff' }
+" 'name' is a special field. It will define the name of the group.
+" leader-f is the "File Menu" group.
+" Unnamed groups will show an empty string
+
+" Provide commands and descriptions for existing mappings
+nmap <silent> <leader>fd :e $MYVIMRC<CR>
+let g:lmap.f.d = ['e $MYVIMRC', 'Open vimrc']
+
+nmap <silent> <leader>fs :so %<CR>
+" let g:lmap.f.s = ['so %', 'Source file']
+
+nmap <silent> <leader>oo  :copen<CR>
+" let g:lmap.o.o = ['copen', 'Open quickfix']
+
+nmap <silent> <leader>ol  :lopen<CR>
+" let g:lmap.o.l = ['lopen', 'Open locationlist']
+
+" Create new menus not based on existing mappings:
+let g:lmap.e = {
+            \'name' : 'Editor tricks',
+            \'a' : ['%y+', 'Copy buffer'],
+            \'d' : ['%d', 'Clear buffer'],
+            \'f' : ['%norm!==', 'Indent buffer'],
+            \}
+let g:lmap.g = {
+            \'name' : 'Git Menu',
+            \'s' : ['Gstatus', 'Git Status'],
+            \'f' : ['GFiles', 'Git files'],
+            \'p' : ['Git pull',   'Git Pull'],
+            \'u' : ['Git push',   'Git Push'],
+            \'c' : ['Git commit', 'Git Commit'],
+            \'v' : ['Gitv',  'Git Log'],
+            \'w' : ['Gwrite',  'Git Write'],
+            \}
+let g:lmap.t = {
+            \'name' : 'Tools Menu',
+            \'a' : ['AirlineToggle', 'Airline toggle'],
+            \'b' : ['BuffergatorToggle', 'Buffergator'],
+            \'c' : ['Commands', 'Commands'],
+            \'f' : ['Files', 'Files'],
+            \'n' : ['NERDTreeToggle',   'NERDTree'],
+            \'S' : ['Swoop',   'Swoop'],
+            \'t' : ['Tagbar',   'Tagbar'],
+            \'T' : ['terminal',   'Terminal'],
+            \}
+let g:lmap.T = {
+            \'name' : 'Theming Menu',
+            \'a' : ['AirlineToggle', 'Airline toggle'],
+            \'c' : ['colo challenger_deep', 'Challenger Deep theme'],
+            \'p' : ['colo PaperColor',   'PaperColor theme'],
+            \'t' : ['Colors',   'Select colorscheme'],
+            \}
+let g:lmap.w = {
+            \'name' : 'Window Menu',
+            \'c' : ['close', 'Close this window'],
+            \'h' : ['split',   'Horizontal split'],
+            \'v' : ['vsplit',   'Vertical split'],
+            \}
+" set up dictionary for <localleader>
+let g:llmap = {}
+autocmd FileType tex let g:llmap.l = { 'name' : 'vimtex' }
+call leaderGuide#register_prefix_descriptions(",", "g:llmap")
+" to name the <localleader>-n group vimtex in tex files.
+let g:leaderGuide_max_size = 14
+let g:leaderGuide_submode_mappings = { '<C-F>': 'page_down', '<C-B>': 'page_up'}
+" combine the two dictionaries into a single top-level dictionary:
+let g:topdict = {}
+let g:topdict[' '] = g:lmap
+let g:topdict[' ']['name'] = '<leader>'
+let g:topdict[','] = g:llmap
+let g:topdict[',']['name'] = '<localleader>'
+
+" register it with the guide:
+call leaderGuide#register_prefix_descriptions("", "g:topdict")
+
+" define mappings:
+nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
+map <leader>. <Plug>leaderguide-global
+nnoremap <localleader> :<c-u>LeaderGuide  ','<CR>
+vnoremap <localleader> :<c-u>LeaderGuideVisual  ','<CR>
+map <localleader>. <Plug>leaderguide-buffer
+
+let g:buffergator_suppress_keymaps = 1
