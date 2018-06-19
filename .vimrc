@@ -178,13 +178,13 @@ Plug 'equalsraf/neovim-gui-shim'
 "Plug 'vim-erlang/vim-erlang-compiler'
 
 " Elixir Support 
-"Plug 'elixir-lang/vim-elixir'
-"Plug 'avdgaag/vim-phoenix'
-"Plug 'mmorearty/elixir-ctags'
-"Plug 'mattreduce/vim-mix'
+Plug 'elixir-lang/vim-elixir'
+Plug 'avdgaag/vim-phoenix'
+Plug 'mmorearty/elixir-ctags'
+Plug 'mattreduce/vim-mix'
 "Plug 'BjRo/vim-extest'
 "Plug 'frost/vim-eh-docs'
-"Plug 'slashmili/alchemist.vim'
+Plug 'slashmili/alchemist.vim'
 "Plug 'tpope/vim-endwise'
 "Plug 'jadercorrea/elixir_generator.vim'
 
