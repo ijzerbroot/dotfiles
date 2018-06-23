@@ -364,6 +364,13 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  ;;
+  ;;  This starts the Emacs server when .emacs gets loaded
+  ;;
+  (require 'server)
+  (if (not (server-running-p)) (server-start))
+
+
   (when (fboundp 'windmove-default-keybindings)
     (windmove-default-keybindings))
   (setq powerline-default-separator 'arrow)
@@ -455,6 +462,18 @@ you should place your code here."
       ;;   (minimap-mode -1))
       ;; (add-hook 'minimap-sb-mode-hook (lambda () (setq mode-line-format nil)))
 
+      ;;
+      ;;  This changes C-x C-c to just hide Emacs until the next
+      ;;  time you use it.  We rebind C-M-c to be the command to
+      ;;  really kill Emacs.
+      ;;
+      (defun my-done ()
+        "Exit server buffers and hide the main Emacs window"
+        (interactive)
+        (server-edit)
+        (make-frame-invisible nil t))
+      (global-set-key (kbd "C-x C-c") 'my-done)
+      (global-set-key (kbd "C-M-c") 'save-buffers-kill-emacs)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
