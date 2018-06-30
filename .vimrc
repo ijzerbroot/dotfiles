@@ -6,6 +6,8 @@ let g:initial_go_path = "c:/Users/fhoeben/go"
 " call plug#begin('/home/frank/.vim/plugged')
 " Make sure you use single quotes
 " Dependencies
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/seoul256.vim'
 Plug 'hecal3/vim-leader-guide'
 Plug 'wannesm/rmvim.vim'
 Plug 'markonm/traces.vim'
@@ -1182,6 +1184,9 @@ let g:lmap.T = {
             \'name' : 'Theming Menu',
             \'a' : ['AirlineToggle', 'Airline toggle'],
             \'c' : ['colo challenger_deep', 'Challenger Deep theme'],
+            \'g' : ['Goyo', 'Goyo mode toggle'],
+            \'l' : ['Limelight', 'Limelight on'],
+            \'L' : ['Limelight!', 'Limelight off'],
             \'p' : ['colo PaperColor',   'PaperColor theme'],
             \'t' : ['Colors',   'Select colorscheme'],
             \}
@@ -1217,3 +1222,5 @@ vnoremap <localleader> :<c-u>LeaderGuideVisual  ','<CR>
 map <localleader>. <Plug>leaderguide-buffer
 
 let g:buffergator_suppress_keymaps = 1
+let g:goyo_width = 100
+let g:goyo_height = 90
