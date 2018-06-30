@@ -8,6 +8,7 @@ let g:initial_go_path = "c:/Users/fhoeben/go"
 " Dependencies
 Plug 'hecal3/vim-leader-guide'
 Plug 'wannesm/rmvim.vim'
+Plug 'markonm/traces.vim'
 "Plug 'Valloric/YouCompleteMe'
 Plug 'starcraftman/vim-eclim'
 Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
@@ -104,7 +105,7 @@ Plug 'majutsushi/tagbar'
 Plug 'ervandew/supertab'
 Plug 'schickling/vim-bufonly'
 Plug 'wesQ3/vim-windowswap'
-" Plug 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 "Plug 'junegunn/fzf.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'benmills/vimux'
