@@ -1163,7 +1163,7 @@ let g:lmap.f = {
             \'C' : ['Colors', 'FZF Colors'],
             \'f' : ['Files', 'FZF Files'],
             \'h' : ['History:', 'FZF command history'],
-            \'s' : ['Snippets',   'FZF Snippets'],
+            \'S' : ['Snippets',   'FZF Snippets'],
             \'t' : ['BTags',   'FZF Tags'],
             \'w' : ['Windows',  'FZF Windows'],
             \}
