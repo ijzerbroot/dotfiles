@@ -1,14 +1,15 @@
 
 " Platform dependent stuff
-" let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
-" call plug#begin('../../Users/FHoeben/vimfiles/plugged')
-" let g:initial_go_path = "c:/Users/fhoeben/go"
-call plug#begin('/home/frank/.vim/plugged')
+let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
+call plug#begin('C:/Users/Fhoeben/vimfiles/plugged')
+let g:initial_go_path = "c:/Users/fhoeben/go"
+" call plug#begin('/home/frank/.vim/plugged')
 " Make sure you use single quotes
 " Dependencies
 Plug 'hecal3/vim-leader-guide'
+Plug 'wannesm/rmvim.vim'
 "Plug 'Valloric/YouCompleteMe'
-Plug 'starcraftman/vim-eclim' 
+Plug 'starcraftman/vim-eclim'
 Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
 Plug 'godlygeek/tabular'           " This must come before plasticboy/vim-markdown
 Plug 'tpope/vim-rhubarb'           " Depenency for tpope/fugitive
@@ -55,8 +56,8 @@ Plug 'chr4/nginx.vim'                          " nginx syntax highlighting
 Plug 'dag/vim-fish'                            " Fish syntax highlighting
 Plug 'digitaltoad/vim-pug'                     " Pug syntax highlighting
 Plug 'fatih/vim-go'                            " Go support
-Plug 'rust-lang/rust.vim'                      " Rust support 
-Plug 'racer-rust/vim-racer'                    " Rust support 
+Plug 'rust-lang/rust.vim'                      " Rust support
+Plug 'racer-rust/vim-racer'                    " Rust support
 "Plug 'fishbullet/deoplete-ruby'                " Ruby auto completion
 Plug 'hashivim/vim-terraform'                  " Terraform syntax highlighting
 Plug 'kchmck/vim-coffee-script'                " CoffeeScript syntax highlighting
@@ -81,7 +82,7 @@ Plug 'w0rp/ale'
 Plug 'flazz/vim-colorschemes'
 Plug 'chriskempson/base16-vim'
 Plug 'kshenoy/vim-signature'
-Plug 'benmills/vimux'
+"Plug 'benmills/vimux'
 Plug 'kana/vim-arpeggio'
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
@@ -95,7 +96,7 @@ Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 "Plug 'vim-scripts/sqlplus.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'puppetlabs/puppet-syntax-vim'
-Plug 'rafi/awesome-vim-colorschemes' 
+Plug 'rafi/awesome-vim-colorschemes'
 " Utility
 Plug 'tpope/vim-unimpaired'
 Plug 'scrooloose/nerdtree'
@@ -106,6 +107,7 @@ Plug 'wesQ3/vim-windowswap'
 " Plug 'SirVer/ultisnips'
 "Plug 'junegunn/fzf.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'benmills/vimux'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'gilsondev/searchtasks.vim'
 " Plug 'Shougo/neocomplete.vim'
@@ -116,7 +118,7 @@ Plug 'tpope/vim-dispatch'
 " (Optional) Multi-entry selection UI.
 "Plug 'junegunn/fzf'
 
-" Generic Programming Support 
+" Generic Programming Support
 " Plug 'jakedouglas/exuberant-ctags'
 Plug 'honza/vim-snippets'
 Plug 'Townk/vim-autoclose'
@@ -157,7 +159,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'w0ng/vim-hybrid'
 Plug 'AlessandroYorba/Sierra'
 "Plug 'daylerees/colour-schemes'
-Plug 'rainglow/vim', { 'as': 'rainglow' } 
+Plug 'rainglow/vim', { 'as': 'rainglow' }
 Plug 'effkay/argonaut.vim'
 Plug 'ajh17/Spacegray.vim'
 Plug 'atelierbram/Base2Tone-vim'
@@ -174,14 +176,14 @@ Plug 'equalsraf/neovim-gui-shim'
 "Plug 'vim-erlang/vim-erlang-omnicomplete'
 "Plug 'vim-erlang/vim-erlang-compiler'
 
-" Elixir Support 
+" Elixir Support
 Plug 'elixir-lang/vim-elixir'
 Plug 'avdgaag/vim-phoenix'
 Plug 'mmorearty/elixir-ctags'
 Plug 'mattreduce/vim-mix'
 "Plug 'BjRo/vim-extest'
 "Plug 'frost/vim-eh-docs'
-Plug 'slashmili/alchemist.vim'
+"Plug 'slashmili/alchemist.vim'
 "Plug 'tpope/vim-endwise'
 "Plug 'jadercorrea/elixir_generator.vim'
 
@@ -257,7 +259,7 @@ let g:airline_theme='powerlineish'
 let g:neoformat_java_google = {
             \ 'exe': 'java',
             \ 'args': ['-jar /home/frank/.local/bin/google-java-format-1.5-all-deps.jar -'],
-            \ 'stdin': 1, 
+            \ 'stdin': 1,
             \ }
 
 let g:neoformat_enabled_java = ['google']
@@ -350,12 +352,12 @@ set splitright
 " Terminal settings
 tnoremap <Leader><ESC> <C-\><C-n>
 
-if has("win32")
-    set shell=cmd.exe
-    set shellcmdflag=/c\ powershell.exe\ -NoLogo\ -NonInteractive\ -ExecutionPolicy\ Bypass
-    set shellpipe=|
-    set shellredir=>
-endif
+"if has("win32")
+"    set shell=cmd.exe
+"    set shellcmdflag=/c\ powershell.exe\ -NoLogo\ -NonInteractive\ -ExecutionPolicy\ Bypass
+"    set shellpipe=|
+"    set shellredir=>
+"endif
 let g:netrw_cygwin = 0
 " let g:netrw_ssh_cmd  = "plink -T -ssh"
 " let g:netrw_scp_cmd  = "pscp"
@@ -1111,8 +1113,8 @@ let g:lmap.b = {
 let g:lmap.c = {
             \'name' : 'Commenter Menu',
             \}
-let g:lmap.f = { 
-            \'name' : 'File Menu', 
+let g:lmap.f = {
+            \'name' : 'File Menu',
             \'f' : ['Files', 'fzf files'],
             \'n' : ['NERDTreeToggle', 'NERDTree toggle'],
             \}
@@ -1148,8 +1150,21 @@ let g:lmap.g = {
             \'p' : ['Git pull',   'Git Pull'],
             \'u' : ['Git push',   'Git Push'],
             \'c' : ['Git commit', 'Git Commit'],
+            \'C' : ['Commits', 'FZF Commits'],
             \'v' : ['Gitv',  'Git Log'],
             \'w' : ['Gwrite',  'Git Write'],
+            \}
+let g:lmap.f = {
+            \'name' : 'FZF Menu',
+            \'b' : ['Buffers', 'FZF Buffers'],
+            \'B' : ['Lines', 'FZF BLines'],
+            \'c' : ['Commands', 'FZF Commands'],
+            \'C' : ['Colors', 'FZF Colors'],
+            \'f' : ['Files', 'FZF Files'],
+            \'h' : ['History:', 'FZF command history'],
+            \'s' : ['Snippets',   'FZF Snippets'],
+            \'t' : ['BTags',   'FZF Tags'],
+            \'w' : ['Windows',  'FZF Windows'],
             \}
 let g:lmap.t = {
             \'name' : 'Tools Menu',
@@ -1201,13 +1216,3 @@ vnoremap <localleader> :<c-u>LeaderGuideVisual  ','<CR>
 map <localleader>. <Plug>leaderguide-buffer
 
 let g:buffergator_suppress_keymaps = 1
-
-" vimux stuff
-" Prompt for a command to run
-map <Leader>vp :VimuxPromptCommand<CR>
-" Run last command executed by VimuxRunCommand
-map <Leader>vl :VimuxRunLastCommand<CR>
-" Inspect runner pane
-map <Leader>vi :VimuxInspectRunner<CR>
-" Zoom the tmux runner pane
-map <Leader>vz :VimuxZoomRunner<CR>
