@@ -386,7 +386,7 @@ you should place your code here."
   (setq neo-autorefresh t)
   (setq auto-revert-check-vc-info t)
   (setq auto-revert-interval 5)
-
+  (setq default-directory "C:/Users/Fhoeben/Documents") 
   (require 'god-mode)
   (global-set-key (kbd "<escape>") 'god-local-mode)
 ;;  (global-set-key (kbd "<escape>") 'god-mode-all)
