@@ -353,7 +353,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;;  (setq org-babel-sh-command "/bin/bash(require 'tramp)
 
-(set-default 'tramp-auto-save-directory "C:\\Users\\Fhoeben\\AppData\\Local\\Temp")
+(set-default 'tramp-auto-save-directory "/tmp")
 (set-default 'tramp-default-method "plink")
   )
 
@@ -386,7 +386,7 @@ you should place your code here."
   (setq neo-autorefresh t)
   (setq auto-revert-check-vc-info t)
   (setq auto-revert-interval 5)
-  (setq default-directory "C:/Users/Fhoeben/Documents") 
+  (setq default-directory "/mnt/c/Users/Fhoeben/Documents") 
   (require 'god-mode)
   (global-set-key (kbd "<escape>") 'god-local-mode)
 ;;  (global-set-key (kbd "<escape>") 'god-mode-all)
@@ -396,7 +396,13 @@ you should place your code here."
     (setq cursor-type (if (or god-local-mode buffer-read-only)
                           'bar
                         'box)))
+  (setq auto-revert-check-vc-info t)
 
+  (defun my-disable-auto-revert-vc-in-tramp ()
+    (when (and buffer-file-name (file-remote-p buffer-file-name))
+      (setq-local auto-revert-check-vc-info nil)))
+
+  (add-hook 'find-file-hook #'my-disable-auto-revert-vc-in-tramp)
   (add-hook 'god-mode-enabled-hook 'my-update-cursor)
   (add-hook 'god-mode-disabled-hook 'my-update-cursor)
   ;; (defun me//god-mode-indicator ()
@@ -591,9 +597,9 @@ _SPC_ cancel	_o_nly this   	_d_elete
     :init (progn (defun my/java-mode-jump-handler ()
                    (let ((xref-prompt-for-identifier nil))
                      (call-interactively #'xref-find-definitions)))
-                 (setq lsp-java-server-install-dir "C:\\Users\\Fhoeben\\.emacs.d\\eclipse.jdt.ls\\server"
+                 (setq lsp-java-server-install-dir "/mnt/c/Users/Fhoeben/.emacs.d/eclipse.jdt.ls/server"
                        lsp-java-trace-server 'off
-                       lsp-java--workspace-folders (list "C:\\Users\Fhoeben\\Documents\\sapienza\\eclipse"))
+                       lsp-java--workspace-folders (list "/mnt/c/Users/Fhoeben/Documents/sapienza/eclipse"))
                  (spacemacs|define-jump-handlers java-mode my/java-mode-jump-handler))
     :hook ((java-mode . lsp-java-enable)
            (java-mode . flycheck-mode)))
