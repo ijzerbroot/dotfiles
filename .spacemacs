@@ -178,9 +178,9 @@ values."
    ;;                             :width normal
    ;;                             :antialias standard
    ;;                             :powerline-scale 1.1)
-   dotspacemacs-default-font '("Hack"
-                               :size 20
-                               :antialias natural)
+   dotspacemacs-default-font '("Hack NF"
+                               :size 18
+                               :antialias subpixel)
    ;;                            :powerline-scale 1.1)
 
    ;; The leader key
@@ -346,15 +346,15 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-    (push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
-    (push '(helm . "melpa-stable") package-pinned-packages)
+  (push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
+  (push '(helm . "melpa-stable") package-pinned-packages)
 
 
 
   ;;  (setq org-babel-sh-command "/bin/bash(require 'tramp)
 
-(set-default 'tramp-auto-save-directory "/tmp")
-(set-default 'tramp-default-method "plink")
+  (set-default 'tramp-auto-save-directory "C:\\Users\\Fhoeben\\AppData\\Local\\Temp")
+  ;;(set-default 'tramp-default-method "plink")
   )
 
 (defun dotspacemacs/user-config ()
@@ -386,12 +386,12 @@ you should place your code here."
   (setq neo-autorefresh t)
   (setq auto-revert-check-vc-info t)
   (setq auto-revert-interval 5)
-  (setq default-directory "/mnt/c/Users/Fhoeben/Documents") 
+  (setq default-directory "C:/Users/Fhoeben/Documents")
   (require 'god-mode)
   (global-set-key (kbd "<escape>") 'god-local-mode)
-;;  (global-set-key (kbd "<escape>") 'god-mode-all)
-;;  (setq god-exempt-major-modes nil)
-;;  (setq god-exempt-predicates nil)
+  ;;  (global-set-key (kbd "<escape>") 'god-mode-all)
+  ;;  (setq god-exempt-major-modes nil)
+  ;;  (setq god-exempt-predicates nil)
   (defun my-update-cursor ()
     (setq cursor-type (if (or god-local-mode buffer-read-only)
                           'bar
@@ -426,7 +426,7 @@ you should place your code here."
   (define-key god-local-mode-map (kbd ".") 'repeat)
   ;;(treemacs-git-mode 'extended)
   ;; (setq display-line-numbers 'relative)
-  (global-display-line-numbers-mode)
+  ;; (global-display-line-numbers-mode)
   '(version-control :variables
                     version-control-diff-tool 'diff-hl)
   '(version-control :variables
@@ -434,69 +434,69 @@ you should place your code here."
   (global-diff-hl-mode)
   ;;(desktop-save-mode 1)
 
- ;;   (require 'gradle-mode)
- ;;   (add-hook 'java-mode-hook '(lambda() (gradle-mode 1)))
-    (golden-ratio-mode 1)
-    (defhydra hydra-window ()
-   "
+  ;;   (require 'gradle-mode)
+  ;;   (add-hook 'java-mode-hook '(lambda() (gradle-mode 1)))
+  (golden-ratio-mode 1)
+  (defhydra hydra-window ()
+    "
 Movement^^        ^Split^         ^Switch^		^Resize^
 ----------------------------------------------------------------
-_h_ ←       	_v_ertical    	_b_uffer		_q_ X←
-_j_ ↓        	_x_ horizontal	_f_ind files	_w_ X↓
-_k_ ↑        	_z_ undo      	_a_ce 1		_e_ X↑
-_l_ →        	_Z_ reset      	_s_wap		_r_ X→
-_F_ollow		_D_lt Other   	_S_ave		max_i_mize
-_SPC_ cancel	_o_nly this   	_d_elete	
+_h_ ←         _v_ertical      _b_uffer		_q_ X←
+_j_ ↓         _x_ horizontal	_f_ind files	_w_ X↓
+_k_ ↑         _z_ undo        _a_ce 1		_e_ X↑
+_l_ →         _Z_ reset       _s_wap		_r_ X→
+_F_ollow		_D_lt Other     _S_ave		max_i_mize
+_SPC_ cancel	_o_nly this     _d_elete
 "
-   ("h" windmove-left )
-   ("j" windmove-down )
-   ("k" windmove-up )
-   ("l" windmove-right )
-   ("q" hydra-move-splitter-left)
-   ("w" hydra-move-splitter-down)
-   ("e" hydra-move-splitter-up)
-   ("r" hydra-move-splitter-right)
-   ("b" helm-mini)
-   ("f" helm-find-files)
-   ("F" follow-mode)
-   ("a" (lambda ()
-          (interactive)
-          (ace-window 1)
-          (add-hook 'ace-window-end-once-hook
-                    'hydra-window/body))
-       )
-   ("v" (lambda ()
-          (interactive)
-          (split-window-right)
-          (windmove-right))
-       )
-   ("x" (lambda ()
-          (interactive)
-          (split-window-below)
-          (windmove-down))
-       )
-   ("s" (lambda ()
-          (interactive)
-          (ace-window 4)
-          (add-hook 'ace-window-end-once-hook
-                    'hydra-window/body)))
-   ("S" save-buffer)
-   ("d" delete-window)
-   ("D" (lambda ()
-          (interactive)
-          (ace-window 16)
-          (add-hook 'ace-window-end-once-hook
-                    'hydra-window/body))
-       )
-   ("o" delete-other-windows)
-   ("i" ace-maximize-window)
-   ("z" (progn
-          (winner-undo)
-          (setq this-command 'winner-undo))
-   )
-   ("Z" winner-redo)
-   ("SPC" nil)
-   )
+    ("h" windmove-left )
+    ("j" windmove-down )
+    ("k" windmove-up )
+    ("l" windmove-right )
+    ("q" hydra-move-splitter-left)
+    ("w" hydra-move-splitter-down)
+    ("e" hydra-move-splitter-up)
+    ("r" hydra-move-splitter-right)
+    ("b" helm-mini)
+    ("f" helm-find-files)
+    ("F" follow-mode)
+    ("a" (lambda ()
+           (interactive)
+           (ace-window 1)
+           (add-hook 'ace-window-end-once-hook
+                     'hydra-window/body))
+     )
+    ("v" (lambda ()
+           (interactive)
+           (split-window-right)
+           (windmove-right))
+     )
+    ("x" (lambda ()
+           (interactive)
+           (split-window-below)
+           (windmove-down))
+     )
+    ("s" (lambda ()
+           (interactive)
+           (ace-window 4)
+           (add-hook 'ace-window-end-once-hook
+                     'hydra-window/body)))
+    ("S" save-buffer)
+    ("d" delete-window)
+    ("D" (lambda ()
+           (interactive)
+           (ace-window 16)
+           (add-hook 'ace-window-end-once-hook
+                     'hydra-window/body))
+     )
+    ("o" delete-other-windows)
+    ("i" ace-maximize-window)
+    ("z" (progn
+           (winner-undo)
+           (setq this-command 'winner-undo))
+     )
+    ("Z" winner-redo)
+    ("SPC" nil)
+    )
   ;;(add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
   ;;(add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode)
   ;; Make sure that the bash executable can be found
@@ -516,65 +516,68 @@ _SPC_ cancel	_o_nly this   	_d_elete
   (global-set-key [f6] 'delete-window)
   (global-set-key [f7] 'maximize-buffer)
   (global-set-key [f5] 'kill-this-buffer)
- ;;(require 'ob-sh)
- (require 'helm-bookmark)
- (org-babel-do-load-languages
-  'org-babel-load-languages
-  '((sql . t)
-    (ruby . t)
-    (clojure . t)
-    (org . t)
-    (emacs-lisp . nil)
-    ))
-   ;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
-   ;;(set-frame-parameter (selected-frame) 'alpha <both>)
-      (set-frame-parameter (selected-frame) 'alpha '(99 . 99))
-      (add-to-list 'default-frame-alist '(alpha . (99 . 99)))
-;;   (defun my-startup-layout ()
-;;   (split-window-below-and-focus)
-;;   (eshell)
-;;   (rename-uniquely)
-;;   (balance-windows)
-   ;; (neotree-show)
-      (define-key evil-normal-state-map (kbd "C-j") 'next-buffer)
-      (define-key evil-normal-state-map (kbd "C-k") 'previous-buffer)
-      (setq frame-title-format "%b")
-      (global-set-key (kbd "C-<f8>")
-                 (lambda ()
+  (setq backup-directory-alist
+        `((".*" . ,temporary-file-directory)))
+  (setq auto-save-file-name-transforms
+        `((".*" ,temporary-file-directory t)))
+  (require 'helm-bookmark)
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((sql . t)
+     (ruby . t)
+     (clojure . t)
+     (org . t)
+     (emacs-lisp . nil)
+     ))
+  ;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
+  ;;(set-frame-parameter (selected-frame) 'alpha <both>)
+  (set-frame-parameter (selected-frame) 'alpha '(99 . 99))
+  (add-to-list 'default-frame-alist '(alpha . (99 . 99)))
+  ;;   (defun my-startup-layout ()
+  ;;   (split-window-below-and-focus)
+  ;;   (eshell)
+  ;;   (rename-uniquely)
+  ;;   (balance-windows)
+  ;; (neotree-show)
+  (define-key evil-normal-state-map (kbd "C-j") 'next-buffer)
+  (define-key evil-normal-state-map (kbd "C-k") 'previous-buffer)
+  (setq frame-title-format "%b")
+  (global-set-key (kbd "C-<f8>")
+                  (lambda ()
                     (interactive)
                     (dired default-directory)))
-      (put 'dired-find-alternate-file 'disabled nil)
-   ;; )
-   ;; execute the layout
-      ;;(my-startup-layout )
-      ;; Minimap
+  (put 'dired-find-alternate-file 'disabled nil)
+  ;; )
+  ;; execute the layout
+  ;;(my-startup-layout )
+  ;; Minimap
 
-      ;; (minimap-mode t)
-      ;; (setq-default minimap-window-location 'right)
-      ;; (setq-default minimap-minimum-width 14)
-      ;; (setq-default minimap-recreate-window t)
-      ;; (setq-default minimap-width-fraction 0.10)
-      ;; (unless (display-graphic-p)
-      ;;   (minimap-mode -1))
-      ;; (add-hook 'minimap-sb-mode-hook (lambda () (setq mode-line-format nil)))
+  ;; (minimap-mode t)
+  ;; (setq-default minimap-window-location 'right)
+  ;; (setq-default minimap-minimum-width 14)
+  ;; (setq-default minimap-recreate-window t)
+  ;; (setq-default minimap-width-fraction 0.10)
+  ;; (unless (display-graphic-p)
+  ;;   (minimap-mode -1))
+  ;; (add-hook 'minimap-sb-mode-hook (lambda () (setq mode-line-format nil)))
 
-      ;;
-      ;;  This changes C-x C-c to just hide Emacs until the next
-      ;;  time you use it.  We rebind C-M-c to be the command to
+  ;;
+  ;;  This changes C-x C-c to just hide Emacs until the next
+  ;;  time you use it.  We rebind C-M-c to be the command to
 
-      ;;  really kill Emacs.
-      ;;
-      (defun my-done ()
-        "Exit server buffers and hide the main Emacs window"
-        (interactive)
-        (server-edit)
-        (make-frame-invisible nil t))
-      (global-set-key (kbd "C-x C-c") 'my-done)
-      (global-set-key (kbd "C-M-c") 'save-buffers-kill-emacs)
-;;         (require 'lsp-javacomp)
-;;    (add-hook 'java-mode-hook #'lsp-javacomp-enable)
+  ;;  really kill Emacs.
+  ;;
+  (defun my-done ()
+    "Exit server buffers and hide the main Emacs window"
+    (interactive)
+    (server-edit)
+    (make-frame-invisible nil t))
+  (global-set-key (kbd "C-x C-c") 'my-done)
+  (global-set-key (kbd "C-M-c") 'save-buffers-kill-emacs)
+  ;;         (require 'lsp-javacomp)
+  ;;    (add-hook 'java-mode-hook #'lsp-javacomp-enable)
 
-      (use-package lsp-mode
+  (use-package lsp-mode
     :defer t
     :commands lsp-mode
     :init (setq lsp-before-save-edits t
@@ -597,14 +600,21 @@ _SPC_ cancel	_o_nly this   	_d_elete
     :init (progn (defun my/java-mode-jump-handler ()
                    (let ((xref-prompt-for-identifier nil))
                      (call-interactively #'xref-find-definitions)))
-                 (setq lsp-java-server-install-dir "/mnt/c/Users/Fhoeben/.emacs.d/eclipse.jdt.ls/server"
+                 (setq lsp-java-server-install-dir "C:\\Users\\Fhoeben\\.emacs.d\\eclipse.jdt.ls\\server"
                        lsp-java-trace-server 'off
-                       lsp-java--workspace-folders (list "/mnt/c/Users/Fhoeben/Documents/sapienza/eclipse"))
+                       lsp-java--workspace-folders (list "C:\\Users\Fhoeben\\Documents\\sapienza\\eclipse"))
                  (spacemacs|define-jump-handlers java-mode my/java-mode-jump-handler))
     :hook ((java-mode . lsp-java-enable)
            (java-mode . flycheck-mode)))
-  
 
+  (setq path-to-ctags "C:\\Users\\Fhoeben\\Apps\\ctags58\\ctags") ;; <- your ctags path here
+
+  (defun create-tags (dir-name)
+    "Create tags file."
+    (interactive "DDirectory: ")
+    (shell-command
+     (format "%s -f TAGS -e -R %s" path-to-ctags (directory-file-name dir-name)))
+    )
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -627,7 +637,7 @@ _SPC_ cancel	_o_nly this   	_d_elete
  '(cua-read-only-cursor-color "#859900")
  '(custom-safe-themes
    (quote
-    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "ecba61c2239fbef776a72b65295b88e5534e458dfe3e6d7d9f9cb353448a569e" "72a81c54c97b9e5efcc3ea214382615649ebb539cb4f2fe3a46cd12af72c7607" "9d9fda57c476672acd8c6efeb9dc801abea906634575ad2c7688d055878e69d6" "51e228ffd6c4fff9b5168b31d5927c27734e82ec61f414970fc6bcce23bc140d" "19ba41b6dc0b5dd34e1b8628ad7ae47deb19f968fe8c31853d64ea8c4df252b8" "4697a2d4afca3f5ed4fdf5f715e36a6cac5c6154e105f3596b44a4874ae52c45" "8891c81848a6cf203c7ac816436ea1a859c34038c39e3cf9f48292d8b1c86528" "06ffa2bf4e891580bfe6a5ce68d0909ed9c4278e5234ede6b3ba459ef35d9a1b" "ce3e6c12b48979ce89754884d913c7ecc8a7956543d8b09ef13abfab6af9aa35" "a156fcac344bbfdc979a5adf9cecf1c2de56c4c937549ae0571b7f11ad4fe6a9" "fe666e5ac37c2dfcf80074e88b9252c71a22b6f5d2f566df9a7aa4f9bea55ef8" "2af26301bded15f5f9111d3a161b6bfb3f4b93ec34ffa95e42815396da9cb560" "8bb8a5b27776c39b3c7bf9da1e711ac794e4dc9d43e32a075d8aa72d6b5b3f59" "748d0e2ffdaf95015a539dcc95ab888283284ad7b076963760422cbe5e21903a" "718fb4e505b6134cc0eafb7dad709be5ec1ba7a7e8102617d87d3109f56d9615" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "a2e7b508533d46b701ad3b055e7c708323fb110b6676a8be458a758dd8f24e27" "cedd3b4295ac0a41ef48376e16b4745c25fa8e7b4f706173083f16d5792bb379" default)))
+    ("c1f841d3e12150713efb3833afa37eb6c9bca8ec4c9e55aa1e5e740fe47c1c98" "10bf073b3d442d44118d5deb9c1f3c612721ef0e508ec70107dbb5e1ccb3dabf" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "ecba61c2239fbef776a72b65295b88e5534e458dfe3e6d7d9f9cb353448a569e" "72a81c54c97b9e5efcc3ea214382615649ebb539cb4f2fe3a46cd12af72c7607" "9d9fda57c476672acd8c6efeb9dc801abea906634575ad2c7688d055878e69d6" "51e228ffd6c4fff9b5168b31d5927c27734e82ec61f414970fc6bcce23bc140d" "19ba41b6dc0b5dd34e1b8628ad7ae47deb19f968fe8c31853d64ea8c4df252b8" "4697a2d4afca3f5ed4fdf5f715e36a6cac5c6154e105f3596b44a4874ae52c45" "8891c81848a6cf203c7ac816436ea1a859c34038c39e3cf9f48292d8b1c86528" "06ffa2bf4e891580bfe6a5ce68d0909ed9c4278e5234ede6b3ba459ef35d9a1b" "ce3e6c12b48979ce89754884d913c7ecc8a7956543d8b09ef13abfab6af9aa35" "a156fcac344bbfdc979a5adf9cecf1c2de56c4c937549ae0571b7f11ad4fe6a9" "fe666e5ac37c2dfcf80074e88b9252c71a22b6f5d2f566df9a7aa4f9bea55ef8" "2af26301bded15f5f9111d3a161b6bfb3f4b93ec34ffa95e42815396da9cb560" "8bb8a5b27776c39b3c7bf9da1e711ac794e4dc9d43e32a075d8aa72d6b5b3f59" "748d0e2ffdaf95015a539dcc95ab888283284ad7b076963760422cbe5e21903a" "718fb4e505b6134cc0eafb7dad709be5ec1ba7a7e8102617d87d3109f56d9615" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "a2e7b508533d46b701ad3b055e7c708323fb110b6676a8be458a758dd8f24e27" "cedd3b4295ac0a41ef48376e16b4745c25fa8e7b4f706173083f16d5792bb379" default)))
  '(evil-want-Y-yank-to-eol nil)
  '(fci-rule-color "#202325" t)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
@@ -653,10 +663,11 @@ _SPC_ cancel	_o_nly this   	_d_elete
  '(hl-fg-colors
    (quote
     ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
- '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")) t)
+ '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
  '(jdee-db-active-breakpoint-face-colors (cons "#191C25" "#80A0C2"))
  '(jdee-db-requested-breakpoint-face-colors (cons "#191C25" "#A2BF8A"))
  '(jdee-db-spec-breakpoint-face-colors (cons "#191C25" "#434C5E"))
+ '(line-number-mode nil)
  '(magit-diff-use-overlays nil)
  '(neo-vc-integration (quote (face)) t)
  '(nrepl-message-colors
@@ -668,6 +679,14 @@ _SPC_ cancel	_o_nly this   	_d_elete
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
+ '(safe-local-variable-values
+   (quote
+    ((eval when
+           (fboundp
+            (quote rainbow-mode))
+           (rainbow-mode 1))
+     (elixir-enable-compilation-checking . t)
+     (elixir-enable-compilation-checking))))
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
  '(term-default-bg-color "#fdf6e3")
  '(term-default-fg-color "#657b83")
@@ -697,6 +716,14 @@ _SPC_ cancel	_o_nly this   	_d_elete
  '(weechat-color-list
    (quote
     (unspecified "#fdf6e3" "#eee8d5" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#657b83" "#839496")))
+ '(when
+      (or
+       (not
+        (boundp
+         (quote ansi-term-color-vector)))
+       (not
+        (facep
+         (aref ansi-term-color-vector 0)))))
  '(xterm-color-names
    ["#eee8d5" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#073642"])
  '(xterm-color-names-bright
@@ -709,10 +736,16 @@ This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
 
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   )
+  )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-)
