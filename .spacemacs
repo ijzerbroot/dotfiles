@@ -386,12 +386,12 @@ you should place your code here."
   (setq neo-autorefresh t)
   (setq auto-revert-check-vc-info t)
   (setq auto-revert-interval 5)
-  (setq default-directory "/mnt/c/Users/Fhoeben/Documents")
+  (setq default-directory "/home/frank/Documents")
   (require 'god-mode)
   (global-set-key (kbd "<escape>") 'god-local-mode)
   ;;  (global-set-key (kbd "<escape>") 'god-mode-all)
-  ;;  (setq god-exempt-major-modes nil)
-  ;;  (setq god-exempt-predicates nil)
+    (setq god-exempt-major-modes nil)
+    (setq god-exempt-predicates nil)
   (defun my-update-cursor ()
     (setq cursor-type (if (or god-local-mode buffer-read-only)
                           'bar
@@ -422,7 +422,7 @@ you should place your code here."
 
   ;;(add-hook 'god-mode-enabled-hook #'me//god-mode-indicator)
   ;;(add-hook 'god-mode-disabled-hook #'me//god-mode-indicator)
-
+  (which-key-enable-god-mode-support)
   (define-key god-local-mode-map (kbd ".") 'repeat)
   ;;(treemacs-git-mode 'extended)
   ;; (setq display-line-numbers 'relative)
