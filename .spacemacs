@@ -179,7 +179,7 @@ values."
    ;;                             :antialias standard
    ;;                             :powerline-scale 1.1)
    dotspacemacs-default-font '("Hack"
-                               :size 20
+                               :size 19
                                :antialias subpixel
                                :powerline-scale 1.1)
 
@@ -586,7 +586,9 @@ _SPC_ cancel	_o_nly this     _d_elete
   (use-package lsp-ui
     :commands lsp-ui-mode
     :hook (lsp-mode . lsp-ui-mode)
-    :config (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+    :config (add-hook 'lsp-mode-hook 'lsp-ui-mode)
+    (setq lsp-ui-doc-max-height 14
+          lsp-ui-doc-max-width 40))
   (use-package company-lsp
     :hook (lsp-mode . company-mode)
     :init (setq company-lsp-cache-candidates 'auto
@@ -602,7 +604,7 @@ _SPC_ cancel	_o_nly this     _d_elete
                      (call-interactively #'xref-find-definitions)))
                  (setq lsp-java-server-install-dir "/home/frank/.emacs.d/eclipse.jdt.ls/server"
                        lsp-java-trace-server 'off
-                       lsp-java--workspace-folders (list "/mnt/c/Users/Fhoeben/Documents/sapienza/ECLIPSE")
+                       lsp-java--workspace-folders (list "/home/frank/Documents/sapienza/ElipseAlerter")
                        lsp-java-vmargs (list "-noverify" "-Xmx2G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication"))
                  (spacemacs|define-jump-handlers java-mode my/java-mode-jump-handler))
     :hook ((java-mode . lsp-java-enable)
