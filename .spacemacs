@@ -33,7 +33,7 @@ values."
    '(
      csv
      ;;ruby
-     ;;ruby
+     rust
      markdown
      yaml
      elixir
