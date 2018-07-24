@@ -178,10 +178,10 @@ values."
    ;;                             :width normal
    ;;                             :antialias standard
    ;;                             :powerline-scale 1.1)
-   dotspacemacs-default-font '("Hack NF"
-                               :size 18
-                               :antialias subpixel)
-   ;;                            :powerline-scale 1.1)
+   dotspacemacs-default-font '("Hack"
+                               :size 19
+                               :antialias subpixel
+                               :powerline-scale 1.1)
 
    ;; The leader key
    dotspacemacs-leader-key "SPC"
@@ -353,7 +353,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;;  (setq org-babel-sh-command "/bin/bash(require 'tramp)
 
-  (set-default 'tramp-auto-save-directory "C:\\Users\\Fhoeben\\AppData\\Local\\Temp")
+  (set-default 'tramp-auto-save-directory "/tmp")
   ;;(set-default 'tramp-default-method "plink")
   )
 
@@ -386,12 +386,12 @@ you should place your code here."
   (setq neo-autorefresh t)
   (setq auto-revert-check-vc-info t)
   (setq auto-revert-interval 5)
-  (setq default-directory "C:/Users/Fhoeben/Documents")
+  (setq default-directory "/home/frank/Documents")
   (require 'god-mode)
   (global-set-key (kbd "<escape>") 'god-local-mode)
   ;;  (global-set-key (kbd "<escape>") 'god-mode-all)
-  ;;  (setq god-exempt-major-modes nil)
-  ;;  (setq god-exempt-predicates nil)
+    (setq god-exempt-major-modes nil)
+    (setq god-exempt-predicates nil)
   (defun my-update-cursor ()
     (setq cursor-type (if (or god-local-mode buffer-read-only)
                           'bar
@@ -422,7 +422,7 @@ you should place your code here."
 
   ;;(add-hook 'god-mode-enabled-hook #'me//god-mode-indicator)
   ;;(add-hook 'god-mode-disabled-hook #'me//god-mode-indicator)
-
+  (which-key-enable-god-mode-support)
   (define-key god-local-mode-map (kbd ".") 'repeat)
   ;;(treemacs-git-mode 'extended)
   ;; (setq display-line-numbers 'relative)
@@ -586,7 +586,9 @@ _SPC_ cancel	_o_nly this     _d_elete
   (use-package lsp-ui
     :commands lsp-ui-mode
     :hook (lsp-mode . lsp-ui-mode)
-    :config (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+    :config (add-hook 'lsp-mode-hook 'lsp-ui-mode)
+    (setq lsp-ui-doc-max-height 14
+          lsp-ui-doc-max-width 40))
   (use-package company-lsp
     :hook (lsp-mode . company-mode)
     :init (setq company-lsp-cache-candidates 'auto
@@ -600,14 +602,15 @@ _SPC_ cancel	_o_nly this     _d_elete
     :init (progn (defun my/java-mode-jump-handler ()
                    (let ((xref-prompt-for-identifier nil))
                      (call-interactively #'xref-find-definitions)))
-                 (setq lsp-java-server-install-dir "C:\\Users\\Fhoeben\\.emacs.d\\eclipse.jdt.ls\\server"
+                 (setq lsp-java-server-install-dir "/home/frank/.emacs.d/eclipse.jdt.ls/server"
                        lsp-java-trace-server 'off
-                       lsp-java--workspace-folders (list "C:\\Users\Fhoeben\\Documents\\sapienza\\eclipse"))
+                       lsp-java--workspace-folders (list "/home/frank/Documents/sapienza/ElipseAlerter")
+                       lsp-java-vmargs (list "-noverify" "-Xmx2G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication"))
                  (spacemacs|define-jump-handlers java-mode my/java-mode-jump-handler))
     :hook ((java-mode . lsp-java-enable)
            (java-mode . flycheck-mode)))
 
-  (setq path-to-ctags "C:\\Users\\Fhoeben\\Apps\\ctags58\\ctags") ;; <- your ctags path here
+  (setq path-to-ctags "/home/frank/ctags58/ctags") ;; <- your ctags path here
 
   (defun create-tags (dir-name)
     "Create tags file."
