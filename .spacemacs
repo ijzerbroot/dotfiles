@@ -610,7 +610,7 @@ _SPC_ cancel	_o_nly this     _d_elete
     :hook ((java-mode . lsp-java-enable)
            (java-mode . flycheck-mode)))
 
-  (setq path-to-ctags "/home/frank/ctags58/ctags") ;; <- your ctags path here
+  (setq path-to-ctags "/home/frank/ctags58/bin/ctags") ;; <- your ctags path here
 
   (defun create-tags (dir-name)
     "Create tags file."
