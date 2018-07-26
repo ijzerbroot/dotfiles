@@ -1,4 +1,4 @@
-;;; frank_papercolor_dark-theme.el --- Theme 
+;;; frank_zomers-theme.el --- Theme 
 
 ;; Copyright (C) 2016 , Frank
 
@@ -27,28 +27,28 @@
 
 ;;; Code:
 
- (deftheme frank_papercolor_dark)
+ (deftheme frank_zomers)
  (let ((class '((class color) (min-colors 89)))
-       (fg1 "#c1c1c1")
-       (fg2 "#5fafdf")
-       (fg3 "#af87af")
-       (fg4 "#ff5faf")
-       (bg1 "#1c1c1c")
-       (bg2 "#2e2e2e")
-       (bg3 "#404040")
-       (bg4 "#525252")
-       (builtin "#afd700")
-       (keyword "#02a2a2")
-       (const   "#da8e5c")
-       (comment "#787878")
-       (func    "#afd700")
-       (str     "#ffaf00")
-       (type    "#af87af")
-       (var     "#da8e5c")
-       (warning "#ff0000")
-       (warning2 "#ff8800"))
+       (fg1 "#c7c7c7")
+       (fg2 "#b7b7b7")
+       (fg3 "#a7a7a7")
+       (fg4 "#979797")
+       (bg1 "#353839")
+       (bg2 "#454849")
+       (bg3 "#555859")
+       (bg4 "#656869")
+       (builtin "#f558c7")
+       (keyword "#02bfbf")
+       (const   "#00e6da")
+       (comment "#8c8c8c")
+       (func    "#ffaa5e")
+       (str     "#dca6fd")
+       (type    "#a3dd1a")
+       (var     "#92c617")
+       (warning "#ec0da9")
+       (warning2 "#f38827"))
    (custom-theme-set-faces
-   'frank_papercolor_dark
+   'frank_zomers
         `(default ((,class (:background ,bg1 :foreground ,fg1))))
         `(font-lock-builtin-face ((,class (:foreground ,builtin))))
         `(font-lock-comment-face ((,class (:foreground ,comment))))
@@ -69,12 +69,12 @@
 	`(cursor ((,class (:background ,bg3))))
         `(show-paren-match-face ((,class (:background ,warning))))
         `(isearch ((,class (:bold t :foreground ,warning :background ,bg3))))
-        `(mode-line ((,class (:box (:line-width 1 :color nil) :bold t :foreground ,keyword :background ,bg2))))
+        `(mode-line ((,class (:box (:line-width 1 :color nil) :bold t :foreground ,fg4 :background ,bg2))))
         `(mode-line-inactive ((,class (:box (:line-width 1 :color nil :style pressed-button) :foreground ,var :background ,bg1 :weight normal))))
         `(mode-line-buffer-id ((,class (:bold t :foreground ,func :background nil))))
 	`(mode-line-highlight ((,class (:foreground ,keyword :box nil :weight bold))))
-        `(mode-line-emphasis ((,class (:foreground ,keyword))))
-	`(vertical-border ((,class (:foreground ,keyword))))
+        `(mode-line-emphasis ((,class (:foreground ,fg1))))
+	`(vertical-border ((,class (:foreground ,fg3))))
         `(minibuffer-prompt ((,class (:bold t :foreground ,keyword))))
         `(default-italic ((,class (:italic t))))
 	`(link ((,class (:foreground ,const :underline t))))
@@ -244,10 +244,10 @@
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'frank_papercolor_dark)
+(provide-theme 'frank_zomers)
 
 ;; Local Variables:
 ;; no-byte-compile: t
 ;; End:
 
-;;; frank_papercolor_dark-theme.el ends here
+;;; frank_zomers-theme.el ends here
