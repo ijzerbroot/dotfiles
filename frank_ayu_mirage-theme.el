@@ -33,7 +33,7 @@
        (fg1 "#ccc9c2")
        (fg2 "#ffcc66")
        (fg3 "#667380")
-       (fg4 "#979797")
+       (fg4 "#443344")
        (bg1 "#212733")
        (bg2 "#454849")
        (bg3 "#555859")
@@ -49,7 +49,15 @@
        (warning "#ff3333")
        (warning2 "#f29e74")
 
-       (act1 "#4c3800")
+;;       (act1 "#4c3800")
+;;       (act1 "#ace501") ;; vet lichtgroen
+;;       (act1 "#73d0ff") ;; lichtblauw
+;;       (act1 "#ffc44c") ;; lichtoranje
+;;       (act1 "#bae67e") ;; lichtgroen
+;;       (act1 "#5ccfe6") ;; blauw
+       (act1 "#d4bfff") ;; lichtpaars
+;;       (act1 "#ffa759") ;; oranje
+;;       (act1 "#5c6773") ;; grijsblauw
        (act2 "#212733")
        (base "#ccc9c2")
        (base-dim "#ffcc66")
@@ -502,9 +510,9 @@
      `(markdown-header-face-6 ((,class (:bold nil :foreground ,head2))))
 
 ;;;;; mode-line
-     `(mode-line           ((,class (:foreground ,base :background ,act1 :box (:color ,border :line-width 1)))))
-     `(mode-line-buffer-id ((,class (:inherit bold :foreground ,func))))
-     `(mode-line-inactive  ((,class (:foreground ,base :background ,bg1  :box (:color ,border :line-width 1)))))
+     `(mode-line           ((,class (:foreground ,fg4 :background ,act1 :box (:color ,border :line-width 1)))))
+     `(mode-line-buffer-id ((,class (:inherit bold :foreground ,fg4))))
+     `(mode-line-inactive  ((,class (:foreground ,fg3 :background ,bg1  :box (:color ,border :line-width 1)))))
 
 ;;;;; mu4e
      `(mu4e-cited-1-face ((,class (:foreground ,base))))
