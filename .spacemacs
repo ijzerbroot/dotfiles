@@ -355,6 +355,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
   (push '(helm . "melpa-stable") package-pinned-packages)
 
+  (push "~/elisp/" load-path)
 
 
   ;;  (setq org-babel-sh-command "/bin/bash(require 'tramp)
