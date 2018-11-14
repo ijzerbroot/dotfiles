@@ -7,6 +7,7 @@ let g:initial_go_path = "c:/Users/fhoeben/go"
 " Make sure you use single quotes
 " Dependencies
 Plug 'junegunn/goyo.vim'
+Plug 'fenetikm/falcon'
 Plug 'junegunn/seoul256.vim'
 Plug 'hecal3/vim-leader-guide'
 Plug 'wannesm/rmvim.vim'
@@ -364,7 +365,7 @@ let g:netrw_scp_cmd  = "scp"
 :imap <S-CR> <Esc>
 set background=dark
 let g:two_firewatch_italics=1
-colo PaperColor
+colo falcon
 let g:airline_theme='challenger_deep'
 "set autochdir
 autocmd BufEnter * silent! lcd %:p:h
@@ -1180,6 +1181,7 @@ let g:lmap.T = {
             \'name' : 'Theming Menu',
             \'a' : ['AirlineToggle', 'Airline toggle'],
             \'c' : ['colo challenger_deep', 'Challenger Deep theme'],
+            \'f' : ['colo falcon',   'falcon theme'],
             \'g' : ['Goyo', 'Goyo mode toggle'],
             \'l' : ['Limelight', 'Limelight on'],
             \'L' : ['Limelight!', 'Limelight off'],
