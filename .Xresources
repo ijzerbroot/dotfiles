@@ -11,7 +11,7 @@ rofi.padding: 500
 Xft.dpi:                    96
 Xft.antialias:           true
 Xft.hinting:              true
-Xft.hintstyle:           hintslight
+Xft.hintstyle:           hintfull
 Xft.rgba:                  rgb
 
 rofi.separator-style: solid
@@ -24,7 +24,8 @@ rofi.color-urgent: argb:00000000, #52ad91, argb:00000000, #52ad91, #000000
 !XTerm*faceName: Hack Regular
 XTerm.termName: xterm-256color
 ! XTerm*faceName: TerminessTTF Nerd Font:size=15
-XTerm*faceName: Hack Regular Nerd Font Complete:size=14
+!XTerm*faceName: Hack Nerd Font Mono:size=15
+XTerm*faceName: Hack Nerd Font Mono:pixelsize=19
 XTerm*saveLines: 1000
 
 ! -------------------
@@ -35,8 +36,8 @@ URxvt.urgentOnBell: true
 URxvt.lineSpace: 2
 URxvt.internalBorder: 15
 URxvt.mouseWheelScrollPage: true
-URxvt.font:         xft:Hack Nerd Font:pixelsize=19,xft:Symbola
-URxvt.boldFont:     xft:Hack Nerd Font:pixelsize=19:weight=bold,xft:Symbola
+URxvt.font:         xft:Hack Nerd Font Mono:pixelsize=19,xft:Symbola
+URxvt.boldFont:     xft:Hack Nerd Font Mono:pixelsize=19:weight=bold,xft:Symbola
 URxvt.italicFont: xft:Hack-RegularOblique:pixelsize=14:slant=italic,xft:Symbola
 
 ! Transparency
