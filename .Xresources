@@ -23,7 +23,8 @@ rofi.color-urgent: argb:00000000, #52ad91, argb:00000000, #52ad91, #000000
 
 !XTerm*faceName: Hack Regular
 XTerm.termName: xterm-256color
-XTerm*faceName: TerminessTTF Nerd Font:size=15
+! XTerm*faceName: TerminessTTF Nerd Font:size=15
+XTerm*faceName: Hack Regular Nerd Font Complete:size=14
 XTerm*saveLines: 1000
 
 ! -------------------
@@ -34,8 +35,8 @@ URxvt.urgentOnBell: true
 URxvt.lineSpace: 2
 URxvt.internalBorder: 15
 URxvt.mouseWheelScrollPage: true
-URxvt.font:         xft:Hack-Regular:pixelsize=14,xft:Symbola
-URxvt.boldFont:     xft:Hack-Bold:pixelsize=14:weight=bold,xft:Symbola
+URxvt.font:         xft:Hack Nerd Font:pixelsize=19,xft:Symbola
+URxvt.boldFont:     xft:Hack Nerd Font:pixelsize=19:weight=bold,xft:Symbola
 URxvt.italicFont: xft:Hack-RegularOblique:pixelsize=14:slant=italic,xft:Symbola
 
 ! Transparency

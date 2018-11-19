@@ -1,8 +1,8 @@
 
 " Platform dependent stuff
-let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
-call plug#begin('C:/Users/Fhoeben/vimfiles/plugged')
-let g:initial_go_path = "c:/Users/fhoeben/go"
+" let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
+call plug#begin('/home/frank/.vim/plugged')
+" let g:initial_go_path = "c:/Users/fhoeben/go"
 " call plug#begin('/home/frank/.vim/plugged')
 " Make sure you use single quotes
 " Dependencies
@@ -399,7 +399,7 @@ set cursorline                    " highlight the current line for the cursor
 set encoding=utf-8
 set expandtab                     " expands tabs to spaces
 set list                          " show trailing whitespace
-set listchars=tab:\|\ ,trail:▫
+set listchars=tab:\|\ ,trail:?
 set nospell                       " disable spelling
 set noswapfile                    " disable swapfile usage
 set wrap
@@ -555,8 +555,8 @@ let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let g:airline_symbols.branch = ''
-let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = '?'
+let g:airline_symbols.maxlinenr = '?'
 
 "----------------------------------------------
 " Plugin: 'ctrlpvim/ctrlp.vim'
@@ -630,10 +630,10 @@ let g:vim_markdown_toc_autofit = 1
 " Plugin: neomake/neomake
 "----------------------------------------------
 " Configure signs.
-let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
-let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
-let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
-let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
+let g:neomake_error_sign   = {'text': '?', 'texthl': 'NeomakeErrorSign'}
+let g:neomake_warning_sign = {'text': '?', 'texthl': 'NeomakeWarningSign'}
+let g:neomake_message_sign = {'text': '?', 'texthl': 'NeomakeMessageSign'}
+let g:neomake_info_sign    = {'text': '?', 'texthl': 'NeomakeInfoSign'}
 
 " Files to ignore
 let NERDTreeIgnore = [
@@ -1043,15 +1043,15 @@ let g:prettier#config#print_width = 100
 let g:prettier#config#semi = 'false'
 let g:prettier#config#single_quote = 'true'
 let g:NERDTreeIndicatorMapCustom = {
-            \ "Modified"  : "✹",
-            \ "Staged"    : "✚",
-            \ "Untracked" : "✭",
-            \ "Renamed"   : "➜",
-            \ "Unmerged"  : "═",
-            \ "Deleted"   : "✖",
-            \ "Dirty"     : "✗",
-            \ "Clean"     : "✔︎",
-            \ 'Ignored'   : '☒',
+            \ "Modified"  : "?",
+            \ "Staged"    : "?",
+            \ "Untracked" : "?",
+            \ "Renamed"   : "?",
+            \ "Unmerged"  : "-",
+            \ "Deleted"   : "?",
+            \ "Dirty"     : "?",
+            \ "Clean"     : "??",
+            \ 'Ignored'   : '?',
             \ "Unknown"   : "?"
             \ }
 
