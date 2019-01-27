@@ -31,6 +31,8 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     windows-scripts
+     html
      ruby
      python
      swift
@@ -78,7 +80,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(base16-theme lsp-mode lsp-ui lsp-java challenger-deep-theme groovy-mode sr-speedbar beacon cask god-mode  kubernetes lsp-mode lsp-java lsp-javacomp sourcerer-theme doom doom-themes hcl-mode all-the-icons eyebrowse go-autocomplete)
+   dotspacemacs-additional-packages '(restclient base16-theme lsp-mode lsp-ui challenger-deep-theme groovy-mode sr-speedbar beacon cask god-mode  kubernetes lsp-mode sourcerer-theme doom doom-themes hcl-mode all-the-icons eyebrowse go-autocomplete)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -126,7 +128,7 @@ values."
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
 
-   dotspacemacs-editing-style 'hybrid
+   dotspacemacs-editing-style 'vim
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -151,7 +153,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(frank_ayu_mirage
+   dotspacemacs-themes '(frank_papercolor_dark
+                         frank_ayu_mirage
                          solarized-light
                          doom-one
                          sourcerer
@@ -184,7 +187,7 @@ values."
    ;;                             :width normal
    ;;                             :antialias standard
    ;;                             :powerline-scale 1.1)
-   dotspacemacs-default-font '("Hack"
+   dotspacemacs-default-font '("Knack NF"
                                :size 17
                                :antialias subpixel
                                :powerline-scale 1.1)
@@ -360,7 +363,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;;  (setq org-babel-sh-command "/bin/bash(require 'tramp)
 
-  (set-default 'tramp-auto-save-directory "/tmp")
+  (set-default 'tramp-auto-save-directory "c:/tmp")
   ;;(set-default 'tramp-default-method "plink")
   )
 
@@ -371,6 +374,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (load-file "~/elisp/vim-colors.el")
   ;;
   ;;  This starts the Emacs server when .emacs gets loaded
   ;;
@@ -422,7 +426,7 @@ you should place your code here."
 ;;   (global-display-line-numbers-mode)
   (add-hook 'go-mode-hook 'display-line-numbers-mode)
   (add-hook 'rust-mode-hook 'display-line-numbers-mode)
-  (add-hook 'java-mode-hook 'display-line-numbers-mode)
+  ;;(add-hook 'java-mode-hook 'display-line-numbers-mode)
   '(version-control :variables
                     version-control-diff-tool 'diff-hl)
   '(version-control :variables
@@ -570,8 +574,8 @@ _SPC_ cancel	_o_nly this     _d_elete
     (make-frame-invisible nil t))
   (global-set-key (kbd "C-x C-c") 'my-done)
   (global-set-key (kbd "C-M-c") 'save-buffers-kill-emacs)
-           (require 'lsp-javacomp)
-      (add-hook 'java-mode-hook #'lsp-javacomp-enable)
+         ;;  (require 'lsp-javacomp)
+     ;; (add-hook 'java-mode-hook #'lsp-javacomp-enable)
 
   (use-package lsp-mode
     :defer t
@@ -593,20 +597,8 @@ _SPC_ cancel	_o_nly this     _d_elete
               (spacemacs|defvar-company-backends java-mode)
               (push 'company-lsp company-backends-java-mode)
               (spacemacs|add-company-hook java-mode)))
-  (use-package lsp-java
-    :commands lsp-java-enable
-    :init (progn (defun my/java-mode-jump-handler ()
-                   (let ((xref-prompt-for-identifier nil))
-                     (call-interactively #'xref-find-definitions)))
-                 (setq lsp-java-server-install-dir "/home/frank/.emacs.d/eclipse.jdt.ls/server"
-                       lsp-java-trace-server 'off
-                       lsp-java--workspace-folders (list "/mnt/c/Users/Fhoeben/Documents/sapienza/ElipseAlerter")
-                       lsp-java-vmargs (list "-noverify" "-Xmx2G" "-XX:+UseG1GC" "-XX:+UseStringDeduplication"))
-                 (spacemacs|define-jump-handlers java-mode my/java-mode-jump-handler))
-    :hook ((java-mode . lsp-java-enable)
-           (java-mode . flycheck-mode)))
 
-  (setq path-to-ctags "/home/frank/ctags58/bin/ctags") ;; <- your ctags path here
+  (setq path-to-ctags "c:/Users/Fhoeben/Apps/ctags58/bin/ctags") ;; <- your ctags path here
 
   (defun create-tags (dir-name)
     "Create tags file."
@@ -663,7 +655,7 @@ _SPC_ cancel	_o_nly this     _d_elete
  '(hl-fg-colors
    (quote
     ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
- '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
+ '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")) t)
  '(jdee-db-active-breakpoint-face-colors (cons "#191C25" "#80A0C2"))
  '(jdee-db-requested-breakpoint-face-colors (cons "#191C25" "#A2BF8A"))
  '(jdee-db-spec-breakpoint-face-colors (cons "#191C25" "#434C5E"))
@@ -675,7 +667,7 @@ _SPC_ cancel	_o_nly this     _d_elete
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (base16-theme puppet-mode swift-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic toml-mode racer flycheck-rust cargo rust-mode lsp-ui sesman bliss-theme atom-dark-theme god-mode csv-mode dart-mode minimap ob-elixir flycheck-mix flycheck-credo alchemist elixir-mode gradle-mode rainbow-identifiers color-identifiers-mode rainbow-mode sr-speedbar terraform-mode dockerfile-mode tablist docker-tramp company-emacs-eclim eclim auto-complete firecode-theme treemacs ht pfuture git-gutter-fringe git-gutter-fringe+ fringe-helper git-gutter+ git-gutter diff-hl helm-company helm-c-yasnippet fuzzy flycheck-pos-tip pos-tip company-tern dash-functional tern company-statistics company-go company clojure-snippets auto-yasnippet ac-ispell go-autocomplete go-complete git-commit meghanada lsp-mode flycheck lsp-javacomp lsp-java rebecca-theme magit-popup ghub with-editor rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby telephone-line neon-mode mmm-mode markdown-toc markdown-mode gh-md sourcerer-theme challenger-deep-theme melancholy-theme flatui-dark-theme dashboard shut-up git commander cask kubernetes docker simpleclip beacon hcl-mode origami groovy-mode magit white-sand-theme exotica-theme helm-elscreen elscreen doom-themes doom all-the-icons memoize font-lock+ ace-jump-buffer ocodo-svg-modelines smart-mode-line smart-mode-line-powerline-theme yaml-mode term+ web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc coffee-mode seq queue zonokai-theme zenburn-theme zen-and-art-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme pastels-on-dark-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme firebelly-theme farmhouse-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme vimrc-mode dactyl-mode winum go-guru go-eldoc clojure-mode go-mode sql-indent clj-refactor inflections edn multiple-cursors paredit yasnippet peg cider-eval-sexp-fu clojure-cheatsheet cider ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bracketed-paste bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
+    (ansi json-navigator restclient treepy graphql powershell web-mode tagedit slim-mode scss-mode sass-mode pug-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data base16-theme puppet-mode swift-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic toml-mode racer flycheck-rust cargo rust-mode lsp-ui sesman bliss-theme atom-dark-theme god-mode csv-mode dart-mode minimap ob-elixir flycheck-mix flycheck-credo alchemist elixir-mode gradle-mode rainbow-identifiers color-identifiers-mode rainbow-mode sr-speedbar terraform-mode dockerfile-mode tablist docker-tramp company-emacs-eclim eclim auto-complete firecode-theme treemacs ht pfuture git-gutter-fringe git-gutter-fringe+ fringe-helper git-gutter+ git-gutter diff-hl helm-company helm-c-yasnippet fuzzy flycheck-pos-tip pos-tip company-tern dash-functional tern company-statistics company-go company clojure-snippets auto-yasnippet ac-ispell go-autocomplete go-complete git-commit meghanada lsp-mode flycheck lsp-javacomp lsp-java rebecca-theme magit-popup ghub with-editor rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby telephone-line neon-mode mmm-mode markdown-toc markdown-mode gh-md sourcerer-theme challenger-deep-theme melancholy-theme flatui-dark-theme dashboard shut-up git commander cask kubernetes docker simpleclip beacon hcl-mode origami groovy-mode magit white-sand-theme exotica-theme helm-elscreen elscreen doom-themes doom all-the-icons memoize font-lock+ ace-jump-buffer ocodo-svg-modelines smart-mode-line smart-mode-line-powerline-theme yaml-mode term+ web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc coffee-mode seq queue zonokai-theme zenburn-theme zen-and-art-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme pastels-on-dark-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme firebelly-theme farmhouse-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme vimrc-mode dactyl-mode winum go-guru go-eldoc clojure-mode go-mode sql-indent clj-refactor inflections edn multiple-cursors paredit yasnippet peg cider-eval-sexp-fu clojure-cheatsheet cider ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bracketed-paste bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async quelpa package-build spacemacs-theme)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
