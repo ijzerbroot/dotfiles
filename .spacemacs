@@ -187,7 +187,7 @@ values."
    ;;                             :width normal
    ;;                             :antialias standard
    ;;                             :powerline-scale 1.1)
-   dotspacemacs-default-font '("Knack NF"
+   dotspacemacs-default-font '("Hack"
                                :size 17
                                :antialias subpixel
                                :powerline-scale 1.1)
@@ -363,7 +363,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;;  (setq org-babel-sh-command "/bin/bash(require 'tramp)
 
-  (set-default 'tramp-auto-save-directory "c:/tmp")
+  (set-default 'tramp-auto-save-directory "/tmp")
   ;;(set-default 'tramp-default-method "plink")
   )
 
@@ -397,7 +397,7 @@ you should place your code here."
   (setq neo-autorefresh t)
   (setq auto-revert-check-vc-info t)
   (setq auto-revert-interval 5)
-  (setq default-directory "/mnt/c/Users/Fhoeben/Documents")
+  (setq default-directory "/home/frank")
 ;;  (require 'god-mode)
 ;;  (global-set-key (kbd "<escape>") 'god-local-mode)
   ;;  (global-set-key (kbd "<escape>") 'god-mode-all)
@@ -598,7 +598,7 @@ _SPC_ cancel	_o_nly this     _d_elete
               (push 'company-lsp company-backends-java-mode)
               (spacemacs|add-company-hook java-mode)))
 
-  (setq path-to-ctags "c:/Users/Fhoeben/Apps/ctags58/bin/ctags") ;; <- your ctags path here
+  (setq path-to-ctags "/usr/local/bin/ctags") ;; <- your ctags path here
 
   (defun create-tags (dir-name)
     "Create tags file."
