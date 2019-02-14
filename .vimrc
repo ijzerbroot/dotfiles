@@ -1,18 +1,18 @@
 
 " Platform dependent stuff
-" let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
-call plug#begin('/home/frank/.vim/plugged')
-" let g:initial_go_path = "c:/Users/fhoeben/go"
+let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
+call plug#begin('C:/Users/Fhoeben/vimfiles/plugged')
+let g:initial_go_path = "c:/Users/fhoeben/go"
 " call plug#begin('/home/frank/.vim/plugged')
 " Make sure you use single quotes
 " Dependencies
 Plug 'junegunn/goyo.vim'
-Plug 'fenetikm/falcon'
 Plug 'junegunn/seoul256.vim'
 Plug 'hecal3/vim-leader-guide'
 Plug 'wannesm/rmvim.vim'
 Plug 'markonm/traces.vim'
-Plug 'Valloric/YouCompleteMe'
+Plug 'fenetikm/falcon'
+"Plug 'Valloric/YouCompleteMe'
 "Plug 'starcraftman/vim-eclim'
 Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
 Plug 'godlygeek/tabular'           " This must come before plasticboy/vim-markdown
@@ -108,7 +108,7 @@ Plug 'majutsushi/tagbar'
 Plug 'ervandew/supertab'
 Plug 'schickling/vim-bufonly'
 Plug 'wesQ3/vim-windowswap'
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 "Plug 'junegunn/fzf.vim'
 Plug 'benmills/vimux'
 Plug 'jeetsukumaran/vim-buffergator'
@@ -219,7 +219,8 @@ Plug 'mhinz/vim-startify'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 " Plugin options
-Plug 'nsf/gocode'
+" "no longer maintained
+" Plug 'nsf/gocode'
 
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -280,7 +281,6 @@ let g:airline#extensions#tabline#enabled = 1
 "    colorscheme molokai
 "endif
 set laststatus=2
-set clipboard=unnamed
 set history=100
 " Ignore case when searching
 set ignorecase
@@ -299,7 +299,7 @@ set t_Co=256
 
 " NeoVim
 if exists('g:GtkGuiLoaded')
-    call rpcnotify(1, 'Gui', 'Font','Hack NF 14')
+    call rpcnotify(1, 'Gui', 'Font','Hack NF 13')
 endif
 
 " Set extra options when running in GUI mode
@@ -308,7 +308,7 @@ if has("gui_running")
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set gfn=Knack\ NF:h14
+    set gfn=Knack\ NF:h13
 endif
 if has("gui_macvim")
     set guioptions-=T
@@ -360,7 +360,8 @@ tnoremap <Leader><ESC> <C-\><C-n>
 let g:netrw_cygwin = 0
 " let g:netrw_ssh_cmd  = "plink -T -ssh"
 " let g:netrw_scp_cmd  = "pscp"
-let g:netrw_ssh_cmd  = "ssh -o ServerAliveInterval=60"
+"let g:netrw_ssh_cmd  = "ssh -o ServerAliveInterval=60"
+let g:netrw_ssh_cmd  = "ssh"
 let g:netrw_scp_cmd  = "scp"
 :imap <S-CR> <Esc>
 set background=dark
@@ -392,14 +393,14 @@ set smartindent                   " enable smart indentation
 set autoread                      " reload file if the file changes on the disk
 set autowrite                     " write when switching buffers
 set autowriteall                  " write on :quit
-set clipboard=unnamedplus
+set clipboard=unnamed
 "set colorcolumn=81                " highlight the 80th column as an indicator
 set completeopt-=preview          " remove the horrendous preview window
 set cursorline                    " highlight the current line for the cursor
 set encoding=utf-8
 set expandtab                     " expands tabs to spaces
 set list                          " show trailing whitespace
-set listchars=tab:\|\ ,trail:?
+set listchars=tab:\|\ ,trail:▫
 set nospell                       " disable spelling
 set noswapfile                    " disable swapfile usage
 set wrap
@@ -555,8 +556,8 @@ let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let g:airline_symbols.branch = '?'
-let g:airline_symbols.maxlinenr = '?'
+let g:airline_symbols.branch = ''
+let g:airline_symbols.maxlinenr = ''
 
 "----------------------------------------------
 " Plugin: 'ctrlpvim/ctrlp.vim'
@@ -630,10 +631,10 @@ let g:vim_markdown_toc_autofit = 1
 " Plugin: neomake/neomake
 "----------------------------------------------
 " Configure signs.
-let g:neomake_error_sign   = {'text': '?', 'texthl': 'NeomakeErrorSign'}
-let g:neomake_warning_sign = {'text': '?', 'texthl': 'NeomakeWarningSign'}
-let g:neomake_message_sign = {'text': '?', 'texthl': 'NeomakeMessageSign'}
-let g:neomake_info_sign    = {'text': '?', 'texthl': 'NeomakeInfoSign'}
+let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
+let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
+let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
+let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
 
 " Files to ignore
 let NERDTreeIgnore = [
@@ -1043,15 +1044,15 @@ let g:prettier#config#print_width = 100
 let g:prettier#config#semi = 'false'
 let g:prettier#config#single_quote = 'true'
 let g:NERDTreeIndicatorMapCustom = {
-            \ "Modified"  : "?",
-            \ "Staged"    : "?",
-            \ "Untracked" : "?",
-            \ "Renamed"   : "?",
-            \ "Unmerged"  : "-",
-            \ "Deleted"   : "?",
-            \ "Dirty"     : "?",
-            \ "Clean"     : "??",
-            \ 'Ignored'   : '?',
+            \ "Modified"  : "✹",
+            \ "Staged"    : "✚",
+            \ "Untracked" : "✭",
+            \ "Renamed"   : "➜",
+            \ "Unmerged"  : "═",
+            \ "Deleted"   : "✖",
+            \ "Dirty"     : "✗",
+            \ "Clean"     : "✔︎",
+            \ 'Ignored'   : '☒',
             \ "Unknown"   : "?"
             \ }
 
@@ -1092,6 +1093,7 @@ nmap <silent> <C-Up> :wincmd k<CR>
 nmap <silent> <C-Down> :wincmd j<CR>
 nmap <silent> <C-Left> :wincmd h<CR>
 nmap <silent> <C-Right> :wincmd l<CR>
+nmap <C-\> :bd<CR>
 inoremap <F9> <C-O>za
 nnoremap <F9> za
 onoremap <F9> <C-C>za
@@ -1181,7 +1183,7 @@ let g:lmap.T = {
             \'name' : 'Theming Menu',
             \'a' : ['AirlineToggle', 'Airline toggle'],
             \'c' : ['colo challenger_deep', 'Challenger Deep theme'],
-            \'f' : ['colo falcon',   'falcon theme'],
+            \'f' : ['colo falcon',   'Falcon theme'],
             \'g' : ['Goyo', 'Goyo mode toggle'],
             \'l' : ['Limelight', 'Limelight on'],
             \'L' : ['Limelight!', 'Limelight off'],
