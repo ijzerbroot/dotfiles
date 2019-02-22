@@ -379,10 +379,10 @@ you should place your code here."
   ;;
   ;;  This starts the Emacs server when .emacs gets loaded
   ;;
-  (require 'server)
-  (unless (server-running-p) (server-start))
-  (setq server-port 52699)
-  (setq server-use-tcp t)
+;;  (require 'server)
+;;  (unless (server-running-p) (server-start))
+;;  (setq server-port 52699)
+;;  (setq server-use-tcp t)
   (when (fboundp 'windmove-default-keybindings)
     (windmove-default-keybindings))
   (setq powerline-default-separator 'arrow)
@@ -398,7 +398,7 @@ you should place your code here."
   (setq neo-autorefresh t)
   (setq auto-revert-check-vc-info t)
   (setq auto-revert-interval 5)
-  (setq default-directory "/mnt/c/Users/Fhoeben/Documents")
+  (setq default-directory "/Users/Fhoeben/Documents")
 ;;  (require 'god-mode)
 ;;  (global-set-key (kbd "<escape>") 'god-local-mode)
   ;;  (global-set-key (kbd "<escape>") 'god-mode-all)
