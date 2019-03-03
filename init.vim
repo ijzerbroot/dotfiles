@@ -8,6 +8,8 @@ let g:initial_go_path = "c:/Users/fhoeben/go"
 " Dependencies
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'ayu-theme/ayu-vim' 
 Plug 'hecal3/vim-leader-guide'
 Plug 'wannesm/rmvim.vim'
 Plug 'markonm/traces.vim'
@@ -20,7 +22,7 @@ Plug 'tpope/vim-rhubarb'           " Depenency for tpope/fugitive
 Plug 'pelodelfuego/vim-swoop'
 Plug 'roman/golden-ratio'
 " General plugins
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'  " Default snippets for many languages
 Plug 'bling/vim-airline'
@@ -74,8 +76,8 @@ Plug 'pangloss/vim-javascript'                 " JavaScript syntax highlighting
 Plug 'plasticboy/vim-markdown'                 " Markdown syntax highlighting
 Plug 'rodjek/vim-puppet'                       " Puppet syntax highlighting
 Plug 'tclh123/vim-thrift'                      " Thrift syntax highlighting
-"Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
-"Plug 'zchee/deoplete-jedi'                     " Go auto completion
+Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
+Plug 'zchee/deoplete-jedi'                     " Go auto completion
 "Plug 'zimbatm/haproxy.vim'                     " HAProxy syntax highlighting
 "Plug 'dansomething/vim-eclim'
 "
@@ -231,6 +233,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Add plugins to &runtimepath
 call plug#end()
 
+let ayucolor="mirage"
 let base16colorspace=256  " Access colors present in 256 colorspace
 let g:airline_powerline_fonts=1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -522,19 +525,19 @@ autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 "----------------------------------------------
 " Plugin: Shougo/deoplete.nvim
 "----------------------------------------------
-"if has('nvim')
+if has('nvim')
     " Enable deoplete on startup
-"    let g:deoplete#enable_at_startup = 1
-"endif
+    let g:deoplete#enable_at_startup = 1
+endif
 
 " Disable deoplete when in multi cursor mode
-"function! Multiple_cursors_before()
-"    let b:deoplete_disable_auto_complete = 1
-"endfunction
+function! Multiple_cursors_before()
+    let b:deoplete_disable_auto_complete = 1
+endfunction
 
-"function! Multiple_cursors_after()
-"    let b:deoplete_disable_auto_complete = 0
-"endfunction
+function! Multiple_cursors_after()
+    let b:deoplete_disable_auto_complete = 0
+endfunction
 
 "----------------------------------------------
 " Plugin: bling/vim-airline
@@ -705,7 +708,7 @@ let g:multi_cursor_skip_key='<C-b>'
 " Plugin: zchee/deoplete-go
 "----------------------------------------------
 " Enable completing of go pointers
-"let g:deoplete#sources#go#pointer = 1
+let g:deoplete#sources#go#pointer = 1
 
 "----------------------------------------------
 " Language: Golang
@@ -998,7 +1001,7 @@ au FileType yaml set softtabstop=2
 au FileType yaml set tabstop=2
 
 "let g:EclimCompletionMethod = 'omnifunc'
-"let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 "let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
 let g:syntastic_swift_checkers = ['swiftpm']
 " remap ; to : and vv

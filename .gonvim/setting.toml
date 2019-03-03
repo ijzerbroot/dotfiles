@@ -1,0 +1,35 @@
+[Statusline]
+Visible = true
+[MiniMap]
+Visible = false
+[Editor]
+# Editor minimum width (>= 800)
+width = 1600
+# Editor minimum height (>= 600)
+height = 900
+GinitVim = '''
+  	set guifont=Knack\ NF:h13
+'''
+
+[Workspace]
+# name: directoryname
+# full: /path/to/directoryname
+# minimum: /p/t/directoryname
+PathStyle = "minimum"
+# Restore session-information that was ended without being saved
+RestoreSession = false
+# File open command in gonvim file explorer
+FileExplorerOpenCmd = ":tabnew"
+
+[Tabline]
+Visible = true
+
+[Lint]
+Visible = true
+
+[ScrollBar]
+Visible = false
+
+[ActivityBar]
+Visible = false
+DropShadow = false
