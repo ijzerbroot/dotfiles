@@ -2,9 +2,9 @@
 set timeoutlen=300
 set ttimeoutlen=100
 " Platform dependent stuff
-let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
-call plug#begin('C:/Users/Fhoeben/vimfiles/plugged')
-let g:initial_go_path = "c:/users/Fhoeben/go"
+"let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
+call plug#begin('/home/frank/.vim/plugged')
+let g:initial_go_path = "/home/frank/go"
 " call plug#begin('/home/frank/.vim/plugged')
 " Make sure you use single quotes
 " Dependencies
@@ -16,6 +16,7 @@ Plug 'hecal3/vim-leader-guide'
 Plug 'wannesm/rmvim.vim'
 Plug 'markonm/traces.vim'
 Plug 'fenetikm/falcon'
+Plug 'sarahlim/wild-cherry-vim'
 "Plug 'Valloric/YouCompleteMe'
 "Plug 'starcraftman/vim-eclim'
 Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
@@ -79,7 +80,7 @@ Plug 'plasticboy/vim-markdown'                 " Markdown syntax highlighting
 Plug 'rodjek/vim-puppet'                       " Puppet syntax highlighting
 Plug 'tclh123/vim-thrift'                      " Thrift syntax highlighting
 Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
-Plug 'zchee/deoplete-jedi'                     " Go auto completion
+"Plug 'zchee/deoplete-jedi'                     " Go auto completion
 "Plug 'zimbatm/haproxy.vim'                     " HAProxy syntax highlighting
 "Plug 'dansomething/vim-eclim'
 "
@@ -250,7 +251,8 @@ set termguicolors
 " colorscheme challenger_deep
 " set background=dark    " Setting dark mode
 "let g:airline_theme='powerlineish'
-set gfn=Hack\ NF:h15:cANSI
+" set gfn=MesloLGLDZ\ Nerd\ Font\ Mono:h14:cANSI
+set gfn=Hack\:h14:cANSI
 "let g:vimfiler_as_default_explorer = 1
 "call vimfiler#custom#profile('default', 'context', {
 "            \ 'explorer' : 1,
@@ -309,7 +311,7 @@ set t_Co=256
 
 " NeoVim
 if exists('g:GtkGuiLoaded')
-    call rpcnotify(1, 'Gui', 'Font','Hack NF 13')
+    call rpcnotify(1, 'Gui', 'Font','MesloLGLDZ\ NF:14')
 endif
 
 " Set extra options when running in GUI mode
@@ -318,14 +320,14 @@ if has("gui_running")
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set gfn=MesloLGLDZ\ NF:h15
+    set gfn=MesloLGLDZ\ NF:h14
 endif
 if has("gui_macvim")
     set guioptions-=T
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set gfn=MesloLGLDZ\ NF:h15:cANSI
+    set gfn=MesloLGLDZ\ NF:h14:cANSI
 endif
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -410,8 +412,8 @@ set completeopt-=preview          " remove the horrendous preview window
 set cursorline                    " highlight the current line for the cursor
 set encoding=utf-8
 set expandtab                     " expands tabs to spaces
-set list                          " show trailing whitespace
-set listchars=tab:\|\ ,trail:▫
+"set list                          " show trailing whitespace
+"set listchars=tab:\|\ ,trail:▫
 set nospell                       " disable spelling
 set noswapfile                    " disable swapfile usage
 set wrap
@@ -1069,7 +1071,7 @@ let g:NERDTreeIndicatorMapCustom = {
 
 " tagbar
 " use universal-ctags project
-let g:tagbar_ctags_bin = '~/apps/u-ctags/bin/ctags'
+let g:tagbar_ctags_bin = '/usr/bin/universal-ctags'
 "Folding
 set foldmethod=syntax
 set foldlevelstart=20
