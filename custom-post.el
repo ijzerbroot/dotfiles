@@ -21,7 +21,7 @@
 (require 'company)
 (setq company-idle-delay 5
       company-minimum-prefix-length 3)
-(global-set-key "S-TAB" 'company-complete-common)
+(global-set-key "\t" 'company-complete-common)
 
 (add-hook 'go-mode-hook #'lsp)
 
