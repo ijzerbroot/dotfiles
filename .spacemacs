@@ -470,6 +470,7 @@ you should place your code here."
                     version-control-global-margin t)
   (global-diff-hl-mode)
   (golden-ratio-mode 1)
+  (cua-mode t)
   ;;(add-hook 'prog-mode-hook 'turn-on-diff-hl-mode)
   ;;(add-hook 'vc-dir-mode-hook 'turn-on-diff-hl-mode)
   ;; Make sure that the bash executable can be found
