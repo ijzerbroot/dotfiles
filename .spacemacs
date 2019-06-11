@@ -552,6 +552,14 @@ you should place your code here."
   (setq company-idle-delay 3
         company-minimum-prefix-length 3)
   ;;(global-set-key "\t" 'company-complete-common)
+
+  ;; for terminal on windows
+  ;;(require 'fakecygpty)
+  ;;(fakecygpty-activate)
+  ;; Make sure that the bash executable can be found
+  (setq explicit-shell-file-name "C:/cygwin64/bin/bash.exe")
+  (setq shell-file-name explicit-shell-file-name)
+  (add-to-list 'exec-path "C:/cygwin64/bin")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
