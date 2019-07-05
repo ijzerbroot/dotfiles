@@ -190,7 +190,7 @@ values."
    ;;                             :antialias subpixel
    ;;                             :powerline-scale 1.1)
 
-   dotspacemacs-default-font '("Hack NF"
+   dotspacemacs-default-font '("Hack Nerd Font"
                                :size 14
                                :powerline-scale 1)
    ;; The leader key
@@ -359,12 +359,12 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;;(push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
   (push '(helm . "melpa-stable") package-pinned-packages)
 
-  (push "c:\\Users\\Fhoeben\\elisp" load-path)
+  (push "/home/frank/elisp" load-path)
 
 
   ;;  (setq org-babel-sh-command "/bin/bash(require 'tramp)
 
-  (set-default 'tramp-auto-save-directory "c:\\tmp")
+  (set-default 'tramp-auto-save-directory "/tmp")
   ;;(set-default 'tramp-default-method "plink")
   )
 
@@ -384,8 +384,8 @@ you should place your code here."
   ;;  (add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
   ;;  (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
 
-  (add-to-list 'default-frame-alist '(font . "Hack NF-14" ))
-  (set-face-attribute 'default t :font "Hack NF-14" )
+  (add-to-list 'default-frame-alist '(font . "Hack Nerd Font-14" ))
+  (set-face-attribute 'default t :font "Hack Nerd Font-14" )
   ;;(load-file "c:\\Users\\Fhoeben\\elisp\\vim-colors.el")
   ;;
   ;;  This starts the Emacs server when .emacs gets loaded
@@ -433,7 +433,7 @@ you should place your code here."
   (setq neo-autorefresh t)
   (setq auto-revert-check-vc-info t)
   (setq auto-revert-interval 5)
-  (setq default-directory "C:\\Users\\Fhoeben\\Documents")
+  (setq default-directory "/home/frank/docs")
   (setq-default line-height 0.80)
     (require 'god-mode)
     (global-set-key (kbd "<escape>") 'god-local-mode)
@@ -555,6 +555,8 @@ you should place your code here."
         company-minimum-prefix-length 3)
   ;;(global-set-key "\t" 'company-complete-common)
 
+  (setq ansi-term-color-vector [term term-color-black term-color-red term-color-green term-color-yellow term-color-blue term-color-magenta term-color-cyan term-color-white])
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -575,7 +577,7 @@ you should place your code here."
  '(cua-read-only-cursor-color "#859900")
  '(custom-safe-themes
    (quote
-    ("8aa22443badba1d772cc9d960cc376e71ab93583d73613b9e0f2dd97ff506b9c" "c1f841d3e12150713efb3833afa37eb6c9bca8ec4c9e55aa1e5e740fe47c1c98" "10bf073b3d442d44118d5deb9c1f3c612721ef0e508ec70107dbb5e1ccb3dabf" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "ecba61c2239fbef776a72b65295b88e5534e458dfe3e6d7d9f9cb353448a569e" "72a81c54c97b9e5efcc3ea214382615649ebb539cb4f2fe3a46cd12af72c7607" "9d9fda57c476672acd8c6efeb9dc801abea906634575ad2c7688d055878e69d6" "51e228ffd6c4fff9b5168b31d5927c27734e82ec61f414970fc6bcce23bc140d" "19ba41b6dc0b5dd34e1b8628ad7ae47deb19f968fe8c31853d64ea8c4df252b8" "4697a2d4afca3f5ed4fdf5f715e36a6cac5c6154e105f3596b44a4874ae52c45" "8891c81848a6cf203c7ac816436ea1a859c34038c39e3cf9f48292d8b1c86528" "06ffa2bf4e891580bfe6a5ce68d0909ed9c4278e5234ede6b3ba459ef35d9a1b" "ce3e6c12b48979ce89754884d913c7ecc8a7956543d8b09ef13abfab6af9aa35" "a156fcac344bbfdc979a5adf9cecf1c2de56c4c937549ae0571b7f11ad4fe6a9" "fe666e5ac37c2dfcf80074e88b9252c71a22b6f5d2f566df9a7aa4f9bea55ef8" "2af26301bded15f5f9111d3a161b6bfb3f4b93ec34ffa95e42815396da9cb560" "8bb8a5b27776c39b3c7bf9da1e711ac794e4dc9d43e32a075d8aa72d6b5b3f59" "748d0e2ffdaf95015a539dcc95ab888283284ad7b076963760422cbe5e21903a" "718fb4e505b6134cc0eafb7dad709be5ec1ba7a7e8102617d87d3109f56d9615" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "a2e7b508533d46b701ad3b055e7c708323fb110b6676a8be458a758dd8f24e27" "cedd3b4295ac0a41ef48376e16b4745c25fa8e7b4f706173083f16d5792bb379" default)))
+    ("91375c6dc506913ac7488f655b5afe934f343a0b223021c349105d37748c6696" "8aa22443badba1d772cc9d960cc376e71ab93583d73613b9e0f2dd97ff506b9c" "c1f841d3e12150713efb3833afa37eb6c9bca8ec4c9e55aa1e5e740fe47c1c98" "10bf073b3d442d44118d5deb9c1f3c612721ef0e508ec70107dbb5e1ccb3dabf" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "ecba61c2239fbef776a72b65295b88e5534e458dfe3e6d7d9f9cb353448a569e" "72a81c54c97b9e5efcc3ea214382615649ebb539cb4f2fe3a46cd12af72c7607" "9d9fda57c476672acd8c6efeb9dc801abea906634575ad2c7688d055878e69d6" "51e228ffd6c4fff9b5168b31d5927c27734e82ec61f414970fc6bcce23bc140d" "19ba41b6dc0b5dd34e1b8628ad7ae47deb19f968fe8c31853d64ea8c4df252b8" "4697a2d4afca3f5ed4fdf5f715e36a6cac5c6154e105f3596b44a4874ae52c45" "8891c81848a6cf203c7ac816436ea1a859c34038c39e3cf9f48292d8b1c86528" "06ffa2bf4e891580bfe6a5ce68d0909ed9c4278e5234ede6b3ba459ef35d9a1b" "ce3e6c12b48979ce89754884d913c7ecc8a7956543d8b09ef13abfab6af9aa35" "a156fcac344bbfdc979a5adf9cecf1c2de56c4c937549ae0571b7f11ad4fe6a9" "fe666e5ac37c2dfcf80074e88b9252c71a22b6f5d2f566df9a7aa4f9bea55ef8" "2af26301bded15f5f9111d3a161b6bfb3f4b93ec34ffa95e42815396da9cb560" "8bb8a5b27776c39b3c7bf9da1e711ac794e4dc9d43e32a075d8aa72d6b5b3f59" "748d0e2ffdaf95015a539dcc95ab888283284ad7b076963760422cbe5e21903a" "718fb4e505b6134cc0eafb7dad709be5ec1ba7a7e8102617d87d3109f56d9615" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "a2e7b508533d46b701ad3b055e7c708323fb110b6676a8be458a758dd8f24e27" "cedd3b4295ac0a41ef48376e16b4745c25fa8e7b4f706173083f16d5792bb379" default)))
  '(evil-want-Y-yank-to-eol nil)
  '(fci-rule-color "#202325" t)
  '(global-linum-mode t)
@@ -602,7 +604,7 @@ you should place your code here."
  '(hl-fg-colors
    (quote
     ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
- '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")) t)
+ '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
  '(jdee-db-active-breakpoint-face-colors (cons "#191C25" "#80A0C2"))
  '(jdee-db-requested-breakpoint-face-colors (cons "#191C25" "#A2BF8A"))
  '(jdee-db-spec-breakpoint-face-colors (cons "#191C25" "#434C5E"))
