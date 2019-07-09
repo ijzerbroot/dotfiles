@@ -1,17 +1,22 @@
 
+set timeoutlen=300
+set ttimeoutlen=100
 " Platform dependent stuff
 let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
 call plug#begin('C:/Users/Fhoeben/vimfiles/plugged')
-let g:initial_go_path = "c:/Users/fhoeben/go"
+let g:initial_go_path = "c:/users/Fhoeben/go"
 " call plug#begin('/home/frank/.vim/plugged')
 " Make sure you use single quotes
 " Dependencies
+Plug 'udalov/kotlin-vim'
+"Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'junegunn/goyo.vim'
+Plug 'flrnprz/candid.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'drewtempelmeyer/palenight.vim'
-Plug 'ayu-theme/ayu-vim' 
+Plug 'ayu-theme/ayu-vim'
 Plug 'hecal3/vim-leader-guide'
-Plug 'wannesm/rmvim.vim'
+"Plug 'wannesm/rmvim.vim'
 Plug 'markonm/traces.vim'
 Plug 'fenetikm/falcon'
 "Plug 'Valloric/YouCompleteMe'
@@ -22,7 +27,7 @@ Plug 'tpope/vim-rhubarb'           " Depenency for tpope/fugitive
 Plug 'pelodelfuego/vim-swoop'
 Plug 'roman/golden-ratio'
 " General plugins
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'  " Default snippets for many languages
 Plug 'bling/vim-airline'
@@ -56,12 +61,14 @@ if !has('nvim')
 endif
 
 " Language support
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
 Plug 'aklt/plantuml-syntax'                    " PlantUML syntax highlighting
 Plug 'cespare/vim-toml'                        " toml syntax highlighting
 Plug 'chr4/nginx.vim'                          " nginx syntax highlighting
 Plug 'dag/vim-fish'                            " Fish syntax highlighting
 Plug 'digitaltoad/vim-pug'                     " Pug syntax highlighting
-Plug 'fatih/vim-go'                            " Go support
+"Plug 'fatih/vim-go'                            " Go support
 Plug 'rust-lang/rust.vim'                      " Rust support
 Plug 'racer-rust/vim-racer'                    " Rust support
 "Plug 'fishbullet/deoplete-ruby'                " Ruby auto completion
@@ -76,8 +83,8 @@ Plug 'pangloss/vim-javascript'                 " JavaScript syntax highlighting
 Plug 'plasticboy/vim-markdown'                 " Markdown syntax highlighting
 Plug 'rodjek/vim-puppet'                       " Puppet syntax highlighting
 Plug 'tclh123/vim-thrift'                      " Thrift syntax highlighting
-Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
-Plug 'zchee/deoplete-jedi'                     " Go auto completion
+"Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
+"Plug 'zchee/deoplete-jedi'                     " Go auto completion
 "Plug 'zimbatm/haproxy.vim'                     " HAProxy syntax highlighting
 "Plug 'dansomething/vim-eclim'
 "
@@ -107,7 +114,7 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'tpope/vim-unimpaired'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
-Plug 'ervandew/supertab'
+"Plug 'ervandew/supertab'
 Plug 'schickling/vim-bufonly'
 Plug 'wesQ3/vim-windowswap'
 "Plug 'SirVer/ultisnips'
@@ -192,6 +199,11 @@ Plug 'mattreduce/vim-mix'
 "Plug 'tpope/vim-endwise'
 "Plug 'jadercorrea/elixir_generator.vim'
 
+" Ruby
+Plug 'vim-ruby/vim-ruby'
+" Crystal support
+" Plug 'rhysd/vim-crystal'
+
 "Java support
 " Plug 'artur-shaik/vim-javacomplete2'
 
@@ -243,7 +255,7 @@ set termguicolors
 " colorscheme challenger_deep
 " set background=dark    " Setting dark mode
 "let g:airline_theme='powerlineish'
-"set gfn=Hack:h14:cANSI
+set gfn=Hack\ NF:h19:cANSI
 "let g:vimfiler_as_default_explorer = 1
 "call vimfiler#custom#profile('default', 'context', {
 "            \ 'explorer' : 1,
@@ -302,7 +314,7 @@ set t_Co=256
 
 " NeoVim
 if exists('g:GtkGuiLoaded')
-    call rpcnotify(1, 'Gui', 'Font','Hack NF 13')
+    call rpcnotify(1, 'Gui', 'Font','Hack NF 19')
 endif
 
 " Set extra options when running in GUI mode
@@ -311,14 +323,23 @@ if has("gui_running")
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set gfn=Knack\ NF:h13
+    set gfn=Hack\ NF:h19
+    GuiPopupmenu 0
 endif
 if has("gui_macvim")
     set guioptions-=T
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set gfn=Knack\ Regular:h14:cANSI
+    set gfn=MesloLGSDZ\ NF:h15:cANSI
+endif
+if exists('g:fvim_loaded')
+    " good old 'set guifont' compatibility
+    set guifont=Hack\ NF:h19
+    " Ctrl-ScrollWheel for zooming in/out
+    nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
+    nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
+    nnoremap <A-CR> :call rpcnotify(1, 'ToggleFullScreen', 1)<CR>
 endif
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -356,9 +377,10 @@ tnoremap <Leader><ESC> <C-\><C-n>
 
 "if has("win32")
 "    set shell=cmd.exe
-"    set shellcmdflag=/c\ powershell.exe\ -NoLogo\ -NonInteractive\ -ExecutionPolicy\ Bypass
-"    set shellpipe=|
-"    set shellredir=>
+    "set shellcmdflag=/c\ powershell.exe\ -NoLogo\ -NonInteractive\ -ExecutionPolicy\ Bypass
+"    set shellcmdflag=/c\ \"C:\\Progra~1\\Git\\bin\\bash.exe\ --login\ -c\"
+    "set shellpipe=|
+    "set shellredir=>
 "endif
 let g:netrw_cygwin = 0
 " let g:netrw_ssh_cmd  = "plink -T -ssh"
@@ -369,7 +391,7 @@ let g:netrw_scp_cmd  = "scp"
 :imap <S-CR> <Esc>
 set background=dark
 let g:two_firewatch_italics=1
-colo falcon
+colo ayu
 let g:airline_theme='challenger_deep'
 "set autochdir
 autocmd BufEnter * silent! lcd %:p:h
@@ -402,7 +424,7 @@ set completeopt-=preview          " remove the horrendous preview window
 set cursorline                    " highlight the current line for the cursor
 set encoding=utf-8
 set expandtab                     " expands tabs to spaces
-set list                          " show trailing whitespace
+"set list                          " show trailing whitespace
 set listchars=tab:\|\ ,trail:▫
 set nospell                       " disable spelling
 set noswapfile                    " disable swapfile usage
@@ -525,19 +547,19 @@ autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 "----------------------------------------------
 " Plugin: Shougo/deoplete.nvim
 "----------------------------------------------
-if has('nvim')
-    " Enable deoplete on startup
-    let g:deoplete#enable_at_startup = 1
-endif
+"if has('nvim')
+"    " Enable deoplete on startup
+"    let g:deoplete#enable_at_startup = 1
+"endif
 
-" Disable deoplete when in multi cursor mode
-function! Multiple_cursors_before()
-    let b:deoplete_disable_auto_complete = 1
-endfunction
+"" Disable deoplete when in multi cursor mode
+"function! Multiple_cursors_before()
+"    let b:deoplete_disable_auto_complete = 1
+"endfunction
 
-function! Multiple_cursors_after()
-    let b:deoplete_disable_auto_complete = 0
-endfunction
+"function! Multiple_cursors_after()
+"    let b:deoplete_disable_auto_complete = 0
+"endfunction
 
 "----------------------------------------------
 " Plugin: bling/vim-airline
@@ -708,7 +730,7 @@ let g:multi_cursor_skip_key='<C-b>'
 " Plugin: zchee/deoplete-go
 "----------------------------------------------
 " Enable completing of go pointers
-let g:deoplete#sources#go#pointer = 1
+"let g:deoplete#sources#go#pointer = 1
 
 "----------------------------------------------
 " Language: Golang
@@ -1001,9 +1023,9 @@ au FileType yaml set softtabstop=2
 au FileType yaml set tabstop=2
 
 "let g:EclimCompletionMethod = 'omnifunc'
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 "let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
-let g:syntastic_swift_checkers = ['swiftpm']
+"let g:syntastic_swift_checkers = ['swiftpm']
 " remap ; to : and vv
 nmap ; :
 nnoremap ;; ;
@@ -1071,10 +1093,14 @@ set foldlevelstart=20
 " Shortcuts!
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
+map <C-a> ggVG
+map <C-c> "+y
 " Move between buffers with Shift + arrow key...
 nnoremap <S-Left> :bprevious<cr>
 nnoremap <S-Right> :bnext<cr>
-
+" move between tabs with Alt + arrow key
+nnoremap <A-Left> :tabprev<cr>
+nnoremap <A-Right> :tabnext<cr>
 " ... but skip the quickfix when navigating
 augroup qf
     autocmd!
@@ -1227,3 +1253,22 @@ map <localleader>. <Plug>leaderguide-buffer
 let g:buffergator_suppress_keymaps = 1
 let g:goyo_width = 100
 let g:goyo_height = 90
+if exists("g:gui_oni")
+    autocmd VimEnter * AirlineToggle
+    autocmd VimEnter * AirlineToggle
+    "let g:gruvbox_italic=1
+    "let g:airline_theme='gruvbox'
+endif
+let g:go_def_mode = "gopls" 
+augroup LspGo
+  au!
+  autocmd User lsp_setup call lsp#register_server({
+      \ 'name': 'go-lang',
+      \ 'cmd': {server_info->['gopls']},
+      \ 'whitelist': ['go'],
+      \ })
+  autocmd FileType go setlocal omnifunc=lsp#complete
+  "autocmd FileType go nmap <buffer> gd <plug>(lsp-definition)
+  "autocmd FileType go nmap <buffer> ,n <plug>(lsp-next-error)
+  "autocmd FileType go nmap <buffer> ,p <plug>(lsp-previous-error)
+augroup END
