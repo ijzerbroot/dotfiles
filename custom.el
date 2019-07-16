@@ -58,7 +58,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("6b2636879127bf6124ce541b1b2824800afc49c6ccd65439d6eb987dbf200c36" "abf61595613add01aa964eaf601bca886202a16aaa2fbfe136d710b929d8f6a7" "b0e790ae74e416ac3ea947e07fdd97794ae4c7f5fd04d6c980da8bb88ae587ac" "a3fa4abaf08cc169b61dea8f6df1bbe4123ec1d2afeb01c17e11fdc31fc66379" "6d589ac0e52375d311afaa745205abb6ccb3b21f6ba037104d71111e7e76a3fc" "14de8f58ad656af5be374086ae7ab663811633fc1483a02add92f7a1ff1a8455" "2f4f50d98073c01038b518066840638455657dc91dd1a225286d573926f36914" "93a0885d5f46d2aeac12bf6be1754faa7d5e28b27926b8aa812840fe7d0b7983" "886fe9a7e4f5194f1c9b1438955a9776ff849f9e2f2bbb4fa7ed8879cdca0631" default))))
+    ("82358261c32ebedfee2ca0f87299f74008a2e5ba5c502bde7aaa15db20ee3731" "57b579184165225924f7fdb67ecabce23fffed85f0bcbea5cfb7c69079e33b1b" "68bf77811b94a9d877f9c974c19bafe5b67b53ed82baf96db79518564177c0fb" "fd944f09d4d0c4d4a3c82bd7b3360f17e3ada8adf29f28199d09308ba01cc092" "ef07cb337554ffebfccff8052827c4a9d55dc2d0bc7f08804470451385d41c5c" "d2e9c7e31e574bf38f4b0fb927aaff20c1e5f92f72001102758005e53d77b8c9" "f0dc4ddca147f3c7b1c7397141b888562a48d9888f1595d69572db73be99a024" "6b2636879127bf6124ce541b1b2824800afc49c6ccd65439d6eb987dbf200c36" "abf61595613add01aa964eaf601bca886202a16aaa2fbfe136d710b929d8f6a7" "b0e790ae74e416ac3ea947e07fdd97794ae4c7f5fd04d6c980da8bb88ae587ac" "a3fa4abaf08cc169b61dea8f6df1bbe4123ec1d2afeb01c17e11fdc31fc66379" "6d589ac0e52375d311afaa745205abb6ccb3b21f6ba037104d71111e7e76a3fc" "14de8f58ad656af5be374086ae7ab663811633fc1483a02add92f7a1ff1a8455" "2f4f50d98073c01038b518066840638455657dc91dd1a225286d573926f36914" "93a0885d5f46d2aeac12bf6be1754faa7d5e28b27926b8aa812840fe7d0b7983" "886fe9a7e4f5194f1c9b1438955a9776ff849f9e2f2bbb4fa7ed8879cdca0631" default))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -80,6 +80,8 @@
  '(hl-todo ((t (:box t :inherit))))
  '(lsp-ui-doc-background ((t (:background nil))))
  '(lsp-ui-doc-header ((t (:inherit (font-lock-string-face italic)))))
+ '(macrostep-expansion-highlight-face ((t (:background "#23272e"))))
+ '(org-ellipsis ((t (:foreground nil))))
  '(symbol-overlay-default-face ((t (:inherit (quote region)))))
  '(symbol-overlay-face-1 ((t (:inherit (quote highlight)))))
  '(symbol-overlay-face-2 ((t (:inherit (quote font-lock-builtin-face) :inverse-video t))))
