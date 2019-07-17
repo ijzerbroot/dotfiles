@@ -24,12 +24,13 @@
 (when (display-graphic-p)
   ;; Set default font
   (catch 'loop
-    (dolist (font '("SF Mono" "Hack Nerd Font" "Source Code Pro" "Fira Code"
+    (dolist (font '("SF Mono" "Hack Nerd Font Regular" "Source Code Pro" "Fira Code"
                     "Menlo" "Monaco" "DejaVu Sans Mono" "Consolas"))
       (when (member font (font-family-list))
         (set-face-attribute 'default nil :font font)
         (set-face-attribute 'default nil :height (cond (sys/macp 200)
                                                        (sys/win32p 150)
+                                                       (sys/linuxp 150)
                                                        (t 120)))
         (throw 'loop t))))
 

@@ -2,7 +2,13 @@
 (add-to-list 'package-archives '("elpa" . "https://elpa.gnu.org/packages/"))
 (add-hook 'go-mode-hook #'lsp)
 
+
+;; transparency!
+(set-frame-parameter (selected-frame) 'alpha '(90 . 50))
+(add-to-list 'default-frame-alist '(alpha . (90 . 50)))
+
 (require 'company)
+
 (setq company-idle-delay 5
       company-minimum-prefix-length 3)
 (global-set-key "\t" 'company-complete-common)
