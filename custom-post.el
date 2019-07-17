@@ -1,5 +1,5 @@
 (push "/home/frank/elisp/" load-path)
-
+(add-to-list 'package-archives '("elpa" . "https://elpa.gnu.org/packages/"))
 (add-hook 'go-mode-hook #'lsp)
 
 (require 'company)
