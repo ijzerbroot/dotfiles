@@ -9,7 +9,7 @@ let g:initial_go_path = "c:/users/Fhoeben/go"
 " Make sure you use single quotes
 " Dependencies
 Plug 'udalov/kotlin-vim'
-"Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'junegunn/goyo.vim'
 Plug 'flrnprz/candid.vim'
 Plug 'junegunn/seoul256.vim'
@@ -31,11 +31,11 @@ Plug 'roman/golden-ratio'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'  " Default snippets for many languages
 Plug 'bling/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'          " CtrlP is installed to support tag finding in vim-go
+"Plug 'ctrlpvim/ctrlp.vim'          " CtrlP is installed to support tag finding in vim-go
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/calendar.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
 Plug 'mileszs/ack.vim'
@@ -237,7 +237,7 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 " Plug 'nsf/gocode'
 
 " Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " Unmanaged plugin (manually installed and updated)
 "Plug '~/my-prototype-plugin'
@@ -403,7 +403,7 @@ let g:go_highlight_operators = 1
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 filetype plugin on
-set omnifunc=syntaxcomplete#Complete
+"set omnifunc=syntaxcomplete#Complete
 "set diffopt=horizontal
 "map <Leader>vf :VimFiler<CR>
 " buffers open in new tab
@@ -1094,6 +1094,7 @@ set foldlevelstart=20
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 map <C-a> ggVG
+map <C-v> <esc>p
 map <C-c> "+y
 " Move between buffers with Shift + arrow key...
 nnoremap <S-Left> :bprevious<cr>
