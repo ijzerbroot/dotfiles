@@ -1,17 +1,16 @@
-(push "/home/frank/elisp/" load-path)
+(push "C:/Users/Fhoeben/elisp/" load-path)
 (add-to-list 'package-archives '("elpa" . "https://elpa.gnu.org/packages/"))
 (add-hook 'go-mode-hook #'lsp)
 
 
 ;; transparency!
-(set-frame-parameter (selected-frame) 'alpha '(90 . 50))
-(add-to-list 'default-frame-alist '(alpha . (90 . 50)))
+;;(set-frame-parameter (selected-frame) 'alpha '(97 . 97))
+;;(add-to-list 'default-frame-alist '(alpha . (97 . 97)))
 
 (require 'company)
 
-(setq company-idle-delay 5
-      company-minimum-prefix-length 3)
-(global-set-key "\t" 'company-complete-common)
+(setq company-idle-delay 3
+      company-minimum-prefix-length 2)
 
 (add-hook 'go-mode-hook #'lsp)
 
@@ -30,7 +29,7 @@
 (setq neo-autorefresh t)
 (setq auto-revert-check-vc-info t)
 (setq auto-revert-interval 5)
-(setq default-directory "/home/frank/Documents")
+(setq default-directory "C:/Users/Fhoeben/Documents")
 (setq-default line-height 0.80)
 (setq auto-revert-check-vc-info t)
 
@@ -65,7 +64,6 @@
    (format "%s -f TAGS -e -R %s" path-to-ctags (directory-file-name dir-name)))
   )
 
-(setq lsp-enable-snippet 'nil)
 (use-package toml-mode)
 
 (use-package rust-mode
@@ -80,6 +78,7 @@
 (use-package lsp-mode
   :ensure t
   :config
+  (setq lsp-enable-snippet 'nil)
   (setq lsp-print-io t)
   (setq lsp-rust-rls-command '("rls"))
   ;; (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls"))
@@ -113,3 +112,43 @@ PARAMS progress report notification data."
                           :notification-handlers (lsp-ht ("window/progress" 'diabolo-lsp-rust-window-progress)))))
       (lsp)))
   )
+
+(require 'cc-mode)
+(require 'lsp-java)
+(setq lsp-java-workspace-dir (f-join lsp-java-test-root "workspace")
+      lsp-java-pop-buffer-function 'pop-to-buffer
+      lsp-print-io t
+      lsp-inhibit-message nil
+      lsp-java-workspace-cache-dir (f-join lsp-java-test-root "workspace-cache")
+      lsp-java-server-install-dir '"C:/Users/Fhoeben/lsp/java/redhat.java-0.47.0/server/"
+      lsp-response-timeout 30)
+(when (file-exists-p lsp-java-test-root)
+  (delete-directory lsp-java-test-root t))
+(setq lsp--session (make-lsp-session))
+(add-hook 'java-mode-hook #'lsp)
+(condition-case nil
+    (require 'use-package)
+  (file-error
+   (require 'package)
+   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+   (package-initialize)
+   (package-refresh-contents)
+   (package-install 'use-package)
+   (require 'use-package)))
+
+(use-package projectile :ensure t)
+;;(use-package yasnippet :ensure t)
+(use-package lsp-mode :ensure t)
+(use-package hydra :ensure t)
+(use-package company-lsp :ensure t)
+;;(use-package lsp-ui :ensure t)
+(use-package lsp-java :ensure t :after lsp
+  :config (add-hook 'java-mode-hook 'lsp))
+
+(use-package dap-mode
+  :ensure t :after lsp-mode
+  :config
+  (dap-mode t)
+  (dap-ui-mode t))
+
+(use-package dap-java :after (lsp-java))
