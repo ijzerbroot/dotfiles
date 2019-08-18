@@ -33,7 +33,7 @@ values."
    '(
      kotlin
      ;;html
-     ruby
+     ;;ruby
      python
      ;;vim-powerline
      csv
@@ -53,9 +53,11 @@ values."
      ;; treemacs
      version-control
      ;;java
+     typescript
      docker
      terraform
      colors
+     doom-modeline
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -81,11 +83,11 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(counsel-tramp tabbar restclient base16-theme lsp-mode lsp-ui challenger-deep-theme groovy-mode sr-speedbar cask god-mode kubernetes sourcerer-theme doom doom-themes hcl-mode all-the-icons all-the-icons-ivy major-mode-hydra eyebrowse go-autocomplete)
+   dotspacemacs-additional-packages '(tabbar base16-theme lsp-mode lsp-ui challenger-deep-theme groovy-mode sr-speedbar cask god-mode kubernetes sourcerer-theme doom doom-themes hcl-mode all-the-icons all-the-icons-ivy major-mode-hydra eyebrowse go-autocomplete)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(spaceline)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-onlMTsy', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -190,7 +192,7 @@ values."
    ;;                             :antialias subpixel
    ;;                             :powerline-scale 1.1)
 
-   dotspacemacs-default-font '("Hack Nerd Font"
+   dotspacemacs-default-font '("Hack NF"
                                :size 14
                                :powerline-scale 1)
    ;; The leader key
@@ -359,12 +361,12 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;;(push '("melpa-stable" . "stable.melpa.org/packages/") configuration-layer--elpa-archives)
   (push '(helm . "melpa-stable") package-pinned-packages)
 
-  (push "/home/frank/elisp" load-path)
+  (push "c:\\Users\\Fhoeben\\elisp" load-path)
 
 
   ;;  (setq org-babel-sh-command "/bin/bash(require 'tramp)
 
-  (set-default 'tramp-auto-save-directory "/tmp")
+  (set-default 'tramp-auto-save-directory "c:\\tmp")
   ;;(set-default 'tramp-default-method "plink")
   )
 
@@ -384,8 +386,8 @@ you should place your code here."
   ;;  (add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
   ;;  (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
 
-  (add-to-list 'default-frame-alist '(font . "Hack Nerd Font-14" ))
-  (set-face-attribute 'default t :font "Hack Nerd Font-14" )
+  (add-to-list 'default-frame-alist '(font . "Hack NF-14" ))
+  (set-face-attribute 'default t :font "Hack NF-14" )
   ;;(load-file "c:\\Users\\Fhoeben\\elisp\\vim-colors.el")
   ;;
   ;;  This starts the Emacs server when .emacs gets loaded
@@ -433,7 +435,7 @@ you should place your code here."
   (setq neo-autorefresh t)
   (setq auto-revert-check-vc-info t)
   (setq auto-revert-interval 5)
-  (setq default-directory "/home/frank/docs")
+  (setq default-directory "C:\\Users\\Fhoeben\\Documents")
   (setq-default line-height 0.80)
     (require 'god-mode)
     (global-set-key (kbd "<escape>") 'god-local-mode)
@@ -555,8 +557,6 @@ you should place your code here."
         company-minimum-prefix-length 3)
   ;;(global-set-key "\t" 'company-complete-common)
 
-  (setq ansi-term-color-vector [term term-color-black term-color-red term-color-green term-color-yellow term-color-blue term-color-magenta term-color-cyan term-color-white])
-
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -577,7 +577,7 @@ you should place your code here."
  '(cua-read-only-cursor-color "#859900")
  '(custom-safe-themes
    (quote
-    ("91375c6dc506913ac7488f655b5afe934f343a0b223021c349105d37748c6696" "8aa22443badba1d772cc9d960cc376e71ab93583d73613b9e0f2dd97ff506b9c" "c1f841d3e12150713efb3833afa37eb6c9bca8ec4c9e55aa1e5e740fe47c1c98" "10bf073b3d442d44118d5deb9c1f3c612721ef0e508ec70107dbb5e1ccb3dabf" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "ecba61c2239fbef776a72b65295b88e5534e458dfe3e6d7d9f9cb353448a569e" "72a81c54c97b9e5efcc3ea214382615649ebb539cb4f2fe3a46cd12af72c7607" "9d9fda57c476672acd8c6efeb9dc801abea906634575ad2c7688d055878e69d6" "51e228ffd6c4fff9b5168b31d5927c27734e82ec61f414970fc6bcce23bc140d" "19ba41b6dc0b5dd34e1b8628ad7ae47deb19f968fe8c31853d64ea8c4df252b8" "4697a2d4afca3f5ed4fdf5f715e36a6cac5c6154e105f3596b44a4874ae52c45" "8891c81848a6cf203c7ac816436ea1a859c34038c39e3cf9f48292d8b1c86528" "06ffa2bf4e891580bfe6a5ce68d0909ed9c4278e5234ede6b3ba459ef35d9a1b" "ce3e6c12b48979ce89754884d913c7ecc8a7956543d8b09ef13abfab6af9aa35" "a156fcac344bbfdc979a5adf9cecf1c2de56c4c937549ae0571b7f11ad4fe6a9" "fe666e5ac37c2dfcf80074e88b9252c71a22b6f5d2f566df9a7aa4f9bea55ef8" "2af26301bded15f5f9111d3a161b6bfb3f4b93ec34ffa95e42815396da9cb560" "8bb8a5b27776c39b3c7bf9da1e711ac794e4dc9d43e32a075d8aa72d6b5b3f59" "748d0e2ffdaf95015a539dcc95ab888283284ad7b076963760422cbe5e21903a" "718fb4e505b6134cc0eafb7dad709be5ec1ba7a7e8102617d87d3109f56d9615" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "a2e7b508533d46b701ad3b055e7c708323fb110b6676a8be458a758dd8f24e27" "cedd3b4295ac0a41ef48376e16b4745c25fa8e7b4f706173083f16d5792bb379" default)))
+    ("57b579184165225924f7fdb67ecabce23fffed85f0bcbea5cfb7c69079e33b1b" "8aa22443badba1d772cc9d960cc376e71ab93583d73613b9e0f2dd97ff506b9c" "c1f841d3e12150713efb3833afa37eb6c9bca8ec4c9e55aa1e5e740fe47c1c98" "10bf073b3d442d44118d5deb9c1f3c612721ef0e508ec70107dbb5e1ccb3dabf" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "ecba61c2239fbef776a72b65295b88e5534e458dfe3e6d7d9f9cb353448a569e" "72a81c54c97b9e5efcc3ea214382615649ebb539cb4f2fe3a46cd12af72c7607" "9d9fda57c476672acd8c6efeb9dc801abea906634575ad2c7688d055878e69d6" "51e228ffd6c4fff9b5168b31d5927c27734e82ec61f414970fc6bcce23bc140d" "19ba41b6dc0b5dd34e1b8628ad7ae47deb19f968fe8c31853d64ea8c4df252b8" "4697a2d4afca3f5ed4fdf5f715e36a6cac5c6154e105f3596b44a4874ae52c45" "8891c81848a6cf203c7ac816436ea1a859c34038c39e3cf9f48292d8b1c86528" "06ffa2bf4e891580bfe6a5ce68d0909ed9c4278e5234ede6b3ba459ef35d9a1b" "ce3e6c12b48979ce89754884d913c7ecc8a7956543d8b09ef13abfab6af9aa35" "a156fcac344bbfdc979a5adf9cecf1c2de56c4c937549ae0571b7f11ad4fe6a9" "fe666e5ac37c2dfcf80074e88b9252c71a22b6f5d2f566df9a7aa4f9bea55ef8" "2af26301bded15f5f9111d3a161b6bfb3f4b93ec34ffa95e42815396da9cb560" "8bb8a5b27776c39b3c7bf9da1e711ac794e4dc9d43e32a075d8aa72d6b5b3f59" "748d0e2ffdaf95015a539dcc95ab888283284ad7b076963760422cbe5e21903a" "718fb4e505b6134cc0eafb7dad709be5ec1ba7a7e8102617d87d3109f56d9615" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "a2e7b508533d46b701ad3b055e7c708323fb110b6676a8be458a758dd8f24e27" "cedd3b4295ac0a41ef48376e16b4745c25fa8e7b4f706173083f16d5792bb379" default)))
  '(evil-want-Y-yank-to-eol nil)
  '(fci-rule-color "#202325" t)
  '(global-linum-mode t)
@@ -694,7 +694,8 @@ This function is called at the very end of Spacemacs initialization."
  '(cua-read-only-cursor-color "#859900")
  '(custom-safe-themes
    (quote
-    ("a3fa4abaf08cc169b61dea8f6df1bbe4123ec1d2afeb01c17e11fdc31fc66379" "6be369becc3e7bfafeeee9fd8535bc17e326b32baede1233e68d13ff1eeed7f6" "8aa22443badba1d772cc9d960cc376e71ab93583d73613b9e0f2dd97ff506b9c" "c1f841d3e12150713efb3833afa37eb6c9bca8ec4c9e55aa1e5e740fe47c1c98" "10bf073b3d442d44118d5deb9c1f3c612721ef0e508ec70107dbb5e1ccb3dabf" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "ecba61c2239fbef776a72b65295b88e5534e458dfe3e6d7d9f9cb353448a569e" "72a81c54c97b9e5efcc3ea214382615649ebb539cb4f2fe3a46cd12af72c7607" "9d9fda57c476672acd8c6efeb9dc801abea906634575ad2c7688d055878e69d6" "51e228ffd6c4fff9b5168b31d5927c27734e82ec61f414970fc6bcce23bc140d" "19ba41b6dc0b5dd34e1b8628ad7ae47deb19f968fe8c31853d64ea8c4df252b8" "4697a2d4afca3f5ed4fdf5f715e36a6cac5c6154e105f3596b44a4874ae52c45" "8891c81848a6cf203c7ac816436ea1a859c34038c39e3cf9f48292d8b1c86528" "06ffa2bf4e891580bfe6a5ce68d0909ed9c4278e5234ede6b3ba459ef35d9a1b" "ce3e6c12b48979ce89754884d913c7ecc8a7956543d8b09ef13abfab6af9aa35" "a156fcac344bbfdc979a5adf9cecf1c2de56c4c937549ae0571b7f11ad4fe6a9" "fe666e5ac37c2dfcf80074e88b9252c71a22b6f5d2f566df9a7aa4f9bea55ef8" "2af26301bded15f5f9111d3a161b6bfb3f4b93ec34ffa95e42815396da9cb560" "8bb8a5b27776c39b3c7bf9da1e711ac794e4dc9d43e32a075d8aa72d6b5b3f59" "748d0e2ffdaf95015a539dcc95ab888283284ad7b076963760422cbe5e21903a" "718fb4e505b6134cc0eafb7dad709be5ec1ba7a7e8102617d87d3109f56d9615" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "a2e7b508533d46b701ad3b055e7c708323fb110b6676a8be458a758dd8f24e27" "cedd3b4295ac0a41ef48376e16b4745c25fa8e7b4f706173083f16d5792bb379" default)))
+    ("7bfe455f51f87e596bb435252eef4e8d894a79fa2538387686ede318ed51c36e" "57b579184165225924f7fdb67ecabce23fffed85f0bcbea5cfb7c69079e33b1b" "d2e9c7e31e574bf38f4b0fb927aaff20c1e5f92f72001102758005e53d77b8c9" "a3fa4abaf08cc169b61dea8f6df1bbe4123ec1d2afeb01c17e11fdc31fc66379" "6be369becc3e7bfafeeee9fd8535bc17e326b32baede1233e68d13ff1eeed7f6" "8aa22443badba1d772cc9d960cc376e71ab93583d73613b9e0f2dd97ff506b9c" "c1f841d3e12150713efb3833afa37eb6c9bca8ec4c9e55aa1e5e740fe47c1c98" "10bf073b3d442d44118d5deb9c1f3c612721ef0e508ec70107dbb5e1ccb3dabf" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "ecba61c2239fbef776a72b65295b88e5534e458dfe3e6d7d9f9cb353448a569e" "72a81c54c97b9e5efcc3ea214382615649ebb539cb4f2fe3a46cd12af72c7607" "9d9fda57c476672acd8c6efeb9dc801abea906634575ad2c7688d055878e69d6" "51e228ffd6c4fff9b5168b31d5927c27734e82ec61f414970fc6bcce23bc140d" "19ba41b6dc0b5dd34e1b8628ad7ae47deb19f968fe8c31853d64ea8c4df252b8" "4697a2d4afca3f5ed4fdf5f715e36a6cac5c6154e105f3596b44a4874ae52c45" "8891c81848a6cf203c7ac816436ea1a859c34038c39e3cf9f48292d8b1c86528" "06ffa2bf4e891580bfe6a5ce68d0909ed9c4278e5234ede6b3ba459ef35d9a1b" "ce3e6c12b48979ce89754884d913c7ecc8a7956543d8b09ef13abfab6af9aa35" "a156fcac344bbfdc979a5adf9cecf1c2de56c4c937549ae0571b7f11ad4fe6a9" "fe666e5ac37c2dfcf80074e88b9252c71a22b6f5d2f566df9a7aa4f9bea55ef8" "2af26301bded15f5f9111d3a161b6bfb3f4b93ec34ffa95e42815396da9cb560" "8bb8a5b27776c39b3c7bf9da1e711ac794e4dc9d43e32a075d8aa72d6b5b3f59" "748d0e2ffdaf95015a539dcc95ab888283284ad7b076963760422cbe5e21903a" "718fb4e505b6134cc0eafb7dad709be5ec1ba7a7e8102617d87d3109f56d9615" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "a2e7b508533d46b701ad3b055e7c708323fb110b6676a8be458a758dd8f24e27" "cedd3b4295ac0a41ef48376e16b4745c25fa8e7b4f706173083f16d5792bb379" default)))
+ '(doom-modeline-mode t)
  '(evil-want-Y-yank-to-eol nil)
  '(fci-rule-color "#202325" t)
  '(global-linum-mode t)
@@ -808,11 +809,11 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil)))))
+ )
 )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil)))))
+ )
