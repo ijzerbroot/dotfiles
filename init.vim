@@ -8,14 +8,16 @@ let g:initial_go_path = "c:/users/Fhoeben/go"
 " call plug#begin('/home/frank/.vim/plugged')
 " Make sure you use single quotes
 " Dependencies
+Plug 'ijzerbroot/vimhappy'
 Plug 'udalov/kotlin-vim'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'junegunn/goyo.vim'
 Plug 'flrnprz/candid.vim'
-Plug 'junegunn/seoul256.vim'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ayu-theme/ayu-vim'
+Plug 'rakr/vim-two-firewatch'
 Plug 'hecal3/vim-leader-guide'
+Plug 'rakr/vim-togglebg'
 "Plug 'wannesm/rmvim.vim'
 Plug 'markonm/traces.vim'
 Plug 'fenetikm/falcon'
@@ -26,10 +28,13 @@ Plug 'godlygeek/tabular'           " This must come before plasticboy/vim-markdo
 Plug 'tpope/vim-rhubarb'           " Depenency for tpope/fugitive
 Plug 'pelodelfuego/vim-swoop'
 Plug 'roman/golden-ratio'
+Plug 'python-mode/python-mode'
+Plug 'kalekundert/vim-coiled-snake'
 " General plugins
 "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'  " Default snippets for many languages
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'bling/vim-airline'
 "Plug 'ctrlpvim/ctrlp.vim'          " CtrlP is installed to support tag finding in vim-go
 Plug 'editorconfig/editorconfig-vim'
@@ -92,8 +97,8 @@ Plug 'w0rp/ale'
 
 
 " Plug 'morhetz/gruvbox'
-Plug 'flazz/vim-colorschemes'
-Plug 'chriskempson/base16-vim'
+" Plug 'flazz/vim-colorschemes'
+" Plug 'chriskempson/base16-vim'
 Plug 'kshenoy/vim-signature'
 "Plug 'benmills/vimux'
 Plug 'kana/vim-arpeggio'
@@ -109,7 +114,7 @@ Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 "Plug 'vim-scripts/sqlplus.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'puppetlabs/puppet-syntax-vim'
-Plug 'rafi/awesome-vim-colorschemes'
+" Plug 'rafi/awesome-vim-colorschemes'
 " Utility
 Plug 'tpope/vim-unimpaired'
 Plug 'scrooloose/nerdtree'
@@ -167,11 +172,11 @@ Plug 'junegunn/limelight.vim'
 Plug 'mkarmona/colorsbox'
 Plug 'romainl/Apprentice'
 Plug 'Lokaltog/vim-distinguished'
-Plug 'chriskempson/base16-vim'
+" Plug 'chriskempson/base16-vim'
 Plug 'w0ng/vim-hybrid'
 Plug 'AlessandroYorba/Sierra'
 "Plug 'daylerees/colour-schemes'
-Plug 'rainglow/vim', { 'as': 'rainglow' }
+" Plug 'rainglow/vim', { 'as': 'rainglow' }
 Plug 'effkay/argonaut.vim'
 Plug 'ajh17/Spacegray.vim'
 Plug 'atelierbram/Base2Tone-vim'
@@ -245,10 +250,23 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 " Add plugins to &runtimepath
 call plug#end()
 
-
+" F5 is remove trailing whitespace in buffer
+:nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+" F2 is toggle light or dark background
+call togglebg#map("<F2>")
 " ctrl-S is v split
 nmap <C-s> :vsplit<CR>
-let ayucolor="mirage"
+" ctrl-= is NERDTreeToggle
+nmap <C-=> :NERDTreeToggle<CR>
+" ctrl-ENTER is terminal
+nmap <C-Enter> :terminal<CR>
+" ctrl-. is buffergator
+nmap <C-.> :BuffergatorToggle<CR>
+" ctrl-, is Git status
+nmap <C-,> :Gstatus<CR>
+"let ayucolor="mirage"
+let ayucolor="light"
+colorscheme ayu
 let base16colorspace=256  " Access colors present in 256 colorspace
 let g:airline_powerline_fonts=1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -258,7 +276,7 @@ set termguicolors
 " colorscheme challenger_deep
 " set background=dark    " Setting dark mode
 "let g:airline_theme='powerlineish'
-set gfn=Hack\ NF:h19:cANSI
+set gfn=Hack\ NF:h13:cANSI
 "let g:vimfiler_as_default_explorer = 1
 "call vimfiler#custom#profile('default', 'context', {
 "            \ 'explorer' : 1,
@@ -317,7 +335,7 @@ set t_Co=256
 
 " NeoVim
 if exists('g:GtkGuiLoaded')
-    call rpcnotify(1, 'Gui', 'Font','Hack NF 19')
+    call rpcnotify(1, 'Gui', 'Font','Hack NF 18')
 endif
 
 " Set extra options when running in GUI mode
@@ -326,7 +344,7 @@ if has("gui_running")
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set gfn=Hack\ NF:h19
+    set gfn=Hack\ NF:h18
     GuiPopupmenu 0
 endif
 if has("gui_macvim")
@@ -338,7 +356,7 @@ if has("gui_macvim")
 endif
 if exists('g:fvim_loaded')
     " good old 'set guifont' compatibility
-    set guifont=Hack\ NF:h19
+    set guifont=Hack\ NF:h18
     " Ctrl-ScrollWheel for zooming in/out
     nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
     nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
@@ -392,10 +410,10 @@ let g:netrw_cygwin = 0
 let g:netrw_ssh_cmd  = "ssh"
 let g:netrw_scp_cmd  = "scp"
 :imap <S-CR> <Esc>
-set background=dark
+set background=light
 let g:two_firewatch_italics=1
-colo ayu
-let g:airline_theme='challenger_deep'
+colo two-firewatch
+let g:airline_theme='twofirewatch'
 "set autochdir
 autocmd BufEnter * silent! lcd %:p:h
 let g:go_highlight_types = 1
@@ -459,7 +477,6 @@ if has('mouse')
     set mouse=a
 endif
 
-set background=dark
 " Override the search highlight color with a combination that is easier to
 " read. The default PaperColor is dark green backgroun with black foreground.
 "
@@ -1288,12 +1305,12 @@ FVimCursorSmoothMove v:false
 FVimCursorSmoothBlink v:true
 
 " Background composition
-FVimBackgroundComposition 'acrylic'   " 'none', 'blur' or 'acrylic'
-FVimBackgroundOpacity 0.85            " value between 0 and 1, default bg opacity.
-FVimBackgroundAltOpacity 0.85         " value between 0 and 1, non-default bg opacity.
+" FVimBackgroundComposition 'acrylic'   " 'none', 'blur' or 'acrylic'
+" FVimBackgroundOpacity 0.85            " value between 0 and 1, default bg opacity.
+" FVimBackgroundAltOpacity 0.85         " value between 0 and 1, non-default bg opacity.
 
 " Title bar tweaks
-FVimCustomTitleBar v:true             " themed with colorscheme
+" FVimCustomTitleBar v:true             " themed with colorscheme
 
 " Debug UI overlay
 " FVimDrawFPS v:true
