@@ -105,6 +105,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #export LS_COLORS="ow=1;105;30;di=1;165"
-export LS_COLORS="ow=1;105;30;di=1;165;0"
+export LS_COLORS="ow=1;105;30"
+source $HOME/.oh-my-zsh/custom/plugins/zsh-histdb/sqlite-history.zsh
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd histdb-update-outcome
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
