@@ -1,114 +1,109 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-export TERM=xterm-256color
-export LS_COLORS=''
-alias ls='ls --color=auto'
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-function pl9k() {
-git clone https://github.com/bhilburn/powerlevel9k ~/powerlevel9k
-cd $HOME
-cd powerlevel9k && git pull https://github.com/bhilburn/powerlevel9k
-cd -
-}
+# Path to your oh-my-zsh installation.
+export ZSH="/home/frank/.oh-my-zsh"
 
-function base16() {
-    git clone https://github.com/chriskempson/base16-shell ~/base16-shell
-    cd $HOME
-    cd base16-shell && git pull https://github.com/chriskempson/base16-shell
-    cd -
-}
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
-function nerdfonts() {
-    git clone https://github.com/ryanoasis/nerd-fonts ~/nerd-fonts
-    cd $HOME
-    cd nerd-fonts && git pull https://github.com/ryanoasis/nerd-fonts
-    cd -
-}
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-function nerdfonts_install() {
-    git clone https://github.com/ryanoasis/nerd-fonts ~/nerd-fonts
-    cd $HOME
-    cd nerd-fonts && git pull https://github.com/ryanoasis/nerd-fonts
-    ./install.sh
-    cd -
-}
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-function custom_uptime() {
-    echo -n "`uptime | sed 's/.* up /up /' | sed 's/,.*//'`"
-}
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
-function custom_procs() {
-    echo -n "`ps -ef | wc -l | awk '{ print $1 }'` procs"
-}
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
 
-function spectrum_ls() {
-  for code in {000..255}; do
-    print -P -- "$code: %F{$code}This text is colorized%f"
-  done
-}
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
 
-BASE16_SHELL=$HOME/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
 
-source  ~/powerlevel9k/powerlevel9k.zsh-theme
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
-POWERLEVEL9K_CUSTOM_UPTIME="custom_uptime"
-POWERLEVEL9K_CUSTOM_PROCS="custom_procs"
-#POWERLEVEL9K_COLOR_SCHEME='light'
-POWERLEVEL9K_MODE='awesome-patched'
-#POWERLEVEL9K_NODE_VERSION_BACKGROUND='28'
-POWERLEVEL9K_NODE_VERSION_BACKGROUND='004'
-#POWERLEVEL9K_NODE_VERSION_FOREGROUND='15'
-POWERLEVEL9K_BACKGROUND_JOBS_ICON=''
-POWERLEVEL9K_VCS_STAGED_ICON='\u00b1'
-POWERLEVEL9K_VCS_UNTRACKED_ICON='\u25CF'
-POWERLEVEL9K_VCS_UNSTAGED_ICON='\u00b1'
-POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='\u2193'
-POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\u2191'
-#POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='yellow'
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='011'
-#POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='yellow'
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='010'
-POWERLEVEL9K_STATUS_OK_BACKGROUND="black"
-POWERLEVEL9K_STATUS_OK_FOREGROUND="green"
-POWERLEVEL9K_STATUS_ERROR_BACKGROUND="black"
-POWERLEVEL9K_STATUS_ERROR_FOREGROUND="red"
-#POWERLEVEL9K_TIME_FORMAT="%D{%H:%M  \uE868  %d.%m.%y}"
-POWERLEVEL9K_TIME_FORMAT="%D{%H:%M  %d.%m.%y}"
-#POWERLEVEL9K_TIME_FORMAT="%D{%H:%M}"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(status background_jobs root_indicator context dir vcs)
-#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv nvm custom_procs load ram rbenv custom_uptime time)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv nvm custom_procs load rbenv custom_uptime time)
-POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%{%F{249}%}\u250f"
-POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="%{%F{249}%}\u2517%{%F{default}%} "
-#POWERLEVEL9K_TIME_BACKGROUND='190'
-POWERLEVEL9K_TIME_BACKGROUND='002'
-#POWERLEVEL9K_TIME_FOREGROUND='22'
-#POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="008"
-POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND="008"
-#POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="007"
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND="007"
-POWERLEVEL9K_CONTEXT_ROOT_BACKGROUND="008"
-POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND="001"
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=${POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND}
-POWERLEVEL9K_DIR_HOME_BACKGROUND=${POWERLEVEL9K_DIR_DEFAULT_BACKGROUND}
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=${POWERLEVEL9K_DIR_DEFAULT_BACKGROUND}
-#POWERLEVEL9K_LOAD_NORMAL_BACKGROUND='36'
-POWERLEVEL9K_LOAD_NORMAL_BACKGROUND='008'
-#POWERLEVEL9K_LOAD_NORMAL_FOREGROUND=${POWERLEVEL9K_DIR_DEFAULT_FOREGROUND}
-POWERLEVEL9K_LOAD_NORMAL_FOREGROUND='007'
-#POWERLEVEL9K_RAM_BACKGROUND='008'
-POWERLEVEL9K_RAM_BACKGROUND='008'
-#POWERLEVEL9K_RAM_FOREGROUND='007'
-POWERLEVEL9K_RAM_FOREGROUND='007'
-#POWERLEVEL9K_CUSTOM_UPTIME_BACKGROUND='99'
-POWERLEVEL9K_CUSTOM_UPTIME_BACKGROUND='001'
-#POWERLEVEL9K_CUSTOM_PROCS_BACKGROUND=${POWERLEVEL9K_DIR_DEFAULT_BACKGROUND}
-POWERLEVEL9K_CUSTOM_PROCS_BACKGROUND='012'
-#POWERLEVEL9K_CUSTOM_PROCS_FOREGROUND=${POWERLEVEL9K_DIR_DEFAULT_FOREGROUND}
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
 #
-#base16_monokai
-base16_gruvbox-dark-medium
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+export LS_COLORS="ow=1;105;30;di=1;165"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
