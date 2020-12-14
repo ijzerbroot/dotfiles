@@ -1,254 +1,230 @@
+" Normally this if-block is not needed, because `:set nocp` is done
+" automatically when .vimrc is found. However, this might be useful
+" when you execute `vim -u .vimrc` from the command line.
+"if &compatible
+"  " `:set nocp` has many side effects. Therefore this should be done
+"  " only when 'compatible' is set.
+"  set nocompatible
+"endif
+
+packadd minpac
+
+call minpac#init()
+
+" minpac must have {'type': 'opt'} so that it can be loaded with `packadd`.
+call minpac#add('k-takata/minpac', {'type': 'opt'})
+
+" Add other plugins here.
+call minpac#add('vim-jp/syntax-vim-ex')
+
+function! PackInit() abort
+  packadd minpac
+
+  call minpac#init()
+  call minpac#add('k-takata/minpac', {'type': 'opt'})
+
+  " Additional plugins here.
+  call minpac#add('vim-jp/syntax-vim-ex')
+  call minpac#add('tyru/open-browser.vim')
+  call minpac#add('KeitaNakamura/neodark.vim')
+  call minpac#add('rakr/vim-one')
+  call minpac#add('haishanh/night-owl.vim')
+  call minpac#add('ryanoasis/vim-devicons')
+  call minpac#add('neovim/nvim-lsp')
+  call minpac#add('neovim/nvim-lspconfig')
+  call minpac#add('nvim-lua/lsp-status.nvim')
+  call minpac#add('nvim-lua/completion-nvim')
+  call minpac#add('ijzerbroot/vimhappy')
+  call minpac#add('udalov/kotlin-vim')
+  "call minpac#add('neoclide/coc.nvim', {'do': { -> coc#util#install()}})
+  call minpac#add('junegunn/goyo.vim')
+  call minpac#add('flrnprz/candid.vim')
+  call minpac#add('drewtempelmeyer/palenight.vim')
+  call minpac#add('ayu-theme/ayu-vim')
+  call minpac#add('rakr/vim-two-firewatch')
+  call minpac#add('hecal3/vim-leader-guide')
+  call minpac#add('rakr/vim-togglebg')
+  call minpac#add('ijzerbroot/vimhappy')
+  call minpac#add('udalov/kotlin-vim')
+  call minpac#add('junegunn/goyo.vim')
+  call minpac#add('flrnprz/candid.vim')
+  call minpac#add('drewtempelmeyer/palenight.vim')
+  call minpac#add('ayu-theme/ayu-vim')
+  call minpac#add('rakr/vim-two-firewatch')
+  call minpac#add('hecal3/vim-leader-guide')
+  call minpac#add('rakr/vim-togglebg')
+  call minpac#add('vim-jp/syntax-vim-ex')
+  call minpac#add('nvim-lua/lsp-status.nvim')
+  call minpac#add('nvim-lua/completion-nvim')
+  call minpac#add('markonm/traces.vim')
+  call minpac#add('fenetikm/falcon')
+  call minpac#add('Shougo/neocomplcache')
+  call minpac#add('godlygeek/tabular'  )
+  call minpac#add('tpope/vim-rhubarb')
+  call minpac#add('pelodelfuego/vim-swoop')
+  call minpac#add('roman/golden-ratio')
+  call minpac#add('python-mode/python-mode')
+  call minpac#add('kalekundert/vim-coiled-snake')
+  call minpac#add('Shougo/neosnippet')
+  call minpac#add('Shougo/neosnippet-snippets' )
+  call minpac#add('bling/vim-airline')
+  call minpac#add('editorconfig/editorconfig-vim')
+  call minpac#add('itchyny/calendar.vim')
+  call minpac#add('junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' })
+  call minpac#add('junegunn/fzf.vim')
+  call minpac#add('majutsushi/tagbar')
+  call minpac#add('mhinz/vim-signify')
+  call minpac#add('mileszs/ack.vim')
+  call minpac#add('prettier/vim-prettier')
+  call minpac#add('rbgrouleff/bclose.vim')
+  call minpac#add('sbdchd/neoformat')
+  call minpac#add('scrooloose/nerdcommenter')
+  call minpac#add('scrooloose/nerdtree')
+  call minpac#add('Xuyuanp/nerdtree-git-plugin')
+  call minpac#add('sebdah/vim-delve')
+  call minpac#add('terryma/vim-multiple-cursors')
+  call minpac#add('tpope/vim-fugitive')
+  call minpac#add('jreybert/vimagit')
+  call minpac#add('tpope/vim-surround')
+  call minpac#add('cespare/vim-toml')
+  call minpac#add('kshenoy/vim-signature')
+  call minpac#add('kana/vim-arpeggio')
+  call minpac#add('junegunn/vim-easy-align')
+  call minpac#add('tpope/vim-commentary')
+  call minpac#add('Shougo/vimproc.vim', {'do' : 'make'})
+  call minpac#add('tpope/vim-vinegar')
+  call minpac#add('mhinz/vim-janah')
+  call minpac#add('challenger-deep-theme/vim', { 'as': 'challenger-deep' })
+  call minpac#add('NLKNguyen/papercolor-theme')
+  call minpac#add('puppetlabs/puppet-syntax-vim')
+  call minpac#add('tpope/vim-unimpaired')
+  call minpac#add('scrooloose/nerdtree')
+  call minpac#add('majutsushi/tagbar')
+  call minpac#add('schickling/vim-bufonly')
+  call minpac#add('wesQ3/vim-windowswap')
+  call minpac#add('benmills/vimux')
+  call minpac#add('jeetsukumaran/vim-buffergator')
+  call minpac#add('gilsondev/searchtasks.vim')
+  call minpac#add('tpope/vim-dispatch')
+  call minpac#add('honza/vim-snippets')
+  call minpac#add('Raimondi/delimitMate')
+  call minpac#add('tomtom/tcomment_vim')
+  call minpac#add('tobyS/vmustache')
+  call minpac#add('maksimr/vim-jsbeautify')
+  call minpac#add('reedes/vim-pencil')
+  call minpac#add('tpope/vim-markdown')
+  call minpac#add('jtratner/vim-flavored-markdown')
+  call minpac#add('kablamo/vim-git-log')
+  call minpac#add('gregsexton/gitv')
+  call minpac#add('tpope/vim-fugitive')
+  call minpac#add('junegunn/gv.vim')
+  call minpac#add('airblade/vim-gitgutter')
+  call minpac#add('ryanoasis/vim-devicons')
+  call minpac#add('vim-airline/vim-airline')
+  call minpac#add('vim-airline/vim-airline-themes')
+  call minpac#add('sjl/badwolf')
+  call minpac#add('tomasr/molokai')
+  call minpac#add('morhetz/gruvbox')
+  call minpac#add('zenorocha/dracula-theme', {'rtp': 'vim/'})
+  call minpac#add('junegunn/limelight.vim')
+  call minpac#add('mkarmona/colorsbox')
+  call minpac#add('romainl/Apprentice')
+  call minpac#add('Lokaltog/vim-distinguished')
+  call minpac#add('w0ng/vim-hybrid')
+  call minpac#add('AlessandroYorba/Sierra')
+  call minpac#add('effkay/argonaut.vim')
+  call minpac#add('ajh17/Spacegray.vim')
+  call minpac#add('atelierbram/Base2Tone-vim')
+  call minpac#add('colepeters/spacemacs-theme.vim')
+  call minpac#add('equalsraf/neovim-gui-shim')
+  call minpac#add('tpope/vim-surround')
+  call minpac#add('godlygeek/tabular')
+  call minpac#add('scrooloose/nerdtree', { 'on':  'NERDTreeToggle' })
+  call minpac#add('tpope/vim-fireplace', { 'for': 'clojure' })
+  call minpac#add('ryanoasis/vim-devicons')
+  call minpac#add('shougo/unite.vim')
+  call minpac#add('mhinz/vim-startify')
+
+endfunction
+
+packloadall
+call PackInit()
+command! PackUpdate source $MYVIMRC | call PackInit() | call minpac#update()
+command! PackClean  source $MYVIMRC | call PackInit() | call minpac#clean()
+command! PackStatus packadd minpac | call minpac#status()
 
 set timeoutlen=300
 set ttimeoutlen=100
 " Platform dependent stuff
-let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
-call plug#begin('C:/Users/Fhoeben/vimfiles/plugged')
-let g:initial_go_path = "c:/users/Fhoeben/go"
-" call plug#begin('/home/frank/.vim/plugged')
-" Make sure you use single quotes
-" Dependencies
-Plug 'ijzerbroot/vimhappy'
-Plug 'udalov/kotlin-vim'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'junegunn/goyo.vim'
-Plug 'flrnprz/candid.vim'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'ayu-theme/ayu-vim'
-Plug 'rakr/vim-two-firewatch'
-Plug 'hecal3/vim-leader-guide'
-Plug 'rakr/vim-togglebg'
-"Plug 'wannesm/rmvim.vim'
-Plug 'markonm/traces.vim'
-Plug 'fenetikm/falcon'
-"Plug 'Valloric/YouCompleteMe'
-"Plug 'starcraftman/vim-eclim'
-Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
-Plug 'godlygeek/tabular'           " This must come before plasticboy/vim-markdown
-Plug 'tpope/vim-rhubarb'           " Depenency for tpope/fugitive
-Plug 'pelodelfuego/vim-swoop'
-Plug 'roman/golden-ratio'
-Plug 'python-mode/python-mode'
-Plug 'kalekundert/vim-coiled-snake'
-" General plugins
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'  " Default snippets for many languages
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'bling/vim-airline'
-"Plug 'ctrlpvim/ctrlp.vim'          " CtrlP is installed to support tag finding in vim-go
-Plug 'editorconfig/editorconfig-vim'
-Plug 'itchyny/calendar.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'majutsushi/tagbar'
-Plug 'mhinz/vim-signify'
-Plug 'mileszs/ack.vim'
-Plug 'prettier/vim-prettier'
-"Plug 'neomake/neomake'
-Plug 'rbgrouleff/bclose.vim'
-Plug 'sbdchd/neoformat'
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'sebdah/vim-delve'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-fugitive'
-Plug 'jreybert/vimagit'
-Plug 'tpope/vim-surround'
-Plug 'lambdalisue/gina.vim'
-"Plug 'vimwiki/vimwiki'
+"let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
+"call plug#begin('C:/Users/Fhoeben/vimfiles/plugged')
+let g:initial_go_path = "/home/frank/go"
+"call plug#begin('/home/frank/.vim/plugged')
 
-" Vim only plugins
-if !has('nvim')
-    Plug 'Shougo/vimproc.vim', {'do' : 'make'}  " Needed to make sebdah/vim-delve work on Vim
-    Plug 'Shougo/vimshell.vim'                  " Needed to make sebdah/vim-delve work on Vim
-endif
+:lua << END
+  require'lspconfig'.tsserver.setup{}
+  require'lspconfig'.solargraph.setup{}
+  require'lspconfig'.yamlls.setup{}
+END
 
-" Language support
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'aklt/plantuml-syntax'                    " PlantUML syntax highlighting
-Plug 'cespare/vim-toml'                        " toml syntax highlighting
-Plug 'chr4/nginx.vim'                          " nginx syntax highlighting
-Plug 'dag/vim-fish'                            " Fish syntax highlighting
-Plug 'digitaltoad/vim-pug'                     " Pug syntax highlighting
-"Plug 'fatih/vim-go'                            " Go support
-Plug 'rust-lang/rust.vim'                      " Rust support
-Plug 'racer-rust/vim-racer'                    " Rust support
-"Plug 'fishbullet/deoplete-ruby'                " Ruby auto completion
-Plug 'hashivim/vim-terraform'                  " Terraform syntax highlighting
-Plug 'kchmck/vim-coffee-script'                " CoffeeScript syntax highlighting
-Plug 'kylef/apiblueprint.vim'                  " API Blueprint syntax highlighting
-Plug 'leafgarland/typescript-vim'              " TypeScript syntax highlighting
-Plug 'lifepillar/pgsql.vim'                    " PostgreSQL syntax highlighting
-Plug 'mxw/vim-jsx'                             " JSX syntax highlighting
-"Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' } " Go auto completion
-Plug 'pangloss/vim-javascript'                 " JavaScript syntax highlighting
-Plug 'plasticboy/vim-markdown'                 " Markdown syntax highlighting
-Plug 'rodjek/vim-puppet'                       " Puppet syntax highlighting
-Plug 'tclh123/vim-thrift'                      " Thrift syntax highlighting
-"Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
-"Plug 'zchee/deoplete-jedi'                     " Go auto completion
-"Plug 'zimbatm/haproxy.vim'                     " HAProxy syntax highlighting
-"Plug 'dansomething/vim-eclim'
-"
-Plug 'w0rp/ale'
+lua <<EOF
+  nvim_lsp = require "lspconfig"
+  nvim_lsp.gopls.setup {
+    cmd = {"gopls", "serve"},
+    settings = {
+      gopls = {
+        analyses = {
+          unusedparams = true,
+        },
+        staticcheck = true,
+      },
+    },
+  }
+EOF
 
+lua <<EOF
+  -- …
 
-" Plug 'morhetz/gruvbox'
-" Plug 'flazz/vim-colorschemes'
-" Plug 'chriskempson/base16-vim'
-Plug 'kshenoy/vim-signature'
-"Plug 'benmills/vimux'
-Plug 'kana/vim-arpeggio'
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-Plug 'junegunn/vim-easy-align'
-Plug 'tpope/vim-commentary'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-"Plug 'Shougo/vimfiler.vim'
-Plug 'tpope/vim-vinegar'
-"Plug 'wincent/command-t'
-Plug 'mhinz/vim-janah'
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-"Plug 'vim-scripts/sqlplus.vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'puppetlabs/puppet-syntax-vim'
-" Plug 'rafi/awesome-vim-colorschemes'
-" Utility
-Plug 'tpope/vim-unimpaired'
-Plug 'scrooloose/nerdtree'
-Plug 'majutsushi/tagbar'
-"Plug 'ervandew/supertab'
-Plug 'schickling/vim-bufonly'
-Plug 'wesQ3/vim-windowswap'
-"Plug 'SirVer/ultisnips'
-"Plug 'junegunn/fzf.vim'
-Plug 'benmills/vimux'
-Plug 'jeetsukumaran/vim-buffergator'
-Plug 'gilsondev/searchtasks.vim'
-" Plug 'Shougo/neocomplete.vim'
-Plug 'tpope/vim-dispatch'
-"Plug 'autozimu/LanguageClient-neovim'
+  function goimports(timeoutms)
+    local context = { source = { organizeImports = true } }
+    vim.validate { context = { context, "t", true } }
 
-" (Optional) Multi-entry selection UI.
-"Plug 'junegunn/fzf'
+    local params = vim.lsp.util.make_range_params()
+    params.context = context
 
-" Generic Programming Support
-" Plug 'jakedouglas/exuberant-ctags'
-Plug 'honza/vim-snippets'
-"Plug 'Townk/vim-autoclose'
-Plug 'Raimondi/delimitMate'
-Plug 'tomtom/tcomment_vim'
-Plug 'tobyS/vmustache'
-Plug 'janko-m/vim-test'
-Plug 'maksimr/vim-jsbeautify'
-"Plug 'vim-syntastic/syntastic'
+    local method = "textDocument/codeAction"
+    local resp = vim.lsp.buf_request_sync(0, method, params, timeoutms)
+    if resp and resp[1] then
+      local result = resp[1].result
+      if result and result[1] then
+        local edit = result[1].edit
+        vim.lsp.util.apply_workspace_edit(edit)
+      end
+    end
 
-" Markdown / Writting
-Plug 'reedes/vim-pencil'
-Plug 'tpope/vim-markdown'
-Plug 'jtratner/vim-flavored-markdown'
-"Plug 'LanguageTool'
+    vim.lsp.buf.formatting()
+  end
+EOF
 
-" Git Support
-Plug 'kablamo/vim-git-log'
-Plug 'gregsexton/gitv'
-Plug 'tpope/vim-fugitive'
-"Plug 'jaxbot/github-issues.vim'
-Plug 'junegunn/gv.vim'
-Plug 'airblade/vim-gitgutter'
+autocmd BufWritePre *.go lua goimports(1000)
+autocmd FileType go setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
-" Theme / Interface
-"Plug 'AnsiEsc.vim'
-Plug 'ryanoasis/vim-devicons'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'sjl/badwolf'
-Plug 'tomasr/molokai'
-Plug 'morhetz/gruvbox'
-Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-Plug 'junegunn/limelight.vim'
-Plug 'mkarmona/colorsbox'
-Plug 'romainl/Apprentice'
-Plug 'Lokaltog/vim-distinguished'
-" Plug 'chriskempson/base16-vim'
-Plug 'w0ng/vim-hybrid'
-Plug 'AlessandroYorba/Sierra'
-"Plug 'daylerees/colour-schemes'
-" Plug 'rainglow/vim', { 'as': 'rainglow' }
-Plug 'effkay/argonaut.vim'
-Plug 'ajh17/Spacegray.vim'
-Plug 'atelierbram/Base2Tone-vim'
-Plug 'colepeters/spacemacs-theme.vim'
-Plug 'equalsraf/neovim-gui-shim'
-
-" PHP Support
-"Plug 'phpvim/phpcd.vim'
-"Plug 'tobyS/pdv'
-
-" Erlang Support
-"Plug 'vim-erlang/vim-erlang-tags'
-"Plug 'vim-erlang/vim-erlang-runtime'
-"Plug 'vim-erlang/vim-erlang-omnicomplete'
-"Plug 'vim-erlang/vim-erlang-compiler'
-
-" Elixir Support
-Plug 'elixir-lang/vim-elixir'
-Plug 'avdgaag/vim-phoenix'
-Plug 'mmorearty/elixir-ctags'
-Plug 'mattreduce/vim-mix'
-"Plug 'BjRo/vim-extest'
-"Plug 'frost/vim-eh-docs'
-"Plug 'slashmili/alchemist.vim'
-"Plug 'tpope/vim-endwise'
-"Plug 'jadercorrea/elixir_generator.vim'
-
-" Ruby
-Plug 'vim-ruby/vim-ruby'
-" Crystal support
-" Plug 'rhysd/vim-crystal'
-
-"Java support
-" Plug 'artur-shaik/vim-javacomplete2'
-
-" Swift support
-"Plug 'keith/swift.vim'
-" Elm Support
-Plug 'lambdatoast/elm.vim'
-
-" Any valid git URL is allowed
-" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" Group dependencies, vim-snippets depends on ultisnips
-"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-Plug 'tpope/vim-surround'
-Plug 'godlygeek/tabular'
-
-" On-demand loading:
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'ryanoasis/vim-devicons'
-"Plug 'shougo/denite.nvim'
-Plug 'shougo/unite.vim'
-Plug 'mhinz/vim-startify'
-
-" Using a non-master branch
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" Plugin options
-" "no longer maintained
-" Plug 'nsf/gocode'
-
-" Plugin outside ~/.vim/plugged with post-update hook
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Unmanaged plugin (manually installed and updated)
-"Plug '~/my-prototype-plugin'
+" Misc settings I like
+let g:diagnostic_insert_delay = 1
+let g:diagnostic_show_sign = 1
+let g:diagnostic_enable_virtual_text = 1
+" Complete parentheses for functions
+let g:completion_enable_auto_paren = 1
+" Work with vim-endwise
+let g:completion_confirm_key = "\<C-y>"
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+" Avoid showing message extra message when using completion
+set shortmess+=c
+let g:completion_enable_snippet = 'UltiSnips'
 
 " Add plugins to &runtimepath
-call plug#end()
+"call plug#end()
 
 " F5 is remove trailing whitespace in buffer
 :nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
@@ -565,23 +541,6 @@ autocmd BufEnter * :call BookmarkMapKeys()
 autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 
 "----------------------------------------------
-" Plugin: Shougo/deoplete.nvim
-"----------------------------------------------
-"if has('nvim')
-"    " Enable deoplete on startup
-"    let g:deoplete#enable_at_startup = 1
-"endif
-
-"" Disable deoplete when in multi cursor mode
-"function! Multiple_cursors_before()
-"    let b:deoplete_disable_auto_complete = 1
-"endfunction
-
-"function! Multiple_cursors_after()
-"    let b:deoplete_disable_auto_complete = 0
-"endfunction
-
-"----------------------------------------------
 " Plugin: bling/vim-airline
 "----------------------------------------------
 " Show status bar by default.
@@ -745,20 +704,6 @@ let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 "----------------------------------------------
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_skip_key='<C-b>'
-
-"----------------------------------------------
-" Plugin: zchee/deoplete-go
-"----------------------------------------------
-" Enable completing of go pointers
-"let g:deoplete#sources#go#pointer = 1
-
-"----------------------------------------------
-" Language: Golang
-"----------------------------------------------
-"au FileType go set noexpandtab
-"au FileType go set shiftwidth=4
-"au FileType go set softtabstop=4
-"au FileType go set tabstop=4
 
 " Mappings
 au FileType go nmap <F8> :GoMetaLinter<cr>
@@ -1043,7 +988,6 @@ au FileType yaml set softtabstop=2
 au FileType yaml set tabstop=2
 
 "let g:EclimCompletionMethod = 'omnifunc'
-"let g:deoplete#enable_at_startup = 1
 "let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
 "let g:syntastic_swift_checkers = ['swiftpm']
 " remap ; to : and vv
@@ -1281,71 +1225,38 @@ if exists("g:gui_oni")
     "let g:airline_theme='gruvbox'
 endif
 let g:go_def_mode = "gopls" 
-augroup LspGo
-  au!
-  autocmd User lsp_setup call lsp#register_server({
-      \ 'name': 'go-lang',
-      \ 'cmd': {server_info->['gopls']},
-      \ 'whitelist': ['go'],
-      \ })
-  autocmd FileType go setlocal omnifunc=lsp#complete
+"augroup LspGo
+"  au!
+"  autocmd User lsp_setup call lsp#register_server({
+"      \ 'name': 'go-lang',
+"      \ 'cmd': {server_info->['gopls']},
+"      \ 'whitelist': ['go'],
+"      \ })
+"  autocmd FileType go setlocal omnifunc=lsp#complete
   "autocmd FileType go nmap <buffer> gd <plug>(lsp-definition)
   "autocmd FileType go nmap <buffer> ,n <plug>(lsp-next-error)
   "autocmd FileType go nmap <buffer> ,p <plug>(lsp-previous-error)
 augroup END
 
-if exists('g:fvim_loaded')
-    FVimCursorSmoothMove v:false
-    FVimCursorSmoothBlink v:true
-" Toggle between normal and fullscreen
-" FVimToggleFullScreen
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
 
-" Cursor tweaks
-FVimCursorSmoothMove v:false
-FVimCursorSmoothBlink v:true
-
-" Background composition
-" FVimBackgroundComposition 'acrylic'   " 'none', 'blur' or 'acrylic'
-" FVimBackgroundOpacity 0.85            " value between 0 and 1, default bg opacity.
-" FVimBackgroundAltOpacity 0.85         " value between 0 and 1, non-default bg opacity.
-
-" Title bar tweaks
-" FVimCustomTitleBar v:true             " themed with colorscheme
-
-" Debug UI overlay
-" FVimDrawFPS v:true
-
-" Font tweaks
-"FVimFontAntialias v:true
-"FVimFontAutohint v:true
-"FVimFontSubpixel v:true
-"FVimFontLcdRender v:true
-"FVimFontHintLevel 'full'
-"FVimFontLineHeight '+1.0' " can be 'default', '14.0', '-1.0' etc.
-
-" Try to snap the fonts to the pixels, reduces blur
-" in some situations (e.g. 100% DPI).
-"FVimFontAutoSnap v:true
-
-" Font weight tuning, possible valuaes are 100..900
-"FVimFontNormalWeight 400
-"FVimFontBoldWeight 700
-
-" Font debugging -- draw bounds around each glyph
-" FVimFontDrawBounds v:true
-
-" UI options (all default to v:false)
-"FVimUIMultiGrid v:false     " per-window grid system -- work in progress
-"FVimUIPopupMenu v:true      " external popup menu
-"FVimUITabLine v:false       " external tabline -- not implemented
-"FVimUICmdLine v:false       " external cmdline -- not implemented
-"FVimUIWildMenu v:false      " external wildmenu -- not implemented
-"FVimUIMessages v:false      " external messages -- not implemented
-"FVimUITermColors v:false    " not implemented
-"FVimUIHlState v:false       " not implemented
-
-" Detach from a remote session without killing the server
-" If this command is executed on a standalone instance,
-" the embedded process will be terminated anyway.
-" FVimDetach
-endif
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
