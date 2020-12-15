@@ -165,6 +165,7 @@ let g:initial_go_path = "/home/frank/go"
   require'lspconfig'.tsserver.setup{}
   require'lspconfig'.solargraph.setup{}
   require'lspconfig'.yamlls.setup{}
+  require'lspconfig'.rust_analyzer.setup{}
 END
 
 lua <<EOF
@@ -389,7 +390,7 @@ let g:netrw_scp_cmd  = "scp"
 set background=light
 let g:two_firewatch_italics=1
 colo two-firewatch
-let g:airline_theme='twofirewatch'
+let g:airline_theme='papercolor'
 "set autochdir
 autocmd BufEnter * silent! lcd %:p:h
 let g:go_highlight_types = 1
@@ -1260,3 +1261,23 @@ let g:airline_right_alt_sep = ''
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
+
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+
+autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
+autocmd Filetype rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
+autocmd Filetype go setlocal omnifunc=v:lua.vim.lsp.omnifunc
+autocmd Filetype javascript setlocal omnifunc=v:lua.vim.lsp.omnifunc
+
+" Auto-format *.rs files prior to saving them
+autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)
+autocmd BufWritePre *.python lua vim.lsp.buf.formatting_sync(nil, 1000)
