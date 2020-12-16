@@ -39,26 +39,15 @@ function! PackInit() abort
   "call minpac#add('neoclide/coc.nvim', {'do': { -> coc#util#install()}})
   call minpac#add('junegunn/goyo.vim')
   call minpac#add('flrnprz/candid.vim')
-  call minpac#add('drewtempelmeyer/palenight.vim')
   call minpac#add('ayu-theme/ayu-vim')
   call minpac#add('rakr/vim-two-firewatch')
   call minpac#add('hecal3/vim-leader-guide')
   call minpac#add('rakr/vim-togglebg')
-  call minpac#add('ijzerbroot/vimhappy')
   call minpac#add('udalov/kotlin-vim')
-  call minpac#add('junegunn/goyo.vim')
-  call minpac#add('flrnprz/candid.vim')
   call minpac#add('drewtempelmeyer/palenight.vim')
-  call minpac#add('ayu-theme/ayu-vim')
-  call minpac#add('rakr/vim-two-firewatch')
-  call minpac#add('hecal3/vim-leader-guide')
-  call minpac#add('rakr/vim-togglebg')
   call minpac#add('vim-jp/syntax-vim-ex')
-  call minpac#add('nvim-lua/lsp-status.nvim')
-  call minpac#add('nvim-lua/completion-nvim')
   call minpac#add('markonm/traces.vim')
   call minpac#add('fenetikm/falcon')
-  call minpac#add('Shougo/neocomplcache')
   call minpac#add('godlygeek/tabular'  )
   call minpac#add('tpope/vim-rhubarb')
   call minpac#add('pelodelfuego/vim-swoop')
@@ -84,7 +73,7 @@ function! PackInit() abort
   call minpac#add('sebdah/vim-delve')
   call minpac#add('terryma/vim-multiple-cursors')
   call minpac#add('tpope/vim-fugitive')
-  call minpac#add('jreybert/vimagit')
+  #call minpac#add('jreybert/vimagit')
   call minpac#add('tpope/vim-surround')
   call minpac#add('cespare/vim-toml')
   call minpac#add('kshenoy/vim-signature')
@@ -102,7 +91,7 @@ function! PackInit() abort
   call minpac#add('majutsushi/tagbar')
   call minpac#add('schickling/vim-bufonly')
   call minpac#add('wesQ3/vim-windowswap')
-  call minpac#add('benmills/vimux')
+  #call minpac#add('benmills/vimux')
   call minpac#add('jeetsukumaran/vim-buffergator')
   call minpac#add('gilsondev/searchtasks.vim')
   call minpac#add('tpope/vim-dispatch')
@@ -142,7 +131,7 @@ function! PackInit() abort
   call minpac#add('scrooloose/nerdtree', { 'on':  'NERDTreeToggle' })
   call minpac#add('tpope/vim-fireplace', { 'for': 'clojure' })
   call minpac#add('ryanoasis/vim-devicons')
-  call minpac#add('shougo/unite.vim')
+  #call minpac#add('shougo/unite.vim')
   call minpac#add('mhinz/vim-startify')
 
 endfunction
@@ -166,6 +155,7 @@ let g:initial_go_path = "/home/frank/go"
   require'lspconfig'.solargraph.setup{}
   require'lspconfig'.yamlls.setup{}
   require'lspconfig'.rust_analyzer.setup{}
+  require'lspconfig'.jdtls.setup{ workspace = "/home/frank/.workspace"}
 END
 
 lua <<EOF
@@ -243,43 +233,11 @@ nmap <C-.> :BuffergatorToggle<CR>
 nmap <C-,> :Gstatus<CR>
 "let ayucolor="mirage"
 let ayucolor="light"
-colorscheme ayu
 let base16colorspace=256  " Access colors present in 256 colorspace
 let g:airline_powerline_fonts=1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
-" colorscheme molokai
-"colorscheme base16-atelier-savanna
-" colorscheme challenger_deep
-" set background=dark    " Setting dark mode
-"let g:airline_theme='powerlineish'
-set gfn=Hack\ NF:h13:cANSI
-"let g:vimfiler_as_default_explorer = 1
-"call vimfiler#custom#profile('default', 'context', {
-"            \ 'explorer' : 1,
-"            \ 'winwidth' : 30,
-"            \ 'winminwidth' : 30,
-"            \ 'toggle' : 1,
-"            \ 'columns' : 'type',
-"            \ 'auto_expand': 1,
-"            \ 'direction' : 'rightbelow',
-"            \ 'parent': 0,
-"            \ 'explorer_columns' : 'type',
-"            \ 'status' : 1,
-"            \ 'safe' : 0,
-"            \ 'split' : 1,
-"            \ 'hidden': 1,
-"            \ 'no_quit' : 1,
-"            \ 'force_hide' : 0,
-"            \ })
 
-let g:neoformat_java_google = {
-            \ 'exe': 'java',
-            \ 'args': ['-jar /home/frank/.local/bin/google-java-format-1.5-all-deps.jar -'],
-            \ 'stdin': 1,
-            \ }
-
-let g:neoformat_enabled_java = ['google']
 let mapleader = " "
 call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
 nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
@@ -393,13 +351,6 @@ colo two-firewatch
 let g:airline_theme='papercolor'
 "set autochdir
 autocmd BufEnter * silent! lcd %:p:h
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_fmt_command = "goimports"
-let g:go_list_type = "quickfix"
 filetype plugin on
 "set omnifunc=syntaxcomplete#Complete
 "set diffopt=horizontal
@@ -501,45 +452,6 @@ cnoreabbrev Qall qall
 " Create horizontal splits below the current window
 set splitbelow
 set splitright
-
-"----------------------------------------------
-" Plugin: MattesGroeger/vim-bookmarks
-"----------------------------------------------
-" Auto save bookmarks
-let g:bookmark_auto_save = 1
-
-" Store the bookmarks in the projects
-let g:bookmark_save_per_working_dir = 1
-
-" Disable the default key mappings
-let g:bookmark_no_default_key_mappings = 1
-
-" Configure key mappings
-" This part also fixes conflicts with NERDTree
-function! BookmarkMapKeys()
-    nmap Mm :BookmarkToggle<cr>
-    nmap Mi :BookmarkAnnotate<cr>
-    nmap Mn :BookmarkNext<cr>
-    nmap Mp :BookmarkPrev<cr>
-    nmap Ma :BookmarkShowAll<cr>
-    nmap Mc :BookmarkClear<cr>
-    nmap Mx :BookmarkClearAll<cr>
-    nmap Mkk :BookmarkMoveUp
-    nmap Mjj :BookmarkMoveDown
-endfunction
-function! BookmarkUnmapKeys()
-    unmap Mm
-    unmap Mi
-    unmap Mn
-    unmap Mp
-    unmap Ma
-    unmap Mc
-    unmap Mx
-    unmap Mkk
-    unmap Mjj
-endfunction
-autocmd BufEnter * :call BookmarkMapKeys()
-autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
 
 "----------------------------------------------
 " Plugin: bling/vim-airline
@@ -686,19 +598,6 @@ xmap <C-k> <Plug>(neosnippet_expand_target)
 " Set the path to our snippets
 let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 
-"----------------------------------------------
-" Plugin: vimwiki/vimwiki
-"----------------------------------------------
-" Path to wiki
-"let g:vimwiki_list = [{
-"        \ 'path': '~/Dropbox/vimwiki',
-"        \ 'syntax': 'markdown',
-"        \ 'ext': '.vimwiki.markdown'}]
-
-"au FileType vimwiki set expandtab
-"au FileType vimwiki set shiftwidth=2
-"au FileType vimwiki set softtabstop=2
-"au FileType vimwiki set tabstop=2
 
 "----------------------------------------------
 " Plugin: 'terryma/vim-multiple-cursors'
@@ -706,94 +605,6 @@ let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_skip_key='<C-b>'
 
-" Mappings
-au FileType go nmap <F8> :GoMetaLinter<cr>
-"au FileType go nmap <F9> :GoCoverageToggle -short<cr>
-au FileType go nmap <F10> :GoTest -short<cr>
-"au FileType go nmap <F12> <Plug>(go-def)
-"au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
-"au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
-"au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
-au FileType go nmap <leader>gt :GoDeclsDir<cr>
-au FileType go nmap <leader>gc <Plug>(go-coverage-toggle)
-au FileType go nmap <leader>gd <Plug>(go-def)
-"au FileType go nmap <leader>gdv <Plug>(go-def-vertical)
-"au FileType go nmap <leader>gdh <Plug>(go-def-split)
-au FileType go nmap <leader>gD <Plug>(go-doc)
-"au FileType go nmap <leader>gDv <Plug>(go-doc-vertical)
-
-" Run goimports when running gofmt
-let g:go_fmt_command = "goimports"
-
-" Set neosnippet as snippet engine
-let g:go_snippet_engine = "neosnippet"
-
-" Enable syntax highlighting per default
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-
-" Show the progress when running :GoCoverage
-let g:go_echo_command_info = 1
-
-" Show type information
-let g:go_auto_type_info = 1
-
-" Highlight variable uses
-let g:go_auto_sameids = 1
-
-" Fix for location list when vim-go is used together with Syntastic
-let g:go_list_type = "quickfix"
-
-" Add the failing test name to the output of :GoTest
-let g:go_test_show_name = 1
-
-" gometalinter configuration
-let g:go_metalinter_command = ""
-let g:go_metalinter_deadline = "5s"
-let g:go_metalinter_enabled = [
-            \ 'deadcode',
-            \ 'gas',
-            \ 'goconst',
-            \ 'gocyclo',
-            \ 'golint',
-            \ 'gosimple',
-            \ 'ineffassign',
-            \ 'vet',
-            \ 'vetshadow'
-            \]
-
-" Set whether the JSON tags should be snakecase or camelcase.
-let g:go_addtags_transform = "snakecase"
-
-" neomake configuration for Go.
-let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
-let g:neomake_go_gometalinter_maker = {
-            \ 'args': [
-            \   '--tests',
-            \   '--enable-gc',
-            \   '--concurrency=3',
-            \   '--fast',
-            \   '-D', 'aligncheck',
-            \   '-D', 'dupl',
-            \   '-D', 'gocyclo',
-            \   '-D', 'gotype',
-            \   '-E', 'misspell',
-            \   '-E', 'unused',
-            \   '%:p:h',
-            \ ],
-            \ 'append_file': 0,
-            \ 'errorformat':
-            \   '%E%f:%l:%c:%trror: %m,' .
-            \   '%W%f:%l:%c:%tarning: %m,' .
-            \   '%E%f:%l::%trror: %m,' .
-            \   '%W%f:%l::%tarning: %m'
-            \ }
 
 "----------------------------------------------
 " Language: apiblueprint
