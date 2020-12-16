@@ -73,7 +73,7 @@ function! PackInit() abort
   call minpac#add('sebdah/vim-delve')
   call minpac#add('terryma/vim-multiple-cursors')
   call minpac#add('tpope/vim-fugitive')
-  #call minpac#add('jreybert/vimagit')
+  "call minpac#add('jreybert/vimagit')
   call minpac#add('tpope/vim-surround')
   call minpac#add('cespare/vim-toml')
   call minpac#add('kshenoy/vim-signature')
@@ -91,7 +91,7 @@ function! PackInit() abort
   call minpac#add('majutsushi/tagbar')
   call minpac#add('schickling/vim-bufonly')
   call minpac#add('wesQ3/vim-windowswap')
-  #call minpac#add('benmills/vimux')
+  "call minpac#add('benmills/vimux')
   call minpac#add('jeetsukumaran/vim-buffergator')
   call minpac#add('gilsondev/searchtasks.vim')
   call minpac#add('tpope/vim-dispatch')
@@ -131,7 +131,7 @@ function! PackInit() abort
   call minpac#add('scrooloose/nerdtree', { 'on':  'NERDTreeToggle' })
   call minpac#add('tpope/vim-fireplace', { 'for': 'clojure' })
   call minpac#add('ryanoasis/vim-devicons')
-  #call minpac#add('shougo/unite.vim')
+  "call minpac#add('shougo/unite.vim')
   call minpac#add('mhinz/vim-startify')
 
 endfunction
