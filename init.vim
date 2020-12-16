@@ -49,10 +49,10 @@ function! PackInit() abort
   call minpac#add('markonm/traces.vim')
   call minpac#add('fenetikm/falcon')
   call minpac#add('godlygeek/tabular'  )
-  call minpac#add('tpope/vim-rhubarb')
+  "call minpac#add('tpope/vim-rhubarb')
   call minpac#add('pelodelfuego/vim-swoop')
   call minpac#add('roman/golden-ratio')
-  call minpac#add('python-mode/python-mode')
+  "call minpac#add('python-mode/python-mode')
   call minpac#add('kalekundert/vim-coiled-snake')
   call minpac#add('Shougo/neosnippet')
   call minpac#add('Shougo/neosnippet-snippets' )
@@ -62,8 +62,8 @@ function! PackInit() abort
   call minpac#add('junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' })
   call minpac#add('junegunn/fzf.vim')
   call minpac#add('majutsushi/tagbar')
-  call minpac#add('mhinz/vim-signify')
-  call minpac#add('mileszs/ack.vim')
+  "call minpac#add('mhinz/vim-signify')
+  "call minpac#add('mileszs/ack.vim')
   call minpac#add('prettier/vim-prettier')
   call minpac#add('rbgrouleff/bclose.vim')
   call minpac#add('sbdchd/neoformat')
@@ -144,8 +144,6 @@ command! PackStatus packadd minpac | call minpac#status()
 
 set timeoutlen=300
 set ttimeoutlen=100
-" Platform dependent stuff
-"let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
 "call plug#begin('C:/Users/Fhoeben/vimfiles/plugged')
 let g:initial_go_path = "/home/frank/go"
 "call plug#begin('/home/frank/.vim/plugged')
@@ -156,6 +154,10 @@ let g:initial_go_path = "/home/frank/go"
   require'lspconfig'.yamlls.setup{}
   require'lspconfig'.rust_analyzer.setup{}
   require'lspconfig'.jdtls.setup{ workspace = "/home/frank/.workspace"}
+  require'lspconfig'.bashls.setup{}
+  require'lspconfig'.dockerls.setup{}
+  require'lspconfig'.jsonls.setup{}
+  require'lspconfig'.pyls_ms.setup{init_options = { interpreter = { properties = { InterpreterPath = "/usr/bin/python3", Version = "3.8"} } } }
 END
 
 lua <<EOF
@@ -251,7 +253,7 @@ let g:airline#extensions#tabline#enabled = 1
 "    let &t_AF="\e[38;5;%dm"
 "    colorscheme molokai
 "endif
-set laststatus=2
+"set laststatus=2
 set history=100
 " Ignore case when searching
 set ignorecase
