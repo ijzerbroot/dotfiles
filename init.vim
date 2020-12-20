@@ -1096,7 +1096,7 @@ autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.python lua vim.lsp.buf.formatting_sync(nil, 1000)
 
-function! clearbg() abort
+function! Clearbg() abort
     highlight Visual     cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE
     highlight StatusLine cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE 
     highlight Normal     cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE
