@@ -73,6 +73,7 @@ function! PackInit() abort
   call minpac#add('sebdah/vim-delve')
   call minpac#add('terryma/vim-multiple-cursors')
   call minpac#add('tpope/vim-fugitive')
+  call minpac#add('SirVer/ultisnips')
   "call minpac#add('jreybert/vimagit')
   call minpac#add('tpope/vim-surround')
   call minpac#add('cespare/vim-toml')
@@ -150,7 +151,7 @@ let g:initial_go_path = "/home/frank/go"
 
 :lua << END
   require'lspconfig'.tsserver.setup{}
-  require'lspconfig'.solargraph.setup{}
+  --require'lspconfig'.solargraph.setup{}
   require'lspconfig'.yamlls.setup{}
   require'lspconfig'.rust_analyzer.setup{}
   require'lspconfig'.jdtls.setup{ workspace = "/home/frank/.workspace"}
