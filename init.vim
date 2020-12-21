@@ -29,6 +29,8 @@ function! PackInit() abort
   call minpac#add('KeitaNakamura/neodark.vim')
   call minpac#add('rakr/vim-one')
   call minpac#add('haishanh/night-owl.vim')
+  call minpac#add('ghifarit53/tokyonight-vim')
+  call minpac#add('ntk148v/vim-horizon')
   call minpac#add('ryanoasis/vim-devicons')
   call minpac#add('neovim/nvim-lsp')
   call minpac#add('neovim/nvim-lspconfig')
@@ -63,7 +65,7 @@ function! PackInit() abort
   call minpac#add('junegunn/fzf.vim')
   call minpac#add('majutsushi/tagbar')
   "call minpac#add('mhinz/vim-signify')
-  "call minpac#add('mileszs/ack.vim')
+  call minpac#add('mileszs/ack.vim')
   call minpac#add('prettier/vim-prettier')
   call minpac#add('rbgrouleff/bclose.vim')
   call minpac#add('sbdchd/neoformat')
@@ -220,26 +222,39 @@ let g:completion_enable_snippet = 'UltiSnips'
 " Add plugins to &runtimepath
 "call plug#end()
 
+" Function key mapping
+" F1 is FZF Commands
+:nnoremap <silent> <F1> :Commands<CR>
+" F2 is FZF Buffers
+:nnoremap <silent> <F2> :Buffers<CR>
 " F5 is remove trailing whitespace in buffer
 :nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+" F6 is foldclose
+:nnoremap <silent> <F6> :foldclose<CR>
+" F7 is foldopen
+:nnoremap <silent> <F7> :foldopen<CR>
 " F2 is toggle light or dark background
-call togglebg#map("<F2>")
+"call togglebg#map("<F2>")
 " ctrl-S is v split
 nmap <C-s> :vsplit<CR>
-" ctrl-= is NERDTreeToggle
-nmap <C-=> :NERDTreeToggle<CR>
-" ctrl-ENTER is terminal
-nmap <C-Enter> :terminal<CR>
-" ctrl-. is buffergator
-nmap <C-.> :BuffergatorToggle<CR>
+" F8 is NERDTreeToggle
+nmap <F8> :NERDTreeToggle<CR>
+" F9 is buffergator
+nmap <F9> :BuffergatorToggle<CR>
+" F10 is terminal
+nmap <F10> :terminal<CR>
 " ctrl-, is Git status
 nmap <C-,> :Gstatus<CR>
 "let ayucolor="mirage"
-let ayucolor="light"
+let ayucolor="mirage"
 let base16colorspace=256  " Access colors present in 256 colorspace
 let g:airline_powerline_fonts=1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
+let g:tokyonight_style = 'storm' " available: night, storm
+let g:tokyonight_enable_italic = 1"
+let g:airline_theme = "tokyonight"
+let g:tokyonight_transparent_background = 1
 
 let mapleader = " "
 call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
@@ -350,8 +365,8 @@ let g:netrw_scp_cmd  = "scp"
 :imap <S-CR> <Esc>
 set background=light
 let g:two_firewatch_italics=1
-colo two-firewatch
-let g:airline_theme='papercolor'
+colo tokyonight
+"let g:airline_theme='papercolor'
 "set autochdir
 autocmd BufEnter * silent! lcd %:p:h
 filetype plugin on
@@ -416,7 +431,7 @@ endif
 "highlight Search guibg=DeepPink4 guifg=White ctermbg=53 ctermfg=White
 
 " Toggle background with <leader>bg
-map <leader>bg :let &background = (&background == "dark"? "light" : "dark")<cr>
+"map <leader>bg :let &background = (&background == "dark"? "light" : "dark")<cr>
 
 "----------------------------------------------
 " Searching
@@ -479,6 +494,7 @@ endif
 let g:airline_symbols.branch = ''
 let g:airline_symbols.maxlinenr = ''
 
+let g:airline_section_c = '%F'
 "----------------------------------------------
 " Plugin: 'ctrlpvim/ctrlp.vim'
 "----------------------------------------------
@@ -897,16 +913,39 @@ augroup END
 "----------------------------------------------
 " Plugin: mileszs/ack.vim
 "----------------------------------------------
-" Open ack
+" ack.vim --- {{{
+"
+" " Use ripgrep for searching ⚡️
+" " Options include:
+" " --vimgrep -> Needed to parse the rg response properly for ack.vim
+" " --type-not sql -> Avoid huge sql file dumps as it slows down the search
+" " --smart-case -> Search case insensitive if all lowercase pattern, Search case sensitively otherwise
+let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
+"
+" " Auto close the Quickfix list after pressing '<enter>' on a list item
+let g:ack_autoclose = 1
+"
+" " Any empty ack search will search for the work the cursor is on
+let g:ack_use_cword_for_empty_search = 1
+"
+" " Don't jump to first match
+cnoreabbrev Ack Ack!
+"
+" " Maps F3
+nnoremap <F3> :Ack!<Space>
+" " }}}
+"
+" " Navigate quickfix list with ease
+nnoremap <silent> [q :cprevious<CR>
+nnoremap <silent> ]q :cnext<CR>
+
+
+
 nmap <silent> <C-Up> :wincmd k<CR>
 nmap <silent> <C-Down> :wincmd j<CR>
 nmap <silent> <C-Left> :wincmd h<CR>
 nmap <silent> <C-Right> :wincmd l<CR>
 nmap <C-\> :bd<CR>
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-vnoremap <F9> zfo
 
 " leader-guide config
 " Define prefix dictionary
@@ -1039,7 +1078,7 @@ if exists("g:gui_oni")
     "let g:gruvbox_italic=1
     "let g:airline_theme='gruvbox'
 endif
-let g:go_def_mode = "gopls" 
+let g:go_def_mode = "gopls"
 "augroup LspGo
 "  au!
 "  autocmd User lsp_setup call lsp#register_server({
@@ -1097,8 +1136,9 @@ autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)
 autocmd BufWritePre *.python lua vim.lsp.buf.formatting_sync(nil, 1000)
 
 function! Clearbg() abort
-    highlight Visual     cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE
-    highlight StatusLine cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE 
+    " highlight Visual     cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE
+    highlight StatusLine cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE
     highlight Normal     cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE
     highlight NonText    cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE
+    set nocursorline
 endfunction
