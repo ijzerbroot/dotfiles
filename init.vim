@@ -224,15 +224,17 @@ let g:completion_enable_snippet = 'UltiSnips'
 
 " Function key mapping
 " F1 is FZF Commands
-:nnoremap <silent> <F1> :Commands<CR>
+nnoremap <silent> <F1> :Commands<CR>
 " F2 is FZF Buffers
-:nnoremap <silent> <F2> :Buffers<CR>
+nnoremap <silent> <F2> :Buffers<CR>
+" F4 is FZF Files
+nnoremap <F4> :Files<Space>
 " F5 is remove trailing whitespace in buffer
-:nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 " F6 is foldclose
-:nnoremap <silent> <F6> :foldclose<CR>
+nnoremap <silent> <F6> :foldclose<CR>
 " F7 is foldopen
-:nnoremap <silent> <F7> :foldopen<CR>
+nnoremap <silent> <F7> :foldopen<CR>
 " F2 is toggle light or dark background
 "call togglebg#map("<F2>")
 " ctrl-S is v split
@@ -522,7 +524,7 @@ nnoremap <c-p> :FZF<cr>
 " Plugin: 'majutsushi/tagbar'
 "----------------------------------------------
 " Add shortcut for toggling the tag bar
-nnoremap <F3> :TagbarToggle<cr>
+"nnoremap <F3> :TagbarToggle<cr>
 
 " Language: Go
 " Tagbar configuration for Golang
@@ -1126,6 +1128,7 @@ nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 
+autocmd Filetype java setlocal omnifunc=v:lua.vim.lsp.omnifunc
 autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
 autocmd Filetype rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
 autocmd Filetype go setlocal omnifunc=v:lua.vim.lsp.omnifunc
