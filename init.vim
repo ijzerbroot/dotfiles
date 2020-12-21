@@ -243,8 +243,9 @@ nmap <F8> :NERDTreeToggle<CR>
 nmap <F9> :BuffergatorToggle<CR>
 " F10 is terminal
 nmap <F10> :terminal<CR>
-" ctrl-, is Git status
-nmap <C-,> :Gstatus<CR>
+" ctrl-space is omnicomplete
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-Space>
 "let ayucolor="mirage"
 let ayucolor="mirage"
 let base16colorspace=256  " Access colors present in 256 colorspace
