@@ -228,7 +228,7 @@ nnoremap <silent> <F1> :Commands<CR>
 " F2 is FZF Buffers
 nnoremap <silent> <F2> :Buffers<CR>
 " F4 is FZF Files
-nnoremap <F4> :Files<Space>
+nnoremap <F4> :Files<Space>./
 " F5 is remove trailing whitespace in buffer
 nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 " F6 is foldclose
