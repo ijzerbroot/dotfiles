@@ -70,8 +70,6 @@ function! PackInit() abort
   call minpac#add('rbgrouleff/bclose.vim')
   call minpac#add('sbdchd/neoformat')
   call minpac#add('scrooloose/nerdcommenter')
-  call minpac#add('scrooloose/nerdtree')
-  call minpac#add('Xuyuanp/nerdtree-git-plugin')
   call minpac#add('sebdah/vim-delve')
   call minpac#add('terryma/vim-multiple-cursors')
   call minpac#add('tpope/vim-fugitive')
@@ -90,7 +88,6 @@ function! PackInit() abort
   call minpac#add('NLKNguyen/papercolor-theme')
   call minpac#add('puppetlabs/puppet-syntax-vim')
   call minpac#add('tpope/vim-unimpaired')
-  call minpac#add('scrooloose/nerdtree')
   call minpac#add('majutsushi/tagbar')
   call minpac#add('schickling/vim-bufonly')
   call minpac#add('wesQ3/vim-windowswap')
@@ -131,7 +128,8 @@ function! PackInit() abort
   call minpac#add('equalsraf/neovim-gui-shim')
   call minpac#add('tpope/vim-surround')
   call minpac#add('godlygeek/tabular')
-  call minpac#add('scrooloose/nerdtree', { 'on':  'NERDTreeToggle' })
+  "call minpac#add('scrooloose/nerdtree', { 'on':  'NERDTreeToggle' })
+  call minpac#add('lambdalisue/fern.vim')
   call minpac#add('tpope/vim-fireplace', { 'for': 'clojure' })
   call minpac#add('ryanoasis/vim-devicons')
   "call minpac#add('shougo/unite.vim')
@@ -240,7 +238,9 @@ nnoremap <silent> <F7> :foldopen<CR>
 " ctrl-S is v split
 nmap <C-s> :vsplit<CR>
 " F8 is NERDTreeToggle
-nmap <F8> :NERDTreeToggle<CR>
+" nmap <F8> :NERDTreeToggle<CR>
+" F8 is Fern
+nmap <F8> :Fern . -reveal=% -drawer<CR>
 " F9 is buffergator
 nmap <F9> :BuffergatorToggle<CR>
 " F10 is terminal
