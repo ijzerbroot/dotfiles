@@ -32,10 +32,11 @@ function! PackInit() abort
   call minpac#add('ghifarit53/tokyonight-vim')
   call minpac#add('ntk148v/vim-horizon')
   call minpac#add('ryanoasis/vim-devicons')
-  call minpac#add('neovim/nvim-lsp')
-  call minpac#add('neovim/nvim-lspconfig')
-  call minpac#add('nvim-lua/lsp-status.nvim')
-  call minpac#add('nvim-lua/completion-nvim')
+  "call minpac#add('neovim/nvim-lsp')
+  "call minpac#add('neovim/nvim-lspconfig')
+  "call minpac#add('nvim-lua/lsp-status.nvim')
+  "call minpac#add('nvim-lua/completion-nvim')
+  call minpac#add('neoclide/coc.nvim')
   call minpac#add('ijzerbroot/vimhappy')
   call minpac#add('udalov/kotlin-vim')
   "call minpac#add('neoclide/coc.nvim', {'do': { -> coc#util#install()}})
@@ -43,7 +44,7 @@ function! PackInit() abort
   call minpac#add('flrnprz/candid.vim')
   call minpac#add('ayu-theme/ayu-vim')
   call minpac#add('rakr/vim-two-firewatch')
-  call minpac#add('hecal3/vim-leader-guide')
+  "call minpac#add('hecal3/vim-leader-guide')
   call minpac#add('rakr/vim-togglebg')
   call minpac#add('udalov/kotlin-vim')
   call minpac#add('drewtempelmeyer/palenight.vim')
@@ -73,7 +74,7 @@ function! PackInit() abort
   call minpac#add('sebdah/vim-delve')
   call minpac#add('terryma/vim-multiple-cursors')
   call minpac#add('tpope/vim-fugitive')
-  call minpac#add('SirVer/ultisnips')
+  "call minpac#add('SirVer/ultisnips')
   "call minpac#add('jreybert/vimagit')
   call minpac#add('tpope/vim-surround')
   call minpac#add('cespare/vim-toml')
@@ -88,7 +89,7 @@ function! PackInit() abort
   call minpac#add('NLKNguyen/papercolor-theme')
   call minpac#add('puppetlabs/puppet-syntax-vim')
   call minpac#add('tpope/vim-unimpaired')
-  call minpac#add('majutsushi/tagbar')
+  "call minpac#add('majutsushi/tagbar')
   call minpac#add('schickling/vim-bufonly')
   call minpac#add('wesQ3/vim-windowswap')
   "call minpac#add('benmills/vimux')
@@ -122,7 +123,6 @@ function! PackInit() abort
   call minpac#add('w0ng/vim-hybrid')
   call minpac#add('AlessandroYorba/Sierra')
   call minpac#add('effkay/argonaut.vim')
-  call minpac#add('ajh17/Spacegray.vim')
   call minpac#add('atelierbram/Base2Tone-vim')
   call minpac#add('colepeters/spacemacs-theme.vim')
   call minpac#add('equalsraf/neovim-gui-shim')
@@ -149,73 +149,10 @@ set ttimeoutlen=100
 let g:initial_go_path = "/home/frank/go"
 "call plug#begin('/home/frank/.vim/plugged')
 
-:lua << END
-  require'lspconfig'.tsserver.setup{}
-  --require'lspconfig'.solargraph.setup{}
-  require'lspconfig'.yamlls.setup{}
-  require'lspconfig'.rust_analyzer.setup{}
-  require'lspconfig'.jdtls.setup{ workspace = "/home/frank/.workspace"}
-  require'lspconfig'.bashls.setup{}
-  require'lspconfig'.dockerls.setup{}
-  require'lspconfig'.jsonls.setup{}
-  require'lspconfig'.pyls_ms.setup{init_options = { interpreter = { properties = { InterpreterPath = "/usr/bin/python3", Version = "3.8"} } } }
-END
-
-lua <<EOF
-  nvim_lsp = require "lspconfig"
-  nvim_lsp.gopls.setup {
-    cmd = {"gopls", "serve"},
-    settings = {
-      gopls = {
-        analyses = {
-          unusedparams = true,
-        },
-        staticcheck = true,
-      },
-    },
-  }
-EOF
-
-lua <<EOF
-  -- …
-
-  function goimports(timeoutms)
-    local context = { source = { organizeImports = true } }
-    vim.validate { context = { context, "t", true } }
-
-    local params = vim.lsp.util.make_range_params()
-    params.context = context
-
-    local method = "textDocument/codeAction"
-    local resp = vim.lsp.buf_request_sync(0, method, params, timeoutms)
-    if resp and resp[1] then
-      local result = resp[1].result
-      if result and result[1] then
-        local edit = result[1].edit
-        vim.lsp.util.apply_workspace_edit(edit)
-      end
-    end
-
-    vim.lsp.buf.formatting()
-  end
-EOF
-
-autocmd BufWritePre *.go lua goimports(1000)
-autocmd FileType go setlocal omnifunc=v:lua.vim.lsp.omnifunc
-
-" Misc settings I like
-let g:diagnostic_insert_delay = 1
-let g:diagnostic_show_sign = 1
-let g:diagnostic_enable_virtual_text = 1
-" Complete parentheses for functions
-let g:completion_enable_auto_paren = 1
-" Work with vim-endwise
-let g:completion_confirm_key = "\<C-y>"
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 set shortmess+=c
-let g:completion_enable_snippet = 'UltiSnips'
 
 " Add plugins to &runtimepath
 "call plug#end()
@@ -259,10 +196,7 @@ let g:tokyonight_enable_italic = 1"
 let g:airline_theme = "tokyonight"
 let g:tokyonight_transparent_background = 1
 
-let mapleader = " "
-call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
-nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
-vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
+"let mapleader = " "
 let g:airline#extensions#tabline#enabled = 1
 " Set colors in console
 "if !has("gui_running")
@@ -521,42 +455,6 @@ let g:ctrlp_map = ''
 nnoremap <c-p> :FZF<cr>
 
 "----------------------------------------------
-" Plugin: 'majutsushi/tagbar'
-"----------------------------------------------
-" Add shortcut for toggling the tag bar
-"nnoremap <F3> :TagbarToggle<cr>
-
-" Language: Go
-" Tagbar configuration for Golang
-let g:tagbar_type_go = {
-            \ 'ctagstype' : 'go',
-            \ 'kinds'     : [
-            \ 'p:package',
-            \ 'i:imports:1',
-            \ 'c:constants',
-            \ 'v:variables',
-            \ 't:types',
-            \ 'n:interfaces',
-            \ 'w:fields',
-            \ 'e:embedded',
-            \ 'm:methods',
-            \ 'r:constructor',
-            \ 'f:functions'
-            \ ],
-            \ 'sro' : '.',
-            \ 'kind2scope' : {
-            \ 't' : 'ctype',
-            \ 'n' : 'ntype'
-            \ },
-            \ 'scope2kind' : {
-            \ 'ctype' : 't',
-            \ 'ntype' : 'n'
-            \ },
-            \ 'ctagsbin'  : 'gotags',
-            \ 'ctagsargs' : '-sort -silent'
-            \ }
-
-"----------------------------------------------
 " Plugin: plasticboy/vim-markdown
 "----------------------------------------------
 " Disable folding
@@ -587,12 +485,6 @@ let NERDTreeIgnore = [
 
 " Close vim if NERDTree is the only opened window.
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-" Show hidden files by default.
-let NERDTreeShowHidden = 1
-
-" Allow NERDTree to change session root.
-let g:NERDTreeChDirMode = 2
 
 "----------------------------------------------
 " Plugin: sebdah/vim-delve
@@ -676,6 +568,14 @@ au BufRead,BufNewFile *.eex set filetype=eelixir
 " Language: gitconfig
 "----------------------------------------------
 au FileType gitconfig set noexpandtab
+au FileType gitconfig set shiftwidth=2
+au FileType gitconfig set softtabstop=2
+au FileType gitconfig set tabstop=2
+
+"----------------------------------------------
+" Language: go
+"----------------------------------------------
+au FileType gitconfig set expandtab
 au FileType gitconfig set shiftwidth=2
 au FileType gitconfig set softtabstop=2
 au FileType gitconfig set tabstop=2
@@ -879,15 +779,10 @@ let g:NERDTreeIndicatorMapCustom = {
             \ "Unknown"   : "?"
             \ }
 
-" tagbar
-" use universal-ctags project
-let g:tagbar_ctags_bin = '~/apps/u-ctags/bin/ctags'
 "Folding
 set foldmethod=syntax
 set foldlevelstart=20
 
-" Java
-"let g:EclimCompletionMethod = 'omnifunc'
 " Shortcuts!
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
@@ -950,35 +845,9 @@ nmap <silent> <C-Left> :wincmd h<CR>
 nmap <silent> <C-Right> :wincmd l<CR>
 nmap <C-\> :bd<CR>
 
-" leader-guide config
-" Define prefix dictionary
-let g:lmap =  {}
-
-
-" Second level dictionaries:
-let g:lmap.b = {
-            \'name' : 'Buffer Menu',
-            \'d' : ['bd', 'Close this buffer'],
-            \'g' : ['BuffergatorToggle',   'Buffergator toggle'],
-            \'n' : ['bnext',   'Next Buffer'],
-            \'p' : ['bprevious', 'Previous Buffer'],
-            \}
-let g:lmap.c = {
-            \'name' : 'Commenter Menu',
-            \}
-let g:lmap.f = {
-            \'name' : 'File Menu',
-            \'f' : ['Files', 'fzf files'],
-            \'n' : ['NERDTreeToggle', 'NERDTree toggle'],
-            \}
-let g:lmap.o = { 'name' : 'Open Stuff' }
-" 'name' is a special field. It will define the name of the group.
-" leader-f is the "File Menu" group.
-" Unnamed groups will show an empty string
 
 " Provide commands and descriptions for existing mappings
 nmap <silent> <leader>fd :e $MYVIMRC<CR>
-let g:lmap.f.d = ['e $MYVIMRC', 'Open vimrc']
 
 nmap <silent> <leader>fs :so %<CR>
 " let g:lmap.f.s = ['so %', 'Source file']
@@ -989,88 +858,6 @@ nmap <silent> <leader>oo  :copen<CR>
 nmap <silent> <leader>ol  :lopen<CR>
 " let g:lmap.o.l = ['lopen', 'Open locationlist']
 
-" Create new menus not based on existing mappings:
-let g:lmap.e = {
-            \'name' : 'Editor tricks',
-            \'a' : ['%y+', 'Copy buffer'],
-            \'d' : ['%d', 'Clear buffer'],
-            \'f' : ['%norm!==', 'Indent buffer'],
-            \}
-let g:lmap.g = {
-            \'name' : 'Git Menu',
-            \'s' : ['Gstatus', 'Git Status'],
-            \'f' : ['GFiles', 'Git files'],
-            \'p' : ['Git pull',   'Git Pull'],
-            \'u' : ['Git push',   'Git Push'],
-            \'c' : ['Git commit', 'Git Commit'],
-            \'C' : ['Commits', 'FZF Commits'],
-            \'v' : ['Gitv',  'Git Log'],
-            \'w' : ['Gwrite',  'Git Write'],
-            \}
-let g:lmap.f = {
-            \'name' : 'FZF Menu',
-            \'b' : ['Buffers', 'FZF Buffers'],
-            \'B' : ['Lines', 'FZF BLines'],
-            \'c' : ['Commands', 'FZF Commands'],
-            \'C' : ['Colors', 'FZF Colors'],
-            \'f' : ['Files', 'FZF Files'],
-            \'h' : ['History:', 'FZF command history'],
-            \'S' : ['Snippets',   'FZF Snippets'],
-            \'t' : ['BTags',   'FZF Tags'],
-            \'w' : ['Windows',  'FZF Windows'],
-            \}
-let g:lmap.t = {
-            \'name' : 'Tools Menu',
-            \'a' : ['AirlineToggle', 'Airline toggle'],
-            \'b' : ['BuffergatorToggle', 'Buffergator'],
-            \'c' : ['Commands', 'Commands'],
-            \'f' : ['Files', 'Files'],
-            \'n' : ['NERDTreeToggle',   'NERDTree'],
-            \'S' : ['Swoop',   'Swoop'],
-            \'t' : ['Tagbar',   'Tagbar'],
-            \'T' : ['terminal',   'Terminal'],
-            \}
-let g:lmap.T = {
-            \'name' : 'Theming Menu',
-            \'a' : ['AirlineToggle', 'Airline toggle'],
-            \'c' : ['colo challenger_deep', 'Challenger Deep theme'],
-            \'f' : ['colo falcon',   'Falcon theme'],
-            \'g' : ['Goyo', 'Goyo mode toggle'],
-            \'l' : ['Limelight', 'Limelight on'],
-            \'L' : ['Limelight!', 'Limelight off'],
-            \'p' : ['colo PaperColor',   'PaperColor theme'],
-            \'t' : ['Colors',   'Select colorscheme'],
-            \}
-let g:lmap.w = {
-            \'name' : 'Window Menu',
-            \'c' : ['close', 'Close this window'],
-            \'h' : ['split',   'Horizontal split'],
-            \'v' : ['vsplit',   'Vertical split'],
-            \}
-" set up dictionary for <localleader>
-let g:llmap = {}
-autocmd FileType tex let g:llmap.l = { 'name' : 'vimtex' }
-call leaderGuide#register_prefix_descriptions(",", "g:llmap")
-" to name the <localleader>-n group vimtex in tex files.
-let g:leaderGuide_max_size = 14
-let g:leaderGuide_submode_mappings = { '<C-F>': 'page_down', '<C-B>': 'page_up'}
-" combine the two dictionaries into a single top-level dictionary:
-let g:topdict = {}
-let g:topdict[' '] = g:lmap
-let g:topdict[' ']['name'] = '<leader>'
-let g:topdict[','] = g:llmap
-let g:topdict[',']['name'] = '<localleader>'
-
-" register it with the guide:
-call leaderGuide#register_prefix_descriptions("", "g:topdict")
-
-" define mappings:
-nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
-vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
-map <leader>. <Plug>leaderguide-global
-nnoremap <localleader> :<c-u>LeaderGuide  ','<CR>
-vnoremap <localleader> :<c-u>LeaderGuideVisual  ','<CR>
-map <localleader>. <Plug>leaderguide-buffer
 
 let g:buffergator_suppress_keymaps = 1
 let g:goyo_width = 100
@@ -1118,26 +905,6 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-
-autocmd Filetype java setlocal omnifunc=v:lua.vim.lsp.omnifunc
-autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
-autocmd Filetype rust setlocal omnifunc=v:lua.vim.lsp.omnifunc
-autocmd Filetype go setlocal omnifunc=v:lua.vim.lsp.omnifunc
-autocmd Filetype javascript setlocal omnifunc=v:lua.vim.lsp.omnifunc
-
-" Auto-format *.rs files prior to saving them
-autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
-autocmd BufWritePre *.go lua vim.lsp.buf.formatting_sync(nil, 1000)
-autocmd BufWritePre *.python lua vim.lsp.buf.formatting_sync(nil, 1000)
 
 function! Clearbg() abort
     " highlight Visual     cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE
@@ -1146,3 +913,167 @@ function! Clearbg() abort
     highlight NonText    cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE
     set nocursorline
 endfunction
+
+" COC
+" TextEdit might fail if hidden is not set.
+set hidden
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup cocgroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+let g:airline#extensions#coc#enabled = 1
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
