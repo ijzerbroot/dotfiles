@@ -1,4 +1,4 @@
-" Normally this if-block is not needed, because `:set nocp` is done
+"normally this if-block is not needed, because `:set nocp` is done
 " automatically when .vimrc is found. However, this might be useful
 " when you execute `vim -u .vimrc` from the command line.
 "if &compatible
@@ -25,6 +25,7 @@ function! PackInit() abort
 
   " Additional plugins here.
   call minpac#add('vim-jp/syntax-vim-ex')
+  call minpac#add('pechorin/any-jump.vim')
   call minpac#add('tyru/open-browser.vim')
   call minpac#add('KeitaNakamura/neodark.vim')
   call minpac#add('rakr/vim-one')
@@ -157,13 +158,17 @@ set shortmess+=c
 " Add plugins to &runtimepath
 "call plug#end()
 
+let mapleader = ","
 " Function key mapping
 " F1 is FZF Commands
 nnoremap <silent> <F1> :Commands<CR>
+nnoremap <leader>cx :Commands<CR>
 " F2 is FZF Buffers
 nnoremap <silent> <F2> :Buffers<CR>
+nnoremap <leader>bx :Buffers<CR>
 " F4 is FZF Files
 nnoremap <F4> :Files<Space>./
+nnoremap <leader>fx :Files<CR>
 " F5 is remove trailing whitespace in buffer
 nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 " F6 is foldclose
@@ -196,7 +201,6 @@ let g:tokyonight_enable_italic = 1"
 let g:airline_theme = "tokyonight"
 let g:tokyonight_transparent_background = 1
 
-"let mapleader = " "
 let g:airline#extensions#tabline#enabled = 1
 " Set colors in console
 "if !has("gui_running")
@@ -831,6 +835,7 @@ cnoreabbrev Ack Ack!
 "
 " " Maps F3
 nnoremap <F3> :Ack!<Space>
+nnoremap <leader>ax :Ack!<Space>
 " " }}}
 "
 " " Navigate quickfix list with ease
@@ -1066,7 +1071,7 @@ nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> <space>cc  :<C-u>CocList commands<cr>
 " Find symbol of current document.
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
