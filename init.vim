@@ -29,15 +29,18 @@ function! PackInit() abort
   call minpac#add('tyru/open-browser.vim')
   call minpac#add('KeitaNakamura/neodark.vim')
   call minpac#add('rakr/vim-one')
+  call minpac#add('Rigellute/rigel')
   call minpac#add('haishanh/night-owl.vim')
   call minpac#add('ghifarit53/tokyonight-vim')
   call minpac#add('ntk148v/vim-horizon')
   call minpac#add('ryanoasis/vim-devicons')
+  call minpac#add('pineapplegiant/spaceduck')
   "call minpac#add('neovim/nvim-lsp')
   "call minpac#add('neovim/nvim-lspconfig')
   "call minpac#add('nvim-lua/lsp-status.nvim')
   "call minpac#add('nvim-lua/completion-nvim')
   call minpac#add('neoclide/coc.nvim')
+  "call minpac#add('weirongxu/coc-explorer')
   call minpac#add('ijzerbroot/vimhappy')
   call minpac#add('udalov/kotlin-vim')
   "call minpac#add('neoclide/coc.nvim', {'do': { -> coc#util#install()}})
@@ -190,6 +193,7 @@ nmap <F10> :terminal<CR>
 " ctrl-space is omnicomplete
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
+nmap <space>e :CocCommand explorer<CR>
 "let ayucolor="mirage"
 let ayucolor="mirage"
 let base16colorspace=256  " Access colors present in 256 colorspace
@@ -306,7 +310,6 @@ let g:netrw_scp_cmd  = "scp"
 :imap <S-CR> <Esc>
 set background=light
 let g:two_firewatch_italics=1
-colo tokyonight
 "let g:airline_theme='papercolor'
 "set autochdir
 autocmd BufEnter * silent! lcd %:p:h
@@ -1069,7 +1072,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Show all diagnostics.
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> <space>x  :<C-u>CocList extensions<cr>
 " Show commands.
 nnoremap <silent><nowait> <space>cc  :<C-u>CocList commands<cr>
 " Find symbol of current document.
@@ -1082,3 +1085,9 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+" Color scheme
+"colo tokyonight
+colo spaceduck
+let g:airline_theme = 'spaceduck'
