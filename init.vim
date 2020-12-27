@@ -161,7 +161,7 @@ set shortmess+=c
 " Add plugins to &runtimepath
 "call plug#end()
 
-let mapleader = ","
+"let mapleader = " "
 " Function key mapping
 " F1 is FZF Commands
 nnoremap <silent> <F1> :Commands<CR>
@@ -1088,6 +1088,7 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 
 " Color scheme
-"colo tokyonight
-colo spaceduck
-let g:airline_theme = 'spaceduck'
+colo tokyonight
+let g:airline_theme = 'tokyonight'
+"colo spaceduck
+"let g:airline_theme = 'spaceduck'
