@@ -147,8 +147,7 @@ command! PackUpdate source $MYVIMRC | call PackInit() | call minpac#update()
 command! PackClean  source $MYVIMRC | call PackInit() | call minpac#clean()
 command! PackStatus packadd minpac | call minpac#status()
 
-set timeoutlen=300
-set ttimeoutlen=100
+set timeoutlen=1500
 "call plug#begin('C:/Users/Fhoeben/vimfiles/plugged')
 let g:initial_go_path = "/home/frank/go"
 "call plug#begin('/home/frank/.vim/plugged')
@@ -164,32 +163,34 @@ set shortmess+=c
 "let mapleader = " "
 " Function key mapping
 " F1 is FZF Commands
-nnoremap <silent> <F1> :Commands<CR>
-nnoremap <leader>cx :Commands<CR>
+"nnoremap <silent> <F1> :Commands<CR>
+nnoremap <leader>cc :Commands<CR>
 " F2 is FZF Buffers
-nnoremap <silent> <F2> :Buffers<CR>
-nnoremap <leader>bx :Buffers<CR>
+"nnoremap <silent> <F2> :Buffers<CR>
+nnoremap <leader>bb :Buffers<CR>
 " F4 is FZF Files
-nnoremap <F4> :Files<Space>./
-nnoremap <leader>fx :Files<CR>
+"nnoremap <F4> :Files<Space>./
+nnoremap <leader>ff :Files<CR>
 " F5 is remove trailing whitespace in buffer
-nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+nnoremap <leader>ws :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+"nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 " F6 is foldclose
-nnoremap <silent> <F6> :foldclose<CR>
+nnoremap <leader>fc :foldclose<CR>
 " F7 is foldopen
-nnoremap <silent> <F7> :foldopen<CR>
+nnoremap <leader>fo :foldopen<CR>
 " F2 is toggle light or dark background
 "call togglebg#map("<F2>")
 " ctrl-S is v split
-nmap <C-s> :vsplit<CR>
+"map <C-s> :vsplit<CR>
 " F8 is NERDTreeToggle
 " nmap <F8> :NERDTreeToggle<CR>
 " F8 is Fern
-nmap <F8> :Fern . -reveal=% -drawer<CR>
+"nmap <F8> :Fern . -reveal=% -drawer<CR>
+nnoremap <leader>ee :Fern . -reveal=% -drawer<CR>
 " F9 is buffergator
-nmap <F9> :BuffergatorToggle<CR>
+"nmap <F9> :BuffergatorToggle<CR>
 " F10 is terminal
-nmap <F10> :terminal<CR>
+"nmap <F10> :terminal<CR>
 " ctrl-space is omnicomplete
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
@@ -797,11 +798,11 @@ map <C-a> ggVG
 map <C-v> <esc>p
 map <C-c> "+y
 " Move between buffers with Shift + arrow key...
-nnoremap <S-Left> :bprevious<cr>
-nnoremap <S-Right> :bnext<cr>
+"nnoremap <S-Left> :bprevious<cr>
+"nnoremap <S-Right> :bnext<cr>
 " move between tabs with Alt + arrow key
-nnoremap <A-Left> :tabprev<cr>
-nnoremap <A-Right> :tabnext<cr>
+"nnoremap <A-Left> :tabprev<cr>
+"nnoremap <A-Right> :tabnext<cr>
 " ... but skip the quickfix when navigating
 augroup qf
     autocmd!
