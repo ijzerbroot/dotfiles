@@ -1086,6 +1086,11 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+" Do not popup unnecessarily
+autocmd FileType go let b:coc_suggest_disable = 1
+autocmd FileType python let b:coc_suggest_disable = 1
+autocmd FileType ruby let b:coc_suggest_disable = 1
+autocmd FileType yaml let b:coc_suggest_disable = 1
 
 " Color scheme
 colo tokyonight
