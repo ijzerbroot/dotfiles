@@ -1,2 +1,0 @@
-vncconfig -iconic -nowin &
-exec i3
