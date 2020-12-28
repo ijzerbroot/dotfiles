@@ -43,26 +43,57 @@ tmux_conf_new_session_prompt=false
 # RGB 24-bit colour support (tmux >= 2.2), possible values are:
 #  - true
 #  - false (default)
-tmux_conf_24b_colour=false
+tmux_conf_24b_colour=true
 
 # default theme
-tmux_conf_theme_colour_1="#080808"    # dark gray
-tmux_conf_theme_colour_2="#303030"    # gray
-tmux_conf_theme_colour_3="#8a8a8a"    # light gray
-tmux_conf_theme_colour_4="#00afff"    # light blue
-tmux_conf_theme_colour_5="#ffff00"    # yellow
-tmux_conf_theme_colour_6="#080808"    # dark gray
-tmux_conf_theme_colour_7="#e4e4e4"    # white
-tmux_conf_theme_colour_8="#080808"    # dark gray
-tmux_conf_theme_colour_9="#ffff00"    # yellow
-tmux_conf_theme_colour_10="#ff00af"   # pink
-tmux_conf_theme_colour_11="#5fff00"   # green
-tmux_conf_theme_colour_12="#8a8a8a"   # light gray
-tmux_conf_theme_colour_13="#e4e4e4"   # white
-tmux_conf_theme_colour_14="#080808"   # dark gray
-tmux_conf_theme_colour_15="#080808"   # dark gray
-tmux_conf_theme_colour_16="#d70000"   # red
-tmux_conf_theme_colour_17="#e4e4e4"   # white
+#tmux_conf_theme_colour_1="#080808"    # dark gray
+#tmux_conf_theme_colour_2="#303030"    # gray
+#tmux_conf_theme_colour_3="#8a8a8a"    # light gray
+#tmux_conf_theme_colour_4="#00afff"    # light blue
+#tmux_conf_theme_colour_5="#ffff00"    # yellow
+#tmux_conf_theme_colour_6="#080808"    # dark gray
+#tmux_conf_theme_colour_7="#e4e4e4"    # white
+#tmux_conf_theme_colour_8="#080808"    # dark gray
+#tmux_conf_theme_colour_9="#ffff00"    # yellow
+#tmux_conf_theme_colour_10="#ff00af"   # pink
+#tmux_conf_theme_colour_11="#5fff00"   # green
+#tmux_conf_theme_colour_12="#8a8a8a"   # light gray
+#tmux_conf_theme_colour_13="#e4e4e4"   # white
+#tmux_conf_theme_colour_14="#080808"   # dark gray
+#tmux_conf_theme_colour_15="#080808"   # dark gray
+#tmux_conf_theme_colour_16="#d70000"   # red
+#tmux_conf_theme_colour_17="#e4e4e4"   # white
+
+# Nord palette
+# polar night
+tmux_conf_theme_colour_1="#2e3440"    # nord0
+#tmux_conf_theme_colour_2="#3b4252"    # nord1
+tmux_conf_theme_colour_2="#81a1c1"    # nord9
+tmux_conf_theme_colour_3="#434c5e"    # nord2 
+#tmux_conf_theme_colour_4="#4c566a"    # nord3 
+tmux_conf_theme_colour_4="#8fbcbb"    # nord7 
+# snow storm
+tmux_conf_theme_colour_5="#d8dee9"    # nord4
+tmux_conf_theme_colour_6="#e5e9f0"    # nord5 
+tmux_conf_theme_colour_7="#eceff4"    # nord6
+# frost
+tmux_conf_theme_colour_8="#8fbcbb"    # nord7 
+tmux_conf_theme_colour_9="#88c0d0"    # nord8
+tmux_conf_theme_colour_10="#81a1c1"   # nord9
+tmux_conf_theme_colour_11="#5e81ac"   # nord10
+# aurora
+#tmux_conf_theme_colour_12="#bf616a"   # nord11 
+tmux_conf_theme_colour_12="#d8dee9"   # nord4
+#tmux_conf_theme_colour_13="#d08770"   # nord12
+tmux_conf_theme_colour_13="#434c5a"   # nord2
+#tmux_conf_theme_colour_14="#ebcb8b"   # nord13 
+tmux_conf_theme_colour_14="#434c5e"   # nord2
+#tmux_conf_theme_colour_15="#a3be8c"   # nord14 
+tmux_conf_theme_colour_15="#2e3440"   # nord0
+#tmux_conf_theme_colour_16="#b48ead"   # nord15
+tmux_conf_theme_colour_16="#81a1c1"   # nord9
+
+tmux_conf_theme_colour_17="#5e81ac"   # nord10
 
 # default theme (ansi)
 #tmux_conf_theme_colour_1="colour0"
