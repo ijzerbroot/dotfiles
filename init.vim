@@ -28,6 +28,7 @@ function! PackInit() abort
   call minpac#add('pechorin/any-jump.vim')
   call minpac#add('tyru/open-browser.vim')
   call minpac#add('KeitaNakamura/neodark.vim')
+  call minpac#add('arcticicestudio/nord-vim')
   call minpac#add('rakr/vim-one')
   call minpac#add('Rigellute/rigel')
   call minpac#add('haishanh/night-owl.vim')
@@ -1094,7 +1095,9 @@ autocmd FileType ruby let b:coc_suggest_disable = 1
 autocmd FileType yaml let b:coc_suggest_disable = 1
 
 " Color scheme
-colo tokyonight
-let g:airline_theme = 'tokyonight'
+"colo tokyonight
+"let g:airline_theme = 'tokyonight'
 "colo spaceduck
 "let g:airline_theme = 'spaceduck'
+colo nord
+let g:airline_theme = 'nord'
