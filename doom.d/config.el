@@ -113,13 +113,13 @@
     (setq meghanada-java-path "java")
     (setq meghanada-maven-path "mvn")))
 
-(use-package! embark
-  :after selectrum
-  :bind (:map minibuffer-local-map
-         ("C-o" . embark-act)
-         ("C-S-o" . embark-act-noexit)
-         :map embark-file-map
-         ("j" . dired-jump)))
+;(use-package! embark
+;  :after selectrum
+;  :bind (:map minibuffer-local-map
+;         ("C-o" . embark-act)
+;         ("C-S-o" . embark-act-noexit)
+;         :map embark-file-map
+;         ("j" . dired-jump)))
 
 (selectrum-mode +1)
 ;; to make sorting and filtering more intelligent
