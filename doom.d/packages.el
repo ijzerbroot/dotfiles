@@ -9,6 +9,13 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 (package! powershell)
 (package! swoop)
+(package! selectrum)
+(package! selectrum-prescient)
+(package! prescient)
+(package! consult)
+(package! marginalia)
+(package! embark)
+(package! wakib-keys)
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
 ;; https://github.com/raxod502/straight.el#the-recipe-format
@@ -48,3 +55,42 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
+(selectrum-mode +1)
+;; to make sorting and filtering more intelligent
+(selectrum-prescient-mode +1)
+
+;; to save command history on disk, so the sorting gets more intelligent over time
+(prescient-persist-mode +1)
+
+(require 'wakib-keys)
+(wakib-keys 1)
+
+(use-package marginalia
+  :ensure t
+  :config
+  (marginalia-mode))
+
+(use-package embark
+  :ensure t
+  :bind
+    ("C-S-a" . embark-act)               ; pick some comfortable binding
+    :config
+    ;; For Selectrum users:
+    (defun current-candidate+category ()
+      (when selectrum-active-p
+        (cons (selectrum--get-meta 'category)
+              (selectrum-get-current-candidate))))
+
+    (add-hook 'embark-target-finders #'current-candidate+category)
+
+    (defun current-candidates+category ()
+      (when selectrum-active-p
+        (cons (selectrum--get-meta 'category)
+              (selectrum-get-current-candidates
+              ;; Pass relative file names for dired.
+              minibuffer-completing-file-name))))
+
+    (add-hook 'embark-candidate-collectors #'current-candidates+category)
+
+    ;; No unnecessary computation delay after injection.
+    (add-hook 'embark-setup-hook 'selectrum-set-selected-candidate))

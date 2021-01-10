@@ -35,7 +35,6 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
-
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -113,3 +112,23 @@
    (t
     (setq meghanada-java-path "java")
     (setq meghanada-maven-path "mvn")))
+
+(use-package! embark
+  :after selectrum
+  :bind (:map minibuffer-local-map
+         ("C-o" . embark-act)
+         ("C-S-o" . embark-act-noexit)
+         :map embark-file-map
+         ("j" . dired-jump)))
+
+(selectrum-mode +1)
+;; to make sorting and filtering more intelligent
+(selectrum-prescient-mode +1)
+
+;; to save command history on disk, so the sorting gets more intelligent over time
+(prescient-persist-mode +1)
+
+(setq evil-default-state 'emacs)
+
+(require 'wakib-keys)
+(wakib-keys 1)
