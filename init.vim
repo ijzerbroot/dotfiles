@@ -161,7 +161,7 @@ set shortmess+=c
 " Add plugins to &runtimepath
 "call plug#end()
 
-"let mapleader = " "
+let mapleader = "\\"
 " Function key mapping
 " F1 is FZF Commands
 "nnoremap <silent> <F1> :Commands<CR>
@@ -171,7 +171,7 @@ nnoremap <leader>cc :Commands<CR>
 nnoremap <leader>bb :Buffers<CR>
 " F4 is FZF Files
 "nnoremap <F4> :Files<Space>./
-nnoremap <leader>ff :Files<CR>
+nnoremap <leader>ff :Files<space>
 " F5 is remove trailing whitespace in buffer
 nnoremap <leader>ws :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 "nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
@@ -1099,7 +1099,7 @@ autocmd FileType yaml let b:coc_suggest_disable = 1
 "let g:airline_theme = 'tokyonight'
 "colo spaceduck
 "let g:airline_theme = 'spaceduck'
-colo horizon
+colo challenger_deep
 call Clearbg()
 let g:airline_theme = 'powerlineish'
 AirlineTheme powerlineish
