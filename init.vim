@@ -59,7 +59,7 @@ function! PackInit() abort
   call minpac#add('godlygeek/tabular'  )
   "call minpac#add('tpope/vim-rhubarb')
   call minpac#add('pelodelfuego/vim-swoop')
-  call minpac#add('roman/golden-ratio')
+  "call minpac#add('roman/golden-ratio')
   "call minpac#add('python-mode/python-mode')
   call minpac#add('kalekundert/vim-coiled-snake')
   call minpac#add('Shougo/neosnippet')
@@ -1099,5 +1099,7 @@ autocmd FileType yaml let b:coc_suggest_disable = 1
 "let g:airline_theme = 'tokyonight'
 "colo spaceduck
 "let g:airline_theme = 'spaceduck'
-colo nord
-let g:airline_theme = 'nord'
+colo horizon
+call Clearbg()
+let g:airline_theme = 'powerlineish'
+AirlineTheme powerlineish
