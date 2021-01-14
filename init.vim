@@ -24,6 +24,8 @@ function! PackInit() abort
   call minpac#add('k-takata/minpac', {'type': 'opt'})
 
   " Additional plugins here.
+  " theme
+  call minpac#add('wadackel/vim-dogrun')
   call minpac#add('vim-jp/syntax-vim-ex')
   call minpac#add('pechorin/any-jump.vim')
   call minpac#add('tyru/open-browser.vim')
@@ -42,6 +44,7 @@ function! PackInit() abort
   "call minpac#add('nvim-lua/completion-nvim')
   call minpac#add('neoclide/coc.nvim')
   "call minpac#add('weirongxu/coc-explorer')
+  call minpac#add('liuchengxu/vista.vim')
   call minpac#add('ijzerbroot/vimhappy')
   call minpac#add('udalov/kotlin-vim')
   "call minpac#add('neoclide/coc.nvim', {'do': { -> coc#util#install()}})
@@ -172,6 +175,8 @@ nnoremap <leader>bb :Buffers<CR>
 " F4 is FZF Files
 "nnoremap <F4> :Files<Space>./
 nnoremap <leader>ff :Files<space>
+" Vista window
+nnoremap <leader>vv :Vista coc<CR>
 " F5 is remove trailing whitespace in buffer
 nnoremap <leader>ws :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 "nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
@@ -1097,9 +1102,7 @@ autocmd FileType yaml let b:coc_suggest_disable = 1
 " Color scheme
 "colo tokyonight
 "let g:airline_theme = 'tokyonight'
-"colo spaceduck
-"let g:airline_theme = 'spaceduck'
-colo challenger_deep
+colo spaceduck
+let g:airline_theme = 'spaceduck'
 call Clearbg()
-let g:airline_theme = 'powerlineish'
-AirlineTheme powerlineish
+AirlineTheme spaceduck
