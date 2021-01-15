@@ -249,7 +249,7 @@ if has("gui_running")
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set gfn=Hack\ NF:h18
+    set gfn=CaskaydiaCove\ NF:h14
     GuiPopupmenu 0
 endif
 if has("gui_macvim")
@@ -1099,10 +1099,13 @@ autocmd FileType python let b:coc_suggest_disable = 1
 autocmd FileType ruby let b:coc_suggest_disable = 1
 autocmd FileType yaml let b:coc_suggest_disable = 1
 
+"neovide settings
+let g:neovide_refresh_rate=60
+let g:neovide_transparency=0.98
+let g:neovide_cursor_vfx_mode = "railgun"
+
 " Color scheme
-"colo tokyonight
-"let g:airline_theme = 'tokyonight'
-colo spaceduck
-let g:airline_theme = 'spaceduck'
-call Clearbg()
-AirlineTheme spaceduck
+colo tokyonight
+let g:airline_theme = 'tokyonight'
+""call Clearbg()
+AirlineTheme tokyonight
