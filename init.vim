@@ -100,8 +100,6 @@ function! PackInit() abort
   "call minpac#add('majutsushi/tagbar')
   call minpac#add('schickling/vim-bufonly')
   call minpac#add('wesQ3/vim-windowswap')
-  "call minpac#add('benmills/vimux')
-  call minpac#add('jeetsukumaran/vim-buffergator')
   call minpac#add('gilsondev/searchtasks.vim')
   call minpac#add('tpope/vim-dispatch')
   call minpac#add('honza/vim-snippets')
@@ -193,8 +191,6 @@ nnoremap <leader>fo :foldopen<CR>
 " F8 is Fern
 "nmap <F8> :Fern . -reveal=% -drawer<CR>
 nnoremap <leader>ee :Fern . -reveal=% -drawer<CR>
-" F9 is buffergator
-"nmap <F9> :BuffergatorToggle<CR>
 " F10 is terminal
 "nmap <F10> :terminal<CR>
 " ctrl-space is omnicomplete
@@ -874,7 +870,6 @@ nmap <silent> <leader>ol  :lopen<CR>
 " let g:lmap.o.l = ['lopen', 'Open locationlist']
 
 
-let g:buffergator_suppress_keymaps = 1
 let g:goyo_width = 100
 let g:goyo_height = 90
 if exists("g:gui_oni")
@@ -1105,6 +1100,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsListSnippets="<c-s>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
 
 "neovide settings
 let g:neovide_refresh_rate=60
