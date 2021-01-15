@@ -82,7 +82,7 @@ function! PackInit() abort
   call minpac#add('sebdah/vim-delve')
   call minpac#add('terryma/vim-multiple-cursors')
   call minpac#add('tpope/vim-fugitive')
-  "call minpac#add('SirVer/ultisnips')
+  call minpac#add('SirVer/ultisnips')
   "call minpac#add('jreybert/vimagit')
   call minpac#add('tpope/vim-surround')
   call minpac#add('cespare/vim-toml')
@@ -1098,6 +1098,13 @@ autocmd FileType go let b:coc_suggest_disable = 1
 autocmd FileType python let b:coc_suggest_disable = 1
 autocmd FileType ruby let b:coc_suggest_disable = 1
 autocmd FileType yaml let b:coc_suggest_disable = 1
+
+"Ultisnips settings
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-s>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "neovide settings
 let g:neovide_refresh_rate=60
