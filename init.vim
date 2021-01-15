@@ -176,7 +176,7 @@ nnoremap <leader>bb :Buffers<CR>
 "nnoremap <F4> :Files<Space>./
 nnoremap <leader>ff :Files<space>
 " Vista window
-nnoremap <leader>vv :Vista coc<CR>
+nnoremap <leader>vv :Vista ctags<CR>
 " F5 is remove trailing whitespace in buffer
 nnoremap <leader>ws :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 "nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
