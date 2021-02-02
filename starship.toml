@@ -1,0 +1,85 @@
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+#format = "$time$directory[](fg:#303030 bg:#afd700)$git_branch[](fg:#afd700 bg:#889af7)$kubernetes[](fg:#889af7)$line_break $character"
+format = "$time[](fg:#303030 bg:#afd700)[ ](bg:#afd700 fg:#889af7)$git_branch$git_status[ ](bg:#afd700 fg:#889af7)[](fg:#afd700 bg:#889af7)[ ](bg:#889af7)$kubernetes[ ](bg:#889af7)[](fg:#889af7 bg:#303030)[ ](bg:#303030 fg:#9e9e9e)$directory[ ](bg:#303030 fg:#9e9e9e)[](fg:#303030)$line_break $character"
+#format = "   stacks ⟪[$git_branch](bold red) 🐧⟫ $kubernetes $directory $line_break $character"
+# Replace the "❯" symbol in the prompt with "➜"
+[character]      # The name of the module we are configuring is "character"
+symbol = "➜"     # The "symbol" segment is being set to "➜"
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[directory]
+truncation_length = 2
+truncation_symbol = "…/"
+format = "[$path](bg:#303030 fg:#9e9e9e)"
+
+[git_branch]
+symbol = "🌱 "
+truncation_length = 4
+truncation_symbol = ""
+format = "[$symbol$branch](bg:#afd700 fg:#005f00)"
+
+[git_commit]
+commit_hash_length = 4
+
+[git_state]
+progress_divider = " of "
+cherry_pick = "🍒 PICKING"
+
+[git_status]
+#conflicted = "🏳"
+#ahead = "🏎💨"
+#behind = "😰"
+#diverged = "😵"
+untracked = "🤷"
+stashed = "📦"
+#modified = "📝"
+#staged.value = "++"
+#staged.style = "green"
+staged_count.enabled = true
+#staged_count.style = "green"
+renamed = "👅"
+#deleted = "🗑"
+format = '([\[$all_status$ahead_behind\]]($style))'
+style = "bg:#afd700 fg:#005f00"
+
+#[golang]
+#symbol = "🏎💨 "
+
+#[hostname]
+#ssh_only = false
+##prefix = "⟪"
+##suffix = "⟫"
+#format = "⟪[$hostname](bold red)⟫"
+#trim_at = ".companyname.com"
+#disabled = false
+
+[kubernetes]
+symbol = "☸️" 
+style = "bg:#889af7 fg:#303030"
+disabled = false
+format = "[$symbol$context  $namespace]($style)"
+[kubernetes.context_aliases]
+"dev.local.cluster.k8s" = "mydev"
+"kubernetes-admin@Sapienza-Staging" = "sapstaging"
+"kubernetes-admin@Sapienza-Production" = "sapprod"
+
+[memory_usage]
+disabled = true
+show_percentage = true
+show_swap = true
+threshold = -1
+symbol = " "
+separator = "/"
+style = "bold dimmed green"
+
+[time]
+disabled = false
+format = "[🕙](bg:#303030 fg:#9e9e9e)[ $time ](bg:#303030 fg:#9e9e9e)"
+utc_time_offset = "+2"
+#time_range = "6:00:00-20:00:00"
+
