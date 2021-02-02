@@ -1,8 +1,8 @@
 # Don't print a new line at the start of the prompt
 add_newline = false
 
-#format = "$time$directory[](fg:#303030 bg:#afd700)$git_branch[](fg:#afd700 bg:#889af7)$kubernetes[](fg:#889af7)$line_break $character"
-format = "$time[](fg:#303030 bg:#889af7)[ ](bg:#889af7)$kubernetes[ ](bg:#889af7)[](fg:#889af7 bg:#afd700)[ ](bg:#afd700 fg:#889af7)$git_branch$git_status[ ](bg:#afd700 fg:#889af7)[](fg:#afd700 bg:#303030)[ ](bg:#303030 fg:#9e9e9e)$directory[ ](bg:#303030 fg:#9e9e9e)[](fg:#303030)$line_break $character"
+#format = "$time$directory[](fg:#303030 bg:#afd700)$git_branch[](fg:#afd700 bg:#7084f5)$kubernetes[](fg:#7084f5)$line_break $character"
+format = "$time[](fg:#303030 bg:#7084f5)[ ](bg:#7084f5)$kubernetes[ ](bg:#7084f5)[](fg:#7084f5 bg:#afd700)[ ](bg:#afd700 fg:#7084f5)$git_branch$git_status[ ](bg:#afd700 fg:#7084f5)[](fg:#afd700 bg:#303030)[ ](bg:#303030 fg:#9e9e9e)$directory[ ](bg:#303030 fg:#9e9e9e)[](fg:#303030)$line_break $character"
 #format = "   stacks ⟪[$git_branch](bold red) 🐧⟫ $kubernetes $directory $line_break $character"
 # Replace the "❯" symbol in the prompt with "➜"
 [character]      # The name of the module we are configuring is "character"
@@ -60,7 +60,7 @@ style = "bg:#afd700 fg:#005f00"
 
 [kubernetes]
 #symbol = "☸️"  
-style = "bg:#889af7 fg:#303030"
+style = "bg:#7084f5 fg:#303030"
 disabled = false
 format = "[$context  $namespace]($style)"
 [kubernetes.context_aliases]
