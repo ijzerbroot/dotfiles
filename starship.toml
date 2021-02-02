@@ -19,7 +19,7 @@ format = "[$path](bg:#303030 fg:#9e9e9e)"
 
 [git_branch]
 symbol = "🌱 "
-truncation_length = 4
+truncation_length = 8
 truncation_symbol = ""
 format = "[$symbol$branch](bg:#afd700 fg:#005f00)"
 
@@ -59,10 +59,10 @@ style = "bg:#afd700 fg:#005f00"
 #disabled = false
 
 [kubernetes]
-symbol = "☸️" 
+#symbol = "☸️"  
 style = "bg:#889af7 fg:#303030"
 disabled = false
-format = "[$symbol$context  $namespace]($style)"
+format = "[$context  $namespace]($style)"
 [kubernetes.context_aliases]
 "dev.local.cluster.k8s" = "mydev"
 "kubernetes-admin@Sapienza-Staging" = "sapstaging"
@@ -80,6 +80,6 @@ style = "bold dimmed green"
 [time]
 disabled = false
 format = "[🕙](bg:#303030 fg:#9e9e9e)[ $time ](bg:#303030 fg:#9e9e9e)"
-utc_time_offset = "+2"
+utc_time_offset = "local"
 #time_range = "6:00:00-20:00:00"
 
