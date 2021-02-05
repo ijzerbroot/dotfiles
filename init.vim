@@ -61,7 +61,7 @@ function! PackInit() abort
   call minpac#add('Shougo/neosnippet')
   call minpac#add('Shougo/neosnippet-snippets' )
   call minpac#add('editorconfig/editorconfig-vim')
-  "call minpac#add('junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' })
+  call minpac#add('junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' })
   call minpac#add('junegunn/fzf.vim')
   "call minpac#add('mhinz/vim-signify')
   call minpac#add('mileszs/ack.vim')
