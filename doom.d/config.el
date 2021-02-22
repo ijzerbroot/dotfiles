@@ -19,13 +19,14 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Cascadia Code PL" :size 18 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Cascadia Code PL" :size 18))
+(setq doom-font (font-spec :family "CaskaydiaCove Nerd Font" :size 18 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "CaskaydiaCove Nerd Font" :size 18))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-horizon)
+;;(setq doom-theme 'nil)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -142,3 +143,24 @@
 (require 'py-autopep8)
 
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
+;; Elegant Emacs layout
+;;(require 'disp-table)
+;;(require 'nano-faces)
+;;(require 'nano-colors)
+;;(require 'nano-defaults)
+;;(require 'nano-theme)
+;;(require 'nano-theme-dark)
+;;(require 'nano-help)
+;;(require 'nano-modeline)
+;;(require 'nano-layout)
+;;(nano-faces)
+;;(nano-theme)
+;;(nano-defaults)
+(defun dabbrev-complation-at-point ()
+  (dabbrev--reset-global-variables)
+  (let* ((abbrev (dabbrev--abbrev-at-point))
+         (candidates (dabbrev--find-all-expansions abbrev t))
+         (bnd (bounds-of-thing-at-point 'symbol)))
+    (list (car bnd) (cdr bnd) candidates)))
+(add-to-list 'completion-at-point-functions 'dabbrev-complation-at-point)
