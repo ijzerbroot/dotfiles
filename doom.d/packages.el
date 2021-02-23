@@ -20,6 +20,7 @@
 (package! py-autopep8)
 (package! blacken)
 (package! kubernetes)
+(package! crux)
 ;;(package! nano-emacs :recipe (:host github :repo "rougier/nano-emacs"))
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
