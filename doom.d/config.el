@@ -172,5 +172,4 @@
 (global-set-key (kbd "C-c d") 'crux-duplicate-current-line-or-region)
 (global-set-key (kbd "C-c k") 'crux-kill-other-buffers)
 (global-set-key (kbd "C-^") 'crux-top-join-line)
-(global-set-key (kbd "Super-k") 'crux-kill-whole-line)
 (global-set-key (kbd "M-o") 'crux-other-window-or-switch-buffer)
