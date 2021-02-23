@@ -131,8 +131,8 @@
 
 (setq evil-default-state 'emacs)
 
-(require 'wakib-keys)
-(wakib-keys 1)
+;;(require 'wakib-keys)
+;;(wakib-keys 1)
 
 (require 'lsp-mode)
 (add-hook 'go-mode-hook #'lsp-deferred)
@@ -164,3 +164,5 @@
          (bnd (bounds-of-thing-at-point 'symbol)))
     (list (car bnd) (cdr bnd) candidates)))
 (add-to-list 'completion-at-point-functions 'dabbrev-complation-at-point)
+
+(global-set-key (kbd "C-\\") 'kill-buffer-and-window)
