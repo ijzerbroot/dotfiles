@@ -887,10 +887,20 @@ let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
 " airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
+"let g:airline_left_sep = ''
+let g:airline_left_sep = "\UE0B8"
+let g:airline_left_alt_sep = "\UE0BE"
+"let g:airline_left_alt_sep = ''
+let g:airline_right_sep = "\UE0BA"
+let g:airline_right_alt_sep = "\UE0BC"
+"let g:airline_right_sep = ''
+"let g:airline_right_alt_sep = ''
+"let g:airline#extensions#tabline#left_sep = "\UE0BC"
+"let g:airline#extensions#tabline#left_alt_sep = "\UE0BA"
+let g:airline#extensions#tabline#left_sep = "\UE0B0"
+let g:airline#extensions#tabline#left_alt_sep = "\UE0B1"
+let g:airline#extensions#tabline#right_sep = "\UE0B2"
+let g:airline#extensions#tabline#right_alt_sep = "\UE0B3"
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
