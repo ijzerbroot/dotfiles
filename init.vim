@@ -115,6 +115,9 @@ function! PackInit() abort
   call minpac#add('ryanoasis/vim-devicons')
   "call minpac#add('shougo/unite.vim')
   call minpac#add('mhinz/vim-startify')
+  "call minpac#add('aserebryakov/vim-todo-lists')
+  call minpac#add('freitass/todo.txt-vim')
+  call minpac#add('Matsuuu/pinkmare')
 
 endfunction
 
@@ -1083,7 +1086,12 @@ let g:neovide_transparency=0.98
 let g:neovide_cursor_vfx_mode = "railgun"
 
 " Color scheme
-colo tokyonight
+colo pinkmare
 let g:airline_theme = 'tokyonight'
 ""call Clearbg()
 AirlineTheme tokyonight
+
+let g:VimTodoListsMoveItems = 1
+let g:VimTodoListsDatesEnabled = 1
+let g:VimTodoListsDatesFormat = "%a %b %d, %Y"
+
