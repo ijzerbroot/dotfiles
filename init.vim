@@ -118,6 +118,8 @@ function! PackInit() abort
   "call minpac#add('aserebryakov/vim-todo-lists')
   call minpac#add('freitass/todo.txt-vim')
   call minpac#add('Matsuuu/pinkmare')
+  call minpac#add('PProvost/vim-ps1')
+  call minpac#add('embark-theme/vim', { 'name': 'embark' })
 
 endfunction
 
@@ -1086,7 +1088,7 @@ let g:neovide_transparency=0.98
 let g:neovide_cursor_vfx_mode = "railgun"
 
 " Color scheme
-colo pinkmare
+colo embark
 let g:airline_theme = 'tokyonight'
 ""call Clearbg()
 AirlineTheme tokyonight

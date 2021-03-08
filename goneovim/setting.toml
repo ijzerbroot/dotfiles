@@ -8,8 +8,8 @@ Width = 1600
 Height = 900
 #
 ### Editor external font-family, font-size, and linespace.
-### This is the font and linespace settings of the graphical UI as an nvim front end. 
-### For example, linespace affects the margins of the external completion popup menu UI. 
+### This is the font and linespace settings of the graphical UI as an nvim front end.
+### For example, linespace affects the margins of the external completion popup menu UI.
 ### Font settings in nvim are set with well-known options, such as `:set guifont = hoge:h10`, `:set linespace=4`.
 #FontFamily = "Rec Mono SemiCasual"
 FontFamily = "CaskaydiaCove NF"
@@ -20,7 +20,7 @@ SmoothScroll = true
 ### Neovim external UI features
 ### The following is the default value of goneovim.
 ### You can change the behavior of the GUI by changing the following boolean values.
-### If you prefer the traditional Vim UI, set it to false for all. 
+### If you prefer the traditional Vim UI, set it to false for all.
 ### Also, `ExtMessages` is still experimental at this time and we don't recommend setting it to true if you want stability.
 #ExtCmdline   = true
 ExtPopupmenu = true
@@ -81,7 +81,7 @@ DrawShadowForFloatWindow = true
 #
 ## Pattern that fills the diff background
 ## Change the background pattern used for diff display.
-## This option allows you to use a visual effect pattern such as Dense, Diagonal Stripe instead of a regular solid pattern. 
+## This option allows you to use a visual effect pattern such as Dense, Diagonal Stripe instead of a regular solid pattern.
 ## The available patterns are all Qt brush styles. For more information, See: https://doc.qt.io/qt-5/qbrush.html#details
 ## // -- diffpattern enum --
 ## // SolidPattern             1
@@ -122,7 +122,7 @@ DrawShadowForFloatWindow = true
 #Transparent = 1.0
 #
 ### The statusline configuration below relates to the display of Goneovim's own external status lines.
-### If you want to use neovim's status line plugin, you should disable its display. 
+### If you want to use neovim's status line plugin, you should disable its display.
 #[Statusline]
 ### Whether or not to display the external status line
 #Visible = false
@@ -163,13 +163,13 @@ ShowDetail = true
 Total = 20
 #
 ### width of `menu` column
-#MenuWidth = 400
+MenuWidth = 400
 #
 ### width of `info` column
 #InfoWidth = 1
 #
 ### width of `detail` column
-#DetailWidth = 250
+DetailWidth = 600
 #
 #[Lint]
 ### Specifies whether the external linter tooltip should be displayed or not.
@@ -187,7 +187,7 @@ Total = 20
 Disable = false
 #
 ### Specifies whether to show the minimap or not.
-Visible = true
+Visible = false
 #
 ### Specifies the width of the minimap.
 Width = 120
