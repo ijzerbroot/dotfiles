@@ -118,6 +118,8 @@ function! PackInit() abort
   call minpac#add('PProvost/vim-ps1')
   call minpac#add('embark-theme/vim', { 'name': 'embark' })
   call minpac#add('lambdalisue/fern.vim')
+  call minpac#add('nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'})
+  call minpac#add('cocopon/iceberg.vim')
 
 endfunction
 
@@ -958,4 +960,4 @@ nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-lua require 'lua/lsp'
+lua require 'lsp'
