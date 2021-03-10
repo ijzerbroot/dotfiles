@@ -951,6 +951,9 @@ let g:VimTodoListsMoveItems = 1
 let g:VimTodoListsDatesEnabled = 1
 let g:VimTodoListsDatesFormat = "%a %b %d, %Y"
 
+
+autocmd FileType go set omnifunc=v:lua.vim.lsp.omnifunc
+
 nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
