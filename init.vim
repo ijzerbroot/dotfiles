@@ -213,7 +213,7 @@ if exists('g:GtkGuiLoaded')
 endif
 
 " Set extra options when running in GUI mode
-set gfn=CaskaydiaCove\ Nerd\ Font\ Mono:h13
+"set gfn=CaskaydiaCove\ Nerd\ Font\ Mono:h13
 if has("gui_running")
     set guioptions-=T
     set guioptions-=e
@@ -308,7 +308,7 @@ set autowrite                     " write when switching buffers
 set autowriteall                  " write on :quit
 set clipboard=unnamed
 "set colorcolumn=81                " highlight the 80th column as an indicator
-set completeopt-=preview          " remove the horrendous preview window
+"set completeopt-=preview          " remove the horrendous preview window
 set cursorline                    " highlight the current line for the cursor
 set encoding=utf-8
 set expandtab                     " expands tabs to spaces
