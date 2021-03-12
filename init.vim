@@ -885,10 +885,10 @@ let g:airline_left_sep = ''
 "let g:airline_left_sep = "\UE0B8"
 "let g:airline_left_alt_sep = "\UE0BE"
 let g:airline_left_alt_sep = ''
-let g:airline_right_sep = "\UE0BA"
-let g:airline_right_alt_sep = "\UE0BC"
-"let g:airline_right_sep = ''
-"let g:airline_right_alt_sep = ''
+"let g:airline_right_sep = "\UE0BA"
+"let g:airline_right_alt_sep = "\UE0BC"
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 "let g:airline#extensions#tabline#left_sep = "\UE0BC"
 "let g:airline#extensions#tabline#left_alt_sep = "\UE0BA"
 let g:airline#extensions#tabline#left_sep = "\UE0B0"
@@ -938,20 +938,20 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "neovide settings
 let g:neovide_refresh_rate=60
-let g:neovide_transparency=0.98
+let g:neovide_transparency=0.99
 let g:neovide_cursor_vfx_mode = "railgun"
 
 " Color scheme
 colo embark
 let g:airline_theme = 'embark'
-""call Clearbg()
-AirlineTheme embark
+"call Clearbg()
+"AirlineTheme embark
 
 let g:VimTodoListsMoveItems = 1
 let g:VimTodoListsDatesEnabled = 1
 let g:VimTodoListsDatesFormat = "%a %b %d, %Y"
 
-
+nnoremap <C-v> "+p
 autocmd FileType go set omnifunc=v:lua.vim.lsp.omnifunc
 
 nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
