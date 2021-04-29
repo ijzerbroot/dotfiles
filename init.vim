@@ -120,8 +120,8 @@ function! PackInit() abort
   call minpac#add('lambdalisue/fern.vim')
   call minpac#add('nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'})
   call minpac#add('cocopon/iceberg.vim') 
-  " SQL formatting. prereq: go get github.com/jackc/sqlfmt/...
-  call minpac#add('b4b4r07/vim-sqlfmt')
+  "prereq: pip install sqlparse
+  call minpac#add('mpyatishev/vim-sqlformat')
 
 endfunction
 
@@ -966,3 +966,5 @@ nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 lua require 'lsp'
+
+
