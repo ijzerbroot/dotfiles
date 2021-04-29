@@ -119,7 +119,9 @@ function! PackInit() abort
   call minpac#add('embark-theme/vim', { 'name': 'embark' })
   call minpac#add('lambdalisue/fern.vim')
   call minpac#add('nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'})
-  call minpac#add('cocopon/iceberg.vim')
+  call minpac#add('cocopon/iceberg.vim') 
+  " SQL formatting. prereq: go get github.com/jackc/sqlfmt/...
+  call minpac#add('b4b4r07/vim-sqlfmt')
 
 endfunction
 
@@ -938,20 +940,20 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "neovide settings
 let g:neovide_refresh_rate=60
-let g:neovide_transparency=0.99
+let g:neovide_transparency=0.995
 let g:neovide_cursor_vfx_mode = "railgun"
 
 " Color scheme
 colo embark
 let g:airline_theme = 'embark'
-"call Clearbg()
-"AirlineTheme embark
+""call Clearbg()
+AirlineTheme embark
 
 let g:VimTodoListsMoveItems = 1
 let g:VimTodoListsDatesEnabled = 1
 let g:VimTodoListsDatesFormat = "%a %b %d, %Y"
 
-nnoremap <C-v> "+p
+
 autocmd FileType go set omnifunc=v:lua.vim.lsp.omnifunc
 
 nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
