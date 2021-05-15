@@ -26,6 +26,9 @@ function! PackInit() abort
   " Additional plugins here.
   " theme
   call minpac#add('wadackel/vim-dogrun')
+  call minpac#add('nvim-lua/popup.nvim')
+  call minpac#add('nvim-lua/plenary.nvim')
+  call minpac#add('nvim-telescope/telescope.nvim')
   call minpac#add('vim-jp/syntax-vim-ex')
   call minpac#add('pechorin/any-jump.vim')
   call minpac#add('KeitaNakamura/neodark.vim')
@@ -144,13 +147,28 @@ let mapleader = "\\"
 " Function key mapping
 " F1 is FZF Commands
 "nnoremap <silent> <F1> :Commands<CR>
-nnoremap <leader>cc :Commands<CR>
+"nnoremap <leader>cc :Commands<CR>
+nnoremap <leader>cc <cmd>Telescope commands<cr>
+nnoremap <leader>cs <cmd>Telescope colorscheme<cr>
 " F2 is FZF Buffers
 "nnoremap <silent> <F2> :Buffers<CR>
-nnoremap <leader>bb :Buffers<CR>
+"nnoremap <leader>bb :Buffers<CR>
+nnoremap <leader>bb <cmd>Telescope buffers<cr>
+nnoremap <leader>bf <cmd>Telescope current_buffer_fuzzy_find<cr>
 " F4 is FZF Files
-"nnoremap <F4> :Files<Space>./
-nnoremap <leader>ff :Files<space>
+"nnoremap <leader>ff :Files<space>
+nnoremap <leader>fb <cmd>Telescope file_browser<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>gf <cmd>Telescope git_files<cr>
+nnoremap <leader>gs <cmd>Telescope git_status<cr>
+nnoremap <leader>lr <cmd>Telescope lsp_references<cr>
+nnoremap <leader>ls <cmd>Telescope lsp_document_symbols<cr>
+nnoremap <leader>ld <cmd>Telescope lsp_definitions<cr>
+nnoremap <leader>lw <cmd>Telescope lsp_workspace_symbols<cr>
+nnoremap <leader>lc <cmd>Telescope lsp_code_actions<cr>
+nnoremap <leader>sh <cmd>Telescope search_history<cr>
 " Vista window
 nnoremap <leader>vv :Vista nvim_lsp<CR>
 " F5 is remove trailing whitespace in buffer
@@ -944,10 +962,10 @@ let g:neovide_transparency=0.995
 let g:neovide_cursor_vfx_mode = "railgun"
 
 " Color scheme
-colo embark
-let g:airline_theme = 'embark'
+colo horizon
+let g:airline_theme = 'challenger_deep'
 ""call Clearbg()
-AirlineTheme embark
+AirlineTheme challenger_deep
 
 let g:VimTodoListsMoveItems = 1
 let g:VimTodoListsDatesEnabled = 1
@@ -967,4 +985,56 @@ nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 lua require 'lsp'
 
+lua << EOF
+require('telescope').setup{
+require('telescope').setup{
+  defaults = {
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case'
+    },
+    prompt_position = "bottom",
+    prompt_prefix = "> ",
+    selection_caret = "> ",
+    entry_prefix = "  ",
+    initial_mode = "insert",
+    selection_strategy = "reset",
+    sorting_strategy = "descending",
+    layout_strategy = "horizontal",
+    layout_defaults = {
+      horizontal = {
+        mirror = false,
+      },
+      vertical = {
+        mirror = false,
+      },
+    },
+    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+    file_ignore_patterns = {},
+    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+    shorten_path = true,
+    winblend = 0,
+    width = 0.75,
+    preview_cutoff = 120,
+    results_height = 1,
+    results_width = 0.8,
+    border = {},
+    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+    color_devicons = true,
+    use_less = true,
+    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
 
+    -- Developer configurations: Not meant for general override
+    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+  }
+}
+}
+EOF
