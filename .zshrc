@@ -73,3 +73,4 @@ setopt SHARE_HISTORY
 
 #ZSH_AUTOSUGGEST_STRATEGY=histdb_top_here
 eval "$(mcfly init zsh)"
+eval "$(zoxide init zsh)"
