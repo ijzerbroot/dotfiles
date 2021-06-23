@@ -29,6 +29,8 @@ function! PackInit() abort
   call minpac#add('nvim-lua/popup.nvim')
   call minpac#add('nvim-lua/plenary.nvim')
   call minpac#add('nvim-telescope/telescope.nvim')
+  call minpac#add('norcalli/snippets.nvim')
+  call minpac#add('nvim-telescope/telescope-snippets.nvim')
   call minpac#add('vim-jp/syntax-vim-ex')
   call minpac#add('pechorin/any-jump.vim')
   call minpac#add('KeitaNakamura/neodark.vim')
@@ -157,6 +159,8 @@ nnoremap <leader>bb <cmd>Telescope buffers<cr>
 nnoremap <leader>bf <cmd>Telescope current_buffer_fuzzy_find<cr>
 " F4 is FZF Files
 "nnoremap <leader>ff :Files<space>
+" Formatting
+nnoremap <leader>fd <cmd>Neoformat<cr>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -169,6 +173,7 @@ nnoremap <leader>ld <cmd>Telescope lsp_definitions<cr>
 nnoremap <leader>lw <cmd>Telescope lsp_workspace_symbols<cr>
 nnoremap <leader>lc <cmd>Telescope lsp_code_actions<cr>
 nnoremap <leader>sh <cmd>Telescope search_history<cr>
+nnoremap <leader>sn <cmd>Telescope snippets snippets<cr>
 " Vista window
 nnoremap <leader>vv :Vista nvim_lsp<CR>
 " F5 is remove trailing whitespace in buffer
@@ -851,9 +856,6 @@ nmap <silent> <C-Right> :wincmd l<CR>
 nmap <C-\> :bd<CR>
 
 
-" Provide commands and descriptions for existing mappings
-nmap <silent> <leader>fd :e $MYVIMRC<CR>
-
 nmap <silent> <leader>fs :so %<CR>
 " let g:lmap.f.s = ['so %', 'Source file']
 
@@ -962,7 +964,7 @@ let g:neovide_transparency=0.995
 let g:neovide_cursor_vfx_mode = "railgun"
 
 " Color scheme
-colo horizon
+colo ayu
 let g:airline_theme = 'challenger_deep'
 ""call Clearbg()
 AirlineTheme challenger_deep
@@ -1037,4 +1039,8 @@ require('telescope').setup{
   }
 }
 }
+EOF
+
+lua << EOF
+require('telescope').load_extension('snippets')
 EOF
