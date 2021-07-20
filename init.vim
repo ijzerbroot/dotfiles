@@ -26,14 +26,15 @@ function! PackInit() abort
   " Additional plugins here.
   " theme
   call minpac#add('wadackel/vim-dogrun')
+  call minpac#add('windwp/windline.nvim')
+  call minpac#add('yashguptaz/calvera-dark.nvim')
+  call minpac#add('Shadorain/shadotheme')
   call minpac#add('nvim-lua/popup.nvim')
   call minpac#add('nvim-lua/plenary.nvim')
   call minpac#add('nvim-telescope/telescope.nvim')
-  call minpac#add('norcalli/snippets.nvim')
-  call minpac#add('nvim-telescope/telescope-snippets.nvim')
   call minpac#add('vim-jp/syntax-vim-ex')
   call minpac#add('pechorin/any-jump.vim')
-  call minpac#add('KeitaNakamura/neodark.vim')
+  "call minpac#add('KeitaNakamura/neodark.vim')
   call minpac#add('arcticicestudio/nord-vim')
   call minpac#add('rakr/vim-one')
   call minpac#add('Rigellute/rigel')
@@ -48,14 +49,14 @@ function! PackInit() abort
   call minpac#add('nvim-lua/completion-nvim')
   call minpac#add('liuchengxu/vista.vim')
   call minpac#add('ijzerbroot/vimhappy')
-  call minpac#add('udalov/kotlin-vim')
+  "call minpac#add('udalov/kotlin-vim')
   call minpac#add('junegunn/goyo.vim')
   call minpac#add('flrnprz/candid.vim')
   call minpac#add('ayu-theme/ayu-vim')
   call minpac#add('rakr/vim-two-firewatch')
   "call minpac#add('hecal3/vim-leader-guide')
   call minpac#add('rakr/vim-togglebg')
-  call minpac#add('drewtempelmeyer/palenight.vim')
+  "call minpac#add('drewtempelmeyer/palenight.vim')
   call minpac#add('vim-jp/syntax-vim-ex')
   call minpac#add('markonm/traces.vim')
   call minpac#add('fenetikm/falcon')
@@ -96,8 +97,8 @@ function! PackInit() abort
   call minpac#add('gregsexton/gitv')
   call minpac#add('junegunn/gv.vim')
   call minpac#add('airblade/vim-gitgutter')
-  call minpac#add('vim-airline/vim-airline')
-  call minpac#add('vim-airline/vim-airline-themes')
+  "call minpac#add('vim-airline/vim-airline')
+  "call minpac#add('vim-airline/vim-airline-themes')
   call minpac#add('sjl/badwolf')
   call minpac#add('tomasr/molokai')
   call minpac#add('morhetz/gruvbox')
@@ -107,10 +108,10 @@ function! PackInit() abort
   call minpac#add('romainl/Apprentice')
   call minpac#add('Lokaltog/vim-distinguished')
   call minpac#add('w0ng/vim-hybrid')
-  call minpac#add('AlessandroYorba/Sierra')
-  call minpac#add('effkay/argonaut.vim')
+  "call minpac#add('AlessandroYorba/Sierra')
+  "call minpac#add('effkay/argonaut.vim')
   call minpac#add('atelierbram/Base2Tone-vim')
-  call minpac#add('colepeters/spacemacs-theme.vim')
+  "call minpac#add('colepeters/spacemacs-theme.vim')
   call minpac#add('tpope/vim-surround')
   call minpac#add('godlygeek/tabular')
   "call minpac#add('scrooloose/nerdtree', { 'on':  'NERDTreeToggle' })
@@ -119,8 +120,8 @@ function! PackInit() abort
   call minpac#add('mhinz/vim-startify')
   "call minpac#add('aserebryakov/vim-todo-lists')
   call minpac#add('freitass/todo.txt-vim')
-  call minpac#add('Matsuuu/pinkmare')
-  call minpac#add('PProvost/vim-ps1')
+  "call minpac#add('Matsuuu/pinkmare')
+  "call minpac#add('PProvost/vim-ps1')
   call minpac#add('embark-theme/vim', { 'name': 'embark' })
   call minpac#add('lambdalisue/fern.vim')
   call minpac#add('nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'})
@@ -137,7 +138,7 @@ command! PackClean  source $MYVIMRC | call PackInit() | call minpac#clean()
 command! PackStatus packadd minpac | call minpac#status()
 
 set timeoutlen=1500
-let g:initial_go_path = "/home/frank/go"
+let g:initial_go_path = "/Users/frank/go"
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
@@ -159,8 +160,6 @@ nnoremap <leader>bb <cmd>Telescope buffers<cr>
 nnoremap <leader>bf <cmd>Telescope current_buffer_fuzzy_find<cr>
 " F4 is FZF Files
 "nnoremap <leader>ff :Files<space>
-" Formatting
-nnoremap <leader>fd <cmd>Neoformat<cr>
 nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -173,7 +172,6 @@ nnoremap <leader>ld <cmd>Telescope lsp_definitions<cr>
 nnoremap <leader>lw <cmd>Telescope lsp_workspace_symbols<cr>
 nnoremap <leader>lc <cmd>Telescope lsp_code_actions<cr>
 nnoremap <leader>sh <cmd>Telescope search_history<cr>
-nnoremap <leader>sn <cmd>Telescope snippets snippets<cr>
 " Vista window
 nnoremap <leader>vv :Vista nvim_lsp<CR>
 " F5 is remove trailing whitespace in buffer
@@ -244,7 +242,7 @@ if has("gui_running")
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set gfn=CaskaydiaCove\ Nerd Font:h14
+    set gfn=CaskaydiaCove\ Nerd\ Font:h14
     GuiPopupmenu 0
 endif
 if has("gui_macvim")
@@ -856,6 +854,9 @@ nmap <silent> <C-Right> :wincmd l<CR>
 nmap <C-\> :bd<CR>
 
 
+" Provide commands and descriptions for existing mappings
+nmap <silent> <leader>fd :e $MYVIMRC<CR>
+
 nmap <silent> <leader>fs :so %<CR>
 " let g:lmap.f.s = ['so %', 'Source file']
 
@@ -967,7 +968,7 @@ let g:neovide_cursor_vfx_mode = "railgun"
 colo ayu
 let g:airline_theme = 'challenger_deep'
 ""call Clearbg()
-AirlineTheme challenger_deep
+"AirlineTheme challenger_deep
 
 let g:VimTodoListsMoveItems = 1
 let g:VimTodoListsDatesEnabled = 1
@@ -986,61 +987,17 @@ nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 lua require 'lsp'
-
+lua require('wlsample.bubble')
+"lua require('wlsample.airline')
+"lua require('wlsample.airline_anim')
 lua << EOF
-require('telescope').setup{
-require('telescope').setup{
-  defaults = {
-    vimgrep_arguments = {
-      'rg',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case'
-    },
-    prompt_position = "bottom",
-    prompt_prefix = "> ",
-    selection_caret = "> ",
-    entry_prefix = "  ",
-    initial_mode = "insert",
-    selection_strategy = "reset",
-    sorting_strategy = "descending",
-    layout_strategy = "horizontal",
-    layout_defaults = {
-      horizontal = {
-        mirror = false,
-      },
-      vertical = {
-        mirror = false,
-      },
-    },
-    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
-    file_ignore_patterns = {},
-    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
-    shorten_path = true,
-    winblend = 0,
-    width = 0.75,
-    preview_cutoff = 120,
-    results_height = 1,
-    results_width = 0.8,
-    border = {},
-    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
-    color_devicons = true,
-    use_less = true,
-    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
-    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
-    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
-
-    -- Developer configurations: Not meant for general override
-    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
+local windline = require('windline')
+windline.setup({
+  statuslines = {
+      default,
+      airline,
+      markdown
   }
-}
-}
+})
 EOF
-
-lua << EOF
-require('telescope').load_extension('snippets')
-EOF
+lua require('wlsample.bubble')
