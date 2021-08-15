@@ -966,6 +966,7 @@ let g:neovide_refresh_rate=60
 let g:neovide_transparency=0.995
 let g:neovide_cursor_vfx_mode = "railgun"
 
+let pumblend=5
 " Color scheme
 colo ayu
 let g:airline_theme = 'challenger_deep'
