@@ -25,6 +25,7 @@ function! PackInit() abort
 
   " Additional plugins here.
   " theme
+  call minpac#add('justinmk/vim-sneak')
   call minpac#add('wadackel/vim-dogrun')
   call minpac#add('windwp/windline.nvim')
   call minpac#add('yashguptaz/calvera-dark.nvim')
@@ -732,8 +733,8 @@ au FileType yaml set tabstop=2
 "let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
 "let g:syntastic_swift_checkers = ['swiftpm']
 " remap ; to : and vv
-nmap ; :
-nnoremap ;; ;
+" nmap ; :
+" nnoremap ;; ;
 
 "custom diffrev function
 " ----------------------------------------------------------------------------
