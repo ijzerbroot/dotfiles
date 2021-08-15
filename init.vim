@@ -25,6 +25,7 @@ function! PackInit() abort
 
   " Additional plugins here.
   " theme
+  call minpac#add('ms-jpq/coq_nvim')
   call minpac#add('justinmk/vim-sneak')
   call minpac#add('wadackel/vim-dogrun')
   call minpac#add('windwp/windline.nvim')
@@ -243,7 +244,7 @@ if has("gui_running")
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set gfn=CaskaydiaCove\ Nerd\ Font:h14
+    set gfn=CaskaydiaCove\ Nerd\ Font:h17
     GuiPopupmenu 0
 endif
 if has("gui_macvim")
