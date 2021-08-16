@@ -25,14 +25,15 @@ function! PackInit() abort
 
   " Additional plugins here.
   " theme
-  "call minpac#add('nikvdp/neomux')
   call minpac#add('akinsho/nvim-toggleterm.lua')
   call minpac#add('nikvdp/neomux')
   call minpac#add('ms-jpq/coq_nvim')
   call minpac#add('kyazdani42/nvim-web-devicons')
   call minpac#add('justinmk/vim-sneak')
   call minpac#add('wadackel/vim-dogrun')
-  call minpac#add('windwp/windline.nvim')
+  "call minpac#add('windwp/windline.nvim')
+  call minpac#add('lewis6991/gitsigns.nvim')
+  call minpac#add('famiu/feline.nvim')
   call minpac#add('yashguptaz/calvera-dark.nvim')
   call minpac#add('Shadorain/shadotheme')
   call minpac#add('nvim-lua/popup.nvim')
@@ -973,19 +974,6 @@ nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 lua require 'lsp'
-"lua require('wlsample.airline')
-"lua require('wlsample.airline_anim')
-lua require('wlsample.bubble')
-lua << EOF
-local windline = require('windline')
-windline.setup({
-  statuslines = {
-      default,
-      airline,
-      markdown
-  }
-})
-EOF
 
 set hidden
 lua <<EOF
@@ -1040,3 +1028,5 @@ end
 EOF
 
 lua vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+lua require('feline').setup()
+lua require('statusline')

@@ -19,6 +19,26 @@ local vi_mode_colors = {
     NONE = colors.yellow
 }
 
+local vi_mode_text = {
+    n = "NORMAL",
+    i = "INSERT",
+    v = "VISUAL",
+    [''] = "V-BLOCK",
+    V = "V-LINE",
+    c = "COMMAND",
+    no = "UNKNOWN",
+    s = "UNKNOWN",
+    S = "UNKNOWN",
+    ic = "UNKNOWN",
+    R = "REPLACE",
+    Rv = "UNKNOWN",
+    cv = "UNKWON",
+    ce = "UNKNOWN",
+    r = "REPLACE",
+    rm = "UNKNOWN",
+    t = "INSERT"
+}
+
 local icons = {
     linux = ' ',
     macos = ' ',
@@ -82,15 +102,30 @@ end
 local comps = {
     vi_mode = {
         left = {
-            provider = '▊',
-            hl = vimode_hl,
-            right_sep = ' '
+            provider = function()
+                local current_text = ' '..vi_mode_text[vim.fn.mode()]..' '
+                return current_text
+            end,
+            hl = function()
+                local val = {
+                    name = vi_mode_utils.get_mode_highlight_name(),
+                    fg = colors.bg,
+                    bg = vi_mode_utils.get_mode_color(),
+                    style = 'bold'
+                }
+                return val
+            end,
+            right_sep = 'slant_right'
         },
         right = {
             provider = '▊',
             hl = vimode_hl,
             left_sep = ' '
         }
+    },
+    position = {
+      left_sep = ' ',
+      provider = 'position'
     },
     file = {
         info = {
@@ -109,7 +144,12 @@ local comps = {
             }
         },
         type = {
+            left_sep = ' ',
             provider = 'file_type'
+        },
+        size = {
+            left_sep = ' ',
+            provider = 'file_size'
         },
         os = {
             provider = file_osinfo,
@@ -251,7 +291,10 @@ local components = {
             comps.git.change,
             comps.git.remove,
             comps.file.os,
+            comps.file.size,
+            comps.file.type,
             comps.git.branch,
+            comps.position,
             comps.line_percentage,
             comps.scroll_bar,
             comps.vi_mode.right
