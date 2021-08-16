@@ -67,8 +67,6 @@ function! PackInit() abort
   call minpac#add('markonm/traces.vim')
   call minpac#add('fenetikm/falcon')
   call minpac#add('godlygeek/tabular'  )
-  call minpac#add('Shougo/neosnippet')
-  call minpac#add('Shougo/neosnippet-snippets' )
   call minpac#add('editorconfig/editorconfig-vim')
   call minpac#add('junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' })
   call minpac#add('junegunn/fzf.vim')
@@ -506,27 +504,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 "----------------------------------------------
 " Set the Delve backend.
 let g:delve_backend = "native"
-
-"----------------------------------------------
-" Plugin: Shougo/neosnippet
-"----------------------------------------------
-" Disable the default snippets (needed since we do not install
-" Shougo/neosnippet-snippets).
-"
-" Below you can disable default snippets for specific languages. If you set the
-" language to _ it sets the default for all languages.
-let g:neosnippet#disable_runtime_snippets = {
-            \ 'go': 1
-            \}
-
-" Keybindings
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-
-" Set the path to our snippets
-let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
-
 
 "----------------------------------------------
 " Plugin: 'terryma/vim-multiple-cursors'
