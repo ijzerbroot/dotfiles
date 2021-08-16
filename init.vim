@@ -154,6 +154,7 @@ let mapleader = "\\"
 "nnoremap <silent> <F1> :Commands<CR>
 "nnoremap <leader>cc :Commands<CR>
 nnoremap <leader>cc <cmd>Telescope commands<cr>
+nnoremap <leader>cn <cmd>COQnow<cr>
 nnoremap <leader>cs <cmd>Telescope colorscheme<cr>
 " F2 is FZF Buffers
 "nnoremap <silent> <F2> :Buffers<CR>
