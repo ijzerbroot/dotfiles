@@ -27,6 +27,7 @@ function! PackInit() abort
   " theme
   "call minpac#add('nikvdp/neomux')
   call minpac#add('akinsho/nvim-toggleterm.lua')
+  call minpac#add('nikvdp/neomux')
   call minpac#add('ms-jpq/coq_nvim')
   call minpac#add('kyazdani42/nvim-web-devicons')
   call minpac#add('justinmk/vim-sneak')
@@ -81,6 +82,7 @@ function! PackInit() abort
   call minpac#add('terryma/vim-multiple-cursors')
   call minpac#add('tpope/vim-fugitive')
   call minpac#add('SirVer/ultisnips')
+  call minpac#add('honza/vim-snippets')
   call minpac#add('cespare/vim-toml')
   call minpac#add('kshenoy/vim-signature')
   call minpac#add('kana/vim-arpeggio')
