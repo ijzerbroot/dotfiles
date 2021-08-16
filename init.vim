@@ -26,6 +26,7 @@ function! PackInit() abort
   " Additional plugins here.
   " theme
   call minpac#add('ms-jpq/coq_nvim')
+  call minpac#add('kyazdani42/nvim-web-devicons')
   call minpac#add('justinmk/vim-sneak')
   call minpac#add('wadackel/vim-dogrun')
   call minpac#add('windwp/windline.nvim')
