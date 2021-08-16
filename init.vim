@@ -25,6 +25,8 @@ function! PackInit() abort
 
   " Additional plugins here.
   " theme
+  "call minpac#add('nikvdp/neomux')
+  call minpac#add('akinsho/nvim-toggleterm.lua')
   call minpac#add('ms-jpq/coq_nvim')
   call minpac#add('kyazdani42/nvim-web-devicons')
   call minpac#add('justinmk/vim-sneak')
@@ -992,9 +994,9 @@ nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 lua require 'lsp'
-lua require('wlsample.bubble')
 "lua require('wlsample.airline')
 "lua require('wlsample.airline_anim')
+lua require('wlsample.bubble')
 lua << EOF
 local windline = require('windline')
 windline.setup({
@@ -1005,4 +1007,57 @@ windline.setup({
   }
 })
 EOF
-lua require('wlsample.bubble')
+
+set hidden
+lua <<EOF
+local toggleterm = require('toggleterm')
+toggleterm.setup( {
+  size = function(term)
+    if term.direction == "horizontal" then
+      return 15
+    elseif term.direction == "vertical" then
+      return vim.o.columns * 0.4
+    end
+  end,
+  open_mapping = [[<c-t>]],
+  hide_numbers = true, 
+  shade_filetypes = {},
+  shade_terminals = true,
+  shading_factor = '1', 
+  start_in_insert = true,
+  insert_mappings = true, 
+  persist_size = true,
+  direction = 'float' ,
+  close_on_exit = true,
+  shell = vim.o.shell, 
+  -- This field is only relevant if direction is set to 'float'
+  float_opts = {
+    -- The border key is *almost* the same as 'nvim_open_win'
+    -- see :h nvim_open_win for details on borders however
+    -- the 'curved' border is a custom border type
+    -- not natively supported but implemented in this plugin.
+    border = 'curved', 
+    width = 90,
+    height = 30,
+    winblend = 3,
+    highlights = {
+      border = "Normal",
+      background = "Normal",
+    }
+  }
+})
+EOF
+
+lua <<EOF
+function _G.set_terminal_keymaps()
+  local opts = {noremap = true}
+  vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', 'jk', [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-j>', [[<C-\><C-n><C-W>j]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
+end
+EOF
+
+lua vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
