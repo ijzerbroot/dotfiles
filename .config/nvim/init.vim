@@ -7,147 +7,11 @@
 "  set nocompatible
 "endif
 
-packadd minpac
-
-call minpac#init()
-
-" minpac must have {'type': 'opt'} so that it can be loaded with `packadd`.
-call minpac#add('k-takata/minpac', {'type': 'opt'})
-
-" Add other plugins here.
-call minpac#add('vim-jp/syntax-vim-ex')
-
-function! PackInit() abort
-  packadd minpac
-
-  call minpac#init()
-  call minpac#add('k-takata/minpac', {'type': 'opt'})
-
-  " Additional plugins here.
-  " theme
-  call minpac#add('tpope/vim-dadbod')
-  call minpac#add('AckslD/nvim-neoclip.lua')
-  call minpac#add('akinsho/nvim-toggleterm.lua')
-  call minpac#add('nikvdp/neomux')
-  call minpac#add('ms-jpq/coq_nvim', { 'branch': 'coq' })
-  call minpac#add('ms-jpq/coq.artifacts', { 'branch': 'artifacts' })
-  call minpac#add('kyazdani42/nvim-web-devicons')
-  call minpac#add('justinmk/vim-sneak')
-  call minpac#add('wadackel/vim-dogrun')
-  "call minpac#add('windwp/windline.nvim')
-  call minpac#add('lewis6991/gitsigns.nvim')
-  call minpac#add('famiu/feline.nvim')
-  call minpac#add('yashguptaz/calvera-dark.nvim')
-  call minpac#add('Shadorain/shadotheme')
-  call minpac#add('nvim-lua/popup.nvim')
-  call minpac#add('nvim-lua/plenary.nvim')
-  call minpac#add('nvim-telescope/telescope.nvim')
-  call minpac#add('vim-jp/syntax-vim-ex')
-  call minpac#add('pechorin/any-jump.vim')
-  "call minpac#add('KeitaNakamura/neodark.vim')
-  call minpac#add('arcticicestudio/nord-vim')
-  call minpac#add('rakr/vim-one')
-  call minpac#add('Rigellute/rigel')
-  call minpac#add('haishanh/night-owl.vim')
-  call minpac#add('ghifarit53/tokyonight-vim')
-  call minpac#add('ntk148v/vim-horizon')
-  call minpac#add('ryanoasis/vim-devicons')
-  call minpac#add('pineapplegiant/spaceduck')
-  call minpac#add('neovim/nvim-lsp')
-  call minpac#add('neovim/nvim-lspconfig')
-  call minpac#add('nvim-lua/lsp-status.nvim')
-  "call minpac#add('nvim-lua/completion-nvim')
-  call minpac#add('liuchengxu/vista.vim')
-  call minpac#add('ijzerbroot/vimhappy')
-  "call minpac#add('udalov/kotlin-vim')
-  call minpac#add('junegunn/goyo.vim')
-  call minpac#add('flrnprz/candid.vim')
-  call minpac#add('ayu-theme/ayu-vim')
-  call minpac#add('rakr/vim-two-firewatch')
-  "call minpac#add('hecal3/vim-leader-guide')
-  call minpac#add('rakr/vim-togglebg')
-  "call minpac#add('drewtempelmeyer/palenight.vim')
-  call minpac#add('vim-jp/syntax-vim-ex')
-  call minpac#add('markonm/traces.vim')
-  call minpac#add('fenetikm/falcon')
-  call minpac#add('godlygeek/tabular'  )
-  call minpac#add('editorconfig/editorconfig-vim')
-  call minpac#add('junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' })
-  call minpac#add('junegunn/fzf.vim')
-  "call minpac#add('mhinz/vim-signify')
-  call minpac#add('mileszs/ack.vim')
-  call minpac#add('prettier/vim-prettier')
-  call minpac#add('rbgrouleff/bclose.vim')
-  call minpac#add('sbdchd/neoformat')
-  call minpac#add('scrooloose/nerdcommenter')
-  call minpac#add('sebdah/vim-delve')
-  call minpac#add('terryma/vim-multiple-cursors')
-  call minpac#add('tpope/vim-fugitive')
-  call minpac#add('SirVer/ultisnips')
-  call minpac#add('honza/vim-snippets')
-  call minpac#add('cespare/vim-toml')
-  call minpac#add('kshenoy/vim-signature')
-  call minpac#add('kana/vim-arpeggio')
-  call minpac#add('junegunn/vim-easy-align')
-  call minpac#add('tpope/vim-commentary')
-  call minpac#add('tpope/vim-vinegar')
-  call minpac#add('mhinz/vim-janah')
-  call minpac#add('challenger-deep-theme/vim', { 'as': 'challenger-deep' })
-  call minpac#add('NLKNguyen/papercolor-theme')
-  call minpac#add('puppetlabs/puppet-syntax-vim')
-  call minpac#add('tpope/vim-unimpaired')
-  "call minpac#add('majutsushi/tagbar')
-  call minpac#add('tpope/vim-dispatch')
-  call minpac#add('maksimr/vim-jsbeautify')
-  call minpac#add('reedes/vim-pencil')
-  call minpac#add('tpope/vim-markdown')
-  call minpac#add('jtratner/vim-flavored-markdown')
-  call minpac#add('kablamo/vim-git-log')
-  call minpac#add('gregsexton/gitv')
-  call minpac#add('junegunn/gv.vim')
-  call minpac#add('airblade/vim-gitgutter')
-  "call minpac#add('vim-airline/vim-airline')
-  "call minpac#add('vim-airline/vim-airline-themes')
-  call minpac#add('sjl/badwolf')
-  call minpac#add('tomasr/molokai')
-  call minpac#add('morhetz/gruvbox')
-  call minpac#add('zenorocha/dracula-theme', {'rtp': 'vim/'})
-  call minpac#add('junegunn/limelight.vim')
-  call minpac#add('mkarmona/colorsbox')
-  call minpac#add('romainl/Apprentice')
-  call minpac#add('Lokaltog/vim-distinguished')
-  call minpac#add('w0ng/vim-hybrid')
-  "call minpac#add('AlessandroYorba/Sierra')
-  "call minpac#add('effkay/argonaut.vim')
-  call minpac#add('atelierbram/Base2Tone-vim')
-  "call minpac#add('colepeters/spacemacs-theme.vim')
-  call minpac#add('tpope/vim-surround')
-  call minpac#add('godlygeek/tabular')
-  "call minpac#add('scrooloose/nerdtree', { 'on':  'NERDTreeToggle' })
-  call minpac#add('ryanoasis/vim-devicons')
-  "call minpac#add('shougo/unite.vim')
-  call minpac#add('mhinz/vim-startify')
-  "call minpac#add('aserebryakov/vim-todo-lists')
-  call minpac#add('freitass/todo.txt-vim')
-  "call minpac#add('Matsuuu/pinkmare')
-  "call minpac#add('PProvost/vim-ps1')
-  call minpac#add('embark-theme/vim', { 'name': 'embark' })
-  call minpac#add('lambdalisue/fern.vim')
-  call minpac#add('nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'})
-  call minpac#add('cocopon/iceberg.vim') 
-  "prereq: pip install sqlparse
-  call minpac#add('mpyatishev/vim-sqlformat')
-
-endfunction
-
-packloadall
-call PackInit()
-command! PackUpdate source $MYVIMRC | call PackInit() | call minpac#update()
-command! PackClean  source $MYVIMRC | call PackInit() | call minpac#clean()
-command! PackStatus packadd minpac | call minpac#status()
-
 set timeoutlen=1500
 let g:initial_go_path = "/Users/frank/go"
+
+" Load plugins with packer
+lua require 'plugins'
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
@@ -162,7 +26,7 @@ let mapleader = " "
 " F1 is FZF Commands
 "nnoremap <silent> <F1> :Commands<CR>
 "nnoremap <leader>cc :Commands<CR>
-nnoremap <leader>cc <cmd>Telescope commands<cr>
+nnoremap <leader>co <cmd>Telescope commands<cr>
 nnoremap <leader>cn <cmd>COQnow<cr>
 nnoremap <leader>cs <cmd>Telescope colorscheme<cr>
 " F2 is FZF Buffers
@@ -1033,9 +897,10 @@ end
 EOF
 
 lua vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
-lua require('feline').setup()
-lua require('statusline')
-lua require('neoclip').setup()
-
+"lua require('statusline')
+"lua require('feline').setup()
 " Set default local PG database
 let g:db = 'postgresql:///frank'
+
+" Setup statusline
+lua require('wlsample.airline')
