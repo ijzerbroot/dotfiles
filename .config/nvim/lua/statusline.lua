@@ -130,6 +130,7 @@ local comps = {
     file = {
         info = {
             provider = 'file_info',
+            left_sep = ' ',
             hl = {
                 fg = colors.blue,
                 style = 'bold'

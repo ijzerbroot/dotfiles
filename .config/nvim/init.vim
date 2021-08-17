@@ -25,9 +25,12 @@ function! PackInit() abort
 
   " Additional plugins here.
   " theme
+  call minpac#add('tpope/vim-dadbod')
+  call minpac#add('AckslD/nvim-neoclip.lua')
   call minpac#add('akinsho/nvim-toggleterm.lua')
   call minpac#add('nikvdp/neomux')
-  call minpac#add('ms-jpq/coq_nvim')
+  call minpac#add('ms-jpq/coq_nvim', { 'branch': 'coq' })
+  call minpac#add('ms-jpq/coq.artifacts', { 'branch': 'artifacts' })
   call minpac#add('kyazdani42/nvim-web-devicons')
   call minpac#add('justinmk/vim-sneak')
   call minpac#add('wadackel/vim-dogrun')
@@ -53,7 +56,7 @@ function! PackInit() abort
   call minpac#add('neovim/nvim-lsp')
   call minpac#add('neovim/nvim-lspconfig')
   call minpac#add('nvim-lua/lsp-status.nvim')
-  call minpac#add('nvim-lua/completion-nvim')
+  "call minpac#add('nvim-lua/completion-nvim')
   call minpac#add('liuchengxu/vista.vim')
   call minpac#add('ijzerbroot/vimhappy')
   "call minpac#add('udalov/kotlin-vim')
@@ -1030,3 +1033,7 @@ EOF
 lua vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 lua require('feline').setup()
 lua require('statusline')
+lua require('neoclip').setup()
+
+" Set default local PG database
+let g:db = 'postgresql:///frank'
