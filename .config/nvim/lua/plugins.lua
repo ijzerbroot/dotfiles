@@ -93,7 +93,6 @@ return require('packer').startup(function()
   use 'tpope/vim-markdown'
   use 'jtratner/vim-flavored-markdown'
   use 'kablamo/vim-git-log'
-  use 'gregsexton/gitv'
   use 'junegunn/gv.vim'
   use 'airblade/vim-gitgutter'
   use 'sjl/badwolf'
