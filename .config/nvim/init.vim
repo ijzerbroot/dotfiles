@@ -19,9 +19,9 @@ set completeopt=menuone,noinsert,noselect
 set shortmess+=c
 
 
-"let mapleader = "\\"
-nnoremap <SPACE> <Nop>
-let mapleader = " "
+let mapleader = "\\"
+"nnoremap <SPACE> <Nop>
+"let mapleader = " "
 " Function key mapping
 " F1 is FZF Commands
 "nnoremap <silent> <F1> :Commands<CR>
