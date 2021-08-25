@@ -33,7 +33,6 @@ return require('packer').startup(function()
   use { 'ms-jpq/coq.artifacts', branch= 'artifacts'} -- 9000+ Snippets
   use 'kyazdani42/nvim-web-devicons'
   use 'justinmk/vim-sneak'
-  use 'wadackel/vim-dogrun'
   use 'lewis6991/gitsigns.nvim'
   --use 'famiu/feline.nvim'
   use 'windwp/windline.nvim'
@@ -47,7 +46,6 @@ return require('packer').startup(function()
   use 'arcticicestudio/nord-vim'
   use 'rakr/vim-one'
   use 'Rigellute/rigel'
-  use 'haishanh/night-owl.vim'
   use 'ghifarit53/tokyonight-vim'
   use 'ntk148v/vim-horizon'
   use 'pineapplegiant/spaceduck'
@@ -55,7 +53,6 @@ return require('packer').startup(function()
   use 'neovim/nvim-lspconfig'
   use 'nvim-lua/lsp-status.nvim'
   use 'liuchengxu/vista.vim'
-  use 'ijzerbroot/vimhappy'
   use 'junegunn/goyo.vim'
   use 'flrnprz/candid.vim'
   use 'ayu-theme/ayu-vim'
@@ -79,7 +76,6 @@ return require('packer').startup(function()
   use 'honza/vim-snippets'
   use 'cespare/vim-toml'
   use 'kshenoy/vim-signature'
-  use 'kana/vim-arpeggio'
   use 'junegunn/vim-easy-align'
   use 'tpope/vim-commentary'
   use 'tpope/vim-vinegar'
@@ -99,7 +95,6 @@ return require('packer').startup(function()
   use 'tomasr/molokai'
   use 'morhetz/gruvbox'
   use { 'zenorocha/dracula-theme', rtp='vim/'}
-  use 'junegunn/limelight.vim'
   use 'mkarmona/colorsbox'
   use 'romainl/Apprentice'
   use 'Lokaltog/vim-distinguished'
@@ -110,14 +105,13 @@ return require('packer').startup(function()
   use 'mhinz/vim-startify'
   use 'freitass/todo.txt-vim'
   use { 'embark-theme/vim', as= 'embark' }
-  use 'lambdalisue/fern.vim'
   use {
        'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     }
   use 'cocopon/iceberg.vim'
   --prereq: pip install sqlparse
-  use 'mpyatishev/vim-sqlformat'
+  --use 'mpyatishev/vim-sqlformat'
 
   -- Load on a combination of conditions: specific filetypes or commands
   -- Also run code after load (see the "config" key)

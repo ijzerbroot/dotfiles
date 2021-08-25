@@ -9,6 +9,7 @@
 
 set timeoutlen=1500
 let g:initial_go_path = "/Users/frank/go"
+let g:neoformat_enabled_sql = ['pg_format']
 
 " Load plugins with packer
 lua require 'plugins'
@@ -40,6 +41,7 @@ nnoremap <leader>fb <cmd>Telescope file_browser<cr>
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fr <cmd>Neoformat<cr>
 nnoremap <leader>gf <cmd>Telescope git_files<cr>
 nnoremap <leader>gs <cmd>Telescope git_status<cr>
 nnoremap <leader>lr <cmd>Telescope lsp_references<cr>
@@ -71,7 +73,8 @@ nnoremap <leader>ee :Fern . -reveal=% -drawer<CR>
 " ctrl-space is omnicomplete
 inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
-let ayucolor="mirage"
+"let ayucolor="mirage"
+let ayucolor="light"
 let base16colorspace=256  " Access colors present in 256 colorspace
 let g:airline_powerline_fonts=1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
