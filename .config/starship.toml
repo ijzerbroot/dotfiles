@@ -3,11 +3,11 @@ add_newline = false
 
 command_timeout = 1800000
 #format = "$time[](fg:#303030 bg:#7084f5)[ ](bg:#7084f5)$kubernetes[ ](bg:#7084f5)[](fg:#7084f5 bg:#afd700)[ ](bg:#afd700 fg:#7084f5)$git_branch$git_status(bg:#afd700 fg:#7084f5)$hostname[](fg:#afd700 bg:#303030)[ ](bg:#303030 fg:#9e9e9e)$directory[ ](bg:#303030 fg:#9e9e9e)[](fg:#303030)$line_break $character"
-format = "$time$hostname $directory $line_break $character"
+format = "$time$hostname$directory $line_break $character"
 # Replace the "❯" symbol in the prompt with "➜"
 [character]      # The name of the module we are configuring is "character"
 #symbol = "➜"     # The "symbol" segment is being set to "➜"
-format = "[❯](fg:#55b4d4) " 
+format = "[❯](4) " 
 
 # Disable the package module, hiding it from the prompt completely
 [package]
@@ -16,7 +16,8 @@ disabled = true
 [directory]
 truncation_length = 2
 truncation_symbol = "…/"
-format = "[$path](fg:#fa8d3e)"
+#format = "[$path](fg:#fa8d3e)"
+style = "3"
 
 [git_branch]
 symbol = "🌱 "
@@ -57,7 +58,8 @@ behind = "⇣${count}"
 [hostname]
 ssh_only = false
 #style = "bg:#7084f5 fg:#303030"
-format = "[$hostname](fg:#a37acc)"
+style="bold 5"
+#format = "[$hostname]($style)"
 #trim_at = ".companyname.com"
 disabled = false
 
@@ -82,7 +84,7 @@ style = "bold dimmed green"
 
 [time]
 disabled = false
-format = "[🕙](fg:#9e9e9e)[ $time ](fg:#9e9e9e)"
+format = "[🕙](fg:#9e9e9e)[ $time ](6)"
 utc_time_offset = "local"
 #time_range = "6:00:00-20:00:00"
 
