@@ -1,6 +1,7 @@
 \x auto
 \set ON_ERROR_STOP on
 \set ON_ERROR_ROLLBACK interactive
+\set QUIET 1
 \pset null '¤'
 \pset linestyle 'unicode'
 \pset unicode_border_linestyle single
@@ -9,5 +10,14 @@
 set intervalstyle to 'postgres_verbose';
 \setenv LESS '-iMFXSx4R'
 --\setenv EDITOR '/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -nw'
-\setenv EDITOR 'subl -w'
-\set PROMPT1 '%[%033[1;33;40m%]%n%[%033[0m%]@%[%033[34m%]%m%[%033[0m%]/%[%033[32m%/%R%[%033[0m%]%# '
+--\setenv EDITOR '~/.local/bin/rmate -w'
+\setenv EDITOR '/opt/homebrew/bin/nvr -s'
+--\setenv EDITOR 'open -a bbedit -w --resume'
+--\set PROMPT1 '%[%033[1;33;40m%]%n%[%033[0m%]@%[%033[34m%]%m%[%033[0m%]/%[%033[32m%/%R%[%033[0m%]%# '
+\set PROMPT1 '%[%033[1;33m%]%n%[%033[0m%]@%[%033[34m%]%m%[%033[0m%]/%[%033[32m%/%R%[%033[0m%]%# '
+\pset pager always
+\timing
+\set VERBOSITY verbose
+\set HISTFILE ~/.psql_history- :DBNAME
+\set HISTCONTROL ignoredups
+\unset QUIET
