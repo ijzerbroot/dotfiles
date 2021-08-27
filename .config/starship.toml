@@ -17,7 +17,7 @@ disabled = true
 truncation_length = 2
 truncation_symbol = "…/"
 #format = "[$path](fg:#fa8d3e)"
-style = "3"
+style = "bold 3"
 
 [git_branch]
 symbol = "🌱 "
