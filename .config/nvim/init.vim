@@ -907,4 +907,4 @@ let g:db = 'postgresql:///frank'
 
 " Setup statusline
 "lua require('wlsample.airline')
-lua require('wlsample.bubble')
+"lua require('wlsample.bubble')

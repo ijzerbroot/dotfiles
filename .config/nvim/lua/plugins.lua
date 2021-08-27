@@ -34,8 +34,15 @@ return require('packer').startup(function()
   use 'kyazdani42/nvim-web-devicons'
   use 'justinmk/vim-sneak'
   use 'lewis6991/gitsigns.nvim'
+  use { 'hoob3rt/lualine.nvim',
+    config = function() 
+      require'lualine'.setup {
+    options = {theme = 'ayu_light' },
+  } end,
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
   --use 'famiu/feline.nvim'
-  use 'windwp/windline.nvim'
+  --use 'windwp/windline.nvim'
   use 'yashguptaz/calvera-dark.nvim'
   use 'Shadorain/shadotheme'
   use 'nvim-lua/popup.nvim'
