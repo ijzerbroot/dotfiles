@@ -100,7 +100,7 @@ nnoremap <leader>cs <cmd>:Colors<cr>
 "nnoremap <silent> <F2> :Buffers<CR>
 "nnoremap <leader>bb :Buffers<CR>
 nnoremap <leader>bb <cmd>:Buffers<cr>
-nnoremap <leader>bf <cmd>:Blines<cr>
+nnoremap <leader>bf <cmd>:BLines<cr>
 " F4 is FZF Files
 "nnoremap <leader>ff :Files<space>
 nnoremap <leader>ff <cmd>:Files<cr>
