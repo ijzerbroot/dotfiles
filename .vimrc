@@ -1,290 +1,139 @@
+"normally this if-block is not needed, because `:set nocp` is done
+" automatically when .vimrc is found. However, this might be useful
+" when you execute `vim -u .vimrc` from the command line.
+"if &compatible
+"  " `:set nocp` has many side effects. Therefore this should be done
+"  " only when 'compatible' is set.
+"  set nocompatible
+"endif
 
-set timeoutlen=300
-set ttimeoutlen=100
-" Platform dependent stuff
-"let g_python3_host_prog='C:\Users\Fhoeben\AppData\Local\Programs\Python\Python36\python.exe'
-call plug#begin('/home/frank/.vim/plugged')
-let g:initial_go_path = "/home/frank/go"
-" call plug#begin('/home/frank/.vim/plugged')
-" Make sure you use single quotes
-" Dependencies
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/seoul256.vim'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'ayu-theme/ayu-vim' 
-Plug 'hecal3/vim-leader-guide'
-Plug 'wannesm/rmvim.vim'
-Plug 'markonm/traces.vim'
-Plug 'fenetikm/falcon'
-Plug 'sarahlim/wild-cherry-vim'
-Plug 'tmux-plugins/vim-tmux'
-"Plug 'Valloric/YouCompleteMe'
-"Plug 'starcraftman/vim-eclim'
-Plug 'Shougo/neocomplcache'        " Depenency for Shougo/neosnippet
-Plug 'godlygeek/tabular'           " This must come before plasticboy/vim-markdown
-Plug 'tpope/vim-rhubarb'           " Depenency for tpope/fugitive
-Plug 'pelodelfuego/vim-swoop'
-Plug 'roman/golden-ratio'
-" General plugins
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'  " Default snippets for many languages
-Plug 'bling/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'          " CtrlP is installed to support tag finding in vim-go
-Plug 'editorconfig/editorconfig-vim'
-Plug 'itchyny/calendar.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'majutsushi/tagbar'
-Plug 'mhinz/vim-signify'
-Plug 'mileszs/ack.vim'
-Plug 'prettier/vim-prettier'
-"Plug 'neomake/neomake'
-Plug 'rbgrouleff/bclose.vim'
-Plug 'sbdchd/neoformat'
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'sebdah/vim-delve'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-fugitive'
-Plug 'jreybert/vimagit'
-Plug 'tpope/vim-surround'
-Plug 'lambdalisue/gina.vim'
-"Plug 'vimwiki/vimwiki'
-
-" Vim only plugins
-if !has('nvim')
-    Plug 'Shougo/vimproc.vim', {'do' : 'make'}  " Needed to make sebdah/vim-delve work on Vim
-    Plug 'Shougo/vimshell.vim'                  " Needed to make sebdah/vim-delve work on Vim
-endif
-
-" Language support
-Plug 'aklt/plantuml-syntax'                    " PlantUML syntax highlighting
-Plug 'cespare/vim-toml'                        " toml syntax highlighting
-Plug 'chr4/nginx.vim'                          " nginx syntax highlighting
-Plug 'dag/vim-fish'                            " Fish syntax highlighting
-Plug 'digitaltoad/vim-pug'                     " Pug syntax highlighting
-Plug 'fatih/vim-go'                            " Go support
-Plug 'rust-lang/rust.vim'                      " Rust support
-Plug 'racer-rust/vim-racer'                    " Rust support
-"Plug 'fishbullet/deoplete-ruby'                " Ruby auto completion
-Plug 'hashivim/vim-terraform'                  " Terraform syntax highlighting
-Plug 'kchmck/vim-coffee-script'                " CoffeeScript syntax highlighting
-Plug 'kylef/apiblueprint.vim'                  " API Blueprint syntax highlighting
-Plug 'leafgarland/typescript-vim'              " TypeScript syntax highlighting
-Plug 'lifepillar/pgsql.vim'                    " PostgreSQL syntax highlighting
-Plug 'mxw/vim-jsx'                             " JSX syntax highlighting
-"Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' } " Go auto completion
-Plug 'pangloss/vim-javascript'                 " JavaScript syntax highlighting
-Plug 'plasticboy/vim-markdown'                 " Markdown syntax highlighting
-Plug 'rodjek/vim-puppet'                       " Puppet syntax highlighting
-Plug 'tclh123/vim-thrift'                      " Thrift syntax highlighting
-"Plug 'zchee/deoplete-go', { 'do': 'make'}      " Go auto completion
-"Plug 'zchee/deoplete-jedi'                     " Go auto completion
-"Plug 'zimbatm/haproxy.vim'                     " HAProxy syntax highlighting
-"Plug 'dansomething/vim-eclim'
-"
-Plug 'w0rp/ale'
-
-
-" Plug 'morhetz/gruvbox'
-Plug 'flazz/vim-colorschemes'
-Plug 'chriskempson/base16-vim'
-Plug 'kshenoy/vim-signature'
-"Plug 'benmills/vimux'
-Plug 'kana/vim-arpeggio'
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-Plug 'junegunn/vim-easy-align'
-Plug 'tpope/vim-commentary'
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-"Plug 'Shougo/vimfiler.vim'
-Plug 'tpope/vim-vinegar'
-"Plug 'wincent/command-t'
-Plug 'mhinz/vim-janah'
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-"Plug 'vim-scripts/sqlplus.vim'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'puppetlabs/puppet-syntax-vim'
-Plug 'rafi/awesome-vim-colorschemes'
-" Utility
-Plug 'tpope/vim-unimpaired'
-Plug 'scrooloose/nerdtree'
-Plug 'majutsushi/tagbar'
-"Plug 'ervandew/supertab'
-Plug 'schickling/vim-bufonly'
-Plug 'wesQ3/vim-windowswap'
-"Plug 'SirVer/ultisnips'
-"Plug 'junegunn/fzf.vim'
-Plug 'benmills/vimux'
-Plug 'jeetsukumaran/vim-buffergator'
-Plug 'gilsondev/searchtasks.vim'
-" Plug 'Shougo/neocomplete.vim'
-Plug 'tpope/vim-dispatch'
-"Plug 'autozimu/LanguageClient-neovim'
-
-" (Optional) Multi-entry selection UI.
-"Plug 'junegunn/fzf'
-
-" Generic Programming Support
-" Plug 'jakedouglas/exuberant-ctags'
-Plug 'honza/vim-snippets'
-"Plug 'Townk/vim-autoclose'
-Plug 'Raimondi/delimitMate'
-Plug 'tomtom/tcomment_vim'
-Plug 'tobyS/vmustache'
-Plug 'janko-m/vim-test'
-Plug 'maksimr/vim-jsbeautify'
-"Plug 'vim-syntastic/syntastic'
-
-" Markdown / Writting
-Plug 'reedes/vim-pencil'
-Plug 'tpope/vim-markdown'
-Plug 'jtratner/vim-flavored-markdown'
-"Plug 'LanguageTool'
-
-" Git Support
-Plug 'kablamo/vim-git-log'
-Plug 'gregsexton/gitv'
-Plug 'tpope/vim-fugitive'
-"Plug 'jaxbot/github-issues.vim'
-Plug 'junegunn/gv.vim'
-Plug 'airblade/vim-gitgutter'
-
-" Theme / Interface
-"Plug 'AnsiEsc.vim'
-Plug 'ryanoasis/vim-devicons'
+" For vim we use vim-plug
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+call plug#begin('~/.vim/plugged')
+Plug 'lambdalisue/fern.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'sjl/badwolf'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-dadbod'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'justinmk/vim-sneak'
+Plug 'yashguptaz/calvera-dark.nvim'
+Plug 'Shadorain/shadotheme'
+Plug 'vim-jp/syntax-vim-ex'
+Plug 'pechorin/any-jump.vim'
+Plug 'Rigellute/rigel'
+Plug 'ghifarit53/tokyonight-vim'
+Plug 'ntk148v/vim-horizon'
+Plug 'pineapplegiant/spaceduck'
+Plug 'ayu-theme/ayu-vim'
+Plug 'rakr/vim-two-firewatch'
+Plug 'rakr/vim-togglebg'
+Plug 'fenetikm/falcon'
+Plug 'godlygeek/tabular'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
+Plug 'prettier/vim-prettier'
+Plug 'rbgrouleff/bclose.vim'
+Plug 'sbdchd/neoformat'
+Plug 'sebdah/vim-delve'
+"Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-fugitive'
+"Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'kshenoy/vim-signature'
+Plug 'junegunn/vim-easy-align'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-vinegar'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'tpope/vim-unimpaired'
+Plug 'maksimr/vim-jsbeautify'
+Plug 'tpope/vim-markdown'  
+Plug 'kablamo/vim-git-log'
+Plug 'junegunn/gv.vim'
+Plug 'airblade/vim-gitgutter'
 Plug 'tomasr/molokai'
-Plug 'morhetz/gruvbox'
-Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-Plug 'junegunn/limelight.vim'
+Plug 'zenorocha/dracula-theme'
 Plug 'mkarmona/colorsbox'
 Plug 'romainl/Apprentice'
 Plug 'Lokaltog/vim-distinguished'
-Plug 'chriskempson/base16-vim'
 Plug 'w0ng/vim-hybrid'
-Plug 'AlessandroYorba/Sierra'
-"Plug 'daylerees/colour-schemes'
-Plug 'rainglow/vim', { 'as': 'rainglow' }
-Plug 'effkay/argonaut.vim'
-Plug 'ajh17/Spacegray.vim'
 Plug 'atelierbram/Base2Tone-vim'
-Plug 'colepeters/spacemacs-theme.vim'
-Plug 'equalsraf/neovim-gui-shim'
-
-" PHP Support
-"Plug 'phpvim/phpcd.vim'
-"Plug 'tobyS/pdv'
-
-" Erlang Support
-"Plug 'vim-erlang/vim-erlang-tags'
-"Plug 'vim-erlang/vim-erlang-runtime'
-"Plug 'vim-erlang/vim-erlang-omnicomplete'
-"Plug 'vim-erlang/vim-erlang-compiler'
-
-" Elixir Support
-Plug 'elixir-lang/vim-elixir'
-Plug 'avdgaag/vim-phoenix'
-Plug 'mmorearty/elixir-ctags'
-Plug 'mattreduce/vim-mix'
-"Plug 'BjRo/vim-extest'
-"Plug 'frost/vim-eh-docs'
-"Plug 'slashmili/alchemist.vim'
-"Plug 'tpope/vim-endwise'
-"Plug 'jadercorrea/elixir_generator.vim'
-
-" Ruby
-Plug 'vim-ruby/vim-ruby'
-" Crystal support
-" Plug 'rhysd/vim-crystal'
-
-"Java support
-" Plug 'artur-shaik/vim-javacomplete2'
-
-" Swift support
-"Plug 'keith/swift.vim'
-" Elm Support
-Plug 'lambdatoast/elm.vim'
-
-" Any valid git URL is allowed
-" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" Group dependencies, vim-snippets depends on ultisnips
-"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
 Plug 'tpope/vim-surround'
-Plug 'godlygeek/tabular'
-
-" On-demand loading:
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'ryanoasis/vim-devicons'
-"Plug 'shougo/denite.nvim'
-Plug 'shougo/unite.vim'
 Plug 'mhinz/vim-startify'
+Plug 'freitass/todo.txt-vim'
+Plug 'embark-theme/vim', { 'as': 'embark' }
+Plug 'cocopon/iceberg.vim'
 
-" Using a non-master branch
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" Plugin options
-" "no longer maintained
-" Plug 'nsf/gocode'
-
-" Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Unmanaged plugin (manually installed and updated)
-"Plug '~/my-prototype-plugin'
-
-" Add plugins to &runtimepath
+" Initialize plugin system
 call plug#end()
 
-let ayucolor="mirage"
+set timeoutlen=1500
+"let g:initial_go_path = "/Users/frank/go"
+
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+" Avoid showing message extra message when using completion
+set shortmess+=c
+
+
+let mapleader = "\\"
+"nnoremap <SPACE> <Nop>
+"let mapleader = " "
+" Function key mapping
+" F1 is FZF Commands
+"nnoremap <silent> <F1> :Commands<CR>
+"nnoremap <leader>cc :Commands<CR>
+nnoremap <leader>ch <cmd>:History:<cr>
+nnoremap <leader>co <cmd>:Commands<cr>
+nnoremap <leader>cs <cmd>:Colors<cr>
+" F2 is FZF Buffers
+"nnoremap <silent> <F2> :Buffers<CR>
+"nnoremap <leader>bb :Buffers<CR>
+nnoremap <leader>bb <cmd>:Buffers<cr>
+nnoremap <leader>bf <cmd>:Blines<cr>
+" F4 is FZF Files
+"nnoremap <leader>ff :Files<space>
+nnoremap <leader>ff <cmd>:Files<cr>
+nnoremap <leader>fr <cmd>:Neoformat<cr>
+nnoremap <leader>gg <cmd>:Git<cr>
+nnoremap <leader>ll <cmd>:Lines<cr>
+nnoremap <leader>sh <cmd>:History/<cr>
+" F5 is remove trailing whitespace in buffer
+nnoremap <leader>ws :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+"nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+" F6 is foldclose
+nnoremap <leader>fc :foldclose<CR>
+" F7 is foldopen
+nnoremap <leader>fo :foldopen<CR>
+" F2 is toggle light or dark background
+"call togglebg#map("<F2>")
+" ctrl-S is v split
+"map <C-s> :vsplit<CR>
+" F8 is NERDTreeToggle
+" nmap <F8> :NERDTreeToggle<CR>
+" F8 is Fern
+"nmap <F8> :Fern . -reveal=% -drawer<CR>
+nnoremap <leader>ee :Fern . -reveal=% -drawer<CR>
+" F10 is terminal
+"nmap <F10> :terminal<CR>
+" ctrl-space is omnicomplete
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-Space>
+"let ayucolor="mirage"
+let ayucolor="light"
 let base16colorspace=256  " Access colors present in 256 colorspace
 let g:airline_powerline_fonts=1
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
-" colorscheme molokai
-"colorscheme base16-atelier-savanna
-" colorscheme challenger_deep
-" set background=dark    " Setting dark mode
-"let g:airline_theme='powerlineish'
-" set gfn=MesloLGLDZ\ Nerd\ Font\ Mono:h14:cANSI
-set gfn=Hack\:h14:cANSI
-"let g:vimfiler_as_default_explorer = 1
-"call vimfiler#custom#profile('default', 'context', {
-"            \ 'explorer' : 1,
-"            \ 'winwidth' : 30,
-"            \ 'winminwidth' : 30,
-"            \ 'toggle' : 1,
-"            \ 'columns' : 'type',
-"            \ 'auto_expand': 1,
-"            \ 'direction' : 'rightbelow',
-"            \ 'parent': 0,
-"            \ 'explorer_columns' : 'type',
-"            \ 'status' : 1,
-"            \ 'safe' : 0,
-"            \ 'split' : 1,
-"            \ 'hidden': 1,
-"            \ 'no_quit' : 1,
-"            \ 'force_hide' : 0,
-"            \ })
+let g:tokyonight_style = 'storm' " available: night, storm
+let g:tokyonight_enable_italic = 1"
+let g:tokyonight_transparent_background = 1
 
-let g:neoformat_java_google = {
-            \ 'exe': 'java',
-            \ 'args': ['-jar /home/frank/.local/bin/google-java-format-1.5-all-deps.jar -'],
-            \ 'stdin': 1,
-            \ }
-
-let g:neoformat_enabled_java = ['google']
-let mapleader = " "
-call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
-nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
-vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
 let g:airline#extensions#tabline#enabled = 1
 " Set colors in console
 "if !has("gui_running")
@@ -294,7 +143,7 @@ let g:airline#extensions#tabline#enabled = 1
 "    let &t_AF="\e[38;5;%dm"
 "    colorscheme molokai
 "endif
-set laststatus=2
+"set laststatus=2
 set history=100
 " Ignore case when searching
 set ignorecase
@@ -313,23 +162,33 @@ set t_Co=256
 
 " NeoVim
 if exists('g:GtkGuiLoaded')
-    call rpcnotify(1, 'Gui', 'Font','MesloLGLDZ\ NF:14')
+    call rpcnotify(1, 'Gui', 'Font','Hack NF 18')
 endif
 
 " Set extra options when running in GUI mode
+"set gfn=CaskaydiaCove\ Nerd\ Font\ Mono:h13
 if has("gui_running")
     set guioptions-=T
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set gfn=MesloLGLDZ\ NF:h14
+    set gfn=CaskaydiaCove\ Nerd\ Font:h17
+    GuiPopupmenu 0
 endif
 if has("gui_macvim")
     set guioptions-=T
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    set gfn=MesloLGLDZ\ NF:h14:cANSI
+    set gfn=MesloLGSDZ\ NF:h15:cANSI
+endif
+if exists('g:fvim_loaded')
+    " good old 'set guifont' compatibility
+    set guifont=Hack\ NF:h18
+    " Ctrl-ScrollWheel for zooming in/out
+    nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
+    nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
+    nnoremap <A-CR> :call rpcnotify(1, 'ToggleFullScreen', 1)<CR>
 endif
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -379,21 +238,13 @@ let g:netrw_cygwin = 0
 let g:netrw_ssh_cmd  = "ssh"
 let g:netrw_scp_cmd  = "scp"
 :imap <S-CR> <Esc>
-set background=dark
+set background=light
 let g:two_firewatch_italics=1
-colo ayu
-let g:airline_theme='challenger_deep'
+"let g:airline_theme='papercolor'
 "set autochdir
 autocmd BufEnter * silent! lcd %:p:h
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_fmt_command = "goimports"
-let g:go_list_type = "quickfix"
 filetype plugin on
-set omnifunc=syntaxcomplete#Complete
+"set omnifunc=syntaxcomplete#Complete
 "set diffopt=horizontal
 "map <Leader>vf :VimFiler<CR>
 " buffers open in new tab
@@ -410,12 +261,12 @@ set autowrite                     " write when switching buffers
 set autowriteall                  " write on :quit
 set clipboard=unnamed
 "set colorcolumn=81                " highlight the 80th column as an indicator
-set completeopt-=preview          " remove the horrendous preview window
+"set completeopt-=preview          " remove the horrendous preview window
 set cursorline                    " highlight the current line for the cursor
 set encoding=utf-8
 set expandtab                     " expands tabs to spaces
 "set list                          " show trailing whitespace
-"set listchars=tab:\|\ ,trail:▫
+set listchars=tab:\|\ ,trail:▫
 set nospell                       " disable spelling
 set noswapfile                    " disable swapfile usage
 set wrap
@@ -446,7 +297,6 @@ if has('mouse')
     set mouse=a
 endif
 
-set background=dark
 " Override the search highlight color with a combination that is easier to
 " read. The default PaperColor is dark green backgroun with black foreground.
 "
@@ -455,7 +305,7 @@ set background=dark
 "highlight Search guibg=DeepPink4 guifg=White ctermbg=53 ctermfg=White
 
 " Toggle background with <leader>bg
-map <leader>bg :let &background = (&background == "dark"? "light" : "dark")<cr>
+"map <leader>bg :let &background = (&background == "dark"? "light" : "dark")<cr>
 
 "----------------------------------------------
 " Searching
@@ -496,62 +346,6 @@ set splitbelow
 set splitright
 
 "----------------------------------------------
-" Plugin: MattesGroeger/vim-bookmarks
-"----------------------------------------------
-" Auto save bookmarks
-let g:bookmark_auto_save = 1
-
-" Store the bookmarks in the projects
-let g:bookmark_save_per_working_dir = 1
-
-" Disable the default key mappings
-let g:bookmark_no_default_key_mappings = 1
-
-" Configure key mappings
-" This part also fixes conflicts with NERDTree
-function! BookmarkMapKeys()
-    nmap Mm :BookmarkToggle<cr>
-    nmap Mi :BookmarkAnnotate<cr>
-    nmap Mn :BookmarkNext<cr>
-    nmap Mp :BookmarkPrev<cr>
-    nmap Ma :BookmarkShowAll<cr>
-    nmap Mc :BookmarkClear<cr>
-    nmap Mx :BookmarkClearAll<cr>
-    nmap Mkk :BookmarkMoveUp
-    nmap Mjj :BookmarkMoveDown
-endfunction
-function! BookmarkUnmapKeys()
-    unmap Mm
-    unmap Mi
-    unmap Mn
-    unmap Mp
-    unmap Ma
-    unmap Mc
-    unmap Mx
-    unmap Mkk
-    unmap Mjj
-endfunction
-autocmd BufEnter * :call BookmarkMapKeys()
-autocmd BufEnter NERD_tree_* :call BookmarkUnmapKeys()
-
-"----------------------------------------------
-" Plugin: Shougo/deoplete.nvim
-"----------------------------------------------
-if has('nvim')
-    " Enable deoplete on startup
-    let g:deoplete#enable_at_startup = 1
-endif
-
-" Disable deoplete when in multi cursor mode
-function! Multiple_cursors_before()
-    let b:deoplete_disable_auto_complete = 1
-endfunction
-
-function! Multiple_cursors_after()
-    let b:deoplete_disable_auto_complete = 0
-endfunction
-
-"----------------------------------------------
 " Plugin: bling/vim-airline
 "----------------------------------------------
 " Show status bar by default.
@@ -574,6 +368,7 @@ endif
 let g:airline_symbols.branch = ''
 let g:airline_symbols.maxlinenr = ''
 
+let g:airline_section_c = '%F'
 "----------------------------------------------
 " Plugin: 'ctrlpvim/ctrlp.vim'
 "----------------------------------------------
@@ -595,42 +390,6 @@ let g:ctrlp_map = ''
 " Plugin: 'junegunn/fzf.vim'
 "----------------------------------------------
 nnoremap <c-p> :FZF<cr>
-
-"----------------------------------------------
-" Plugin: 'majutsushi/tagbar'
-"----------------------------------------------
-" Add shortcut for toggling the tag bar
-nnoremap <F3> :TagbarToggle<cr>
-
-" Language: Go
-" Tagbar configuration for Golang
-let g:tagbar_type_go = {
-            \ 'ctagstype' : 'go',
-            \ 'kinds'     : [
-            \ 'p:package',
-            \ 'i:imports:1',
-            \ 'c:constants',
-            \ 'v:variables',
-            \ 't:types',
-            \ 'n:interfaces',
-            \ 'w:fields',
-            \ 'e:embedded',
-            \ 'm:methods',
-            \ 'r:constructor',
-            \ 'f:functions'
-            \ ],
-            \ 'sro' : '.',
-            \ 'kind2scope' : {
-            \ 't' : 'ctype',
-            \ 'n' : 'ntype'
-            \ },
-            \ 'scope2kind' : {
-            \ 'ctype' : 't',
-            \ 'ntype' : 'n'
-            \ },
-            \ 'ctagsbin'  : 'gotags',
-            \ 'ctagsargs' : '-sort -silent'
-            \ }
 
 "----------------------------------------------
 " Plugin: plasticboy/vim-markdown
@@ -664,12 +423,6 @@ let NERDTreeIgnore = [
 " Close vim if NERDTree is the only opened window.
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" Show hidden files by default.
-let NERDTreeShowHidden = 1
-
-" Allow NERDTree to change session root.
-let g:NERDTreeChDirMode = 2
-
 "----------------------------------------------
 " Plugin: sebdah/vim-delve
 "----------------------------------------------
@@ -677,147 +430,11 @@ let g:NERDTreeChDirMode = 2
 let g:delve_backend = "native"
 
 "----------------------------------------------
-" Plugin: Shougo/neosnippet
-"----------------------------------------------
-" Disable the default snippets (needed since we do not install
-" Shougo/neosnippet-snippets).
-"
-" Below you can disable default snippets for specific languages. If you set the
-" language to _ it sets the default for all languages.
-let g:neosnippet#disable_runtime_snippets = {
-            \ 'go': 1
-            \}
-
-" Keybindings
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-
-" Set the path to our snippets
-let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
-
-"----------------------------------------------
-" Plugin: vimwiki/vimwiki
-"----------------------------------------------
-" Path to wiki
-"let g:vimwiki_list = [{
-"        \ 'path': '~/Dropbox/vimwiki',
-"        \ 'syntax': 'markdown',
-"        \ 'ext': '.vimwiki.markdown'}]
-
-"au FileType vimwiki set expandtab
-"au FileType vimwiki set shiftwidth=2
-"au FileType vimwiki set softtabstop=2
-"au FileType vimwiki set tabstop=2
-
-"----------------------------------------------
 " Plugin: 'terryma/vim-multiple-cursors'
 "----------------------------------------------
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_skip_key='<C-b>'
 
-"----------------------------------------------
-" Plugin: zchee/deoplete-go
-"----------------------------------------------
-" Enable completing of go pointers
-let g:deoplete#sources#go#pointer = 1
-
-"----------------------------------------------
-" Language: Golang
-"----------------------------------------------
-"au FileType go set noexpandtab
-"au FileType go set shiftwidth=4
-"au FileType go set softtabstop=4
-"au FileType go set tabstop=4
-
-" Mappings
-au FileType go nmap <F8> :GoMetaLinter<cr>
-"au FileType go nmap <F9> :GoCoverageToggle -short<cr>
-au FileType go nmap <F10> :GoTest -short<cr>
-"au FileType go nmap <F12> <Plug>(go-def)
-"au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
-"au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
-"au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
-au FileType go nmap <leader>gt :GoDeclsDir<cr>
-au FileType go nmap <leader>gc <Plug>(go-coverage-toggle)
-au FileType go nmap <leader>gd <Plug>(go-def)
-"au FileType go nmap <leader>gdv <Plug>(go-def-vertical)
-"au FileType go nmap <leader>gdh <Plug>(go-def-split)
-au FileType go nmap <leader>gD <Plug>(go-doc)
-"au FileType go nmap <leader>gDv <Plug>(go-doc-vertical)
-
-" Run goimports when running gofmt
-let g:go_fmt_command = "goimports"
-
-" Set neosnippet as snippet engine
-let g:go_snippet_engine = "neosnippet"
-
-" Enable syntax highlighting per default
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-
-" Show the progress when running :GoCoverage
-let g:go_echo_command_info = 1
-
-" Show type information
-let g:go_auto_type_info = 1
-
-" Highlight variable uses
-let g:go_auto_sameids = 1
-
-" Fix for location list when vim-go is used together with Syntastic
-let g:go_list_type = "quickfix"
-
-" Add the failing test name to the output of :GoTest
-let g:go_test_show_name = 1
-
-" gometalinter configuration
-let g:go_metalinter_command = ""
-let g:go_metalinter_deadline = "5s"
-let g:go_metalinter_enabled = [
-            \ 'deadcode',
-            \ 'gas',
-            \ 'goconst',
-            \ 'gocyclo',
-            \ 'golint',
-            \ 'gosimple',
-            \ 'ineffassign',
-            \ 'vet',
-            \ 'vetshadow'
-            \]
-
-" Set whether the JSON tags should be snakecase or camelcase.
-let g:go_addtags_transform = "snakecase"
-
-" neomake configuration for Go.
-let g:neomake_go_enabled_makers = [ 'go', 'gometalinter' ]
-let g:neomake_go_gometalinter_maker = {
-            \ 'args': [
-            \   '--tests',
-            \   '--enable-gc',
-            \   '--concurrency=3',
-            \   '--fast',
-            \   '-D', 'aligncheck',
-            \   '-D', 'dupl',
-            \   '-D', 'gocyclo',
-            \   '-D', 'gotype',
-            \   '-E', 'misspell',
-            \   '-E', 'unused',
-            \   '%:p:h',
-            \ ],
-            \ 'append_file': 0,
-            \ 'errorformat':
-            \   '%E%f:%l:%c:%trror: %m,' .
-            \   '%W%f:%l:%c:%tarning: %m,' .
-            \   '%E%f:%l::%trror: %m,' .
-            \   '%W%f:%l::%tarning: %m'
-            \ }
 
 "----------------------------------------------
 " Language: apiblueprint
@@ -867,6 +484,14 @@ au BufRead,BufNewFile *.eex set filetype=eelixir
 " Language: gitconfig
 "----------------------------------------------
 au FileType gitconfig set noexpandtab
+au FileType gitconfig set shiftwidth=2
+au FileType gitconfig set softtabstop=2
+au FileType gitconfig set tabstop=2
+
+"----------------------------------------------
+" Language: go
+"----------------------------------------------
+au FileType gitconfig set expandtab
 au FileType gitconfig set shiftwidth=2
 au FileType gitconfig set softtabstop=2
 au FileType gitconfig set tabstop=2
@@ -1013,12 +638,11 @@ au FileType yaml set softtabstop=2
 au FileType yaml set tabstop=2
 
 "let g:EclimCompletionMethod = 'omnifunc'
-let g:deoplete#enable_at_startup = 1
 "let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
-let g:syntastic_swift_checkers = ['swiftpm']
+"let g:syntastic_swift_checkers = ['swiftpm']
 " remap ; to : and vv
-nmap ; :
-nnoremap ;; ;
+" nmap ; :
+" nnoremap ;; ;
 
 "custom diffrev function
 " ----------------------------------------------------------------------------
@@ -1046,6 +670,7 @@ endfunction
 
 command! -nargs=1 DiffRev call s:get_diff_files(<q-args>)
 "let g:neoformat_try_formatprg = 1
+let g:neoformat_enabled_sql = ['pg_format']
 "augroup NeoformatAutoFormat
 "    autocmd!
 "    autocmd FileType javascript,javascript.jsx setlocal formatprg=prettier\
@@ -1071,22 +696,22 @@ let g:NERDTreeIndicatorMapCustom = {
             \ "Unknown"   : "?"
             \ }
 
-" tagbar
-" use universal-ctags project
-let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 "Folding
 set foldmethod=syntax
 set foldlevelstart=20
 
-" Java
-"let g:EclimCompletionMethod = 'omnifunc'
 " Shortcuts!
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
+map <C-a> ggVG
+map <C-v> <esc>p
+map <C-c> "+y
 " Move between buffers with Shift + arrow key...
-nnoremap <S-Left> :bprevious<cr>
-nnoremap <S-Right> :bnext<cr>
-
+"nnoremap <S-Left> :bprevious<cr>
+"nnoremap <S-Right> :bnext<cr>
+" move between tabs with Alt + arrow key
+nnoremap <A-Left> :tabprev<cr>
+nnoremap <A-Right> :tabnext<cr>
 " ... but skip the quickfix when navigating
 augroup qf
     autocmd!
@@ -1103,46 +728,44 @@ augroup END
 "----------------------------------------------
 " Plugin: mileszs/ack.vim
 "----------------------------------------------
-" Open ack
+" ack.vim --- {{{
+"
+" " Use ripgrep for searching ⚡️
+" " Options include:
+" " --vimgrep -> Needed to parse the rg response properly for ack.vim
+" " --type-not sql -> Avoid huge sql file dumps as it slows down the search
+" " --smart-case -> Search case insensitive if all lowercase pattern, Search case sensitively otherwise
+let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
+"
+" " Auto close the Quickfix list after pressing '<enter>' on a list item
+let g:ack_autoclose = 1
+"
+" " Any empty ack search will search for the work the cursor is on
+let g:ack_use_cword_for_empty_search = 1
+"
+" " Don't jump to first match
+cnoreabbrev Ack Ack!
+"
+" " Maps F3
+nnoremap <F3> :Ack!<Space>
+nnoremap <leader>ax :Ack!<Space>
+" " }}}
+"
+" " Navigate quickfix list with ease
+nnoremap <silent> [q :cprevious<CR>
+nnoremap <silent> ]q :cnext<CR>
+
+
+
 nmap <silent> <C-Up> :wincmd k<CR>
 nmap <silent> <C-Down> :wincmd j<CR>
 nmap <silent> <C-Left> :wincmd h<CR>
 nmap <silent> <C-Right> :wincmd l<CR>
 nmap <C-\> :bd<CR>
-inoremap <F9> <C-O>za
-nnoremap <F9> za
-onoremap <F9> <C-C>za
-vnoremap <F9> zfo
 
-" leader-guide config
-" Define prefix dictionary
-let g:lmap =  {}
-
-
-" Second level dictionaries:
-let g:lmap.b = {
-            \'name' : 'Buffer Menu',
-            \'d' : ['bd', 'Close this buffer'],
-            \'g' : ['BuffergatorToggle',   'Buffergator toggle'],
-            \'n' : ['bnext',   'Next Buffer'],
-            \'p' : ['bprevious', 'Previous Buffer'],
-            \}
-let g:lmap.c = {
-            \'name' : 'Commenter Menu',
-            \}
-let g:lmap.f = {
-            \'name' : 'File Menu',
-            \'f' : ['Files', 'fzf files'],
-            \'n' : ['NERDTreeToggle', 'NERDTree toggle'],
-            \}
-let g:lmap.o = { 'name' : 'Open Stuff' }
-" 'name' is a special field. It will define the name of the group.
-" leader-f is the "File Menu" group.
-" Unnamed groups will show an empty string
 
 " Provide commands and descriptions for existing mappings
 nmap <silent> <leader>fd :e $MYVIMRC<CR>
-let g:lmap.f.d = ['e $MYVIMRC', 'Open vimrc']
 
 nmap <silent> <leader>fs :so %<CR>
 " let g:lmap.f.s = ['so %', 'Source file']
@@ -1153,218 +776,114 @@ nmap <silent> <leader>oo  :copen<CR>
 nmap <silent> <leader>ol  :lopen<CR>
 " let g:lmap.o.l = ['lopen', 'Open locationlist']
 
-" Create new menus not based on existing mappings:
-let g:lmap.e = {
-            \'name' : 'Editor tricks',
-            \'a' : ['%y+', 'Copy buffer'],
-            \'d' : ['%d', 'Clear buffer'],
-            \'f' : ['%norm!==', 'Indent buffer'],
-            \}
-let g:lmap.g = {
-            \'name' : 'Git Menu',
-            \'s' : ['Gstatus', 'Git Status'],
-            \'f' : ['GFiles', 'Git files'],
-            \'p' : ['Git pull',   'Git Pull'],
-            \'u' : ['Git push',   'Git Push'],
-            \'c' : ['Git commit', 'Git Commit'],
-            \'C' : ['Commits', 'FZF Commits'],
-            \'v' : ['Gitv',  'Git Log'],
-            \'w' : ['Gwrite',  'Git Write'],
-            \}
-let g:lmap.f = {
-            \'name' : 'FZF Menu',
-            \'b' : ['Buffers', 'FZF Buffers'],
-            \'B' : ['Lines', 'FZF BLines'],
-            \'c' : ['Commands', 'FZF Commands'],
-            \'C' : ['Colors', 'FZF Colors'],
-            \'f' : ['Files', 'FZF Files'],
-            \'h' : ['History:', 'FZF command history'],
-            \'S' : ['Snippets',   'FZF Snippets'],
-            \'t' : ['BTags',   'FZF Tags'],
-            \'w' : ['Windows',  'FZF Windows'],
-            \}
-let g:lmap.t = {
-            \'name' : 'Tools Menu',
-            \'a' : ['AirlineToggle', 'Airline toggle'],
-            \'b' : ['BuffergatorToggle', 'Buffergator'],
-            \'c' : ['Commands', 'Commands'],
-            \'f' : ['Files', 'Files'],
-            \'n' : ['NERDTreeToggle',   'NERDTree'],
-            \'S' : ['Swoop',   'Swoop'],
-            \'t' : ['Tagbar',   'Tagbar'],
-            \'T' : ['terminal',   'Terminal'],
-            \}
-let g:lmap.T = {
-            \'name' : 'Theming Menu',
-            \'a' : ['AirlineToggle', 'Airline toggle'],
-            \'c' : ['colo challenger_deep', 'Challenger Deep theme'],
-            \'f' : ['colo falcon',   'Falcon theme'],
-            \'g' : ['Goyo', 'Goyo mode toggle'],
-            \'l' : ['Limelight', 'Limelight on'],
-            \'L' : ['Limelight!', 'Limelight off'],
-            \'p' : ['colo PaperColor',   'PaperColor theme'],
-            \'t' : ['Colors',   'Select colorscheme'],
-            \}
-let g:lmap.w = {
-            \'name' : 'Window Menu',
-            \'c' : ['close', 'Close this window'],
-            \'h' : ['split',   'Horizontal split'],
-            \'v' : ['vsplit',   'Vertical split'],
-            \}
-" set up dictionary for <localleader>
-let g:llmap = {}
-autocmd FileType tex let g:llmap.l = { 'name' : 'vimtex' }
-call leaderGuide#register_prefix_descriptions(",", "g:llmap")
-" to name the <localleader>-n group vimtex in tex files.
-let g:leaderGuide_max_size = 14
-let g:leaderGuide_submode_mappings = { '<C-F>': 'page_down', '<C-B>': 'page_up'}
-" combine the two dictionaries into a single top-level dictionary:
-let g:topdict = {}
-let g:topdict[' '] = g:lmap
-let g:topdict[' ']['name'] = '<leader>'
-let g:topdict[','] = g:llmap
-let g:topdict[',']['name'] = '<localleader>'
 
-" register it with the guide:
-call leaderGuide#register_prefix_descriptions("", "g:topdict")
-
-" define mappings:
-nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
-vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
-map <leader>. <Plug>leaderguide-global
-nnoremap <localleader> :<c-u>LeaderGuide  ','<CR>
-vnoremap <localleader> :<c-u>LeaderGuideVisual  ','<CR>
-map <localleader>. <Plug>leaderguide-buffer
-
-let g:buffergator_suppress_keymaps = 1
 let g:goyo_width = 100
 let g:goyo_height = 90
 if exists("g:gui_oni")
     autocmd VimEnter * AirlineToggle
     autocmd VimEnter * AirlineToggle
     "let g:gruvbox_italic=1
-    "let g:airline_theme='gruvbox'
+    let g:airline_theme='ayu'
 endif
-"
-" coc settings below
-" if hidden is not set, TextEdit might fail.
-set hidden
+let g:go_def_mode = "gopls"
+"augroup LspGo
+"  au!
+"  autocmd User lsp_setup call lsp#register_server({
+"      \ 'name': 'go-lang',
+"      \ 'cmd': {server_info->['gopls']},
+"      \ 'whitelist': ['go'],
+"      \ })
+"  autocmd FileType go setlocal omnifunc=lsp#complete
+  "autocmd FileType go nmap <buffer> gd <plug>(lsp-definition)
+  "autocmd FileType go nmap <buffer> ,n <plug>(lsp-next-error)
+  "autocmd FileType go nmap <buffer> ,p <plug>(lsp-previous-error)
+augroup END
 
-" Better display for messages
-set cmdheight=2
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
 
-" Smaller updatetime for CursorHold & CursorHoldI
+" airline symbols
+let g:airline_left_sep = ''
+"let g:airline_left_sep = "\UE0B8"
+"let g:airline_left_alt_sep = "\UE0BE"
+let g:airline_left_alt_sep = ''
+"let g:airline_right_sep = "\UE0BA"
+"let g:airline_right_alt_sep = "\UE0BC"
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+"let g:airline#extensions#tabline#left_sep = "\UE0BC"
+"let g:airline#extensions#tabline#left_alt_sep = "\UE0BA"
+let g:airline#extensions#tabline#left_sep = "\UE0B0"
+let g:airline#extensions#tabline#left_alt_sep = "\UE0B1"
+let g:airline#extensions#tabline#right_sep = "\UE0B2"
+let g:airline#extensions#tabline#right_alt_sep = "\UE0B3"
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+
+function! Clearbg() abort
+    " highlight Visual     cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE
+    highlight StatusLine cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE
+    highlight Normal     cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE
+    highlight NonText    cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE
+    set nocursorline
+endfunction
+
+" Give more space for displaying messages.
+set cmdheight=1
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
 set updatetime=300
 
-" don't give |ins-completion-menu| messages.
+" Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-" always show signcolumns
-set signcolumn=yes
-
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> for trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[c` and `]c` for navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" Remap for format selected region
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-vmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Use `:Format` for format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
-" Use `:Fold` for fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 
-" Add diagnostic info for https://github.com/itchyny/lightline.vim
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status'
-      \ },
-      \ }
+"Ultisnips settings
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-s>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 
+let pumblend=5
+" Color scheme
+colo ayu
+"let g:airline_theme = 'challenger_deep'
+""call Clearbg()
+"AirlineTheme challenger_deep
 
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+let g:VimTodoListsMoveItems = 1
+let g:VimTodoListsDatesEnabled = 1
+let g:VimTodoListsDatesFormat = "%a %b %d, %Y"
+
+
+set hidden
+
+let g:airline_theme='ayu'
+" Set default local PG database
+let g:db = 'postgresql:///frank'
+
