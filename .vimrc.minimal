@@ -36,7 +36,7 @@ Plug 'rakr/vim-togglebg'
 Plug 'fenetikm/falcon'
 Plug 'godlygeek/tabular'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'prettier/vim-prettier'
@@ -55,7 +55,7 @@ Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'tpope/vim-unimpaired'
 Plug 'maksimr/vim-jsbeautify'
-Plug 'tpope/vim-markdown'  
+Plug 'tpope/vim-markdown'
 Plug 'kablamo/vim-git-log'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
