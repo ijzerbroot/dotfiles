@@ -736,7 +736,7 @@ let g:airline#extensions#tabline#right_alt_sep = "\UE0B3"
   let g:airline_symbols.linenr = ' :'
   let g:airline_symbols.maxlinenr = '☰ '
   let g:airline_symbols.dirty='⚡'
-set fillchars+=stl:\ ,stlnc:\
+"set fillchars+=stl:\ ,stlnc:\
 
 function! Clearbg() abort
     " highlight Visual     cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE
