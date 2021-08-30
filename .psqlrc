@@ -35,17 +35,6 @@ set intervalstyle to 'postgres_verbose';
 \pset format wrapped
 set application_name to frank_psql; commit;
 set bytea_output to escape; commit;
-\set sessions
-'SELECT
-    datname,
-    pid,
-    usename,
-    application_name,
-    wait_event_type,
-    state
-FROM
-    pg_stat_activity
-ORDER BY
-    1,
-    state nulls LAST;'
+\set sessions 'SELECT datname, pid, usename, application_name, wait_event_type, state FROM pg_stat_activity ORDER BY 1, state nulls LAST;'
+\set schemas 'WITH bs AS ( SELECT current_setting(''block_size'') AS bs) select n.nspname as schema, count(*) as objects, round(sum(relpages * cast(bs.bs AS bigint)::numeric / (1024 * 1024 * 1024)),2) as sizegb from pg_namespace n, pg_class c, bs where n.oid=c.relnamespace group by 1 order by 1;'
 
