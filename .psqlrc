@@ -3,7 +3,7 @@
 \set ON_ERROR_ROLLBACK interactive
 \set QUIET 1
 \encoding UTF8
-\set AUTOCOMMIT off
+--\set AUTOCOMMIT off
 --\pset null '¤'
 --\pset null '⁜'
 \pset null '[NULL]'
@@ -13,12 +13,15 @@
 --\pset unicode_header_linestyle double
 set intervalstyle to 'postgres_verbose';
 \setenv LESS '-iMFXSx4R'
---\setenv EDITOR '/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -nw'
 --\setenv EDITOR '~/.local/bin/rmate -w'
-\setenv EDITOR '/opt/homebrew/bin/nvr -s'
---\setenv EDITOR 'open -a bbedit -w --resume'
+\setenv EDITOR 'mvim --servername PSQL --remote-tab-wait'
+--\setenv EDITOR emacsclient
+--\setenv EDITOR '/opt/homebrew/bin/mvim --remote-wait-silent'
+--\setenv EDITOR '/Users/frank/.local/bin/neovide --nofork'
+--\setenv EDITOR '/usr/bin/vim'
 --\set PROMPT1 '%[%033[1;33;40m%]%n%[%033[0m%]@%[%033[34m%]%m%[%033[0m%]/%[%033[32m%/%R%[%033[0m%]%# '
-\set PROMPT1 '%[%033[1;33m%]%n%[%033[0m%]@%[%033[34m%]%m%[%033[0m%]/%[%033[32m%/%R%[%033[0m%]%x%# '
+--\set PROMPT1 '%[%033[1;33m%]%n%[%033[0m%]@%[%033[34m%]%m%[%033[0m%]/%[%033[32m%/%R%[%033[0m%]%x%# '
+\set PROMPT1 '%n@%m/%x%# '
 \set PROMPT2 ''
 \set COMP_KEYWORD_CASE lower
 \pset pager always
@@ -32,3 +35,17 @@ set intervalstyle to 'postgres_verbose';
 \pset format wrapped
 set application_name to frank_psql; commit;
 set bytea_output to escape; commit;
+\set sessions
+'SELECT
+    datname,
+    pid,
+    usename,
+    application_name,
+    wait_event_type,
+    state
+FROM
+    pg_stat_activity
+ORDER BY
+    1,
+    state nulls LAST;'
+
