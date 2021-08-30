@@ -10,6 +10,11 @@
 " For vim we use vim-plug
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
+Plug 'vim-scripts/dbext.vim'
+" For macos default terminal
+Plug 'godlygeek/csapprox'
+Plug 'Shougo/neocomplete.vim'
+Plug 'altercation/vim-colors-solarized'
 Plug 'lambdalisue/fern.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -31,7 +36,7 @@ Plug 'rakr/vim-togglebg'
 Plug 'fenetikm/falcon'
 Plug 'godlygeek/tabular'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'prettier/vim-prettier'
@@ -50,7 +55,7 @@ Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'tpope/vim-unimpaired'
 Plug 'maksimr/vim-jsbeautify'
-Plug 'tpope/vim-markdown'  
+Plug 'tpope/vim-markdown'
 Plug 'kablamo/vim-git-log'
 Plug 'junegunn/gv.vim'
 Plug 'airblade/vim-gitgutter'
@@ -95,7 +100,7 @@ nnoremap <leader>cs <cmd>:Colors<cr>
 "nnoremap <silent> <F2> :Buffers<CR>
 "nnoremap <leader>bb :Buffers<CR>
 nnoremap <leader>bb <cmd>:Buffers<cr>
-nnoremap <leader>bf <cmd>:Blines<cr>
+nnoremap <leader>bf <cmd>:BLines<cr>
 " F4 is FZF Files
 "nnoremap <leader>ff :Files<space>
 nnoremap <leader>ff <cmd>:Files<cr>
@@ -127,23 +132,12 @@ inoremap <C-@> <C-Space>
 "let ayucolor="mirage"
 let ayucolor="light"
 let base16colorspace=256  " Access colors present in 256 colorspace
-let g:airline_powerline_fonts=1
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set termguicolors
+"set termguicolors
 let g:tokyonight_style = 'storm' " available: night, storm
 let g:tokyonight_enable_italic = 1"
-let g:tokyonight_transparent_background = 1
+let g:tokyonight_transparent_background = 0
 
 let g:airline#extensions#tabline#enabled = 1
-" Set colors in console
-"if !has("gui_running")
-"    set term=xterm
-"    set t_Co=256
-"    let &t_AB="\e[48;5;%dm"
-"    let &t_AF="\e[38;5;%dm"
-"    colorscheme molokai
-"endif
-"set laststatus=2
 set history=100
 " Ignore case when searching
 set ignorecase
@@ -159,39 +153,6 @@ set showmatch
 syntax enable
 
 set t_Co=256
-
-" NeoVim
-if exists('g:GtkGuiLoaded')
-    call rpcnotify(1, 'Gui', 'Font','Hack NF 18')
-endif
-
-" Set extra options when running in GUI mode
-"set gfn=CaskaydiaCove\ Nerd\ Font\ Mono:h13
-if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-    set gfn=CaskaydiaCove\ Nerd\ Font:h17
-    GuiPopupmenu 0
-endif
-if has("gui_macvim")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-    set gfn=MesloLGSDZ\ NF:h15:cANSI
-endif
-if exists('g:fvim_loaded')
-    " good old 'set guifont' compatibility
-    set guifont=Hack\ NF:h18
-    " Ctrl-ScrollWheel for zooming in/out
-    nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
-    nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
-    nnoremap <A-CR> :call rpcnotify(1, 'ToggleFullScreen', 1)<CR>
-endif
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -224,28 +185,18 @@ set splitright
 " Terminal settings
 tnoremap <Leader><ESC> <C-\><C-n>
 
-"if has("win32")
-"    set shell=cmd.exe
-    "set shellcmdflag=/c\ powershell.exe\ -NoLogo\ -NonInteractive\ -ExecutionPolicy\ Bypass
-"    set shellcmdflag=/c\ \"C:\\Progra~1\\Git\\bin\\bash.exe\ --login\ -c\"
-    "set shellpipe=|
-    "set shellredir=>
-"endif
 let g:netrw_cygwin = 0
-" let g:netrw_ssh_cmd  = "plink -T -ssh"
-" let g:netrw_scp_cmd  = "pscp"
-"let g:netrw_ssh_cmd  = "ssh -o ServerAliveInterval=60"
 let g:netrw_ssh_cmd  = "ssh"
 let g:netrw_scp_cmd  = "scp"
 :imap <S-CR> <Esc>
-set background=light
+"set background=light
 let g:two_firewatch_italics=1
 "let g:airline_theme='papercolor'
 "set autochdir
 autocmd BufEnter * silent! lcd %:p:h
 filetype plugin on
-"set omnifunc=syntaxcomplete#Complete
-"set diffopt=horizontal
+set omnifunc=syntaxcomplete#Complete
+set diffopt=horizontal
 "map <Leader>vf :VimFiler<CR>
 " buffers open in new tab
 ":au BufAdd,BufNewFile * nested tab sball
@@ -263,7 +214,8 @@ set clipboard=unnamed
 "set colorcolumn=81                " highlight the 80th column as an indicator
 "set completeopt-=preview          " remove the horrendous preview window
 set cursorline                    " highlight the current line for the cursor
-set encoding=utf-8
+"set encoding=utf-8
+set encoding=utf8
 set expandtab                     " expands tabs to spaces
 "set list                          " show trailing whitespace
 set listchars=tab:\|\ ,trail:▫
@@ -281,16 +233,6 @@ set tabstop=2
 set shiftwidth=2
 set title                         " let vim set the terminal title
 set updatetime=100                " redraw the status bar often
-
-" neovim specific settings
-"if has('nvim')
-" Set the Python binaries neovim is using. Please note that you will need to
-" install the neovim package for these binaries separately like this for
-" example:
-" pip3.6 install -U neovim
-"    let g:python_host_prog = '/usr/bin/python2'
-"    let g:python3_host_prog = '/usr/bin/python3'
-"endif
 
 " Enable mouse if possible
 if has('mouse')
@@ -354,21 +296,20 @@ set laststatus=2
 " Enable top tabline.
 let g:airline#extensions#tabline#enabled = 1
 
+
 " Disable showing tabs in the tabline. This will ensure that the buffers are
 " what is shown in the tabline at all times.
 let g:airline#extensions#tabline#show_tabs = 0
 
 " Enable powerline fonts.
 let g:airline_powerline_fonts = 1
+"let g:airline_symbols_ascii = 0
 
 " Explicitly define some symbols that did not work well for me in Linux.
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
-let g:airline_symbols.branch = ''
-let g:airline_symbols.maxlinenr = ''
 
-let g:airline_section_c = '%F'
 "----------------------------------------------
 " Plugin: 'ctrlpvim/ctrlp.vim'
 "----------------------------------------------
@@ -400,34 +341,6 @@ let g:vim_markdown_folding_disabled = 1
 " Auto shrink the TOC, so that it won't take up 50% of the screen
 let g:vim_markdown_toc_autofit = 1
 
-
-"----------------------------------------------
-" Plugin: neomake/neomake
-"----------------------------------------------
-" Configure signs.
-let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
-let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
-let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
-let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
-
-" Files to ignore
-let NERDTreeIgnore = [
-            \ '\~$',
-            \ '\.pyc$',
-            \ '^\.DS_Store$',
-            \ '^node_modules$',
-            \ '^.ropeproject$',
-            \ '^__pycache__$'
-            \]
-
-" Close vim if NERDTree is the only opened window.
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-"----------------------------------------------
-" Plugin: sebdah/vim-delve
-"----------------------------------------------
-" Set the Delve backend.
-let g:delve_backend = "native"
 
 "----------------------------------------------
 " Plugin: 'terryma/vim-multiple-cursors'
@@ -637,9 +550,6 @@ au FileType yaml set shiftwidth=2
 au FileType yaml set softtabstop=2
 au FileType yaml set tabstop=2
 
-"let g:EclimCompletionMethod = 'omnifunc'
-"let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
-"let g:syntastic_swift_checkers = ['swiftpm']
 " remap ; to : and vv
 " nmap ; :
 " nnoremap ;; ;
@@ -683,18 +593,6 @@ let g:neoformat_enabled_sql = ['pg_format']
 let g:prettier#config#print_width = 100
 let g:prettier#config#semi = 'false'
 let g:prettier#config#single_quote = 'true'
-let g:NERDTreeIndicatorMapCustom = {
-            \ "Modified"  : "✹",
-            \ "Staged"    : "✚",
-            \ "Untracked" : "✭",
-            \ "Renamed"   : "➜",
-            \ "Unmerged"  : "═",
-            \ "Deleted"   : "✖",
-            \ "Dirty"     : "✗",
-            \ "Clean"     : "✔︎",
-            \ 'Ignored'   : '☒',
-            \ "Unknown"   : "?"
-            \ }
 
 "Folding
 set foldmethod=syntax
@@ -779,12 +677,6 @@ nmap <silent> <leader>ol  :lopen<CR>
 
 let g:goyo_width = 100
 let g:goyo_height = 90
-if exists("g:gui_oni")
-    autocmd VimEnter * AirlineToggle
-    autocmd VimEnter * AirlineToggle
-    "let g:gruvbox_italic=1
-    let g:airline_theme='ayu'
-endif
 let g:go_def_mode = "gopls"
 "augroup LspGo
 "  au!
@@ -797,41 +689,54 @@ let g:go_def_mode = "gopls"
   "autocmd FileType go nmap <buffer> gd <plug>(lsp-definition)
   "autocmd FileType go nmap <buffer> ,n <plug>(lsp-next-error)
   "autocmd FileType go nmap <buffer> ,p <plug>(lsp-previous-error)
-augroup END
+"augroup END
 
+
+  let g:airline_left_sep = '⮀'
+  let g:airline_left_alt_sep = '⮁'
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = '⮃'
+  let g:airline_symbols.branch = '⭠'
+  let g:airline_symbols.readonly = '⭤'
+  let g:airline_symbols.linenr = '⭡'
 " unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
+"let g:airline_left_sep = '»'
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
+"let g:airline_symbols.colnr = ' ㏇:'
+let g:airline_symbols.colnr = ' ℅:'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.linenr = ' ␊:'
+let g:airline_symbols.linenr = ' ␤:'
+"let g:airline_symbols.linenr = '¶'
+"let g:airline_symbols.maxlinenr = ''
+"let g:airline_symbols.maxlinenr = '㏑'
+"let g:airline_symbols.branch = '⎇'
+"let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+"let g:airline_symbols.spell = 'Ꞩ'
+"let g:airline_symbols.notexists = 'Ɇ'
 let g:airline_symbols.whitespace = 'Ξ'
-
-" airline symbols
-let g:airline_left_sep = ''
-"let g:airline_left_sep = "\UE0B8"
-"let g:airline_left_alt_sep = "\UE0BE"
-let g:airline_left_alt_sep = ''
-"let g:airline_right_sep = "\UE0BA"
-"let g:airline_right_alt_sep = "\UE0BC"
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
 "let g:airline#extensions#tabline#left_sep = "\UE0BC"
 "let g:airline#extensions#tabline#left_alt_sep = "\UE0BA"
-let g:airline#extensions#tabline#left_sep = "\UE0B0"
-let g:airline#extensions#tabline#left_alt_sep = "\UE0B1"
+"let g:airline#extensions#tabline#left_sep = "\UE0B0"
+"let g:airline#extensions#tabline#left_alt_sep = "\UE0B1"
 let g:airline#extensions#tabline#right_sep = "\UE0B2"
 let g:airline#extensions#tabline#right_alt_sep = "\UE0B3"
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.colnr = ' :'
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.linenr = ' :'
+  let g:airline_symbols.maxlinenr = '☰ '
+  let g:airline_symbols.dirty='⚡'
+set fillchars+=stl:\ ,stlnc:\
 
 function! Clearbg() abort
     " highlight Visual     cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE
@@ -870,8 +775,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 
 let pumblend=5
-" Color scheme
-colo ayu
 "let g:airline_theme = 'challenger_deep'
 ""call Clearbg()
 "AirlineTheme challenger_deep
@@ -886,4 +789,21 @@ set hidden
 let g:airline_theme='ayu'
 " Set default local PG database
 let g:db = 'postgresql:///frank'
+set background=light
+colorscheme ayu
+let g:fzf_colors =
+            \ { 'fg':      ['fg', 'Normal'],
+            \ 'bg':      ['bg', 'Normal'],
+            \ 'hl':      ['fg', 'Comment'],
+            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+            \ 'hl+':     ['fg', 'Statement'],
+            \ 'info':    ['fg', 'PreProc'],
+            \ 'border':  ['fg', 'Ignore'],
+            \ 'prompt':  ['fg', 'Conditional'],
+            \ 'pointer': ['fg', 'Exception'],
+            \ 'marker':  ['fg', 'Keyword'],
+            \ 'spinner': ['fg', 'Label'],
+            \ 'header':  ['fg', 'Comment'] }
 
+set guifont=CaskaydiaCove\ Nerd\ Font\ Mono:h16
