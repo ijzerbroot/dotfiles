@@ -12,7 +12,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'vim-scripts/dbext.vim'
 " For macos default terminal
-Plug 'godlygeek/csapprox'
+"Plug 'godlygeek/csapprox'
 Plug 'Shougo/neocomplete.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'lambdalisue/fern.vim'
