@@ -1,6 +1,31 @@
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Use powerline
-USE_POWERLINE="true"
+# USE_POWERLINE="true"
 ## Source manjaro-zsh-configuration
 #if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
 #  source /usr/share/zsh/manjaro-zsh-config
@@ -35,6 +60,8 @@ alias ec='emacsclient'
 alias ecf='emacsclient $(fzf)'
 alias vif='oni $(fzf)'
 alias ls='ls -G'
+alias h='history -1000 | fzy'
+alias pwsh='/usr/local/microsoft/powershell/7-preview/pwsh'
 source /Users/frank/.cargo/env
 eval "$(starship init zsh)"
 export EDITOR='nvim'
@@ -48,7 +75,13 @@ export PGO_CA_CERT=/Users/frank/.pgo/pgo/client.crt
 export PGO_CLIENT_CERT=/Users/frank/.pgo/pgo/client.crt
 export PGO_CLIENT_KEY=/Users/frank/.pgo/pgo/client.key
 export PGO_APISERVER_URL=https://127.0.0.1:8444
-export PSQL_PAGER="bat --color=always --wrap=character -p"
+#export PSQL_PAGER="bat --color=always --wrap=character -p"
+#export YELLOW=`echo -e '\033[1;33m'`
+#export LIGHT_CYAN=`echo -e '\033[1;36m'`
+#export GREEN=`echo -e '\033[0;32m'`
+#export NOCOLOR=`echo -e '\033[0m'`
+export LESS="-iMSx4 -FXR"
+#export PAGER="sed \"s/^\(([0-9]\+ [rows]\+)\)/$GREEN\1$NOCOLOR/;s/^\(-\[\ RECORD\ [0-9]\+\ \][-+]\+\)/$GREEN\1$NOCOLOR/;s/|/$GREEN|$NOCOLOR/g;s/^\([-+]\+\)/$GREEN\1$NOCOLOR/\" 2>/dev/null | less"
 export PG_COLOR="always"
 HISTFILE=/Users/frank/.zsh_history
 HISTSIZE=500000
@@ -72,3 +105,7 @@ setopt SHARE_HISTORY
 #ZSH_AUTOSUGGEST_STRATEGY=histdb_top_here
 eval "$(mcfly init zsh)"
 eval "$(zoxide init zsh)"
+launchctl setenv PATH $PATH
+#osascript -e 'tell app "Dock" to quit'
+alias bat='bat --theme="Solarized (light)"'
+alias mvim='mvim --servername PSQL'
