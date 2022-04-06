@@ -50,7 +50,7 @@
        ;;zen               ; distraction-free coding or writing
 
        :editor
-       ;(evil +everywhere); come to the dark side, we have cookies
+       ;;(evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
        ;;(format +onsave)  ; automated prettiness
@@ -177,3 +177,33 @@
        :config
        ;;literate
        (default +bindings +smartparens))
+
+(setq mac-option-modifier 'meta
+      mac-command-modifier 'super
+      mac-right-option-modifier 'none)
+
+  (global-set-key (kbd "s-c") 'kill-ring-save)
+  (global-set-key (kbd "s-v") 'yank)
+  (global-set-key (kbd "s-x") 'kill-region)
+  (global-set-key (kbd "s-a") 'mark-whole-buffer)
+  (global-set-key (kbd "s-z") 'undo)
+  (global-set-key (kbd "s-f") 'isearch-forward)
+  (global-set-key (kbd "s-g") 'isearch-repeat-forward)
+  (global-set-key (kbd "s-o") 'find-file)
+  (global-set-key (kbd "s-o") 'mac-open-file)
+  (global-set-key (kbd "s-n") 'find-file)
+  (global-set-key (kbd "s-s") 'save-buffer)
+  (global-set-key (kbd "s-S") 'mac-save-file-as)
+  (global-set-key (kbd "s-p") 'mac-preview) ; requires mac-preview
+  (global-set-key (kbd "s-w") 'kill-buffer)
+  (global-set-key (kbd "s-m") 'iconify-frame)
+  (global-set-key (kbd "s-q") 'save-buffers-kill-emacs)
+  (global-set-key (kbd "s-.") 'keyboard-quit)
+  (global-set-key (kbd "s-l") 'goto-line)
+  (global-set-key (kbd "s-k") 'kill-buffer)
+  (global-set-key (kbd "s-<up>")    'beginning-of-buffer)
+  (global-set-key (kbd "s-<down>")  'end-of-buffer)
+  (global-set-key (kbd "s-<left>")  'beginning-of-line)
+  (global-set-key (kbd "s-<right>") 'end-of-line)
+  (global-set-key [(meta down)]     'forward-paragraph)
+  (global-set-key [(meta up)]       'backward-paragraph)
