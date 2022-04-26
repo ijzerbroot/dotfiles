@@ -6,108 +6,103 @@
 "  " only when 'compatible' is set.
 "  set nocompatible
 "endif
-
 " For vim we use vim-plug
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin('~/.vim/plugged')
-Plug 'vim-scripts/dbext.vim'
-" For macos default terminal
-"Plug 'godlygeek/csapprox'
-Plug 'Shougo/neocomplete.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'lambdalisue/fern.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-dadbod'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'justinmk/vim-sneak'
-Plug 'yashguptaz/calvera-dark.nvim'
-Plug 'Shadorain/shadotheme'
-Plug 'vim-jp/syntax-vim-ex'
-Plug 'pechorin/any-jump.vim'
-Plug 'Rigellute/rigel'
 Plug 'ghifarit53/tokyonight-vim'
-Plug 'ntk148v/vim-horizon'
-Plug 'pineapplegiant/spaceduck'
 Plug 'ayu-theme/ayu-vim'
-Plug 'rakr/vim-two-firewatch'
 Plug 'rakr/vim-togglebg'
-Plug 'fenetikm/falcon'
-Plug 'godlygeek/tabular'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'mileszs/ack.vim'
-Plug 'prettier/vim-prettier'
-Plug 'rbgrouleff/bclose.vim'
-Plug 'sbdchd/neoformat'
-Plug 'sebdah/vim-delve'
-"Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
-"Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'kshenoy/vim-signature'
-Plug 'junegunn/vim-easy-align'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-vinegar'
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'tpope/vim-unimpaired'
-Plug 'maksimr/vim-jsbeautify'
-Plug 'tpope/vim-markdown'
-Plug 'kablamo/vim-git-log'
-Plug 'junegunn/gv.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'tomasr/molokai'
-Plug 'zenorocha/dracula-theme'
-Plug 'mkarmona/colorsbox'
-Plug 'romainl/Apprentice'
-Plug 'Lokaltog/vim-distinguished'
-Plug 'w0ng/vim-hybrid'
-Plug 'atelierbram/Base2Tone-vim'
-Plug 'tpope/vim-surround'
-Plug 'ryanoasis/vim-devicons'
 Plug 'mhinz/vim-startify'
-Plug 'freitass/todo.txt-vim'
-Plug 'embark-theme/vim', { 'as': 'embark' }
-Plug 'cocopon/iceberg.vim'
+Plug 'dkprice/vim-easygrep'
+Plug 'easymotion/vim-easymotion'
+Plug 'lambdalisue/fern.vim'
 
 " Initialize plugin system
 call plug#end()
 
-set timeoutlen=1500
+set timeoutlen=1000
 "let g:initial_go_path = "/Users/frank/go"
-
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 set shortmess+=c
 
-
-let mapleader = "\\"
+let mapleader = " "
+"let mapleader = "\\"
 "nnoremap <SPACE> <Nop>
 "let mapleader = " "
 " Function key mapping
-" F1 is FZF Commands
-"nnoremap <silent> <F1> :Commands<CR>
-"nnoremap <leader>cc :Commands<CR>
-nnoremap <leader>ch <cmd>:History:<cr>
-nnoremap <leader>co <cmd>:Commands<cr>
-nnoremap <leader>cs <cmd>:Colors<cr>
-" F2 is FZF Buffers
-"nnoremap <silent> <F2> :Buffers<CR>
-"nnoremap <leader>bb :Buffers<CR>
-nnoremap <leader>bb <cmd>:Buffers<cr>
-nnoremap <leader>bf <cmd>:BLines<cr>
-" F4 is FZF Files
-"nnoremap <leader>ff :Files<space>
-nnoremap <leader>ff <cmd>:Files<cr>
-nnoremap <leader>fr <cmd>:Neoformat<cr>
+" set timeoutlen=1000
+set completeopt=menuone,noinsert,noselect
+" Avoid showing message extra message when using completion
+vmap y y`]
 nnoremap <leader>gg <cmd>:Git<cr>
-nnoremap <leader>ll <cmd>:Lines<cr>
-nnoremap <leader>sh <cmd>:History/<cr>
+nnoremap <leader>gr :call Mdfind(input('Find in files:'))<CR> 
+nnoremap <Leader>bb :ls<CR>:b<Space>
+nnoremap <leader>wq <cmd>:q<cr>
+nnoremap <leader>wo <C-w>o
+nnoremap <leader>ws <cmd>:split<cr>
+nnoremap <leader>wv <cmd>:vsplit<cr>
+nnoremap <leader>bd <cmd>:bdelete<cr>
+nnoremap ge G
+vnoremap ge G
+nnoremap gh 0
+vnoremap gh 0
+nnoremap gl $
+vnoremap gl $
+nnoremap gs ^
+vnoremap gs ^
+nnoremap gt H
+vnoremap gt H
+nnoremap gc M
+vnoremap gc M
+nnoremap gb L
+vnoremap gb L
+nnoremap gn <cmd>:bnext<cr>
+nnoremap gp <cmd>:bprev<cr>
+nnoremap mm %
+vnoremap mm %
+nnoremap % ggVG
+imap jj <Esc>
+" <Leader>f{char} to move to {char}
+map <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+
+let g:EasyMotion_startofline = 0 " keep cursor column when JK motionmap / <Plug>(easymotion-sn)
+map / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+" Without these mappings, `n` & `N` works fine. (These mappings just provide
+" different highlight method and have some other features )
+map n <Plug>(easymotion-next)
+map N <Plug>(easymotion-prev)
+nmap s <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
+"nnoremap w eviw
+"nnoremap b bviw
+"xnoremap w <Esc>eviw
+"xnoremap b <Esc>bviw
+" Find buffer with ctrlp
+nnoremap <leader>pb :CtrlPBuffer<cr>
+" Find buffer with list
+nnoremap <leader>bl :call BufferList()<cr>
 " F5 is remove trailing whitespace in buffer
 nnoremap <leader>ws :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 "nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
@@ -115,24 +110,27 @@ nnoremap <leader>ws :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <
 nnoremap <leader>fc :foldclose<CR>
 " F7 is foldopen
 nnoremap <leader>fo :foldopen<CR>
+" leader fs means format PostgreSQL
+nnoremap <leader>fp :%!pg_format<CR>
+" leader du means duplicate line
+nnoremap <leader>du yyp
+" leader gs is Git status
+nnoremap <leader>gs :Git<CR>
 " F2 is toggle light or dark background
 "call togglebg#map("<F2>")
 " ctrl-S is v split
 "map <C-s> :vsplit<CR>
-" F8 is NERDTreeToggle
-" nmap <F8> :NERDTreeToggle<CR>
-" F8 is Fern
-"nmap <F8> :Fern . -reveal=% -drawer<CR>
 nnoremap <leader>ee :Fern . -reveal=% -drawer<CR>
 " F10 is terminal
 "nmap <F10> :terminal<CR>
 " ctrl-space is omnicomplete
-inoremap <C-Space> <C-x><C-o>
-inoremap <C-@> <C-Space>
-"let ayucolor="mirage"
-let ayucolor="light"
+"inoremap <C-Space> <C-x><C-o>
+"inoremap <C-@> <C-Space>
+let ayucolor="mirage"
+let catppuccincolor="dark"
+"let ayucolor="light"
 let base16colorspace=256  " Access colors present in 256 colorspace
-"set termguicolors
+set termguicolors
 let g:tokyonight_style = 'storm' " available: night, storm
 let g:tokyonight_enable_italic = 1"
 let g:tokyonight_transparent_background = 0
@@ -145,8 +143,6 @@ set ignorecase
 " " When searching try to be smart about cases
 set smartcase
 "
-" " Highlight search results
-set hlsearch
 " Show matching brackets when text indicator is over them
 set showmatch
 " Enable syntax highlighting
@@ -164,6 +160,8 @@ set ffs=unix,dos,mac
 set nobackup
 set nowb
 set noswapfile
+set undodir=~/.local/share/vim/undodir
+set undofile
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -194,6 +192,7 @@ let g:two_firewatch_italics=1
 "let g:airline_theme='papercolor'
 "set autochdir
 autocmd BufEnter * silent! lcd %:p:h
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 set diffopt=horizontal
@@ -228,9 +227,9 @@ set number                        " show number ruler
 set relativenumber                " show relative numbers in the ruler
 set ruler
 set formatoptions=tcqronj         " set vims text formatting options
-set softtabstop=2
-set tabstop=2
-set shiftwidth=2
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
 set title                         " let vim set the terminal title
 set updatetime=100                " redraw the status bar often
 
@@ -247,13 +246,13 @@ endif
 "highlight Search guibg=DeepPink4 guifg=White ctermbg=53 ctermfg=White
 
 " Toggle background with <leader>bg
-"map <leader>bg :let &background = (&background == "dark"? "light" : "dark")<cr>
+map <leader>bg :let &background = (&background == "dark"? "light" : "dark")<cr>
 
 "----------------------------------------------
 " Searching
 "----------------------------------------------
 set incsearch                     " move to match as you type the search query
-set hlsearch                      " disable search result highlighting
+set nohlsearch                      " disable search result highlighting
 
 if has('nvim')
     set inccommand=split          " enables interactive search and replace
@@ -296,6 +295,8 @@ set laststatus=2
 " Enable top tabline.
 let g:airline#extensions#tabline#enabled = 1
 
+" show path. does not work with fugitive extension
+"let g:airline_stl_path_style = 'full'
 
 " Disable showing tabs in the tabline. This will ensure that the buffers are
 " what is shown in the tabline at all times.
@@ -315,9 +316,9 @@ endif
 "----------------------------------------------
 " Note: We are not using CtrlP much in this configuration. But vim-go depend on
 " it to run GoDecls(Dir).
-
-" Disable the CtrlP mapping, since we want to use FZF instead for <c-p>.
-let g:ctrlp_map = ''
+let g:ctrlp_user_command = 'find %s -type f -size -10M -not -name "*.png" -not -name "*.svg" -not -name "*.java"'        " MacOSX/Linux
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
+let g:ctrlp_by_filename = 1
 
 "----------------------------------------------
 " Plugin: easymotion/vim-easymotion
@@ -325,12 +326,6 @@ let g:ctrlp_map = ''
 " Enable support for bidirectional motions
 "map  <leader><leader>w <Plug>(easymotion-bd-w)
 "nmap <leader><leader>w <Plug>(easymotion-overwin-w)
-
-
-"----------------------------------------------
-" Plugin: 'junegunn/fzf.vim'
-"----------------------------------------------
-nnoremap <c-p> :FZF<cr>
 
 "----------------------------------------------
 " Plugin: plasticboy/vim-markdown
@@ -340,13 +335,6 @@ let g:vim_markdown_folding_disabled = 1
 
 " Auto shrink the TOC, so that it won't take up 50% of the screen
 let g:vim_markdown_toc_autofit = 1
-
-
-"----------------------------------------------
-" Plugin: 'terryma/vim-multiple-cursors'
-"----------------------------------------------
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_skip_key='<C-b>'
 
 
 "----------------------------------------------
@@ -366,6 +354,14 @@ au FileType sh set softtabstop=2
 au FileType sh set tabstop=2
 
 "----------------------------------------------
+" Language: bindzone
+"----------------------------------------------
+au FileType bindzone set noexpandtab
+au FileType bindzone set shiftwidth=8
+au FileType bindzone set softtabstop=8
+au FileType bindzone set tabstop=8
+
+"
 " Language: CSS
 "----------------------------------------------
 au FileType css set expandtab
@@ -452,7 +448,7 @@ au FileType make set tabstop=2
 "----------------------------------------------
 " Language: Markdown
 "----------------------------------------------
-au FileType markdown setlocal spell
+"au FileType markdown setlocal spell
 au FileType markdown set expandtab
 au FileType markdown set shiftwidth=4
 au FileType markdown set softtabstop=4
@@ -550,9 +546,12 @@ au FileType yaml set shiftwidth=2
 au FileType yaml set softtabstop=2
 au FileType yaml set tabstop=2
 
+" Language Puppet
+autocmd BufNewFile,BufRead *.pp set filetype=puppet
+
 " remap ; to : and vv
-" nmap ; :
-" nnoremap ;; ;
+nmap ; :
+nnoremap ;; ;
 
 "custom diffrev function
 " ----------------------------------------------------------------------------
@@ -598,15 +597,11 @@ let g:prettier#config#single_quote = 'true'
 set foldmethod=syntax
 set foldlevelstart=20
 
-" Shortcuts!
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-map <C-a> ggVG
-map <C-v> <esc>p
+" Copy to mac clipboard
 map <C-c> "+y
 " Move between buffers with Shift + arrow key...
-"nnoremap <S-Left> :bprevious<cr>
-"nnoremap <S-Right> :bnext<cr>
+nnoremap <S-Left> :bprevious<cr>
+nnoremap <S-Right> :bnext<cr>
 " move between tabs with Alt + arrow key
 nnoremap <A-Left> :tabprev<cr>
 nnoremap <A-Right> :tabnext<cr>
@@ -660,6 +655,7 @@ nmap <silent> <C-Down> :wincmd j<CR>
 nmap <silent> <C-Left> :wincmd h<CR>
 nmap <silent> <C-Right> :wincmd l<CR>
 nmap <C-\> :bd<CR>
+nmap <leader>x :bd<CR>
 
 
 " Provide commands and descriptions for existing mappings
@@ -692,8 +688,8 @@ let g:go_def_mode = "gopls"
 "augroup END
 
 
-  let g:airline_left_sep = '⮀'
-  let g:airline_left_alt_sep = '⮁'
+"  let g:airline_left_sep = '⮀'
+"  let g:airline_left_alt_sep = '⮁'
   let g:airline_right_sep = ''
   let g:airline_right_alt_sep = '⮃'
   let g:airline_symbols.branch = '⭠'
@@ -702,6 +698,7 @@ let g:go_def_mode = "gopls"
 " unicode symbols
 "let g:airline_left_sep = '»'
 "let g:airline_left_sep = '▶'
+"let g:airline_left_sep = '⎶'
 "let g:airline_right_sep = '«'
 "let g:airline_right_sep = '◀'
 "let g:airline_symbols.colnr = ' ㏇:'
@@ -724,16 +721,16 @@ let g:airline_symbols.whitespace = 'Ξ'
 "let g:airline#extensions#tabline#left_alt_sep = "\UE0BA"
 "let g:airline#extensions#tabline#left_sep = "\UE0B0"
 "let g:airline#extensions#tabline#left_alt_sep = "\UE0B1"
-let g:airline#extensions#tabline#right_sep = "\UE0B2"
-let g:airline#extensions#tabline#right_alt_sep = "\UE0B3"
-  let g:airline_left_sep = ''
-  let g:airline_left_alt_sep = ''
-  let g:airline_right_sep = ''
-  let g:airline_right_alt_sep = ''
-  let g:airline_symbols.branch = ''
-  let g:airline_symbols.colnr = ' :'
-  let g:airline_symbols.readonly = ''
-  let g:airline_symbols.linenr = ' :'
+"let g:airline#extensions#tabline#right_sep = "\UE0B2"
+"let g:airline#extensions#tabline#right_alt_sep = "\UE0B3"
+let g:airline_left_sep = ''
+"  let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+"  let g:airline_right_alt_sep = ''
+"  let g:airline_symbols.branch = ''
+"  let g:airline_symbols.colnr = ' :'
+"  let g:airline_symbols.readonly = ''
+"  let g:airline_symbols.linenr = ' :'
   let g:airline_symbols.maxlinenr = '☰ '
   let g:airline_symbols.dirty='⚡'
 "set fillchars+=stl:\ ,stlnc:\
@@ -744,6 +741,11 @@ function! Clearbg() abort
     highlight Normal     cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE
     highlight NonText    cterm=NONE ctermbg=NONE              gui=NONE guibg=NONE
     set nocursorline
+endfunction
+
+function Mdfind(parameter)
+  let @a=a:parameter
+  execute 'enew | r!mdfind' a:parameter
 endfunction
 
 " Give more space for displaying messages.
@@ -779,31 +781,72 @@ let pumblend=5
 ""call Clearbg()
 "AirlineTheme challenger_deep
 
-let g:VimTodoListsMoveItems = 1
-let g:VimTodoListsDatesEnabled = 1
-let g:VimTodoListsDatesFormat = "%a %b %d, %Y"
-
-
 set hidden
 
-let g:airline_theme='ayu'
+let g:airline_theme='tokyonight'
 " Set default local PG database
 let g:db = 'postgresql:///frank'
-set background=light
+"set background=light
 colorscheme ayu
-let g:fzf_colors =
-            \ { 'fg':      ['fg', 'Normal'],
-            \ 'bg':      ['bg', 'Normal'],
-            \ 'hl':      ['fg', 'Comment'],
-            \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-            \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-            \ 'hl+':     ['fg', 'Statement'],
-            \ 'info':    ['fg', 'PreProc'],
-            \ 'border':  ['fg', 'Ignore'],
-            \ 'prompt':  ['fg', 'Conditional'],
-            \ 'pointer': ['fg', 'Exception'],
-            \ 'marker':  ['fg', 'Keyword'],
-            \ 'spinner': ['fg', 'Label'],
-            \ 'header':  ['fg', 'Comment'] }
+"colorscheme dracula
+let g:srcery_inverse=0
+let g:srcery_inverse_match_paren=1
+let g:srcery_bg_passthrough=1
+"colorscheme ayu
+" colorscheme catppuccin
+" Do not set background color
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+autocmd vimenter * hi LineNr guibg=NONE ctermbg=NONE
+autocmd vimenter * hi SignColumn guibg=NONE ctermbg=NONE
+autocmd vimenter * hi CursorLine guibg=NONE ctermbg=NONE
+autocmd vimenter * hi CursorLineNR guibg=NONE ctermbg=NONE
+autocmd vimenter * hi CursorColumn guibg=NONE ctermbg=NONE
+set foldmethod=indent
 
-set guifont=CaskaydiaCove\ Nerd\ Font\ Mono:h16
+function! BufSel(pattern)
+  let bufcount = bufnr("$")
+  let currbufnr = 1
+  let nummatches = 0
+  let firstmatchingbufnr = 0
+  while currbufnr <= bufcount
+    if(bufexists(currbufnr))
+      let currbufname = bufname(currbufnr)
+      if(match(currbufname, a:pattern) > -1)
+        echo currbufnr . ": ". bufname(currbufnr)
+        let nummatches += 1
+        let firstmatchingbufnr = currbufnr
+      endif
+    endif
+    let currbufnr = currbufnr + 1
+  endwhile
+  f(nummatches == 1)
+    execute ":buffer ". firstmatchingbufnr
+  elseif(nummatches > 1)
+    let desiredbufnr = input("Enter buffer number: ")
+    if(strlen(desiredbufnr) != 0)
+      execute ":buffer ". desiredbufnr
+    endif
+  else
+    echo "No matching buffers"
+  endif
+endfunction
+
+"Bind the BufSel() function to a user-command
+"nnoremap <leader>bl <cmd>:call BufSel()<cr>
+command! -nargs=1 Bs :call BufSel("<args>")
+
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+set wildmenu
+set wildmode=longest:full,full
+
+nnoremap <Leader>gb :<C-u>call gitblame#echo()<CR>
+
+" Reload all buffers from files
+nnoremap <leader>rl :bufdo e<cr>
+
+" find files and populate the quickfix list
+let g:find_files_findprg = 'find $d ! -type d -name $*'
+
+let g:EasyGrepRecursive = "1"
+let g:EasyGrepFilesToExclude="*.svn,*.git,*.swp,*.java,*.js,*.css,*.map,*.gradle,*.html"
+let g:EasyGrepCommand="1"
