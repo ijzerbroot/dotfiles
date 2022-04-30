@@ -19,11 +19,14 @@ Plug 'mhinz/vim-startify'
 Plug 'dkprice/vim-easygrep'
 Plug 'easymotion/vim-easymotion'
 Plug 'lambdalisue/fern.vim'
+Plug 'embark-theme/vim'
+Plug 'liuchengxu/vista.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Initialize plugin system
 call plug#end()
 
-set timeoutlen=1000
+set timeoutlen=1500
 "let g:initial_go_path = "/Users/frank/go"
 
 " Set completeopt to have a better completion experience
@@ -40,8 +43,8 @@ let mapleader = " "
 set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 vmap y y`]
-nnoremap <leader>gg <cmd>:Git<cr>
-nnoremap <leader>gr :call Mdfind(input('Find in files:'))<CR> 
+nnoremap <leader>gg <cmd>:Ggrep<cr>
+nnoremap <leader>gr :call Mdfind(input('Find in files:'))<CR>
 nnoremap <Leader>bb :ls<CR>:b<Space>
 nnoremap <leader>wq <cmd>:q<cr>
 nnoremap <leader>wo <C-w>o
@@ -66,8 +69,37 @@ nnoremap gn <cmd>:bnext<cr>
 nnoremap gp <cmd>:bprev<cr>
 nnoremap mm %
 vnoremap mm %
-nnoremap % ggVG
-imap jj <Esc>
+" Make vim non-modal ;-)
+imap jj <C-o>
+imap <BS> <C-o>"_X
+imap <C-d> <C-o><C-d>
+imap <C-a> <C-o>^
+imap <C-e> <C-o>$
+imap <C-u> <C-o><C-u>
+imap <C-b> <C-o>viw
+imap <C-Right> <C-o>w
+imap <C-Left> <C-o>b
+imap <C-s> <C-o>s
+imap <S-Left> <C-o><S-Left>
+imap <S-Right> <C-o><S-Right>
+imap <C-\> <C-o>:bdelete<cr>
+imap <C-z> <C-o>u
+" s{char}{char} to move to {char}{char}
+imap <C-g> <C-o>:execute " grep -srnw --binary-files=without-match --exclude-dir=.git . -e " . expand("<cword>") . " " <bar> cwindow<CR>
+nmap s <Plug>(easymotion-overwin-f2)
+"map  / <Plug>(easymotion-sn)
+"omap / <Plug>(easymotion-tn)
+" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+" Without these mappings, `n` & `N` works fine. (These mappings just provide
+" different highlight method and have some other features )
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+" copy to clipboard
+map <C-c> "+y
+nnoremap <S-Left> :bprevious<cr>
+nnoremap <S-Right> :bnext<cr>
+nnoremap <A-Left> :tabprev<cr>
+nnoremap <A-Right> :tabnext<cr>
 " <Leader>f{char} to move to {char}
 map <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
@@ -85,8 +117,8 @@ map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
 
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motionmap / <Plug>(easymotion-sn)
-map / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
+"map / <Plug>(easymotion-sn)
+"omap / <Plug>(easymotion-tn)
 
 " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
 " Without these mappings, `n` & `N` works fine. (These mappings just provide
@@ -787,7 +819,8 @@ let g:airline_theme='tokyonight'
 " Set default local PG database
 let g:db = 'postgresql:///frank'
 "set background=light
-colorscheme ayu
+"colorscheme ayu
+colorscheme embark
 "colorscheme dracula
 let g:srcery_inverse=0
 let g:srcery_inverse_match_paren=1
