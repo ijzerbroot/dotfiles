@@ -12,7 +12,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ghifarit53/tokyonight-vim'
-Plug 'ayu-theme/ayu-vim'
+Plug 'ayu-theme/ayu-vimv'
 Plug 'rakr/vim-togglebg'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-startify'
@@ -71,12 +71,11 @@ nnoremap mm %
 vnoremap mm %
 " Make vim non-modal ;-)
 imap jj <C-o>
-imap <BS> <C-o>"_X
+"imap <BS> <C-o>"_X
 imap <C-d> <C-o><C-d>
 imap <C-a> <C-o>^
 imap <C-e> <C-o>$
 imap <C-u> <C-o><C-u>
-imap <C-b> <C-o>viw
 imap <C-Right> <C-o>w
 imap <C-Left> <C-o>b
 imap <C-s> <C-o>s
@@ -84,10 +83,26 @@ imap <S-Left> <C-o><S-Left>
 imap <S-Right> <C-o><S-Right>
 imap <C-\> <C-o>:bdelete<cr>
 imap <C-z> <C-o>u
+imap <C-l> <C-o>yy<C-o>p
+imap <C-k>g <esc>:Git<cr>
+imap <C-k><C-p> <esc>:CtrlP<cr>
+imap <C-k>r <C-o>:%s/<c-r><c-w>/<c-r><c-w>/gc
+imap <C-k><BS> <C-o>b<C-o>dw
+imap <C-k>b <esc>:CtrlPBuffer<cr>
+imap <C-v>b <C-o>vib
+imap <C-v>l <C-o>V
+imap <C-v>p <C-o>vi{
+imap <C-v>w <C-o>viw
+imap <C-v>d <C-o>vi"
+imap <C-v>q <C-o>vi'
+
+" Global search and replace
+nnoremap gr :%s/<c-r><c-w>/<c-r><c-w>/gc<c-f>$F/i
+
 " s{char}{char} to move to {char}{char}
 imap <C-g> <C-o>:execute " grep -srnw --binary-files=without-match --exclude-dir=.git . -e " . expand("<cword>") . " " <bar> cwindow<CR>
 nmap s <Plug>(easymotion-overwin-f2)
-"map  / <Plug>(easymotion-sn)
+"imap <C-k>/ <Plug>(easymotion-sn)
 "omap / <Plug>(easymotion-tn)
 " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
 " Without these mappings, `n` & `N` works fine. (These mappings just provide
