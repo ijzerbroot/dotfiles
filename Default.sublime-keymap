@@ -1,0 +1,65 @@
+[
+
+    //    Copy/paste: c-y c-v
+    { "keys": ["ctrl+x"], "command": "cut" },
+    { "keys": ["ctrl+y"], "command": "copy" },
+    { "keys": ["ctrl+v"], "command": "paste" },
+
+    // jjt: command palette
+	{ "keys": ["j","j","t"], "command": "show_overlay", "args": {"overlay": "command_palette"} },
+
+    // ctrl+e end of line
+	{ "keys": ["ctrl+e"], "command": "move_to", "args": {"to": "eol", "extend": false} },
+	{ "keys": ["§"], "command": "toggle_overwrite" },
+
+    // ctrl+; -> duplicate line
+	{ "keys": ["ctrl+;"], "command": "duplicate_line" },
+
+    // ctrl+k -> delete line
+    { "keys": ["ctrl+k"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete Line.sublime-macro"} },
+
+    // Ctrl-p goto any
+    { "keys": ["ctrl+p"], "command": "show_overlay", "args": {"overlay": "goto", "show_files": true} },
+    // Ctrl i goto symbol
+    { "keys": ["ctrl+i"], "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
+    // Ctrl-t goto text
+    { "keys": ["ctrl+t"], "command": "show_overlay", "args": {"overlay": "goto", "text": "#"} },
+
+	{ "keys": ["super+b"], "command": "toggle_side_bar" },
+        { "keys": ["ctrl+super+p"], "command": "filedir_to_clipboard" },
+        { "keys": ["ctrl+super+f"], "command": "external_tools_run", "args": {"cmd": ["pg_format", "-i", "$file"] } },
+        { "keys": ["ctrl","g","a"], "command": "external_tools_run", "args": {"cmd": ["git", "add", "$file"] ,  "working_dir": "${file_path}" } },
+
+        // ctrl+ o: add line
+        { "keys": ["ctrl+o"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Add Line.sublime-macro"}, "context":
+        [
+            { "key": "overlay_has_focus", "operator": "equal", "operand": false },
+        ],
+     },
+
+        // ctrl+f: find forward
+        { "keys": ["ctrl+f"], "command": "show_panel", "args": {"panel": "find", "reverse": false} },
+        // ctrl+/ find in files
+        { "keys": ["ctrl+/"],  "command": "show_panel", "args": {"panel": "find_in_files"} },
+
+        // jj q - r -> selecties
+        { "keys": ["j","j","q"], "command": "expand_selection", "args": {"to": "brackets"} },
+        { "keys": ["j","j","e"], "command": "expand_selection", "args": {"to": "indentation"} },
+        { "keys": ["j","j","w"], "command": "expand_selection", "args": {"to": "block"} },
+        { "keys": ["j","j","r"], "command": "expand_selection", "args": {"to": "smart"} },
+
+        // ctrl+l select line
+        { "keys": ["ctrl+l"], "command": "expand_selection", "args": {"to": "line"} },
+
+        // ctrl+j join lines
+        { "keys": ["ctrl+j"], "command": "join_lines" },
+
+        // jj a-f search
+        { "keys": ["j","j","a"], "command": "show_panel", "args": {"panel": "find", "reverse": true} },
+        { "keys": ["j","j","f"], "command": "show_panel", "args": {"panel": "find", "reverse": false} },
+        { "keys": ["j","j","s"], "command": "show_panel", "args": {"panel": "find_in_files"} },
+
+        // ctrl-u: undo
+        { "keys": ["ctrl+u"], "command": "undo" },
+
+ ]
