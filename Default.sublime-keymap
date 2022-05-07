@@ -5,8 +5,8 @@
     { "keys": ["ctrl+y"], "command": "copy" },
     { "keys": ["ctrl+v"], "command": "paste" },
 
-    // jjt: command palette
-	{ "keys": ["j","j","t"], "command": "show_overlay", "args": {"overlay": "command_palette"} },
+    // jjc: command palette
+	{ "keys": ["j","j","c"], "command": "show_overlay", "args": {"overlay": "command_palette"} },
 
     // ctrl+e end of line
 	{ "keys": ["ctrl+e"], "command": "move_to", "args": {"to": "eol", "extend": false} },
