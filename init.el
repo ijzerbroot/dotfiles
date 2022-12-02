@@ -55,6 +55,7 @@
 (straight-use-package 'rustic)
 (straight-use-package 'company-mode)
 (straight-use-package 'go-mode)
+(straight-use-package 'vterm)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
