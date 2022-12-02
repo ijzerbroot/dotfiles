@@ -43,11 +43,14 @@
 (straight-use-package 'consult)
 (straight-use-package 'marginalia)
 (straight-use-package 'lsp-mode)
+;;(straight-use-package 'lsp-ui)
 (straight-use-package 'avy)
 (straight-use-package 'embark)
 (straight-use-package 'corfu)
 (straight-use-package 'beacon)
 (straight-use-package 'which-key)
+(straight-use-package 'rustic)
+(straight-use-package 'company-mode)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
