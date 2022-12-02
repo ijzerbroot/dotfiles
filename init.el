@@ -36,7 +36,6 @@
 (straight-use-package 'doom-modeline)
 (straight-use-package 'magit)
 (straight-use-package 'projectile)
-(straight-use-package 'counsel)
 (straight-use-package 'vertico)
 (straight-use-package 'good-scroll)
 (straight-use-package 'org-mode)
@@ -47,10 +46,15 @@
 (straight-use-package 'avy)
 (straight-use-package 'embark)
 (straight-use-package 'corfu)
+(straight-use-package 'prescient)
+(straight-use-package 'corfu-prescient)
+(straight-use-package 'company-prescient)
+(straight-use-package 'vertico-prescient)
 (straight-use-package 'beacon)
 (straight-use-package 'which-key)
 (straight-use-package 'rustic)
 (straight-use-package 'company-mode)
+(straight-use-package 'go-mode)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
