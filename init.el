@@ -99,3 +99,10 @@
 (beacon-mode 1)
 (which-key-mode 1)
 
+(set-frame-parameter nil 'alpha-background 95) ; For current frame
+(add-to-list 'default-frame-alist '(alpha-background . 95)) ; For all new frames henceforth
+
+(setq default-frame-alist '((width . 150)
+			    (height . 50)
+                            (alpha-background . 90)
+			   ))
