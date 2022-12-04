@@ -12,9 +12,9 @@
 (setq visible-bell t)
 
 ;; line height
-(setq-default line-spacing 2)
+(setq-default line-spacing 5)
 
-(set-face-attribute 'default nil :font "Hack Nerd Font Mono" :height 155)
+(set-face-attribute 'default nil :font "Courier Prime Code" :height 175)
 
 
 ;; Make ESC quit prompts
