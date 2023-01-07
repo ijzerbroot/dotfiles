@@ -1,12 +1,11 @@
 
-exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-
 monitor=,2560x1440@60,0x0,1
 bezier=easeinoutcirc,0.785,0.135,0.15,0.86
 
 input {
     kb_layout=us
     #kb_variant=colemak
+    kb_variant=dvorak
     kb_model=
     kb_options=
     kb_rules=
@@ -16,28 +15,20 @@ input {
 
 general {
     max_fps=60 # deprecated, unused
-    sensitivity=0.9
+    sensitivity=0.75
     main_mod=SUPER
 
     gaps_in=5
-    gaps_out=10
-    border_size=1
-    col.active_border=0xFF908caa
-    col.inactive_border=0xFF1f1d2e
+    gaps_out=20
+    border_size=2
+    col.active_border=0xFF96CDFB
+    col.inactive_border=0xFF313244
 
-    #damage_tracking=full # leave it on full unless you hate your GPU and want to make it suffer
+    damage_tracking=full # leave it on full unless you hate your GPU and want to make it suffer
 }
 
 decoration {
-    blur_new_optimizations = true
-    col.shadow=0xee0f0f0f
-    drop_shadow=true
-    shadow_range=16
-    shadow_offset=0 0
-    shadow_render_power=2
-    rounding=8
-    dim_inactive=true
-    dim_strength=0.1
+    rounding=10
     blur=1
     blur_size=3 # minimum 1
     blur_passes=3 # minimum 1, more passes = more resource intensive.
@@ -48,20 +39,10 @@ decoration {
 
 animations {
     enabled=1
-    bezier=pace,0.46, 1, 0.29, 0.99
-    bezier=overshot,0.13,0.99,0.29,1.1
-    animation=windowsIn,1,10,pace,slide
-    animation=windowsOut,1,10,default,slide
-    animation=windowsMove,1,10,pace,slide
-    animation=fade,1,10,pace
-    animation=workspaces,1,9,pace,slide
-    animation=specialWorkspace,1,8,pace,slide
-    animation=border,0,3,default
-    #enabled=1
-    #animation=windows,1,5,easeinoutcirc,popin
-    #animation=border,1,10,default
-    #animation=fade,1,10,default
-    #animation=workspaces,1,5,default
+    animation=windows,1,5,easinoutcirc,popin
+    animation=borders,1,10,default
+    animation=fadein,1,10,default
+    animation=workspaces,1,5,default
 }
 
 dwindle {
@@ -79,15 +60,9 @@ dwindle {
 windowrule=float,wezterm
 windowrule=size 80% 80%,wezterm
 windowrule=opacity 0.9,foot 
-windowrulev2 = opacity 0.8 0.8,class:^(kitty)$
-windowrulev2 = opacity 0.86 0.86,class:^(lapce)$
-windowrulev2 = opacity 1 1,floating:1
-windowrule = noblur,^(firefox)$ # disables blur for firefox
-windowrule = noblur,^(chromium)$ # disables blur for firefox
 
 #-- Keybindings ----------------------------------------------------
-$termg = ~/.config/hypr/scripts/terminalgreen
-$termb = ~/.config/hypr/scripts/terminalbrown
+$term = ~/.config/hypr/scripts/terminal
 $menu = ~/.config/hypr/scripts/menu
 $powermenu = ~/.config/hypr/scripts/powermenu
 $volume = ~/.config/hypr/scripts/volume
@@ -97,21 +72,20 @@ $lockscreen = ~/.config/hypr/scripts/lockscreen
 $wlogout = ~/.config/hypr/scripts/wlogout
 $colorpicker = ~/.config/hypr/scripts/colorpicker
 $files = thunar
-$editor = lapce
+$editor = /usr/bin/subl
 $browser = firefox
 
 # -- Terminal --
-bind=SUPER,Return,exec,$termg
-bind=SUPER,grave,exec,$termb
-bind=SUPER_SHIFT,Return,exec,$termg -f
-bind=SUPERALT,Return,exec,$termg -s
-bind=SUPER,T,exec,$termg -F
+bind=SUPER,Return,exec,$term
+bind=SUPERSHIFT,Return,exec,$term -f
+bind=SUPERALT,Return,exec,$term -s
+bind=SUPER,T,exec,$term -F
 bind=SUPER,K,exec, kitty
 
 # -- Apps --
-bind=SUPER_SHIFT,F,exec,$files
-bind=SUPER_SHIFT,E,exec,$editor
-bind=SUPER_SHIFT,W,exec,$browser
+bind=SUPERSHIFT,F,exec,$files
+bind=SUPERSHIFT,E,exec,$editor
+bind=SUPERSHIFT,W,exec,$browser
 
 # -- Wofi --
 bind=ALT,F1,exec,$menu
@@ -122,7 +96,7 @@ bind=SUPER,X,exec,$powermenu
 bind=SUPER,N,exec,nm-connection-editor
 bind=SUPER,P,exec,$colorpicker
 bind=SUPER,X,exec,$wlogout
-bind=SUPER,L,exec,$lockscreen
+bind=CTRLALT,L,exec,$lockscreen
 
 # -- Function keys --
 bind=,XF86MonBrightnessUp,exec,$backlight --inc
@@ -157,25 +131,16 @@ bind=SUPER,up,movefocus,u
 bind=SUPER,down,movefocus,d
 
 # Move
-bind=SUPER_SHIFT,left,movewindow,l
-bind=SUPER_SHIFT,right,movewindow,r
-bind=SUPER_SHIFT,up,movewindow,u
-bind=SUPER_SHIFT,down,movewindow,d
-
-# Mouse move
-bindm=SUPER,mouse:272,movewindow
-
-# Mouse resize
-bindm=SUPER,mouse:273,resizewindow
-
-# Center floating window
-bind=SUPER_SHIFT,Space,centerwindow
+bind=SUPERSHIFT,left,movewindow,l
+bind=SUPERSHIFT,right,movewindow,r
+bind=SUPERSHIFT,up,movewindow,u
+bind=SUPERSHIFT,down,movewindow,d
 
 # Resize
-bind=SUPERCTRL,left,resizeactive,-150 0
-bind=SUPERCTRL,right,resizeactive,150 0
-bind=SUPERCTRL,up,resizeactive,0 -150
-bind=SUPERCTRL,down,resizeactive,0 150
+bind=SUPERCTRL,left,resizeactive,-20 0
+bind=SUPERCTRL,right,resizeactive,20 0
+bind=SUPERCTRL,up,resizeactive,0 -20
+bind=SUPERCTRL,down,resizeactive,0 20
 
 # Workspaces
 bind=SUPER,1,workspace,1
@@ -190,16 +155,16 @@ bind=SUPER,9,workspace,9
 bind=SUPER,0,workspace,10
 
 # Send to Workspaces
-bind=SUPER_SHIFT,1,movetoworkspace,1
-bind=SUPER_SHIFT,2,movetoworkspace,2
-bind=SUPER_SHIFT,3,movetoworkspace,3
-bind=SUPER_SHIFT,4,movetoworkspace,4
-bind=SUPER_SHIFT,5,movetoworkspace,5
-bind=SUPER_SHIFT,6,movetoworkspace,6
-bind=SUPER_SHIFT,7,movetoworkspace,7
-bind=SUPER_SHIFT,8,movetoworkspace,8
-bind=SUPER_SHIFT,9,movetoworkspace,9
-bind=SUPER_SHIFT,0,movetoworkspace,10
+bind=SUPERSHIFT,exclam,movetoworkspace,1
+bind=SUPERSHIFT,at,movetoworkspace,2
+bind=SUPERSHIFT,numbersign,movetoworkspace,3
+bind=SUPERSHIFT,dollar,movetoworkspace,4
+bind=SUPERSHIFT,percent,movetoworkspace,5
+bind=SUPERSHIFT,asciicircum,movetoworkspace,6
+bind=SUPERSHIFT,ampersand,movetoworkspace,7
+bind=SUPERSHIFT,asterisk,movetoworkspace,8
+bind=SUPERSHIFT,parenleft,movetoworkspace,9
+bind=SUPERSHIFT,parenright,movetoworkspace,10
 
 #-- Startup ----------------------------------------------------
 exec-once=~/.config/hypr/scripts/startup
