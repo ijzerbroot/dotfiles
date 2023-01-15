@@ -8,7 +8,7 @@
 
     // Choose the order of the modules
 
-    "modules-center": ["custom/launcher", "wlr/workspaces", "custom/media", "idle_inhibitor",  "custom/updater", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "wlr/language", "battery", "battery#bat2",  "tray", "clock", "custom/power"],
+    "modules-center": ["custom/launcher", "wlr/workspaces", "custom/media", "idle_inhibitor",  "custom/updater", "pulseaudio", "network", "cpu", "memory", "temperature", "tray", "clock", "custom/power"],
 
     // Modules configuration
 
@@ -33,6 +33,9 @@
             "unlocked": ""
         }
     },
+    "hyprland/language": {
+    "format": "{flag} {short} {variant}"
+    },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
@@ -46,6 +49,10 @@
     "tray": {
         "icon-size": 20,
         "spacing": 10
+    },
+    "hyprland/window": {
+    "format": "🪟 {}",
+    "separate-outputs": true
     },
     "clock": {
         // "timezone": "Europe/Amsterdam",
@@ -62,10 +69,10 @@
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
+        "critical-threshold": 85,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", "🔥"]
     },
     "backlight": {
         // "device": "acpi_video1",
