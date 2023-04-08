@@ -21,7 +21,10 @@ done
 #swaybg --output '*' --mode fill --image ~/Pictures/tunnel_and_a_vending_machine_by_mei_xing_d8uo2by-fullview.jpg &
 #swaybg --output '*' --mode fill --image ~/Pictures/crossing_by_the10s_d8yffeb-fullview.jpg &
 #swaybg --output '*' --mode fill --image ~/Pictures/archbg.jpg &
-swaybg --output '*' --mode fill --image ~/Pictures/zaki-aby-fisheye-hardcoding.jpg &
+#swaybg --output '*' --mode fill --image ~/Pictures/zaki-aby-fisheye-hardcoding.jpg &
+#swaybg --output '*' --mode fill --image ~/Pictures/backpacker-7628303.jpg &
+#swaybg --output '*' --mode fill --image ~/Pictures/wpsky.png &
+swaybg --output '*' --mode fill --image ~/Pictures/cat_leaves.png &
 
 # Load environment
 systemctl --user import-environment
@@ -36,6 +39,8 @@ systemctl --user import-environment
 ~/.config/hypr/scripts/statusbar &
 
 # Launch eww
+#~/.config/eww/scripts/monitor.sh &
+#~/.config/eww/scripts/start.sh &
 #eww -c $HOME/.config/eww/bar --restart open bar &
 
 # Start mpd
